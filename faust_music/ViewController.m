@@ -157,6 +157,9 @@ didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic error:(NSErro
     NSLog(@"<%@>", characteristic.value);
     
     NSData *rawData = characteristic.value;
+    
+    
+    // for MIDI specifically
     long longVal;
     [rawData getBytes:&longVal length:sizeof(longVal)];
     int intVal = (int)(longVal >> 16);
@@ -165,6 +168,7 @@ didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic error:(NSErro
     NSLog(@"MIDI int #1: %d", vals[0]);
     NSLog(@"MIDI int #2: %d", vals[1]);
     NSLog(@"MIDI int #3: %d", vals[2]);
+    // Play music
 }
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
@@ -181,5 +185,11 @@ didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic error:(NSErro
         }
     }
 }
+
+- (IBAction)buttonPressed:(id)sender {
+    // your code here
+    // play Faust music
+}
+
 
 @end

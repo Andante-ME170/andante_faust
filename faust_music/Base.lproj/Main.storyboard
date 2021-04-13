@@ -40,11 +40,20 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fdf-n0-izm">
+                                <rect key="frame" x="161" y="662" width="92" height="51"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="32"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="buttonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="E5b-sn-7PA"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY" userLabel="Hello World"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="aUI-HY-GQ6" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="AY1-27-RHR"/>
+                            <constraint firstItem="Fdf-n0-izm" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="Itu-vS-DQB"/>
                             <constraint firstItem="uqy-ei-nAC" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="KdV-re-JiZ"/>
                             <constraint firstItem="Gve-Ee-pZX" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="Qfy-Ro-OB7"/>
                             <constraint firstItem="uqy-ei-nAC" firstAttribute="top" secondItem="Gve-Ee-pZX" secondAttribute="bottom" constant="47" id="X57-56-5hN"/>
