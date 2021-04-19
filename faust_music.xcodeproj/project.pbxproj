@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		120E3DE3262D447400BF7E24 /* DspFaust.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 120E3DE2262D447400BF7E24 /* DspFaust.cpp */; };
 		A2E7CC3D262188C6006CA38B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A2E7CC3C262188C6006CA38B /* AppDelegate.m */; };
 		A2E7CC40262188C6006CA38B /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A2E7CC3F262188C6006CA38B /* SceneDelegate.m */; };
 		A2E7CC43262188C6006CA38B /* ViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = A2E7CC42262188C6006CA38B /* ViewController.mm */; };
@@ -19,7 +20,6 @@
 		DB78B3B82627841800B42591 /* CoreMIDI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB78B3B72627841800B42591 /* CoreMIDI.framework */; };
 		DB78B3BA2627842100B42591 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB78B3B92627842100B42591 /* AudioToolbox.framework */; };
 		DB78B3E626278C1900B42591 /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB78B3E526278C1900B42591 /* CoreBluetooth.framework */; };
-		DB78B3F42627F20C00B42591 /* DspFaust.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DB78B3F32627F20C00B42591 /* DspFaust.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +40,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		120E3DE1262D447400BF7E24 /* DspFaust.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DspFaust.h; sourceTree = "<group>"; };
+		120E3DE2262D447400BF7E24 /* DspFaust.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DspFaust.cpp; sourceTree = "<group>"; };
 		A2E7CC38262188C6006CA38B /* faust_music.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = faust_music.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A2E7CC3B262188C6006CA38B /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		A2E7CC3C262188C6006CA38B /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -61,8 +63,6 @@
 		DB78B3B72627841800B42591 /* CoreMIDI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMIDI.framework; path = System/Library/Frameworks/CoreMIDI.framework; sourceTree = SDKROOT; };
 		DB78B3B92627842100B42591 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		DB78B3E526278C1900B42591 /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
-		DB78B3F32627F20C00B42591 /* DspFaust.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DspFaust.cpp; sourceTree = "<group>"; };
-		DB78B3F82627F21900B42591 /* DspFaust.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DspFaust.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,8 +122,8 @@
 				A2E7CC3E262188C6006CA38B /* SceneDelegate.h */,
 				A2E7CC3F262188C6006CA38B /* SceneDelegate.m */,
 				A2E7CC41262188C6006CA38B /* ViewController.h */,
-				DB78B3F32627F20C00B42591 /* DspFaust.cpp */,
-				DB78B3F82627F21900B42591 /* DspFaust.h */,
+				120E3DE2262D447400BF7E24 /* DspFaust.cpp */,
+				120E3DE1262D447400BF7E24 /* DspFaust.h */,
 				A2E7CC42262188C6006CA38B /* ViewController.mm */,
 				A2E7CC44262188C6006CA38B /* Main.storyboard */,
 				A2E7CC47262188CA006CA38B /* Assets.xcassets */,
@@ -292,10 +292,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				A2E7CC43262188C6006CA38B /* ViewController.mm in Sources */,
+				120E3DE3262D447400BF7E24 /* DspFaust.cpp in Sources */,
 				A2E7CC3D262188C6006CA38B /* AppDelegate.m in Sources */,
 				A2E7CC4E262188CA006CA38B /* main.m in Sources */,
 				A2E7CC40262188C6006CA38B /* SceneDelegate.m in Sources */,
-				DB78B3F42627F20C00B42591 /* DspFaust.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -468,13 +468,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = MDFF28P88G;
+				DEVELOPMENT_TEAM = H9X3J86JSZ;
 				INFOPLIST_FILE = faust_music/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "andante.faust-music-Melissa";
+				PRODUCT_BUNDLE_IDENTIFIER = "andante.faust-music-Bradley";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -486,13 +487,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = MDFF28P88G;
+				DEVELOPMENT_TEAM = H9X3J86JSZ;
 				INFOPLIST_FILE = faust_music/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "andante.faust-music-Melissa";
+				PRODUCT_BUNDLE_IDENTIFIER = "andante.faust-music-Bradley";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

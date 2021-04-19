@@ -31,6 +31,12 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    const int SR = 44100;
+    const int bufferSize = 256;
+                      
+    dspFaust = new DspFaust(SR,bufferSize);
+    dspFaust->start();
+    
     _myManager = [[CBCentralManager alloc] initWithDelegate:self queue:nil options:nil];
     NSDictionary *option = @{
         CBCentralManagerScanOptionAllowDuplicatesKey:[NSNumber numberWithBool:YES]
@@ -188,6 +194,14 @@ didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic error:(NSErro
     NSLog(@"MIDI int #2: %d", vals[1]);
     NSLog(@"MIDI int #3: %d", vals[2]);
     // Play music
+    if (vals[2] == 144){
+        //dspFaust->start();
+        dspFaust->keyOn(vals[1], vals[0]);
+    }
+    else if (vals[2] == 128){
+        dspFaust->keyOff(vals[1]);
+        //dspFaust->stop();
+    }
 }
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
@@ -198,8 +212,8 @@ didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic error:(NSErro
 -(void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
                                     
-    dspFaust->stop();
-    delete dspFaust;
+    // dspFaust->stop();
+    // delete dspFaust;
 }
 
 - (IBAction)connectWasPressed:(id)sender {
@@ -219,12 +233,12 @@ didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic error:(NSErro
     
     /* Added below, modeled off of (https://ccrma.stanford.edu/~rmichon/faustTutorials/#adding-faust-real-time-audio-support-to-ios-apps)
      */
-    const int SR = 44100;
-    const int bufferSize = 256;
+    //const int SR = 44100;
+    //const int bufferSize = 256;
                       
-    dspFaust = new DspFaust(SR,bufferSize);
-    dspFaust->start();
-    dspFaust->setParamValue("/synth/gate", 1);
+    //dspFaust = new DspFaust(SR,bufferSize);
+    // dspFaust->start();
+    //dspFaust->setParamValue("/synth/gate", 1);
     //dspFaust->setParamValue(3, 1); // in example, this line was commented out and above line was include, try this again after other fixes
 }
 
