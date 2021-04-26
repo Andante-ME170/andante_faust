@@ -193,14 +193,60 @@ didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic error:(NSErro
     NSLog(@"MIDI int #1: %d", vals[0]);
     NSLog(@"MIDI int #2: %d", vals[1]);
     NSLog(@"MIDI int #3: %d", vals[2]);
+    
+    // initial parameters (do elsewhere?)
+    dspFaust->setParamValue("hat_gain", .8);
+    dspFaust->setParamValue("snare_gain", .9);
+    dspFaust->setParamValue("kick_gain", .9);
+    //dspFaust->setParamValue("detune", 0.5);
     // Play music
+    // noteOn
     if (vals[2] == 144){
-        //dspFaust->start();
+        // drums
+        if (vals[1] == 0){
+            dspFaust->setParamValue("kick_gate", 1);
+        }
+        else if (vals[1] == 1){
+            dspFaust->setParamValue("snare_gate", 1);
+        }
+        else if (vals[1] == 2){
+            dspFaust->setParamValue("hat_gate", 1);
+        }
+        
+        // synth
+        else{
         dspFaust->keyOn(vals[1], vals[0]);
+        
+        // dspFaust->setParamValue("synth_midi", vals[1]);
+        // dspFaust->setParamValue("synth_gate", 1);
+        
+        // implement velocity -> gain later
+        }
     }
+    // noteOff
     else if (vals[2] == 128){
+        // drums
+        if (vals[1] == 0){
+            dspFaust->setParamValue("kick_gate", 0);
+        }
+        else if (vals[1] == 1){
+            dspFaust->setParamValue("snare_gate", 0);
+        }
+        else if (vals[1] == 2){
+            dspFaust->setParamValue("hat_gate", 0);
+        }
+        
+        // synth
+        else{
         dspFaust->keyOff(vals[1]);
-        //dspFaust->stop();
+        // dspFaust->setParamValue("synth_midi", vals[1]);
+        // dspFaust->setParamValue("synth_gate", 0);
+        // problematic; shuts all off if one key is off; learn multi-channel midi later
+        }
+    }
+    // Control changes
+    else if (vals[2] == 176){
+        dspFaust->setParamValue("detune", vals[0]/100.0f);
     }
 }
 
