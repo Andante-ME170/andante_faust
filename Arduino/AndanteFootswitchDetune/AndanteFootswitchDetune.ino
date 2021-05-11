@@ -35,7 +35,7 @@ enum gaitStates {
 songNames songName = CanonInD;
 gaitStates gaitState = swingPreKnee;
 bool playMelody = true;
-bool playDrums = true;
+bool playDrums = false;
 
 
 
@@ -541,7 +541,7 @@ void loop(){
           }
         }
         else if (timeSinceLastStep < i*strideFreq/drumHitsPerChord){
-          melodyNotePlayed[i] = false;
+          drumHitPlayed[i] = false;
         }
       }
     }
