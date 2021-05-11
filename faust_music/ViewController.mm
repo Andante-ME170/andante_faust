@@ -11,6 +11,8 @@
 #import "ViewController.h"
 #import "DspFaust.h"
 
+NSLock *theLock  = [[NSLock alloc] init];
+
 @interface ViewController ()
 
 @property (nonatomic, strong) NSString *bleDevice;
@@ -27,12 +29,25 @@
     DspFaust *dspFaust;
 }
 
+int chordCounter = 0;
+int chordMIDIs[4][6] = {{48,55,60,64,60,55}, {43,50,55,59,55,50}, {45,52,57,60,57,52}, {41,48,53,57,53,48}}; // C G Am F
+int notesPerChord = 6;    // update manually to match above
+int currentArpNote = 0;
+int kneeRanges[5] = {60,50,30,50,60};  // calibrate
+int lastKneeVal = 0;
+int prevArpNote = 0;   // weird workaround for starting at zero and not wanting to get a neg index error
+float currentDetune = 0.0f;
+float detuneAmount = 0.0f;
+
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
     const int SR = 44100;
     const int bufferSize = 256;
+
+
                       
     dspFaust = new DspFaust(SR,bufferSize);
     dspFaust->start();
@@ -190,63 +205,137 @@ didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic error:(NSErro
     int intVal = (int)(longVal >> 16);
     int mask[3] = {0xff0000, 0xff00, 0xff};
     int vals[3] = {(intVal & mask[0]) >> 16, (intVal & mask[1]) >> 8, intVal & mask[2]};
-    NSLog(@"MIDI int #1: %d", vals[0]);
-    NSLog(@"MIDI int #2: %d", vals[1]);
-    NSLog(@"MIDI int #3: %d", vals[2]);
+//    NSLog(@"MIDI int #1: %d", vals[0]);
+//    NSLog(@"MIDI int #2: %d", vals[1]);
+//    NSLog(@"MIDI int #3: %d", vals[2]);
     
-    // initial parameters (do elsewhere?)
-    dspFaust->setParamValue("hat_gain", .8);
-    dspFaust->setParamValue("snare_gain", .9);
-    dspFaust->setParamValue("kick_gain", .9);
-    //dspFaust->setParamValue("detune", 0.5);
-    // Play music
-    // noteOn
-    if (vals[2] == 144){
-        // drums
-        if (vals[1] == 0){
-            dspFaust->setParamValue("kick_gate", 1);
-        }
-        else if (vals[1] == 1){
-            dspFaust->setParamValue("snare_gate", 1);
-        }
-        else if (vals[1] == 2){
-            dspFaust->setParamValue("hat_gate", 1);
-        }
+    if ([theLock tryLock]) {
         
-        // synth
-        else{
-        dspFaust->keyOn(vals[1], vals[0]);
+        // Music code!
         
-        // dspFaust->setParamValue("synth_midi", vals[1]);
-        // dspFaust->setParamValue("synth_gate", 1);
+        // footswitch + knee brace (or just footswitch), chords+drums+detune
         
-        // implement velocity -> gain later
-        }
-    }
-    // noteOff
-    else if (vals[2] == 128){
-        // drums
-        if (vals[1] == 0){
-            dspFaust->setParamValue("kick_gate", 0);
-        }
-        else if (vals[1] == 1){
-            dspFaust->setParamValue("snare_gate", 0);
-        }
-        else if (vals[1] == 2){
-            dspFaust->setParamValue("hat_gate", 0);
-        }
+        // initial parameters (do elsewhere?)
+        dspFaust->setParamValue("hat_gain", .8);
+        dspFaust->setParamValue("snare_gain", .9);
+        dspFaust->setParamValue("kick_gain", .9);
+        //dspFaust->setParamValue("kick_freq", 100);
+        //dspFaust->setParamValue("detune", 0.5);
+        dspFaust->setParamValue("kick_gate", 0);
+        dspFaust->setParamValue("detune", detuneAmount);
         
-        // synth
-        else{
-        dspFaust->keyOff(vals[1]);
-        // dspFaust->setParamValue("synth_midi", vals[1]);
-        // dspFaust->setParamValue("synth_gate", 0);
-        // problematic; shuts all off if one key is off; learn multi-channel midi later
+        if ([peripheral.name containsString:@"Bluefruit52 MIDI 2"]) {
+            // Control changes
+            if (vals[2] == 176){
+                currentDetune = vals[0]/100.0f;
+                detuneAmount = currentDetune;
+            }
         }
-    }
-    // Control changes
-    else if (vals[2] == 176){
-        dspFaust->setParamValue("detune", vals[0]/100.0f);
+        else if ([peripheral.name containsString:@"Bluefruit52 MIDI"]) {
+            // Play music
+            // noteOn
+            if (vals[2] == 144){
+                // drums
+                if (vals[1] == 3){
+                    dspFaust->setParamValue("kick_gate", 1);
+                }
+                else if (vals[1] == 1){
+                    dspFaust->setParamValue("snare_gate", 1);
+                }
+                else if (vals[1] == 2){
+                    dspFaust->setParamValue("hat_gate", 1);
+                }
+                
+                // chord synth
+                else{
+                    dspFaust->keyOn(vals[1], vals[0]);
+                }
+                //NSLog(@"MIDI int #2: %d", vals[1]);
+                
+                // dspFaust->setParamValue("synth_midi", vals[1]);
+                // dspFaust->setParamValue("synth_gate", 1);
+                
+                // implement velocity -> gain later
+            }
+
+            // noteOff
+            if (vals[2] == 128){
+                // drums
+                if (vals[1] == 3){
+                    dspFaust->setParamValue("kick_gate", 0);
+                }
+                else if (vals[1] == 1){
+                    dspFaust->setParamValue("snare_gate", 0);
+                }
+                else if (vals[1] == 2){
+                    dspFaust->setParamValue("hat_gate", 0);
+                }
+                
+                // chord synth
+                else{
+                    dspFaust->keyOff(vals[1]);
+                    }
+                // dspFaust->setParamValue("synth_midi", vals[1]);
+                // dspFaust->setParamValue("synth_gate", 0);
+                // problematic; shuts all off if one key is off; learn multi-channel midi later
+                }
+            }
+
+        
+        
+        // footswitch + knee brace (or just footswitch), arpeggios
+        /*
+        chordCounter %= 4;
+        currentArpNote %= 6;
+        
+        if ([peripheral.name containsString:@"Bluefruit52 MIDI 2"]) {
+            // Control changes
+            if (vals[2] == 176){
+                if (currentArpNote < 4 && currentArpNote > 0){
+                    if (vals[0] < kneeRanges[currentArpNote-1] && lastKneeVal >= kneeRanges[currentArpNote-1]){
+                        dspFaust->keyOn(chordMIDIs[chordCounter][currentArpNote], 100);
+                        // turn off previous note
+                        dspFaust->keyOff(chordMIDIs[chordCounter][prevArpNote]);
+                        prevArpNote = currentArpNote;
+                        currentArpNote++;
+                    }
+                    lastKneeVal = vals[0];
+                }
+                else{
+                    if (vals[0] > kneeRanges[currentArpNote-1] && lastKneeVal <= kneeRanges[currentArpNote-1]){
+                        dspFaust->keyOn(chordMIDIs[chordCounter][currentArpNote], 100);
+                        // turn off previous note
+                        dspFaust->keyOff(chordMIDIs[chordCounter][prevArpNote]);
+                        prevArpNote = currentArpNote;
+                        currentArpNote++;
+                    }
+                    lastKneeVal = vals[0];
+                }
+                
+            }
+            else if (vals[2] == 128){
+                dspFaust->keyOff(vals[1]);
+            }
+        }
+        else if ([peripheral.name containsString:@"Bluefruit52 MIDI"]) {
+
+            // noteOn
+            if (vals[2] == 144){
+                // drums
+                if (vals[1] == 0){
+                    for (int i = 0; i < 4; i++){
+                        dspFaust->keyOff(chordMIDIs[chordCounter][i]);
+                    }
+                    chordCounter++;
+                    dspFaust->keyOn(chordMIDIs[chordCounter][0], 100);
+                    prevArpNote = currentArpNote;
+                    currentArpNote++;
+                    
+                }
+            }
+        }
+        */
+        [theLock unlock];
     }
 }
 

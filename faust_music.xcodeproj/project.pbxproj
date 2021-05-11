@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		12733AD9263679A900B34D2E /* DspFaust.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 12733AD7263679A900B34D2E /* DspFaust.cpp */; };
+		121C26042638B2FA00CFA2F1 /* DspFaust.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 121C26032638B2FA00CFA2F1 /* DspFaust.cpp */; };
 		A2E7CC3D262188C6006CA38B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A2E7CC3C262188C6006CA38B /* AppDelegate.m */; };
 		A2E7CC40262188C6006CA38B /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A2E7CC3F262188C6006CA38B /* SceneDelegate.m */; };
 		A2E7CC43262188C6006CA38B /* ViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = A2E7CC42262188C6006CA38B /* ViewController.mm */; };
@@ -40,8 +40,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		12733AD7263679A900B34D2E /* DspFaust.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DspFaust.cpp; sourceTree = "<group>"; };
-		12733AD8263679A900B34D2E /* DspFaust.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DspFaust.h; sourceTree = "<group>"; };
+		121C26022638B2FA00CFA2F1 /* DspFaust.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DspFaust.h; sourceTree = "<group>"; };
+		121C26032638B2FA00CFA2F1 /* DspFaust.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DspFaust.cpp; sourceTree = "<group>"; };
 		A2E7CC38262188C6006CA38B /* faust_music.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = faust_music.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A2E7CC3B262188C6006CA38B /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		A2E7CC3C262188C6006CA38B /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -121,8 +121,8 @@
 				A2E7CC3C262188C6006CA38B /* AppDelegate.m */,
 				A2E7CC3E262188C6006CA38B /* SceneDelegate.h */,
 				A2E7CC3F262188C6006CA38B /* SceneDelegate.m */,
-				12733AD7263679A900B34D2E /* DspFaust.cpp */,
-				12733AD8263679A900B34D2E /* DspFaust.h */,
+				121C26032638B2FA00CFA2F1 /* DspFaust.cpp */,
+				121C26022638B2FA00CFA2F1 /* DspFaust.h */,
 				A2E7CC41262188C6006CA38B /* ViewController.h */,
 				A2E7CC42262188C6006CA38B /* ViewController.mm */,
 				A2E7CC44262188C6006CA38B /* Main.storyboard */,
@@ -292,7 +292,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A2E7CC43262188C6006CA38B /* ViewController.mm in Sources */,
-				12733AD9263679A900B34D2E /* DspFaust.cpp in Sources */,
+				121C26042638B2FA00CFA2F1 /* DspFaust.cpp in Sources */,
 				A2E7CC3D262188C6006CA38B /* AppDelegate.m in Sources */,
 				A2E7CC4E262188CA006CA38B /* main.m in Sources */,
 				A2E7CC40262188C6006CA38B /* SceneDelegate.m in Sources */,
