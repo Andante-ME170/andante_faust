@@ -5,15 +5,15 @@
 //  Created by Kevin Supakkul on 4/10/21.
 //
 
-// Melissa: changed file extension to .mm, think this is allowed and will work
-// Implemented Faust object
-
 #import "ViewController.h"
 #import "DspFaust.h"
+#import <AVFoundation/AVFoundation.h>
 
 NSLock *theLock  = [[NSLock alloc] init];
 
-@interface ViewController ()
+@interface ViewController ()<AVAudioPlayerDelegate>
+
+//https://developer.apple.com/documentation/avfaudio/avaudioplayer
 
 @property (nonatomic, strong) NSString *bleDevice;
 @property (nonatomic, strong) NSMutableArray *pickerData;
@@ -23,11 +23,18 @@ NSLock *theLock  = [[NSLock alloc] init];
 @property (weak, nonatomic) IBOutlet UILabel *currInstrumentTextField;
 @property (weak, nonatomic) IBOutlet UIPickerView *picker;
 
+// for Soundfile
+@property(nonatomic,strong)AVAudioPlayer *audioPlayer;
+@property(nonatomic,strong)AVAudioPlayer *audioPlayer2;
+@property(nonatomic,strong)NSTimer *timer;
 @end
 
 @implementation ViewController{
-    DspFaust *dspFaust;
+  DspFaust *dspFaust;
 }
+
+@synthesize audioPlayer = _audioPlayer;
+@synthesize audioPlayer2 = _audioPlayer2;
 
 int chordCounter = 0;
 int chordMIDIs[4][6] = {{48,55,60,64,60,55}, {43,50,55,59,55,50}, {45,52,57,60,57,52}, {41,48,53,57,53,48}}; // C G Am F
@@ -47,10 +54,9 @@ float detuneAmount = 0.0f;
     const int SR = 44100;
     const int bufferSize = 256;
 
-
-                      
-    dspFaust = new DspFaust(SR,bufferSize);
-    dspFaust->start();
+       
+     dspFaust = new DspFaust(SR,bufferSize);
+     dspFaust->start();
     
     _myManager = [[CBCentralManager alloc] initWithDelegate:self queue:nil options:nil];
     NSDictionary *option = @{
@@ -67,6 +73,17 @@ float detuneAmount = 0.0f;
     // Connect data
     _picker.dataSource = self;
     _picker.delegate = self;
+    
+    
+    // For SoundFonts
+    NSError *error;
+    NSURL *url = [[NSBundle mainBundle] URLForResource:@"SleepWalkChords" withExtension:@ "wav"];
+    NSURL *url2 = [[NSBundle mainBundle] URLForResource:@"Drum" withExtension:@ "wav"];
+    _audioPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:url error:&error];
+    _audioPlayer2 = [[AVAudioPlayer alloc] initWithContentsOfURL:url2 error:&error];
+    [_audioPlayer prepareToPlay]; // function call
+    [_audioPlayer2 prepareToPlay];
+    
     
     /*
     // Moved below to button press area rather than here
@@ -227,7 +244,7 @@ didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic error:(NSErro
         if ([peripheral.name containsString:@"Bluefruit52 MIDI 2"]) {
             // Control changes
             if (vals[2] == 176){
-                currentDetune = vals[0]/100.0f;
+                currentDetune = vals[0]/100.0f; // Melissa: maybe change denom to be slider value?
                 detuneAmount = currentDetune;
             }
         }
@@ -240,7 +257,7 @@ didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic error:(NSErro
                     dspFaust->setParamValue("kick_gate", 1);
                 }
                 else if (vals[1] == 1){
-                    dspFaust->setParamValue("snare_gate", 1);
+                  dspFaust->setParamValue("snare_gate", 1);
                 }
                 else if (vals[1] == 2){
                     dspFaust->setParamValue("hat_gate", 1);
@@ -343,13 +360,6 @@ didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic error:(NSErro
     [self.view endEditing:YES];
 }
 
-// Added below method
--(void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-                                    
-    // dspFaust->stop();
-    // delete dspFaust;
-}
 
 - (IBAction)connectWasPressed:(id)sender {
     for (int i = 0; i < [_devices count]; i++) {
@@ -362,7 +372,54 @@ didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic error:(NSErro
     }
 }
 
+
+
+//- (void)playFromBegin:(AVAudioPlayer)ap {
+ //   ap.currentTime = 0;
+  //  [ap play];
+//}
+
+
+// Button Click Event
+- (void)audioPlay{
+   if (!_audioPlayer.isPlaying) {
+        [self startPlay];
+   }else{
+       [self stopPlay];
+    }
+}
+
+// Start playing
+- (void)startPlay {
+    [_audioPlayer play];
+    [_audioPlayer2 play]; //added
+    if ( !self.timer ) {
+        self.timer = [NSTimer scheduledTimerWithTimeInterval:1 repeats:YES block:^(NSTimer * _Nonnull timer) {
+        }];
+    }
+}
+
+//Stop playing
+- (void)stopPlay{
+   [_audioPlayer pause];
+   [_audioPlayer2 pause];
+    _audioPlayer.currentTime = 0;
+    _audioPlayer2.currentTime = 0;
+}
+
 - (IBAction)buttonPressed:(id)sender {
+    [self audioPlay];
+    //if (!_audioPlayer.isPlaying) {//} && !_playButton.selected ) {
+      //  [self startPlay];
+     //   [_audioPlayer play];
+     //   [_audioPlayer2 play];
+  //  }
+   // else { // pause if button is pressed while music is already playing
+      //  [_audioPlayer pause];
+      //  [_audioPlayer2 pause];
+   // }
+}
+    
     // your code here
     // play Faust music
     
@@ -375,6 +432,15 @@ didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic error:(NSErro
     // dspFaust->start();
     //dspFaust->setParamValue("/synth/gate", 1);
     //dspFaust->setParamValue(3, 1); // in example, this line was commented out and above line was include, try this again after other fixes
+//}
+
+// Added below method
+-(void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    [[NSNotificationCenter defaultCenter] removeObserver:self]; // added for SoundFonts
+                                    
+    // dspFaust->stop();
+    // delete dspFaust;
 }
 
 @end
