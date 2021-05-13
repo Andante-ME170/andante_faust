@@ -5,8 +5,6 @@
 
 #include <bluefruit.h>
 #include <MIDI.h>
-#include <vector>
-using namespace std;
 
 BLEDis bledis;
 BLEMidi blemidi;
@@ -22,11 +20,11 @@ enum songNames {
   IWantYouBack,
 };
 
-vector<vector<int>> melody;
-vector<bool> melodyNotePlayed;
-vector<vector<int>> chords;
+int melody[32][8];
+bool melodyNotePlayed[8] = {false,false,false,false,false,false,false,false};;
+int chords[32][3];
 
-vector<vector<int>> canonInDMelody = {
+int canonInDMelody [32][8] = {
         {81, -1, 78, 79, 81, -1, 78, 79}, 
         {81, 69, 71, 73, 74, 76, 78, 79}, 
         {78, -1, 74, 76, 78, -1, 66, 67}, 
@@ -34,10 +32,36 @@ vector<vector<int>> canonInDMelody = {
         {67, -1, 71, 69, 67, -1, 66, 64}, 
         {66, 64, 62, 64, 66, 67, 69, 71}, 
         {67, -1, 71, 69, 71, -1, 73, 74}, 
-        {69, 71, 73, 74, 76, 78, 79, 81}
+        {69, 71, 73, 74, 76, 78, 79, 81},
+        
+        {-1, -1, -1, -1, -1, -1, -1, -1},
+        {-1, -1, -1, -1, -1, -1, -1, -1},
+        {-1, -1, -1, -1, -1, -1, -1, -1},
+        {-1, -1, -1, -1, -1, -1, -1, -1},
+        {-1, -1, -1, -1, -1, -1, -1, -1},
+        {-1, -1, -1, -1, -1, -1, -1, -1},
+        {-1, -1, -1, -1, -1, -1, -1, -1},
+        {-1, -1, -1, -1, -1, -1, -1, -1},
+
+        {-1, -1, -1, -1, -1, -1, -1, -1},
+        {-1, -1, -1, -1, -1, -1, -1, -1},
+        {-1, -1, -1, -1, -1, -1, -1, -1},
+        {-1, -1, -1, -1, -1, -1, -1, -1},
+        {-1, -1, -1, -1, -1, -1, -1, -1},
+        {-1, -1, -1, -1, -1, -1, -1, -1},
+        {-1, -1, -1, -1, -1, -1, -1, -1},
+        {-1, -1, -1, -1, -1, -1, -1, -1},
+
+        {-1, -1, -1, -1, -1, -1, -1, -1},
+        {-1, -1, -1, -1, -1, -1, -1, -1},
+        {-1, -1, -1, -1, -1, -1, -1, -1},
+        {-1, -1, -1, -1, -1, -1, -1, -1},
+        {-1, -1, -1, -1, -1, -1, -1, -1},
+        {-1, -1, -1, -1, -1, -1, -1, -1},
+        {-1, -1, -1, -1, -1, -1, -1, -1},
+        {-1, -1, -1, -1, -1, -1, -1, -1},
         };
-vector<bool> canonInDMelodyNotePlayed = {false,false,false,false,false,false,false,false};
-vector<vector<int>> canonInDChords = {
+int canonInDChords[32][3] = {
         {50, 57, 66}, 
         {45, 52, 61}, 
         {47, 54, 62}, 
@@ -45,10 +69,37 @@ vector<vector<int>> canonInDChords = {
         {43, 50, 59}, 
         {50, 57, 66}, 
         {43, 50, 59}, 
-        {45, 52, 61}
+        {45, 52, 61},
+        
+        {-1, -1, -1},
+        {-1, -1, -1},
+        {-1, -1, -1},
+        {-1, -1, -1},
+        {-1, -1, -1},
+        {-1, -1, -1},
+        {-1, -1, -1},
+        {-1, -1, -1},
+
+        {-1, -1, -1},
+        {-1, -1, -1},
+        {-1, -1, -1},
+        {-1, -1, -1},
+        {-1, -1, -1},
+        {-1, -1, -1},
+        {-1, -1, -1},
+        {-1, -1, -1},
+
+        {-1, -1, -1},
+        {-1, -1, -1},
+        {-1, -1, -1},
+        {-1, -1, -1},
+        {-1, -1, -1},
+        {-1, -1, -1},
+        {-1, -1, -1},
+        {-1, -1, -1},
         };
         
-vector<vector<int>> marioMelody = {
+int marioMelody[32][8] = {
         {60, -1, -1, 55, -1, -1, 52, -1}, 
         {-1, 57, -1, 59, -1, 58, 57, -1}, 
         {55, 64, -1, 67, 69, -1, 65, 67}, 
@@ -85,8 +136,7 @@ vector<vector<int>> marioMelody = {
         {64, 64, -1, 64, -1, 60, 64, -1}, 
         {67, -1, -1, -1, 55, -1, -1, -1}
         };
-vector<bool> marioMelodyNotePlayed = {false,false,false,false,false,false,false,false};
-vector<vector<int>> marioChords = {
+int marioChords[32][3] = {
         {36, 43, 52}, 
         {41, 45, 48}, 
         {36, 43, 52}, 
@@ -112,31 +162,59 @@ vector<vector<int>> marioChords = {
         {32, 39, 48}, 
         {31, 38, 47}, 
         {26, 35, 43}, 
-        {31, 38, 47}
+        {31, 38, 47},
+
+        {-1, -1, -1},
+        {-1, -1, -1},
+        {-1, -1, -1},
+        {-1, -1, -1},
+        {-1, -1, -1},
+        {-1, -1, -1},
+        {-1, -1, -1},
+        {-1, -1, -1},
         };
 
 
-vector<vector<int>> iWantYouBackMelody = {
-        {32, -1, -1, -1}, 
-        {-1, -1, -1, -1}, 
-        {-1, -1, -1, 34}, 
-        {36, 39, 41, 37}, 
-        {-1, -1, -1, -1}, 
-        {-1, -1, -1, -1}, 
-        {-1, 34, 36, 37}, 
-        {-1, 39, 40, -1}, 
+int iWantYouBackMelody[32][8] = {
+        {32, -1, -1, -1, -1, -1, -1, -1}, 
+        {-1, -1, -1, -1, -1, -1, -1, -1}, 
+        {-1, -1, -1, 34, -1, -1, -1, -1}, 
+        {36, 39, 41, 37, -1, -1, -1, -1}, 
+        {-1, -1, -1, -1, -1, -1, -1, -1}, 
+        {-1, -1, -1, -1, -1, -1, -1, -1}, 
+        {-1, 34, 36, 37, -1, -1, -1, -1}, 
+        {-1, 39, 40, -1, -1, -1, -1, -1}, 
         
-        {41, -1, -1, -1}, 
-        {36, -1, -1, -1}, 
-        {37, -1, -1, 32}, 
-        {-1, -1, -1, -1}, 
-        {34, -1, -1, -1}, 
-        {39, -1, -1, 32}, 
-        {-1, -1, -1, -1}, 
-        {-1, -1, -1, -1} 
+        {41, -1, -1, -1, -1, -1, -1, -1}, 
+        {36, -1, -1, -1. -1, -1, -1, -1}, 
+        {37, -1, -1, 32, -1, -1, -1, -1}, 
+        {-1, -1, -1, -1, -1, -1, -1, -1}, 
+        {34, -1, -1, -1, -1, -1, -1, -1}, 
+        {39, -1, -1, 32, -1, -1, -1, -1}, 
+        {-1, -1, -1, -1, -1, -1, -1, -1}, 
+        {-1, -1, -1, -1, -1, -1, -1, -1},
+
+        {-1, -1, -1, -1, -1, -1, -1, -1},
+        {-1, -1, -1, -1, -1, -1, -1, -1},
+        {-1, -1, -1, -1, -1, -1, -1, -1},
+        {-1, -1, -1, -1, -1, -1, -1, -1},
+        {-1, -1, -1, -1, -1, -1, -1, -1},
+        {-1, -1, -1, -1, -1, -1, -1, -1},
+        {-1, -1, -1, -1, -1, -1, -1, -1},
+        {-1, -1, -1, -1, -1, -1, -1, -1},
+
+        {-1, -1, -1, -1, -1, -1, -1, -1},
+        {-1, -1, -1, -1, -1, -1, -1, -1},
+        {-1, -1, -1, -1, -1, -1, -1, -1},
+        {-1, -1, -1, -1, -1, -1, -1, -1},
+        {-1, -1, -1, -1, -1, -1, -1, -1},
+        {-1, -1, -1, -1, -1, -1, -1, -1},
+        {-1, -1, -1, -1, -1, -1, -1, -1},
+        {-1, -1, -1, -1, -1, -1, -1, -1},
+
+        
         };
-vector<bool> iWantYouBackMelodyNotePlayed = {false,false,false,false};
-vector<vector<int>> iWantYouBackChords = {
+int iWantYouBackChords[32][3] = {
         {56, 60, 63}, 
         {-1, -1, -1}, 
         {-1, -1, -1}, 
@@ -153,7 +231,25 @@ vector<vector<int>> iWantYouBackChords = {
         {58, 61, 65}, 
         {58, 63, 67}, 
         {56, 60, 63}, 
-        {-1, -1, -1}
+        {-1, -1, -1},
+
+        {-1, -1, -1},
+        {-1, -1, -1},
+        {-1, -1, -1},
+        {-1, -1, -1},
+        {-1, -1, -1},
+        {-1, -1, -1},
+        {-1, -1, -1},
+        {-1, -1, -1},
+
+        {-1, -1, -1},
+        {-1, -1, -1},
+        {-1, -1, -1},
+        {-1, -1, -1},
+        {-1, -1, -1},
+        {-1, -1, -1},
+        {-1, -1, -1},
+        {-1, -1, -1},
         };
 
 
@@ -161,10 +257,10 @@ vector<vector<int>> iWantYouBackChords = {
 int drumBeat = 0;
 int numDrums;
 int drumHitsPerChord;
-vector<vector<int>> drums;
-vector<bool> drumHitPlayed;
+int drums[8][3];
+bool drumHitPlayed[8]  = {false,false,false,false,false,false,false,false};;
 
-vector<vector<int>> beat0 = {
+int beat0[8][3] = {
         {1, 0, 1},
         {0, 0, 0},
         {0, 0, 1},
@@ -174,8 +270,6 @@ vector<vector<int>> beat0 = {
         {0, 0, 1},
         {0, 0, 0}
       };
-
-vector<bool> beat0DrumHitPlayed = {false,false,false,false,false,false,false,false};
 
 enum gaitStates {
   calibration,
@@ -275,9 +369,8 @@ void setup(){
       numChords = 8;
       melodyNotesPerChord = 8;
       chordsPerStepCycle = 1;
-      melody = canonInDMelody;
-      melodyNotePlayed = canonInDMelodyNotePlayed;
-      chords = canonInDChords;
+      memcpy(melody, canonInDMelody, sizeof(melody));
+      memcpy(chords, canonInDChords, sizeof(chords));
       break;
         
     case Mario:
@@ -285,9 +378,8 @@ void setup(){
       numChords = 32;
       melodyNotesPerChord = 8;
       chordsPerStepCycle = 1;
-      melody = marioMelody;
-      melodyNotePlayed = marioMelodyNotePlayed;
-      chords = marioChords;
+      memcpy(melody, marioMelody, sizeof(melody));
+      memcpy(chords, marioChords, sizeof(chords));
       break;
         
     case IWantYouBack:
@@ -295,9 +387,8 @@ void setup(){
       numChords = 16;
       melodyNotesPerChord = 4;
       chordsPerStepCycle = 2;
-      melody = iWantYouBackMelody;
-      melodyNotePlayed = iWantYouBackMelodyNotePlayed;
-      chords = iWantYouBackChords;
+      memcpy(melody, marioMelody, sizeof(melody));
+      memcpy(chords, canonInDChords, sizeof(chords));
       break;
   }
   
@@ -305,8 +396,7 @@ void setup(){
     case 0:
       numDrums = 3;
       drumHitsPerChord = melodyNotesPerChord;
-      drumHitPlayed = beat0DrumHitPlayed;
-      drums = beat0;
+      memcpy(drums, beat0, sizeof(drums));
       break;
   }
 }

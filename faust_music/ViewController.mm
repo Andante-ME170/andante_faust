@@ -24,8 +24,9 @@ NSLock *theLock  = [[NSLock alloc] init];
 @property (weak, nonatomic) IBOutlet UIPickerView *picker;
 
 // for Soundfile
-@property(nonatomic,strong)AVAudioPlayer *audioPlayer;
-@property(nonatomic,strong)AVAudioPlayer *audioPlayer2;
+@property(nonatomic,strong)AVAudioPlayer *kickAP;
+@property(nonatomic,strong)AVAudioPlayer *snareAP;
+@property(nonatomic,strong)AVAudioPlayer *hatAP;
 @property(nonatomic,strong)NSTimer *timer;
 @end
 
@@ -33,8 +34,9 @@ NSLock *theLock  = [[NSLock alloc] init];
   DspFaust *dspFaust;
 }
 
-@synthesize audioPlayer = _audioPlayer;
-@synthesize audioPlayer2 = _audioPlayer2;
+@synthesize kickAP = kick;
+@synthesize snareAP = snare;
+@synthesize hatAP = hat;
 
 int chordCounter = 0;
 int chordMIDIs[4][6] = {{48,55,60,64,60,55}, {43,50,55,59,55,50}, {45,52,57,60,57,52}, {41,48,53,57,53,48}}; // C G Am F
@@ -77,12 +79,15 @@ float detuneAmount = 0.0f;
     
     // For SoundFonts
     NSError *error;
-    NSURL *url = [[NSBundle mainBundle] URLForResource:@"SleepWalkChords" withExtension:@ "wav"];
-    NSURL *url2 = [[NSBundle mainBundle] URLForResource:@"Drum" withExtension:@ "wav"];
-    _audioPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:url error:&error];
-    _audioPlayer2 = [[AVAudioPlayer alloc] initWithContentsOfURL:url2 error:&error];
-    [_audioPlayer prepareToPlay]; // function call
-    [_audioPlayer2 prepareToPlay];
+    NSURL *url = [[NSBundle mainBundle] URLForResource:@"smooth kick 1" withExtension:@ "wav"];
+    NSURL *url2 = [[NSBundle mainBundle] URLForResource:@"trap snare 1" withExtension:@ "wav"];
+    NSURL *url3 = [[NSBundle mainBundle] URLForResource:@"basic hat" withExtension:@ "wav"];
+    kick = [[AVAudioPlayer alloc] initWithContentsOfURL:url error:&error];
+    snare = [[AVAudioPlayer alloc] initWithContentsOfURL:url2 error:&error];
+    hat = [[AVAudioPlayer alloc] initWithContentsOfURL:url3 error:&error];
+    [kick prepareToPlay]; // function call
+    [snare prepareToPlay];
+    [hat prepareToPlay];
     
     
     /*
@@ -254,13 +259,19 @@ didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic error:(NSErro
             if (vals[2] == 144){
                 // drums
                 if (vals[1] == 3){
-                    dspFaust->setParamValue("kick_gate", 1);
+                    //dspFaust->setParamValue("kick_gate", 1);
+                    kick.currentTime = 0;
+                    [kick play];
                 }
                 else if (vals[1] == 1){
-                  dspFaust->setParamValue("snare_gate", 1);
+                    //dspFaust->setParamValue("snare_gate", 1);
+                    snare.currentTime = 0;
+                    [snare play];
                 }
                 else if (vals[1] == 2){
-                    dspFaust->setParamValue("hat_gate", 1);
+                    //dspFaust->setParamValue("hat_gate", 1);
+                    hat.currentTime = 0;
+                    [hat play];
                 }
                 
                 // chord synth
@@ -279,13 +290,16 @@ didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic error:(NSErro
             if (vals[2] == 128){
                 // drums
                 if (vals[1] == 3){
-                    dspFaust->setParamValue("kick_gate", 0);
+                    //dspFaust->setParamValue("kick_gate", 0);
+                    [kick pause];
                 }
                 else if (vals[1] == 1){
                     dspFaust->setParamValue("snare_gate", 0);
+                    [snare pause];
                 }
                 else if (vals[1] == 2){
                     dspFaust->setParamValue("hat_gate", 0);
+                    [hat pause];
                 }
                 
                 // chord synth
@@ -379,7 +393,7 @@ didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic error:(NSErro
   //  [ap play];
 //}
 
-
+/*
 // Button Click Event
 - (void)audioPlay{
    if (!_audioPlayer.isPlaying) {
@@ -406,9 +420,9 @@ didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic error:(NSErro
     _audioPlayer.currentTime = 0;
     _audioPlayer2.currentTime = 0;
 }
-
+*/
 - (IBAction)buttonPressed:(id)sender {
-    [self audioPlay];
+    //[self audioPlay];
     //if (!_audioPlayer.isPlaying) {//} && !_playButton.selected ) {
       //  [self startPlay];
      //   [_audioPlayer play];
