@@ -80,13 +80,13 @@ float detuneAmount = 0.0f;
     // For SoundFonts
     NSError *error;
     NSURL *url = [[NSBundle mainBundle] URLForResource:@"smooth kick 1" withExtension:@ "wav"];
-    NSURL *url2 = [[NSBundle mainBundle] URLForResource:@"trap snare 1" withExtension:@ "wav"];
+ //   NSURL *url2 = [[NSBundle mainBundle] URLForResource:@"trap snare 1" withExtension:@ "wav"];
     NSURL *url3 = [[NSBundle mainBundle] URLForResource:@"basic hat" withExtension:@ "wav"];
     kick = [[AVAudioPlayer alloc] initWithContentsOfURL:url error:&error];
-    snare = [[AVAudioPlayer alloc] initWithContentsOfURL:url2 error:&error];
+//    snare = [[AVAudioPlayer alloc] initWithContentsOfURL:url2 error:&error];
     hat = [[AVAudioPlayer alloc] initWithContentsOfURL:url3 error:&error];
     [kick prepareToPlay]; // function call
-    [snare prepareToPlay];
+  //  [snare prepareToPlay];
     [hat prepareToPlay];
     
     
@@ -249,7 +249,8 @@ didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic error:(NSErro
         if ([peripheral.name containsString:@"Bluefruit52 MIDI 2"]) {
             // Control changes
             if (vals[2] == 176){
-                currentDetune = vals[0]/100.0f; // Melissa: maybe change denom to be slider value?
+             //   currentDetune = vals[0]/100.0f; // Melissa: maybe change denom to be slider value?
+                currentDetune = vals[0]/globalMaxDetune; // Melissa: check this
                 detuneAmount = currentDetune;
             }
         }

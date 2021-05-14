@@ -24,6 +24,10 @@
                                 <rect key="frame" x="45" y="75" width="296" height="72"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" fixedFrame="YES" image="us!" translatesAutoresizingMaskIntoConstraints="NO" id="Pyf-0k-kgi">
+                                <rect key="frame" x="-759" y="579" width="1917" height="170"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -37,6 +41,7 @@
     <resources>
         <image name="Andante.png" width="680" height="269"/>
         <image name="Capstone" width="611" height="136"/>
+        <image name="us!" width="1917" height="769"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
