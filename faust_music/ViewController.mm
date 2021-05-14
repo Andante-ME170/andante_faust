@@ -27,7 +27,7 @@ NSLock *theLock  = [[NSLock alloc] init];
 @property(nonatomic,strong)AVAudioPlayer *kickAP;
 @property(nonatomic,strong)AVAudioPlayer *snareAP;
 @property(nonatomic,strong)AVAudioPlayer *hatAP;
-@property(nonatomic,strong)NSTimer *timer;
+//@property(nonatomic,strong)NSTimer *timer; not using rn
 @end
 
 @implementation ViewController{

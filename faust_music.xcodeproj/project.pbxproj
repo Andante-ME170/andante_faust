@@ -23,6 +23,11 @@
 		DB5A0400264B9FAC00EBC762 /* SleepWalkChords.wav in Resources */ = {isa = PBXBuildFile; fileRef = DB5A03FF264B9FAC00EBC762 /* SleepWalkChords.wav */; };
 		DB5A0402264B9FB300EBC762 /* Drum.wav in Resources */ = {isa = PBXBuildFile; fileRef = DB5A0401264B9FB300EBC762 /* Drum.wav */; };
 		DB5A041C264E581800EBC762 /* ViewController2.mm in Sources */ = {isa = PBXBuildFile; fileRef = DB5A041B264E581800EBC762 /* ViewController2.mm */; };
+		DB5A0421264E6FCA00EBC762 /* FUNKY_HOUSE.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = DB5A0420264E6FCA00EBC762 /* FUNKY_HOUSE.mp3 */; };
+		DB5A0423264E6FEB00EBC762 /* WalkingOnSunshine.wav in Resources */ = {isa = PBXBuildFile; fileRef = DB5A0422264E6FEB00EBC762 /* WalkingOnSunshine.wav */; };
+		DB5A0425264E6FF500EBC762 /* Telephone.wav in Resources */ = {isa = PBXBuildFile; fileRef = DB5A0424264E6FF500EBC762 /* Telephone.wav */; };
+		DB5A0427264E6FFB00EBC762 /* Car.wav in Resources */ = {isa = PBXBuildFile; fileRef = DB5A0426264E6FFB00EBC762 /* Car.wav */; };
+		DB5A042D264E715A00EBC762 /* ViewController3.mm in Sources */ = {isa = PBXBuildFile; fileRef = DB5A042C264E715A00EBC762 /* ViewController3.mm */; };
 		DB78B3B82627841800B42591 /* CoreMIDI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB78B3B72627841800B42591 /* CoreMIDI.framework */; };
 		DB78B3BA2627842100B42591 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB78B3B92627842100B42591 /* AudioToolbox.framework */; };
 		DB78B3E626278C1900B42591 /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB78B3E526278C1900B42591 /* CoreBluetooth.framework */; };
@@ -73,6 +78,12 @@
 		DB5A0401264B9FB300EBC762 /* Drum.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Drum.wav; sourceTree = "<group>"; };
 		DB5A041A264E581800EBC762 /* ViewController2.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController2.h; sourceTree = "<group>"; };
 		DB5A041B264E581800EBC762 /* ViewController2.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = ViewController2.mm; sourceTree = "<group>"; };
+		DB5A0420264E6FCA00EBC762 /* FUNKY_HOUSE.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = FUNKY_HOUSE.mp3; sourceTree = "<group>"; };
+		DB5A0422264E6FEB00EBC762 /* WalkingOnSunshine.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = WalkingOnSunshine.wav; sourceTree = "<group>"; };
+		DB5A0424264E6FF500EBC762 /* Telephone.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Telephone.wav; sourceTree = "<group>"; };
+		DB5A0426264E6FFB00EBC762 /* Car.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Car.wav; sourceTree = "<group>"; };
+		DB5A042B264E715A00EBC762 /* ViewController3.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController3.h; sourceTree = "<group>"; };
+		DB5A042C264E715A00EBC762 /* ViewController3.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = ViewController3.mm; sourceTree = "<group>"; };
 		DB78B3B72627841800B42591 /* CoreMIDI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMIDI.framework; path = System/Library/Frameworks/CoreMIDI.framework; sourceTree = SDKROOT; };
 		DB78B3B92627842100B42591 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		DB78B3E526278C1900B42591 /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
@@ -141,6 +152,8 @@
 				A2E7CC42262188C6006CA38B /* ViewController.mm */,
 				DB5A041A264E581800EBC762 /* ViewController2.h */,
 				DB5A041B264E581800EBC762 /* ViewController2.mm */,
+				DB5A042C264E715A00EBC762 /* ViewController3.mm */,
+				DB5A042B264E715A00EBC762 /* ViewController3.h */,
 				DB5A0403264CB75300EBC762 /* wav files */,
 				A2E7CC44262188C6006CA38B /* Main.storyboard */,
 				A2E7CC47262188CA006CA38B /* Assets.xcassets */,
@@ -172,12 +185,40 @@
 		DB5A0403264CB75300EBC762 /* wav files */ = {
 			isa = PBXGroup;
 			children = (
-				12F9D74F264DBBE50031EC7C /* basic hat.wav */,
-				12F9D754264DBC1B0031EC7C /* smooth kick 1.wav */,
-				DB5A03FF264B9FAC00EBC762 /* SleepWalkChords.wav */,
-				DB5A0401264B9FB300EBC762 /* Drum.wav */,
+				DB5A0428264E701000EBC762 /* Trap */,
+				DB5A0429264E702E00EBC762 /* RandomSounds */,
+				DB5A042A264E704800EBC762 /* Songs */,
 			);
 			path = "wav files";
+			sourceTree = "<group>";
+		};
+		DB5A0428264E701000EBC762 /* Trap */ = {
+			isa = PBXGroup;
+			children = (
+				12F9D754264DBC1B0031EC7C /* smooth kick 1.wav */,
+				DB5A0401264B9FB300EBC762 /* Drum.wav */,
+				12F9D74F264DBBE50031EC7C /* basic hat.wav */,
+			);
+			path = Trap;
+			sourceTree = "<group>";
+		};
+		DB5A0429264E702E00EBC762 /* RandomSounds */ = {
+			isa = PBXGroup;
+			children = (
+				DB5A0426264E6FFB00EBC762 /* Car.wav */,
+				DB5A0424264E6FF500EBC762 /* Telephone.wav */,
+			);
+			path = RandomSounds;
+			sourceTree = "<group>";
+		};
+		DB5A042A264E704800EBC762 /* Songs */ = {
+			isa = PBXGroup;
+			children = (
+				DB5A0422264E6FEB00EBC762 /* WalkingOnSunshine.wav */,
+				DB5A03FF264B9FAC00EBC762 /* SleepWalkChords.wav */,
+				DB5A0420264E6FCA00EBC762 /* FUNKY_HOUSE.mp3 */,
+			);
+			path = Songs;
 			sourceTree = "<group>";
 		};
 		DB78B3B62627841800B42591 /* Frameworks */ = {
@@ -295,10 +336,14 @@
 			files = (
 				12F9D750264DBBE50031EC7C /* basic hat.wav in Resources */,
 				A2E7CC4B262188CA006CA38B /* LaunchScreen.storyboard in Resources */,
+				DB5A0427264E6FFB00EBC762 /* Car.wav in Resources */,
 				12F9D755264DBC1B0031EC7C /* smooth kick 1.wav in Resources */,
+				DB5A0425264E6FF500EBC762 /* Telephone.wav in Resources */,
 				DB5A0402264B9FB300EBC762 /* Drum.wav in Resources */,
 				A2E7CC48262188CA006CA38B /* Assets.xcassets in Resources */,
+				DB5A0421264E6FCA00EBC762 /* FUNKY_HOUSE.mp3 in Resources */,
 				DB5A0400264B9FAC00EBC762 /* SleepWalkChords.wav in Resources */,
+				DB5A0423264E6FEB00EBC762 /* WalkingOnSunshine.wav in Resources */,
 				A2E7CC46262188C6006CA38B /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -330,6 +375,7 @@
 				A2E7CC4E262188CA006CA38B /* main.m in Sources */,
 				A2E7CC40262188C6006CA38B /* SceneDelegate.m in Sources */,
 				DB5A041C264E581800EBC762 /* ViewController2.mm in Sources */,
+				DB5A042D264E715A00EBC762 /* ViewController3.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
