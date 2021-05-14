@@ -14,19 +14,38 @@
 
 @end
 
-@implementation ViewController3
+@implementation ViewController3 {
+    DspFaust *dspFaust;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    const int SR = 44100;
+    const int bufferSize = 256;
+       
+     dspFaust = new DspFaust(SR,bufferSize);
+     dspFaust->start();
+}
+- (IBAction)Trap:(id)sender {
+    dspFaust->keyOn(40, 100);
+    dspFaust->keyOn(44, 100);
+    dspFaust->keyOn(47, 100);
+}
+- (IBAction)RandomSounds:(id)sender {
+    dspFaust->keyOn(60, 100);
+    dspFaust->keyOn(64, 100);
+    dspFaust->keyOn(67, 100);
+}
+- (IBAction)Songs:(id)sender {
+    dspFaust->keyOn(80, 100);
+    dspFaust->keyOn(84, 100);
+    dspFaust->keyOn(87, 100);
+}
+- (IBAction)stopMusic:(id)sender {
+    dspFaust->stop();
 }
 
--(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
-    if([segue.identifier isEqualToString:@"showDetailSegue"]){
-        ViewController3 *controller = (ViewController3 *)segue.destinationViewController;
-        controller.genreTrap = YES;
-    }
-}
 /*
 #pragma mark - Navigation
 
