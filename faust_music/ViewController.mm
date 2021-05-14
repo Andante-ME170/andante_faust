@@ -12,7 +12,6 @@
 
 NSLock *theLock  = [[NSLock alloc] init];
 
-NSString *Genre = @"Trap"; // default genre
 
 @interface ViewController ()<AVAudioPlayerDelegate>
 
@@ -40,6 +39,9 @@ NSString *Genre = @"Trap"; // default genre
 @property(nonatomic,strong)AVAudioPlayer *walkSunshineAP;
 @property(nonatomic,strong)AVAudioPlayer *funkyAP;
 
+// Ya messed up!
+@property(nonatomic,strong)AVAudioPlayer *noAP;
+
 
 // More genres here!
 
@@ -48,6 +50,7 @@ NSString *Genre = @"Trap"; // default genre
 @implementation ViewController{
   DspFaust *dspFaust;
 }
+
 
 // Trap
 @synthesize kickAP = kick;
@@ -61,6 +64,9 @@ NSString *Genre = @"Trap"; // default genre
 // Songs
 @synthesize walkSunshineAP = sunshine;
 @synthesize funkyAP = funky;
+
+// Ya messed up!
+@synthesize noAP = no;
 
 // Insert more genres
 
@@ -136,6 +142,10 @@ float detuneAmount = 0.0f;
     [funky prepareToPlay];
 
     // More gengres here
+    
+    NSURL *url_no = [[NSBundle mainBundle] URLForResource:@"please-no" withExtension:@ "mp3"];
+    no = [[AVAudioPlayer alloc] initWithContentsOfURL:url_no error:&error];
+    [no prepareToPlay];
     
 
     /*
@@ -435,24 +445,6 @@ didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic error:(NSErro
     }
 }
 
-
-
-
-/*
-- (IBAction)GenreTrap:(UIButton *)sender {
-    
-    
-    dspFaust->keyOn(40, 100);
-    dspFaust->keyOn(44, 100);
-    dspFaust->keyOn(47, 100);
-    Genre = @"Trap";
-    [self kickAP];
-    [kick play];
-   //  [self hatAP];
-   //  [hat play];
-}
-*/
-
 //- (void)playFromBegin:(AVAudioPlayer)ap {
  //   ap.currentTime = 0;
   //  [ap play];
@@ -487,16 +479,33 @@ didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic error:(NSErro
 }
 */
 - (IBAction)buttonPressed:(id)sender {
-    if ([Genre isEqual: @"Trap"]) {
+    if (Globalgenre == 1) { // Trap
+        [self genreTrap];
+      //  [kick play];
+    }
+    else if (Globalgenre == 2) { // RandomSongs
+        [self genreRS];
+       // [phone play];
+    }
+    else if (Globalgenre == 3) { // Songs
+        [self genreSongs];
+       // [sunshine play];
+    }
+    else { // pick a genre
+        [self noAP];
+        [no play];
+    }
+  /*  if ([Genre isEqual: @"Trap"]) {
         [self kickAP];
         [kick play];
         [self hatAP];
         [hat play];
     }
-    else {
-        [self walkSunshineAP];
-        [sunshine play];
-    }
+   */
+    //else {
+      //  [self walkSunshineAP];
+       // [sunshine play];
+    //}
         
         // [self kickAP];
        //  [kick play];
@@ -516,6 +525,39 @@ didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic error:(NSErro
       //  [_audioPlayer2 pause];
    // }
 }
+
+-(void)genreTrap {
+    [phone stop]; // need to do this for all of them.....
+    [car stop];
+    [sunshine stop];
+    [self kickAP];
+    [kick play];
+    [self hatAP];
+    [hat play];
+}
+-(void)genreRS {
+ //   [file stop]; // need to do this for all of them.....
+    [kick stop]; // need to do this for all of them.....
+    [hat stop];
+    [sunshine stop];
+    [self telephoneAP];
+    [phone play];
+    [self carAP];
+    [car play];
+}
+-(void)genreSongs {
+    [phone stop]; // need to do this for all of them.....
+    [car stop];
+    [kick stop];
+    [hat stop];
+    [self walkSunshineAP];
+    [sunshine play];
+}
+
+
+
+
+
     
     // your code here
     // play Faust music

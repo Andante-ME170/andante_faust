@@ -6,10 +6,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "DspFaust.h"
+
+extern int Globalgenre;
 
 @interface ViewController3 : UIViewController
-
-@property (nonatomic, assign) BOOL genreTrap;
 
 @end
 

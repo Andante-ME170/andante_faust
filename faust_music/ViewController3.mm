@@ -7,16 +7,16 @@
 
 #import "ViewController3.h"
 #import "DspFaust.h"
-#import <AVFoundation/AVFoundation.h>
+// #import "ViewController.h"
 
 @interface ViewController3 ()
-
 
 @end
 
 @implementation ViewController3 {
     DspFaust *dspFaust;
 }
+int Globalgenre = 0; // Initialization of Global Variable
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -31,20 +31,25 @@
     dspFaust->keyOn(40, 100);
     dspFaust->keyOn(44, 100);
     dspFaust->keyOn(47, 100);
+    Globalgenre = 1;
 }
-- (IBAction)RandomSounds:(id)sender {
+- (IBAction)RandomSound:(id)sender {
     dspFaust->keyOn(60, 100);
     dspFaust->keyOn(64, 100);
     dspFaust->keyOn(67, 100);
+    Globalgenre = 2;
 }
-- (IBAction)Songs:(id)sender {
+- (IBAction)Song:(id)sender {
     dspFaust->keyOn(80, 100);
     dspFaust->keyOn(84, 100);
     dspFaust->keyOn(87, 100);
+    Globalgenre = 3;
 }
-- (IBAction)stopMusic:(id)sender {
+
+-(IBAction)stopMusic:(id)sender {
     dspFaust->stop();
 }
+
 
 /*
 #pragma mark - Navigation
