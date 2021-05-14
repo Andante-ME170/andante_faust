@@ -8,8 +8,11 @@
 #import "ViewController.h"
 #import "DspFaust.h"
 #import <AVFoundation/AVFoundation.h>
+#import "ViewController3.h"
 
 NSLock *theLock  = [[NSLock alloc] init];
+
+NSString *Genre = @"Trap"; // default genre
 
 @interface ViewController ()<AVAudioPlayerDelegate>
 
@@ -23,20 +26,44 @@ NSLock *theLock  = [[NSLock alloc] init];
 @property (weak, nonatomic) IBOutlet UILabel *currInstrumentTextField;
 @property (weak, nonatomic) IBOutlet UIPickerView *picker;
 
-// for Soundfile
+// Trap
 @property(nonatomic,strong)AVAudioPlayer *kickAP;
 @property(nonatomic,strong)AVAudioPlayer *snareAP;
 @property(nonatomic,strong)AVAudioPlayer *hatAP;
 //@property(nonatomic,strong)NSTimer *timer; not using rn
+
+// Random Sounds
+@property(nonatomic,strong)AVAudioPlayer *carAP;
+@property(nonatomic,strong)AVAudioPlayer *telephoneAP;
+
+// Songs
+@property(nonatomic,strong)AVAudioPlayer *walkSunshineAP;
+@property(nonatomic,strong)AVAudioPlayer *funkyAP;
+
+
+// More genres here!
+
 @end
 
 @implementation ViewController{
   DspFaust *dspFaust;
 }
 
+// Trap
 @synthesize kickAP = kick;
 @synthesize snareAP = snare;
 @synthesize hatAP = hat;
+
+// Random Sounds
+@synthesize carAP = car;
+@synthesize telephoneAP = phone;
+
+// Songs
+@synthesize walkSunshineAP = sunshine;
+@synthesize funkyAP = funky;
+
+// Insert more genres
+
 
 int chordCounter = 0;
 int chordMIDIs[4][6] = {{48,55,60,64,60,55}, {43,50,55,59,55,50}, {45,52,57,60,57,52}, {41,48,53,57,53,48}}; // C G Am F
@@ -89,7 +116,28 @@ float detuneAmount = 0.0f;
   //  [snare prepareToPlay];
     [hat prepareToPlay];
     
+    // Random Sounds
+    NSURL *url_RS_1 = [[NSBundle mainBundle] URLForResource:@"Car" withExtension:@ "wav"];
+    car = [[AVAudioPlayer alloc] initWithContentsOfURL:url_RS_1 error:&error];
+    [car prepareToPlay];
     
+    NSURL *url_RS_2 = [[NSBundle mainBundle] URLForResource:@"Telephone" withExtension:@ "wav"];
+    phone = [[AVAudioPlayer alloc] initWithContentsOfURL:url_RS_2 error:&error];
+    [phone prepareToPlay];
+    
+    
+    // Songs
+    NSURL *url_S_1 = [[NSBundle mainBundle] URLForResource:@"WalkingOnSunshine" withExtension:@ "wav"];
+    sunshine = [[AVAudioPlayer alloc] initWithContentsOfURL:url_S_1 error:&error];
+    [sunshine prepareToPlay];
+    
+    NSURL *url_S_2 = [[NSBundle mainBundle] URLForResource:@"FUNKY_HOUSE" withExtension:@ "mp3"];
+    funky = [[AVAudioPlayer alloc] initWithContentsOfURL:url_S_2 error:&error];
+    [funky prepareToPlay];
+
+    // More gengres here
+    
+
     /*
     // Moved below to button press area rather than here
     // Added below, modeled off of (https://ccrma.stanford.edu/~rmichon/faustTutorials/#adding-faust-real-time-audio-support-to-ios-apps)
@@ -389,6 +437,22 @@ didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic error:(NSErro
 
 
 
+
+/*
+- (IBAction)GenreTrap:(UIButton *)sender {
+    
+    
+    dspFaust->keyOn(40, 100);
+    dspFaust->keyOn(44, 100);
+    dspFaust->keyOn(47, 100);
+    Genre = @"Trap";
+    [self kickAP];
+    [kick play];
+   //  [self hatAP];
+   //  [hat play];
+}
+*/
+
 //- (void)playFromBegin:(AVAudioPlayer)ap {
  //   ap.currentTime = 0;
   //  [ap play];
@@ -423,7 +487,25 @@ didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic error:(NSErro
 }
 */
 - (IBAction)buttonPressed:(id)sender {
-    //[self audioPlay];
+    if ([Genre isEqual: @"Trap"]) {
+        [self kickAP];
+        [kick play];
+        [self hatAP];
+        [hat play];
+    }
+    else {
+        [self walkSunshineAP];
+        [sunshine play];
+    }
+        
+        // [self kickAP];
+       //  [kick play];
+       //  [self hatAP];
+       //  [hat play];) {
+
+    
+    //[self kickAP];
+    //[kick play];
     //if (!_audioPlayer.isPlaying) {//} && !_playButton.selected ) {
       //  [self startPlay];
      //   [_audioPlayer play];

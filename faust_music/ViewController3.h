@@ -9,5 +9,7 @@
 
 @interface ViewController3 : UIViewController
 
+@property (nonatomic, assign) BOOL genreTrap;
+
 @end
 

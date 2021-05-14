@@ -65,13 +65,19 @@
                                 <state key="normal" title="About"/>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hZ2-t6-X1x">
-                                <rect key="frame" x="279" y="572" width="42" height="30"/>
+                                <rect key="frame" x="277" y="572" width="46" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Genre"/>
+                                <state key="normal" title="Genre:"/>
                                 <connections>
                                     <segue destination="IIn-lW-hZF" kind="presentation" id="DH4-E8-aPv"/>
                                 </connections>
                             </button>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cCE-Cg-kCT">
+                                <rect key="frame" x="252" y="598" width="97" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY" userLabel="Hello World"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -178,6 +184,9 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="31"/>
                                 <state key="normal" title="Trap"/>
+                                <connections>
+                                    <segue destination="BYZ-38-t0r" kind="presentation" id="86T-pv-OAc"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aJN-GF-mr5">
                                 <rect key="frame" x="78" y="363" width="220" height="86"/>

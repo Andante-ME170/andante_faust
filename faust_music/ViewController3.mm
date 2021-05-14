@@ -6,8 +6,11 @@
 //
 
 #import "ViewController3.h"
+#import "DspFaust.h"
+#import <AVFoundation/AVFoundation.h>
 
 @interface ViewController3 ()
+
 
 @end
 
@@ -18,6 +21,12 @@
     // Do any additional setup after loading the view.
 }
 
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+    if([segue.identifier isEqualToString:@"showDetailSegue"]){
+        ViewController3 *controller = (ViewController3 *)segue.destinationViewController;
+        controller.genreTrap = YES;
+    }
+}
 /*
 #pragma mark - Navigation
 

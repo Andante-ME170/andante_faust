@@ -24,8 +24,12 @@
        
      dspFaust = new DspFaust(SR,bufferSize);
      dspFaust->start();
-    
+    // Chord will play upon entry to ViewController2
+    dspFaust->keyOn(40, 100);
+    dspFaust->keyOn(44, 100);
+    dspFaust->keyOn(47, 100);
 }
+
 -(IBAction)playChord:(id)sender {
     dspFaust->keyOn(40, 100);
     dspFaust->keyOn(44, 100);
@@ -33,9 +37,9 @@
 }
 
 - (IBAction)detune:(id)sender {
-    dspFaust->keyOff(40);
-      dspFaust->keyOff(44);
-      dspFaust->keyOff(47);
+   // dspFaust->keyOff(40);
+   //   dspFaust->keyOff(44);
+   ///   dspFaust->keyOff(47);
    // dspFaust->keyOn(40, 100);
    // dspFaust->keyOn(44, 100);
    // dspFaust->keyOn(47, 100);
@@ -44,7 +48,6 @@
     int detuneAmount = _slider.value*0.20; // 0.25 best so far
     dspFaust->setParamValue("detune", detuneAmount);
     globalMaxDetune = detuneAmount;
-    
     // slider value is currently from 1 to 100, can change
     // then need to connect this back to old stuff***
 }
