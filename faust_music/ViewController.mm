@@ -12,6 +12,10 @@
 
 NSLock *theLock  = [[NSLock alloc] init];
 
+NSMutableArray *soundOn = [[NSMutableArray alloc]init];
+
+int prevGenre = 0;
+                         
 
 @interface ViewController ()<AVAudioPlayerDelegate>
 
@@ -479,29 +483,30 @@ didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic error:(NSErro
 }
 */
 - (IBAction)buttonPressed:(id)sender {
+    if (prevGenre != Globalgenre) {
+        [self turnOff]; // reset sounds
+        [no stop]; // stop Michael Scott, Melissa delete later
+    }
     if (Globalgenre == 1) { // Trap
         [self genreTrap];
+        prevGenre = 1;
       //  [kick play];
     }
     else if (Globalgenre == 2) { // RandomSongs
         [self genreRS];
+        prevGenre = 2;
        // [phone play];
     }
     else if (Globalgenre == 3) { // Songs
         [self genreSongs];
+        prevGenre = 3;
        // [sunshine play];
     }
     else { // pick a genre
         [self noAP];
         [no play];
     }
-  /*  if ([Genre isEqual: @"Trap"]) {
-        [self kickAP];
-        [kick play];
-        [self hatAP];
-        [hat play];
-    }
-   */
+    
     //else {
       //  [self walkSunshineAP];
        // [sunshine play];
@@ -525,33 +530,55 @@ didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic error:(NSErro
       //  [_audioPlayer2 pause];
    // }
 }
+- (IBAction)Genre:(id)sender {
+    [self turnOff];
+}
+
+-(void)turnOff {
+    for(id tempObject in soundOn) { // loop through every element in the array
+        [tempObject stop]; // change to stop later...
+  //      NSLog(@"Single element: %@", tempObject);
+    }
+}
 
 -(void)genreTrap {
-    [phone stop]; // need to do this for all of them.....
-    [car stop];
-    [sunshine stop];
+   // [soundOn removeAllObjects];
     [self kickAP];
     [kick play];
     [self hatAP];
     [hat play];
+    
+    if (![soundOn containsObject:kick]) { // should already be empty?
+        [soundOn addObject:kick]; // adds objects to array
+    }
+    if (![soundOn containsObject:hat]) {
+        [soundOn addObject:hat]; // adds objects to array
+    }
 }
+
 -(void)genreRS {
- //   [file stop]; // need to do this for all of them.....
-    [kick stop]; // need to do this for all of them.....
-    [hat stop];
-    [sunshine stop];
     [self telephoneAP];
     [phone play];
     [self carAP];
-    [car play];
+    //[car play];
+    if (![soundOn containsObject:phone]) {
+        [soundOn addObject:phone]; // adds objects to array
+    }
+   // if (![soundOn containsObject:@"car"]) {
+   //     [soundOn addObject:@"car"]; // adds objects to array
+    //}
 }
+
 -(void)genreSongs {
-    [phone stop]; // need to do this for all of them.....
-    [car stop];
-    [kick stop];
-    [hat stop];
+   // [phone stop]; // need to do this for all of them.....
+  //  [car stop];
+  //  [kick stop];
+  //  [hat stop];
     [self walkSunshineAP];
     [sunshine play];
+    if (![soundOn containsObject:sunshine]) {
+        [soundOn addObject:sunshine]; // adds objects to array
+    }
 }
 
 

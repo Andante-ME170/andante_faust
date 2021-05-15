@@ -69,7 +69,8 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Genre:"/>
                                 <connections>
-                                    <segue destination="Tn7-kI-o4l" kind="presentation" id="3mE-Yn-trs"/>
+                                    <action selector="Genre:" destination="BYZ-38-t0r" eventType="touchUpInside" id="PTd-dg-7Nb"/>
+                                    <segue destination="Tn7-kI-o4l" kind="presentation" id="WWH-jD-OtO"/>
                                 </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cCE-Cg-kCT">
@@ -189,21 +190,12 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PIw-mb-k1i">
-                                <rect key="frame" x="81" y="344" width="213" height="48"/>
+                                <rect key="frame" x="81" y="323" width="213" height="48"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                 <state key="normal" title="Random Sounds"/>
                                 <connections>
                                     <action selector="RandomSound:" destination="Tn7-kI-o4l" eventType="touchUpInside" id="tEM-lT-isj"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FnA-M7-9fQ">
-                                <rect key="frame" x="147" y="468" width="82" height="48"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                <state key="normal" title="Songs"/>
-                                <connections>
-                                    <action selector="Song:" destination="Tn7-kI-o4l" eventType="touchUpInside" id="AXa-gF-8e5"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="80y-we-tsL">
@@ -215,6 +207,15 @@
                                     <segue destination="BYZ-38-t0r" kind="presentation" id="kwn-tY-dhM"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FnA-M7-9fQ">
+                                <rect key="frame" x="146" y="402" width="82" height="39"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <state key="normal" title="Songs"/>
+                                <connections>
+                                    <action selector="Song:" destination="Tn7-kI-o4l" eventType="touchUpInside" id="AXa-gF-8e5"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Mze-tF-sBW"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -222,7 +223,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WoO-OO-iNd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="554" y="-1136"/>
+            <point key="canvasLocation" x="552.79999999999995" y="-1136.4532019704434"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
