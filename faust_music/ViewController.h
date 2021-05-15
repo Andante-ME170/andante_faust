@@ -8,7 +8,7 @@
 #import <UIKit/UIKit.h>
 #import <CoreBluetooth/CoreBluetooth.h>
 
-extern int globalMaxDetune = 100; // global variable for detuning
+//extern int globalMaxDetune = 100; // global variable for detuning
 
 @interface ViewController : UIViewController <CBCentralManagerDelegate, CBPeripheralDelegate, UIPickerViewDelegate, UIPickerViewDataSource>
 @end

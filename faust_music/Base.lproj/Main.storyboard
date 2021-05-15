@@ -133,7 +133,7 @@
                                     <segue destination="BYZ-38-t0r" kind="presentation" id="r8z-IC-32k"/>
                                 </connections>
                             </button>
-                            <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1.25" minValue="1" maxValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="spm-m8-Lvg">
+                            <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="50" minValue="0.0" maxValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="spm-m8-Lvg">
                                 <rect key="frame" x="40" y="443" width="321" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="thumbTintColor" name="AccentColor"/>
@@ -236,7 +236,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="kwn-tY-dhM"/>
+        <segue reference="r8z-IC-32k"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="Andante" width="680" height="269"/>

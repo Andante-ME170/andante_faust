@@ -8,15 +8,14 @@
 #import <UIKit/UIKit.h>
 #import "DspFaust.h"
 
+extern int globalMaxDetune;
 
 @interface ViewController2 : UIViewController
 
-extern int globalMaxDetune = 100;
-
 @property (weak, nonatomic) IBOutlet UITextField *tfValue;
 @property (weak, nonatomic) IBOutlet UISlider *slider;
-- (IBAction)detune:(id)sender;
 
+- (IBAction)detune:(id)sender;
 
 @end
 

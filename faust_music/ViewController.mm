@@ -8,11 +8,13 @@
 #import "ViewController.h"
 #import "DspFaust.h"
 #import <AVFoundation/AVFoundation.h>
+#import "ViewController2.h"
 #import "ViewController3.h"
 
 NSLock *theLock  = [[NSLock alloc] init];
 
 NSMutableArray *soundOn = [[NSMutableArray alloc]init];
+NSMutableArray *randomSoundsArray = [[NSMutableArray alloc]init];
 
 int prevGenre = 0;
                          
@@ -134,7 +136,8 @@ float detuneAmount = 0.0f;
     NSURL *url_RS_2 = [[NSBundle mainBundle] URLForResource:@"Telephone" withExtension:@ "wav"];
     phone = [[AVAudioPlayer alloc] initWithContentsOfURL:url_RS_2 error:&error];
     [phone prepareToPlay];
-    
+    [randomSoundsArray addObject:car];
+    [randomSoundsArray addObject:phone];
     
     // Songs
     NSURL *url_S_1 = [[NSBundle mainBundle] URLForResource:@"WalkingOnSunshine" withExtension:@ "wav"];
@@ -558,6 +561,11 @@ didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic error:(NSErro
 }
 
 -(void)genreRS {
+    for(id tempObject in randomSoundsArray) { // loop through every element in the array
+      //  [self tempObject]; //
+     //   [tempObject play];
+    }
+    
     [self telephoneAP];
     [phone play];
     [self carAP];

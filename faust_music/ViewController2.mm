@@ -16,6 +16,8 @@
     DspFaust *dspFaust;
 }
 
+int globalMaxDetune = 0;
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
@@ -28,6 +30,10 @@
     dspFaust->keyOn(40, 100);
     dspFaust->keyOn(44, 100);
     dspFaust->keyOn(47, 100);
+    
+    // slider will begin at the value you previously set it to
+    _slider.value = globalMaxDetune/0.20; // change constants later (the 0.2)
+    self.tfValue.text = [NSString stringWithFormat:@"%f", _slider.value];
 }
 
 -(IBAction)playChord:(id)sender {
@@ -37,13 +43,6 @@
 }
 
 - (IBAction)detune:(id)sender {
-   // dspFaust->keyOff(40);
-   //   dspFaust->keyOff(44);
-   ///   dspFaust->keyOff(47);
-   // dspFaust->keyOn(40, 100);
-   // dspFaust->keyOn(44, 100);
-   // dspFaust->keyOn(47, 100);
-    
     self.tfValue.text = [NSString stringWithFormat:@"%f", _slider.value];
     int detuneAmount = _slider.value*0.20; // 0.25 best so far
     dspFaust->setParamValue("detune", detuneAmount);
@@ -54,9 +53,6 @@
 
 
 - (IBAction)Home:(id)sender {
-   // dspFaust->keyOff(40);
-   // dspFaust->keyOff(44);
-   // dspFaust->keyOff(47);
     dspFaust->stop();
 }
 
