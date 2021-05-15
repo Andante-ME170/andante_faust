@@ -531,6 +531,7 @@ didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic error:(NSErro
    // }
 }
 - (IBAction)Genre:(id)sender {
+    // resets for things that go to other pages because of memory, "pause music" truly only does pause
     [self turnOff];
 }
 

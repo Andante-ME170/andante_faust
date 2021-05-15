@@ -43,7 +43,8 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Detune Selection"/>
                                 <connections>
-                                    <segue destination="ohV-6a-AI8" kind="presentation" id="eeZ-OI-Bmv"/>
+                                    <action selector="Genre:" destination="BYZ-38-t0r" eventType="touchUpInside" id="xlX-0R-J0b"/>
+                                    <segue destination="ohV-6a-AI8" kind="presentation" id="77a-7m-JQA"/>
                                 </connections>
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" fixedFrame="YES" image="Andante" translatesAutoresizingMaskIntoConstraints="NO" id="KVm-KK-Dru">
@@ -79,6 +80,14 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V2I-Fy-NNM">
+                                <rect key="frame" x="144" y="694" width="87" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Pause Music"/>
+                                <connections>
+                                    <action selector="Genre:" destination="BYZ-38-t0r" eventType="touchUpInside" id="yX5-9S-dEM"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY" userLabel="Hello World"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
