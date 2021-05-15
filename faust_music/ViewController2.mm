@@ -26,14 +26,16 @@ int globalMaxDetune = 0;
        
      dspFaust = new DspFaust(SR,bufferSize);
      dspFaust->start();
-    // Chord will play upon entry to ViewController2
-    dspFaust->keyOn(40, 100);
-    dspFaust->keyOn(44, 100);
-    dspFaust->keyOn(47, 100);
     
     // slider will begin at the value you previously set it to
     _slider.value = globalMaxDetune/0.20; // change constants later (the 0.2)
     self.tfValue.text = [NSString stringWithFormat:@"%f", _slider.value];
+    
+    // Chord will play upon entry to ViewController2
+    dspFaust->setParamValue("detune", _slider.value*0.20);
+    dspFaust->keyOn(40, 100);
+    dspFaust->keyOn(44, 100);
+    dspFaust->keyOn(47, 100);
 }
 
 -(IBAction)playChord:(id)sender {

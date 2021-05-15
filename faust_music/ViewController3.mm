@@ -28,6 +28,7 @@ int Globalgenre = 0; // Initialization of Global Variable
      dspFaust->start();
 }
 - (IBAction)Trap:(id)sender {
+    // Melissa: later fix so only one genre will play at a time in here, will be sound files not faust
     dspFaust->keyOn(40, 100);
     dspFaust->keyOn(44, 100);
     dspFaust->keyOn(47, 100);

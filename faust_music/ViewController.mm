@@ -15,13 +15,13 @@ NSLock *theLock  = [[NSLock alloc] init];
 
 NSMutableArray *soundOn = [[NSMutableArray alloc]init];
 NSMutableArray *randomSoundsArray = [[NSMutableArray alloc]init];
+// Create an object maybe??
+// genre object, instance variables and stuffs
 
 int prevGenre = 0;
                          
-
 @interface ViewController ()<AVAudioPlayerDelegate>
 
-//https://developer.apple.com/documentation/avfaudio/avaudioplayer
 
 @property (nonatomic, strong) NSString *bleDevice;
 @property (nonatomic, strong) NSMutableArray *pickerData;
@@ -591,10 +591,6 @@ didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic error:(NSErro
 }
 
 
-
-
-
-    
     // your code here
     // play Faust music
     
