@@ -11,6 +11,9 @@
 //extern int globalMaxDetune = 100; // global variable for detuning
 
 @interface ViewController : UIViewController <CBCentralManagerDelegate, CBPeripheralDelegate, UIPickerViewDelegate, UIPickerViewDataSource>
+
+@property (weak, nonatomic) IBOutlet UITextField *genreValue;
+
 @end
 
 

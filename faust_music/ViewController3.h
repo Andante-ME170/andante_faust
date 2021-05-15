@@ -7,10 +7,14 @@
 
 #import <UIKit/UIKit.h>
 #import "DspFaust.h"
+#import <Foundation/Foundation.h>
 
 extern int Globalgenre;
 
-@interface ViewController3 : UIViewController
+@interface ViewController3 : UIViewController <UIPickerViewDelegate, UIPickerViewDataSource>
+
+//@property(weak, nonatomic) IBOutlet
+//UIPickerView *picker;
 
 @end
 

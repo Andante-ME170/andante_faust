@@ -15,10 +15,11 @@ NSLock *theLock  = [[NSLock alloc] init];
 
 NSMutableArray *soundOn = [[NSMutableArray alloc]init];
 NSMutableArray *randomSoundsArray = [[NSMutableArray alloc]init];
+NSMutableArray *randomSoundsArrayAP = [[NSMutableArray alloc]init];
 // Create an object maybe??
 // genre object, instance variables and stuffs
 
-int prevGenre = 0;
+int prevGenre = -1;
                          
 @interface ViewController ()<AVAudioPlayerDelegate>
 
@@ -53,10 +54,21 @@ int prevGenre = 0;
 
 @end
 
+@interface Genre:NSObject {
+   //Instance variables
+   double length;    // Length of a box
+   double breadth;   // Breadth of a box
+}
+@property(nonatomic, readwrite) AVAudioPlayer *drum_AP;
+@property(nonatomic, readwrite) AVAudioPlayer *c4_AP;
+
+
+@end
+
+
 @implementation ViewController{
   DspFaust *dspFaust;
 }
-
 
 // Trap
 @synthesize kickAP = kick;
@@ -154,7 +166,24 @@ float detuneAmount = 0.0f;
     no = [[AVAudioPlayer alloc] initWithContentsOfURL:url_no error:&error];
     [no prepareToPlay];
     
-
+    switch(Globalgenre) {
+            case -1:
+                self.genreValue.text = @"Current: Not set";
+                break;
+            case 0:
+                self.genreValue.text = @"Current: Trap";
+                break;
+            case 1:
+                self.genreValue.text = @"Random Sounds";
+                break;
+            case 2:
+                self.genreValue.text = @"Songs";
+                break;
+    }
+    
+    /*self.genreValue.text = [NSString stringWithFormat:@"%d", Globalgenre];
+    */
+    
     /*
     // Moved below to button press area rather than here
     // Added below, modeled off of (https://ccrma.stanford.edu/~rmichon/faustTutorials/#adding-faust-real-time-audio-support-to-ios-apps)
@@ -490,19 +519,19 @@ didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic error:(NSErro
         [self turnOff]; // reset sounds
         [no stop]; // stop Michael Scott, Melissa delete later
     }
-    if (Globalgenre == 1) { // Trap
+    if (Globalgenre == 0) { // Trap
         [self genreTrap];
-        prevGenre = 1;
+        prevGenre = 0;
       //  [kick play];
     }
-    else if (Globalgenre == 2) { // RandomSongs
+    else if (Globalgenre == 1) { // RandomSongs
         [self genreRS];
-        prevGenre = 2;
+        prevGenre = 1;
        // [phone play];
     }
-    else if (Globalgenre == 3) { // Songs
+    else if (Globalgenre == 2) { // Songs
         [self genreSongs];
-        prevGenre = 3;
+        prevGenre = 2;
        // [sunshine play];
     }
     else { // pick a genre
@@ -561,6 +590,8 @@ didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic error:(NSErro
 }
 
 -(void)genreRS {
+    int limit = [randomSoundsArrayAP count];
+    for(int i = 0; i < limit; i ++)
     for(id tempObject in randomSoundsArray) { // loop through every element in the array
       //  [self tempObject]; //
      //   [tempObject play];
@@ -589,7 +620,6 @@ didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic error:(NSErro
         [soundOn addObject:sunshine]; // adds objects to array
     }
 }
-
 
     // your code here
     // play Faust music
