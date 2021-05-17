@@ -18,20 +18,24 @@ enum songNames {
   CanonInD,
   Mario,
   IWantYouBack,
+  ImDifferent,
 };
 
 int melody[32][8];
 bool melodyNotePlayed[8] = {false,false,false,false,false,false,false,false};;
+int melodyNotesPerChord = 8;
 int chords[32][3];
 
+// 0 is sustain, -1 is rest
+
 int canonInDMelody [32][8] = {
-        {81, -1, 78, 79, 81, -1, 78, 79}, 
+        {81,  0, 78, 79, 81,  0, 78, 79}, 
         {81, 69, 71, 73, 74, 76, 78, 79}, 
-        {78, -1, 74, 76, 78, -1, 66, 67}, 
+        {78,  0, 74, 76, 78,  0, 66, 67}, 
         {69, 71, 69, 67, 69, 66, 67, 69}, 
-        {67, -1, 71, 69, 67, -1, 66, 64}, 
+        {67,  0, 71, 69, 67,  0, 66, 64}, 
         {66, 64, 62, 64, 66, 67, 69, 71}, 
-        {67, -1, 71, 69, 71, -1, 73, 74}, 
+        {67,  0, 71, 69, 71,  0, 73, 74}, 
         {69, 71, 73, 74, 76, 78, 79, 81},
         
         {-1, -1, -1, -1, -1, -1, -1, -1},
@@ -136,6 +140,7 @@ int marioMelody[32][8] = {
         {64, 64, -1, 64, -1, 60, 64, -1}, 
         {67, -1, -1, -1, 55, -1, -1, -1}
         };
+        
 int marioChords[32][3] = {
         {36, 43, 52}, 
         {41, 45, 48}, 
@@ -177,23 +182,14 @@ int marioChords[32][3] = {
 
 int iWantYouBackMelody[32][8] = {
         {32, -1, -1, -1, -1, -1, -1, -1}, 
+        {-1, -1, -1, 34, 36, 39, 41, 37}, 
         {-1, -1, -1, -1, -1, -1, -1, -1}, 
-        {-1, -1, -1, 34, -1, -1, -1, -1}, 
-        {36, 39, 41, 37, -1, -1, -1, -1}, 
-        {-1, -1, -1, -1, -1, -1, -1, -1}, 
-        {-1, -1, -1, -1, -1, -1, -1, -1}, 
-        {-1, 34, 36, 37, -1, -1, -1, -1}, 
-        {-1, 39, 40, -1, -1, -1, -1, -1}, 
+        {-1, 34, 36, 37, -1, 38, 39, 40}, 
+        {41,  0,  0,  0, 36,  0,  0,  0}, 
+        {37,  0,  0, 32,  0,  0,  0,  0}, 
+        {34,  0,  0,  0, 39,  0,  0, 32}, 
+        {-1, 27, 29, 32, -1, 29, 32, -1}, 
         
-        {41, -1, -1, -1, -1, -1, -1, -1}, 
-        {36, -1, -1, -1. -1, -1, -1, -1}, 
-        {37, -1, -1, 32, -1, -1, -1, -1}, 
-        {-1, -1, -1, -1, -1, -1, -1, -1}, 
-        {34, -1, -1, -1, -1, -1, -1, -1}, 
-        {39, -1, -1, 32, -1, -1, -1, -1}, 
-        {-1, -1, -1, -1, -1, -1, -1, -1}, 
-        {-1, -1, -1, -1, -1, -1, -1, -1},
-
         {-1, -1, -1, -1, -1, -1, -1, -1},
         {-1, -1, -1, -1, -1, -1, -1, -1},
         {-1, -1, -1, -1, -1, -1, -1, -1},
@@ -219,7 +215,7 @@ int iWantYouBackChords[32][3] = {
         {-1, -1, -1}, 
         {-1, -1, -1}, 
         {-1, -1, -1}, 
-        {56, 61, 65}, 
+        {56, 61, 65},
         {-1, -1, -1}, 
         {-1, -1, -1}, 
         {-1, -1, -1}, 
@@ -252,13 +248,91 @@ int iWantYouBackChords[32][3] = {
         {-1, -1, -1},
         };
 
+int imDifferentMelody[32][8] = {
+        {84,  0,  0,  0,  0,  0, 83,  0}, 
+        { 0,  0, 76,  0, 81,  0, 81,  0}, 
+        {77,  0,  0,  0,  0,  0,  0,  0}, 
+        { 0,  0, 76,  0,  0,  0,  0,  0},
+        {84,  0,  0,  0,  0,  0, 83,  0}, 
+        { 0,  0, 76,  0, 81,  0, 81,  0}, 
+        {77,  0,  0,  0,  0,  0,  0,  0}, 
+        { 0,  0, 76,  0,  0,  0,  0,  0},
+        
+        {-1, -1, -1, -1, -1, -1, -1, -1},
+        {-1, -1, -1, -1, -1, -1, -1, -1},
+        {-1, -1, -1, -1, -1, -1, -1, -1},
+        {-1, -1, -1, -1, -1, -1, -1, -1},
+        {-1, -1, -1, -1, -1, -1, -1, -1},
+        {-1, -1, -1, -1, -1, -1, -1, -1},
+        {-1, -1, -1, -1, -1, -1, -1, -1},
+        {-1, -1, -1, -1, -1, -1, -1, -1},
+
+        {-1, -1, -1, -1, -1, -1, -1, -1},
+        {-1, -1, -1, -1, -1, -1, -1, -1},
+        {-1, -1, -1, -1, -1, -1, -1, -1},
+        {-1, -1, -1, -1, -1, -1, -1, -1},
+        {-1, -1, -1, -1, -1, -1, -1, -1},
+        {-1, -1, -1, -1, -1, -1, -1, -1},
+        {-1, -1, -1, -1, -1, -1, -1, -1},
+        {-1, -1, -1, -1, -1, -1, -1, -1},
+
+        {-1, -1, -1, -1, -1, -1, -1, -1},
+        {-1, -1, -1, -1, -1, -1, -1, -1},
+        {-1, -1, -1, -1, -1, -1, -1, -1},
+        {-1, -1, -1, -1, -1, -1, -1, -1},
+        {-1, -1, -1, -1, -1, -1, -1, -1},
+        {-1, -1, -1, -1, -1, -1, -1, -1},
+        {-1, -1, -1, -1, -1, -1, -1, -1},
+        {-1, -1, -1, -1, -1, -1, -1, -1},
+
+        
+        };
+
+int imDifferentChords[32][3] = {
+        {-1, -1, -1}, 
+        {-1, -1, -1}, 
+        {-1, -1, -1}, 
+        {-1, -1, -1}, 
+        {-1, -1, -1}, 
+        {-1, -1, -1}, 
+        {-1, -1, -1}, 
+        {-1, -1, -1},
+        
+        {-1, -1, -1}, 
+        {-1, -1, -1}, 
+        {-1, -1, -1}, 
+        {-1, -1, -1}, 
+        {-1, -1, -1}, 
+        {-1, -1, -1}, 
+        {-1, -1, -1}, 
+        {-1, -1, -1},
+
+        {-1, -1, -1},
+        {-1, -1, -1},
+        {-1, -1, -1},
+        {-1, -1, -1},
+        {-1, -1, -1},
+        {-1, -1, -1},
+        {-1, -1, -1},
+        {-1, -1, -1},
+
+        {-1, -1, -1},
+        {-1, -1, -1},
+        {-1, -1, -1},
+        {-1, -1, -1},
+        {-1, -1, -1},
+        {-1, -1, -1},
+        {-1, -1, -1},
+        {-1, -1, -1},
+        };
+
 
 // update w more beats
 int drumBeat = 0;
 int numDrums;
 int drumHitsPerChord;
 int drums[8][3];
-bool drumHitPlayed[8]  = {false,false,false,false,false,false,false,false};;
+bool drumHitPlayed[8]  = {false,false,false,false,false,false,false,false};
 
 int beat0[8][3] = {
         {1, 0, 1},
@@ -282,16 +356,17 @@ enum gaitStates {
 
 
 // states
-songNames songName = CanonInD;
-gaitStates gaitState = swingPreKnee;
+songNames songName = Mario;
+gaitStates gaitState = calibration;
 bool playMelody = true;
-bool playDrums = false;
+bool playDrums = true;
 
 
 
 int notesPerChord;
 int numChords;
-int melodyNotesPerChord;
+int lastNotePlayed = -1;
+bool secondChordPlayed = false;
 int chordsPerStepCycle;
 
 
@@ -299,8 +374,11 @@ int chordsPerStepCycle;
 int ledPin = 17;
 
 int heelPin = A1;
+int toePin = A2;
 int heelVal = 0;
+int toeVal = 0;
 int lastHeelVal = 0;
+int lastToeVal = 0;
 int chordCounter = 0;
 int prevChord = 0;
 int drumCounter = 0;
@@ -375,7 +453,7 @@ void setup(){
         
     case Mario:
       notesPerChord = 3;
-      numChords = 32;
+      numChords = 24;
       melodyNotesPerChord = 8;
       chordsPerStepCycle = 1;
       memcpy(melody, marioMelody, sizeof(melody));
@@ -385,10 +463,19 @@ void setup(){
     case IWantYouBack:
       notesPerChord = 3;
       numChords = 16;
-      melodyNotesPerChord = 4;
-      chordsPerStepCycle = 2;
-      memcpy(melody, marioMelody, sizeof(melody));
-      memcpy(chords, canonInDChords, sizeof(chords));
+      melodyNotesPerChord = 8;
+      chordsPerStepCycle =  2;
+      memcpy(melody, iWantYouBackMelody, sizeof(melody));
+      memcpy(chords, iWantYouBackChords, sizeof(chords));
+      break;
+
+    case ImDifferent:
+      notesPerChord = 3;
+      numChords = 16;
+      melodyNotesPerChord = 8;
+      chordsPerStepCycle = 1;
+      memcpy(melody, imDifferentMelody, sizeof(melody));
+      memcpy(chords, imDifferentChords, sizeof(chords));
       break;
   }
   
@@ -460,6 +547,7 @@ void loop(){
   }
 
   heelVal = analogRead(heelPin);
+  toeVal = analogRead(toePin);
   prevChord = (chordCounter - 1 + numChords) % numChords;
 
 
@@ -471,9 +559,8 @@ void loop(){
         if (stepCounter < numCalibrationSteps){
           calibrationStepTimes[stepCounter] = millis();
           MIDI.sendNoteOn(2, 50, 1);
-          delay(1);
-          MIDI.sendNoteOff(2, 50, 1);
           digitalWrite(ledPin, HIGH);
+          lastStepTime = millis();
           ledOnTime = millis();
         }
         else{
@@ -481,7 +568,7 @@ void loop(){
             strideFreq += (calibrationStepTimes[i] - calibrationStepTimes[i - 1]);
           }
           strideFreq /= (numCalibrationSteps-1);
-          gaitState = stance;
+          gaitState = heelContact;
         }
         stepCounter++;
       }
@@ -492,16 +579,31 @@ void loop(){
     case heelContact:
       // chords
       for (int j = 0; j < notesPerChord; j++){
-        MIDI.sendNoteOff(chords[chordCounter][j], 100, 1);
+        if (chords[chordCounter][j] != -1){
+          MIDI.sendNoteOn(chords[chordCounter][j], 100, 1);
+        }
       }
+      // turn off previous chord
+      for (int j = 0; j < notesPerChord; j++){
+        if ((chordCounter+numChords-1) % numChords][j] != -1){
+          MIDI.sendNoteOff(chords[(chordCounter+numChords-1) % numChords][j], 100, 1);
+        }
+      }
+      digitalWrite(ledPin, HIGH);
+      ledOnTime = millis();
+      lastStepTime = millis();
       chordCounter++;
       stepCounter++;
       gaitState = stance;
+      
       break;
       
     case stance:
+      // temporary override
+      gaitState = toeOff;
+      
       // toe off
-      if (heelVal < threshold && lastHeelVal > threshold && timeSinceLastTO > 500) {
+      if (toeVal < threshold && lastToeVal > threshold && timeSinceLastTO > 500) {
         gaitState = toeOff;
       }
       
@@ -520,10 +622,6 @@ void loop(){
     case swingPostKnee:
       // heel contact
       if (heelVal > threshold && lastHeelVal < threshold && timeSinceLastStep > 500) {
-        // chords
-        for (int j = 0; j < notesPerChord; j++){
-          MIDI.sendNoteOn(chords[chordCounter][j], 100, 1);
-        }
         gaitState = heelContact;
       }
       break;
@@ -541,16 +639,42 @@ void loop(){
     if (gaitState != calibration){
       for (int i = 0; i < melodyNotesPerChord; i++){
         if (timeSinceLastStep >= i*strideFreq/melodyNotesPerChord && !melodyNotePlayed[i]){
-          if (melody[chordCounter-1][i] != -1){
-            MIDI.sendNoteOn(melody[chordCounter-1][i], 50, 1);
-            delay(5);
-            MIDI.sendNoteOff(melody[chordCounter-2][i], 50, 1);
+          if (melody[(chordCounter+numChords-1) % numChords][i] == -1){
+            MIDI.sendNoteOff(lastNotePlayed, 50, 1);
+          }
+//          else if (melody[(chordCounter+numChords-1) % numChords][i] == 0){
+//            // do nothing (sustain)
+//          }
+          else{
+            MIDI.sendNoteOn(melody[(chordCounter+numChords-1) % numChords][i], 50, 1);
+            lastNotePlayed = melody[(chordCounter+numChords-1) % numChords][i];
           }
           melodyNotePlayed[i] = true;
         }
         else if (timeSinceLastStep < i*strideFreq/melodyNotesPerChord){
           melodyNotePlayed[i] = false;
         }
+      }
+    }
+  }
+
+  // xtra chords
+  if (playMelody && chordsPerStepCycle == 2){
+    if (gaitState != calibration){
+      if (timeSinceLastStep >= strideFreq/2 && !secondChordPlayed){
+        // chords
+        for (int j = 0; j < notesPerChord; j++){
+          MIDI.sendNoteOn(chords[chordCounter][j], 100, 1);
+        }
+        // turn off previous chord
+        for (int j = 0; j < notesPerChord; j++){
+          MIDI.sendNoteOff(chords[(chordCounter+numChords-1) % numChords][j], 100, 1);
+        }
+        chordCounter++;
+        secondChordPlayed = true;
+      }
+      else if (timeSinceLastStep < strideFreq/2){
+        secondChordPlayed = false;
       }
     }
   }
@@ -565,8 +689,6 @@ void loop(){
           for (int j = 0; i < numDrums; i++){
             if (drums[i][j] == 1){
               MIDI.sendNoteOn(j, 50, 1);
-              delay(5);
-              MIDI.sendNoteOff(j, 50, 1);
             }
             drumHitPlayed[i] = true;
           }
@@ -579,7 +701,6 @@ void loop(){
   }
 
   timeSinceLastStep = millis() - lastStepTime;
-
   
   chordCounter %= numChords;
 
