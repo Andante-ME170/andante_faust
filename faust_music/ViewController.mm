@@ -23,6 +23,9 @@ NSLock *theLock = [[NSLock alloc] init];
 @property (nonatomic, strong) NSString *midiServiceUUID;
 @property (nonatomic, strong) NSString *midiCharUUID;
 
+@property (nonatomic, strong) NSString *footDeviceName;
+@property (nonatomic, strong) NSString *kneeDeviceName;
+
 @property (nonatomic, strong) NSString *bleDevice;
 @property (nonatomic, strong) NSMutableArray *pickerData;
 @property (nonatomic, strong) NSMutableArray *devices;
@@ -56,6 +59,9 @@ NSLock *theLock = [[NSLock alloc] init];
     
     _midiCharUUID = @"7772E5DB-3868-4112-A1A9-F2669D106BF3";
     _midiServiceUUID = @"03B80E5A-EDE8-4B33-A751-6CE34EC4C700";
+    
+    _footDeviceName = @"Bluefruit52 MIDI foot";
+    _kneeDeviceName = @"Bluefruit52 MIDI knee";
     
     
     const int SR = 44100;
@@ -229,13 +235,13 @@ didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic error:(NSErro
         case TOE_OFF:
         {
             // swing phase
-            if ([peripheral.name containsString:@"Bluefruit52 MIDI knee"]) {
+            if ([peripheral.name containsString:_kneeDeviceName]) {
                 if (vals[1] >= kneeStanceAvg + KNEE_DIFF_THRESH) {
                     tonicChange = true;
                 }
                 NSLog(@"Knee angle = %d", vals[1]);
                 NSLog(@"kneeStanceAvg = %d", kneeStanceAvg);
-            } else if ([peripheral.name containsString:@"Bluefruit52 MIDI foot"]) {
+            } else if ([peripheral.name containsString:_footDeviceName]) {
                 if (vals[1] == HEEL_STRIKE) {
                     state = HEEL_STRIKE;
                     kneeStanceAvg = 0;
@@ -251,10 +257,10 @@ didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic error:(NSErro
         case HEEL_STRIKE:
         {
             // stance phase
-            if ([peripheral.name containsString:@"Bluefruit52 MIDI knee"]) {
+            if ([peripheral.name containsString:_kneeDeviceName]) {
                 kneeStanceAvg += vals[1];
                 numStanceAvg++;
-            } else if ([peripheral.name containsString:@"Bluefruit52 MIDI foot"]) {
+            } else if ([peripheral.name containsString:_footDeviceName]) {
                 if (vals[1] == TOE_OFF) {
                     state = TOE_OFF;
                     kneeStanceAvg /= numStanceAvg;
@@ -265,11 +271,11 @@ didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic error:(NSErro
     }
 
     [theLock lock];
-    if ([peripheral.name containsString:@"Bluefruit52 MIDI foot"] && vals[2] == 144){
+    if ([peripheral.name containsString:_footDeviceName] && vals[2] == 144){
         dspFaust->keyOn(circleOf5ths[tonicIdx] + vals[1], vals[0]);
         NSLog(@"MIDI int: %d", vals[1]);
     }
-    else if ([peripheral.name containsString:@"Bluefruit52 MIDI foot"] && vals[2] == 128){
+    else if ([peripheral.name containsString:_footDeviceName] && vals[2] == 128){
         dspFaust->keyOff(circleOf5ths[tonicIdx] + vals[1]);
     }
     [theLock unlock];
