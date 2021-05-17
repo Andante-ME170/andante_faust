@@ -8,8 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		121C26042638B2FA00CFA2F1 /* DspFaust.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 121C26032638B2FA00CFA2F1 /* DspFaust.cpp */; };
-		12F9D750264DBBE50031EC7C /* basic hat.wav in Resources */ = {isa = PBXBuildFile; fileRef = 12F9D74F264DBBE50031EC7C /* basic hat.wav */; };
-		12F9D755264DBC1B0031EC7C /* smooth kick 1.wav in Resources */ = {isa = PBXBuildFile; fileRef = 12F9D754264DBC1B0031EC7C /* smooth kick 1.wav */; };
 		A2E7CC3D262188C6006CA38B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A2E7CC3C262188C6006CA38B /* AppDelegate.m */; };
 		A2E7CC40262188C6006CA38B /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A2E7CC3F262188C6006CA38B /* SceneDelegate.m */; };
 		A2E7CC43262188C6006CA38B /* ViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = A2E7CC42262188C6006CA38B /* ViewController.mm */; };
@@ -21,7 +19,6 @@
 		A2E7CC63262188CA006CA38B /* faust_musicUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = A2E7CC62262188CA006CA38B /* faust_musicUITests.m */; };
 		DB5A03FE264B8EF500EBC762 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB5A03FD264B8EF500EBC762 /* AVFoundation.framework */; };
 		DB5A0400264B9FAC00EBC762 /* SleepWalkChords.wav in Resources */ = {isa = PBXBuildFile; fileRef = DB5A03FF264B9FAC00EBC762 /* SleepWalkChords.wav */; };
-		DB5A0402264B9FB300EBC762 /* Drum.wav in Resources */ = {isa = PBXBuildFile; fileRef = DB5A0401264B9FB300EBC762 /* Drum.wav */; };
 		DB5A041C264E581800EBC762 /* ViewController2.mm in Sources */ = {isa = PBXBuildFile; fileRef = DB5A041B264E581800EBC762 /* ViewController2.mm */; };
 		DB5A0421264E6FCA00EBC762 /* FUNKY_HOUSE.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = DB5A0420264E6FCA00EBC762 /* FUNKY_HOUSE.mp3 */; };
 		DB5A0423264E6FEB00EBC762 /* WalkingOnSunshine.wav in Resources */ = {isa = PBXBuildFile; fileRef = DB5A0422264E6FEB00EBC762 /* WalkingOnSunshine.wav */; };
@@ -54,8 +51,6 @@
 /* Begin PBXFileReference section */
 		121C26022638B2FA00CFA2F1 /* DspFaust.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DspFaust.h; sourceTree = "<group>"; };
 		121C26032638B2FA00CFA2F1 /* DspFaust.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DspFaust.cpp; sourceTree = "<group>"; };
-		12F9D74F264DBBE50031EC7C /* basic hat.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "basic hat.wav"; sourceTree = "<group>"; };
-		12F9D754264DBC1B0031EC7C /* smooth kick 1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "smooth kick 1.wav"; sourceTree = "<group>"; };
 		A2E7CC38262188C6006CA38B /* faust_music.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = faust_music.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A2E7CC3B262188C6006CA38B /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		A2E7CC3C262188C6006CA38B /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -76,7 +71,6 @@
 		A2E7CC64262188CA006CA38B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DB5A03FD264B8EF500EBC762 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		DB5A03FF264B9FAC00EBC762 /* SleepWalkChords.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = SleepWalkChords.wav; sourceTree = "<group>"; };
-		DB5A0401264B9FB300EBC762 /* Drum.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Drum.wav; sourceTree = "<group>"; };
 		DB5A041A264E581800EBC762 /* ViewController2.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController2.h; sourceTree = "<group>"; };
 		DB5A041B264E581800EBC762 /* ViewController2.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = ViewController2.mm; sourceTree = "<group>"; };
 		DB5A0420264E6FCA00EBC762 /* FUNKY_HOUSE.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = FUNKY_HOUSE.mp3; sourceTree = "<group>"; };
@@ -198,9 +192,6 @@
 		DB5A0428264E701000EBC762 /* Trap */ = {
 			isa = PBXGroup;
 			children = (
-				12F9D754264DBC1B0031EC7C /* smooth kick 1.wav */,
-				DB5A0401264B9FB300EBC762 /* Drum.wav */,
-				12F9D74F264DBBE50031EC7C /* basic hat.wav */,
 			);
 			path = Trap;
 			sourceTree = "<group>";
@@ -337,12 +328,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				12F9D750264DBBE50031EC7C /* basic hat.wav in Resources */,
 				A2E7CC4B262188CA006CA38B /* LaunchScreen.storyboard in Resources */,
 				DB5A0427264E6FFB00EBC762 /* Car.wav in Resources */,
-				12F9D755264DBC1B0031EC7C /* smooth kick 1.wav in Resources */,
 				DB5A0425264E6FF500EBC762 /* Telephone.wav in Resources */,
-				DB5A0402264B9FB300EBC762 /* Drum.wav in Resources */,
 				A2E7CC48262188CA006CA38B /* Assets.xcassets in Resources */,
 				DB5A0434264F398E00EBC762 /* please-no.mp3 in Resources */,
 				DB5A0421264E6FCA00EBC762 /* FUNKY_HOUSE.mp3 in Resources */,
