@@ -11,7 +11,17 @@
 #import "ViewController.h"
 #import "DspFaust.h"
 
+#define HEEL_STRIKE         0       // tonic (do)
+#define TOE_OFF             9       // submediant (la)
+#define NUM_FIFTHS          12
+#define KNEE_DIFF_THRESH    30
+
+NSLock *theLock = [[NSLock alloc] init];
+
 @interface ViewController ()
+
+@property (nonatomic, strong) NSString *midiServiceUUID;
+@property (nonatomic, strong) NSString *midiCharUUID;
 
 @property (nonatomic, strong) NSString *bleDevice;
 @property (nonatomic, strong) NSMutableArray *pickerData;
@@ -25,11 +35,28 @@
 
 @implementation ViewController{
     DspFaust *dspFaust;
+    int state;
+    int circleOf5ths[NUM_FIFTHS];
+    int tonicIdx;
+    int kneeStanceAvg;
+    int numStanceAvg;
+    bool tonicChange;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    state = TOE_OFF;
+    int co5[NUM_FIFTHS] = {48,55,50,57,52,59,54,49,56,51,58,53};
+    memcpy(circleOf5ths, co5, sizeof(co5));
+    tonicIdx = 0;
+    kneeStanceAvg = 0;
+    numStanceAvg = 0;
+    tonicChange = false;
+    
+    _midiCharUUID = @"7772E5DB-3868-4112-A1A9-F2669D106BF3";
+    _midiServiceUUID = @"03B80E5A-EDE8-4B33-A751-6CE34EC4C700";
+    
     
     const int SR = 44100;
     const int bufferSize = 256;
@@ -156,7 +183,7 @@ didDisconnectPeripheral:(CBPeripheral *)peripheral error:(NSError *)error {
 didDiscoverServices:(NSError *)error {
     for (CBService *service in peripheral.services) {
         NSLog(@"<%@>", service.UUID.UUIDString);
-        if ([service.UUID.UUIDString isEqualToString:@"03B80E5A-EDE8-4B33-A751-6CE34EC4C700"]) {
+        if ([service.UUID.UUIDString isEqualToString:_midiServiceUUID]) {
             NSLog(@"BLE MIDI!");
             [peripheral discoverCharacteristics:nil forService:service];
         }
@@ -166,20 +193,22 @@ didDiscoverServices:(NSError *)error {
 - (void)peripheral:(CBPeripheral *)peripheral
 didDiscoverCharacteristicsForService:(CBService *)service error:(NSError *)error {
     for (CBCharacteristic *characteristic in service.characteristics) {
-        if ([characteristic.UUID.UUIDString containsString:@"7772E5DB-3868-4112-A1A9-F2669D106BF3"]) {
+        if ([characteristic.UUID.UUIDString containsString:_midiCharUUID]) {
             
             NSLog(@"Got characteristics!");
             [peripheral setNotifyValue:YES forCharacteristic:characteristic];
             [peripheral readValueForCharacteristic:characteristic];
-            
+
         }
     }
 }
 
+
+
 - (void)peripheral:(CBPeripheral *)peripheral
 didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic error:(NSError *)error {
-    NSLog(@"reading value!");
-    NSLog(@"<%@>", characteristic.value);
+    //NSLog(@"reading value!");
+    //NSLog(@"<%@>", characteristic.value);
     
     NSData *rawData = characteristic.value;
     
@@ -190,18 +219,62 @@ didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic error:(NSErro
     int intVal = (int)(longVal >> 16);
     int mask[3] = {0xff0000, 0xff00, 0xff};
     int vals[3] = {(intVal & mask[0]) >> 16, (intVal & mask[1]) >> 8, intVal & mask[2]};
-    NSLog(@"MIDI int #1: %d", vals[0]);
-    NSLog(@"MIDI int #2: %d", vals[1]);
-    NSLog(@"MIDI int #3: %d", vals[2]);
+    //NSLog(@"MIDI int #1: %d", vals[0]);
+    //NSLog(@"MIDI int #2: %d", vals[1]);
+    //NSLog(@"MIDI int #3: %d", vals[2]);
+    
     // Play music
-    if (vals[2] == 144){
-        //dspFaust->start();
-        dspFaust->keyOn(vals[1], vals[0]);
+    
+    switch (state) {
+        case TOE_OFF:
+        {
+            // swing phase
+            if ([peripheral.name containsString:@"Bluefruit52 MIDI knee"]) {
+                if (vals[1] >= kneeStanceAvg + KNEE_DIFF_THRESH) {
+                    tonicChange = true;
+                }
+                NSLog(@"Knee angle = %d", vals[1]);
+                NSLog(@"kneeStanceAvg = %d", kneeStanceAvg);
+            } else if ([peripheral.name containsString:@"Bluefruit52 MIDI foot"]) {
+                if (vals[1] == HEEL_STRIKE) {
+                    state = HEEL_STRIKE;
+                    kneeStanceAvg = 0;
+                    numStanceAvg = 0;
+                    if (tonicChange) {
+                        tonicIdx = (tonicIdx + 1) % NUM_FIFTHS;
+                    }
+                    tonicChange = false;
+                }
+            }
+            break;
+        }
+        case HEEL_STRIKE:
+        {
+            // stance phase
+            if ([peripheral.name containsString:@"Bluefruit52 MIDI knee"]) {
+                kneeStanceAvg += vals[1];
+                numStanceAvg++;
+            } else if ([peripheral.name containsString:@"Bluefruit52 MIDI foot"]) {
+                if (vals[1] == TOE_OFF) {
+                    state = TOE_OFF;
+                    kneeStanceAvg /= numStanceAvg;
+                }
+            }
+            break;
+        }
     }
-    else if (vals[2] == 128){
-        dspFaust->keyOff(vals[1]);
-        //dspFaust->stop();
+
+    [theLock lock];
+    if ([peripheral.name containsString:@"Bluefruit52 MIDI foot"] && vals[2] == 144){
+        dspFaust->keyOn(circleOf5ths[tonicIdx] + vals[1], vals[0]);
+        NSLog(@"MIDI int: %d", vals[1]);
     }
+    else if ([peripheral.name containsString:@"Bluefruit52 MIDI foot"] && vals[2] == 128){
+        dspFaust->keyOff(circleOf5ths[tonicIdx] + vals[1]);
+    }
+    [theLock unlock];
+
+     
 }
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
@@ -229,7 +302,27 @@ didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic error:(NSErro
 
 - (IBAction)buttonPressed:(id)sender {
     // your code here
-    // play Faust music
+    
+    // send BLE signal to nRF52
+    for (int i = 0; i < [_devices count]; i++) {
+        CBPeripheral *device = [_devices objectAtIndex:i];
+        if ([device.name containsString:@"Bluefruit"]) {
+            for (CBService *service in device.services) {
+                if ([service.UUID.UUIDString isEqualToString:_midiServiceUUID]) {
+                    for (CBCharacteristic *characteristic in service.characteristics) {
+                        if ([characteristic.UUID.UUIDString containsString:_midiCharUUID]) {
+                            NSLog(@"BLE MIDI!");
+                            int intVal = (100 << 16) + (101 << 8) + 102;
+                            NSData *data = [NSData dataWithBytes: &intVal length: sizeof(intVal)];
+                            NSLog(@"<%@>", data);
+                            [device writeValue:data forCharacteristic:characteristic type:CBCharacteristicWriteWithResponse];
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
     
     /* Added below, modeled off of (https://ccrma.stanford.edu/~rmichon/faustTutorials/#adding-faust-real-time-audio-support-to-ios-apps)
      */
