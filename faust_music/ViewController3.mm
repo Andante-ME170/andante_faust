@@ -54,7 +54,7 @@ NSString *g;
      NSString * title = nil;
          switch(row) {
                  case 0:
-                     title = @"Trap";
+                     title = @"Minor Chord";
                      Globalgenre = 0;
                      break;
                  case 1:

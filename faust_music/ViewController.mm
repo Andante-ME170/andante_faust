@@ -10,15 +10,15 @@
 #import <AVFoundation/AVFoundation.h>
 #import "ViewController2.h"
 #import "ViewController3.h"
+#import <stdarg.h>
 
 NSLock *theLock  = [[NSLock alloc] init];
 
 NSMutableArray *soundOn = [[NSMutableArray alloc]init];
 NSMutableArray *randomSoundsArray = [[NSMutableArray alloc]init];
 NSMutableArray *randomSoundsArrayAP = [[NSMutableArray alloc]init];
-NSMutableArray *PianoTry = [[NSMutableArray alloc]init];
-// Create an object maybe??
-// genre object, instance variables and stuffs
+NSMutableArray *Piano = [[NSMutableArray alloc]init];
+
 
 int prevGenre = -1;
                          
@@ -51,6 +51,57 @@ int prevGenre = -1;
 @property(nonatomic,strong)AVAudioPlayer *audioPlayer;
 
 
+// Piano
+@property(nonatomic,strong)AVAudioPlayer *APPiano32;
+@property(nonatomic,strong)AVAudioPlayer *APPiano33;
+@property(nonatomic,strong)AVAudioPlayer *APPiano34;
+@property(nonatomic,strong)AVAudioPlayer *APPiano35;
+@property(nonatomic,strong)AVAudioPlayer *APPiano36;
+@property(nonatomic,strong)AVAudioPlayer *APPiano37;
+@property(nonatomic,strong)AVAudioPlayer *APPiano38;
+@property(nonatomic,strong)AVAudioPlayer *APPiano39;
+@property(nonatomic,strong)AVAudioPlayer *APPiano40;
+@property(nonatomic,strong)AVAudioPlayer *APPiano41;
+@property(nonatomic,strong)AVAudioPlayer *APPiano42;
+@property(nonatomic,strong)AVAudioPlayer *APPiano43;
+//@property(nonatomic,strong)AVAudioPlayer *APPiano44;
+//@property(nonatomic,strong)AVAudioPlayer *APPiano45;
+//@property(nonatomic,strong)AVAudioPlayer *APPiano46;
+//@property(nonatomic,strong)AVAudioPlayer *APPiano47;
+@property(nonatomic,strong)AVAudioPlayer *APPiano48;
+@property(nonatomic,strong)AVAudioPlayer *APPiano49;
+@property(nonatomic,strong)AVAudioPlayer *APPiano50;
+@property(nonatomic,strong)AVAudioPlayer *APPiano51;
+@property(nonatomic,strong)AVAudioPlayer *APPiano52;
+@property(nonatomic,strong)AVAudioPlayer *APPiano53;
+@property(nonatomic,strong)AVAudioPlayer *APPiano54;
+@property(nonatomic,strong)AVAudioPlayer *APPiano55;
+//@property(nonatomic,strong)AVAudioPlayer *APPiano56;
+@property(nonatomic,strong)AVAudioPlayer *APPiano57;
+@property(nonatomic,strong)AVAudioPlayer *APPiano58;
+@property(nonatomic,strong)AVAudioPlayer *APPiano59;
+@property(nonatomic,strong)AVAudioPlayer *APPiano60;
+@property(nonatomic,strong)AVAudioPlayer *APPiano61;
+@property(nonatomic,strong)AVAudioPlayer *APPiano62;
+@property(nonatomic,strong)AVAudioPlayer *APPiano63;
+@property(nonatomic,strong)AVAudioPlayer *APPiano64;
+@property(nonatomic,strong)AVAudioPlayer *APPiano65;
+@property(nonatomic,strong)AVAudioPlayer *APPiano66;
+@property(nonatomic,strong)AVAudioPlayer *APPiano67;
+@property(nonatomic,strong)AVAudioPlayer *APPiano68;
+@property(nonatomic,strong)AVAudioPlayer *APPiano69;
+@property(nonatomic,strong)AVAudioPlayer *APPiano70;
+@property(nonatomic,strong)AVAudioPlayer *APPiano71;
+@property(nonatomic,strong)AVAudioPlayer *APPiano72;
+@property(nonatomic,strong)AVAudioPlayer *APPiano73;
+@property(nonatomic,strong)AVAudioPlayer *APPiano74;
+@property(nonatomic,strong)AVAudioPlayer *APPiano75;
+@property(nonatomic,strong)AVAudioPlayer *APPiano76;
+@property(nonatomic,strong)AVAudioPlayer *APPiano77;
+@property(nonatomic,strong)AVAudioPlayer *APPiano78;
+@property(nonatomic,strong)AVAudioPlayer *APPiano79;
+@property(nonatomic,strong)AVAudioPlayer *APPiano80;
+
 // More genres here!
 
 @end
@@ -78,6 +129,55 @@ int prevGenre = -1;
 //@synthesize noAP = no;
 
 // Insert more genres
+@synthesize APPiano32 = Piano32;
+@synthesize APPiano33 =  Piano33;
+@synthesize APPiano34 = Piano34;
+@synthesize APPiano35 = Piano35;
+@synthesize APPiano36 = Piano36;
+@synthesize APPiano37 = Piano37;
+@synthesize APPiano38 = Piano38;
+@synthesize APPiano39 = Piano39;
+@synthesize APPiano40 = Piano40;
+@synthesize APPiano41 = Piano41;
+@synthesize APPiano42 = Piano42;
+@synthesize APPiano43 =  Piano43;
+//@synthesize APPiano44 = Piano44;
+//@synthesize APPiano45 = Piano45;
+//@synthesize APPiano46 = Piano46;
+//@synthesize APPiano47 = Piano47;
+@synthesize APPiano48 = Piano48;
+@synthesize APPiano49 = Piano49;
+@synthesize APPiano50 = Piano50;
+@synthesize APPiano51 = Piano51;
+@synthesize APPiano52 = Piano52;
+@synthesize APPiano53 = Piano53;
+@synthesize APPiano54 = Piano54;
+@synthesize APPiano55 = Piano55;
+//@synthesize APPiano56 = Piano56;
+@synthesize APPiano57 = Piano57;
+@synthesize APPiano58 = Piano58;
+@synthesize APPiano59 = Piano59;
+@synthesize APPiano60 = Piano60;
+@synthesize APPiano61 = Piano61;
+@synthesize APPiano62 = Piano62;
+@synthesize APPiano63 = Piano63;
+@synthesize APPiano64 = Piano64;
+@synthesize APPiano65 = Piano65;
+@synthesize APPiano66 = Piano66;
+@synthesize APPiano67 = Piano67;
+@synthesize APPiano68 = Piano68;
+@synthesize APPiano69 = Piano69;
+@synthesize APPiano70 = Piano70;
+@synthesize APPiano71 = Piano71;
+@synthesize APPiano72 = Piano72;
+@synthesize APPiano73 = Piano73;
+@synthesize APPiano74 = Piano74;
+@synthesize APPiano75 = Piano75;
+@synthesize APPiano76 = Piano76;
+@synthesize APPiano77 = Piano77;
+@synthesize APPiano78 = Piano78;
+@synthesize APPiano79 = Piano79;
+@synthesize APPiano80 = Piano80;
 
 
 int chordCounter = 0;
@@ -145,16 +245,14 @@ float detuneAmount = 0.0f;
     [funky prepareToPlay];
 
     // More gengres here
-    
- //   no = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"please-no" withExtension:@ "mp3"] error:&error];
-  //  [no prepareToPlay];
+
     
     switch(Globalgenre) {
             case -1:
                 self.genreValue.text = @"Current: Not set";
                 break;
             case 0:
-                self.genreValue.text = @"Current: Trap";
+                self.genreValue.text = @"Current: Minor Chord";
                 break;
             case 1:
                 self.genreValue.text = @"Random Sounds";
@@ -173,28 +271,292 @@ float detuneAmount = 0.0f;
         //audioPlayer2 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource: Piano[i] withExtension:@ "wav"] error:&error];
         
 
-
+/*
     for(int i = 0; i < 33; i++) {
-        [PianoTry addObject:@"None"]; // want to be empty here
+        [Piano addObject:@"None"]; // want to be empty here
     }
-    
     for(int i = 33; i < 40; i++) {
         NSString *check = @"AndantePiano";
         check = [check stringByAppendingString:[NSString stringWithFormat:@"%d",i]];
         audioPlayer2 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource: check withExtension:@ "wav"] error:&error];
         [audioPlayer2 prepareToPlay];
-        [PianoTry addObject:audioPlayer2]; // adds objects to array
+        [Piano addObject:audioPlayer2]; // adds objects to array
       //  audioPlayer2.currentTime = 2 + 40*i;
        // [audioPlayer2 play];
         
+        */
+    
+    
+    Piano33 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndantePiano33" withExtension:@ "wav"] error:&error];
+        [Piano33 prepareToPlay];
+    // [Piano addObject: Piano32];
+       // addObject:[Piano objectAtIndex:33];
+   // [Piano33 play]; // A1
+    // [(AVAudioPlayer*)[Piano objectAtIndex: 0] play]; ***ISSSUE MELISSA
+        
+    Piano34 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndantePiano34" withExtension:@ "wav"] error:&error];
+    [Piano34 prepareToPlay];
+   // [Piano addObject: Piano32];
+    // [Piano34 play];
+    
+    Piano35 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndantePiano35" withExtension:@ "wav"] error:&error];
+    [Piano35 prepareToPlay];
+   // [Piano addObject: Piano32];
+    //[Piano35 play];
+    
+    Piano36 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndantePiano36" withExtension:@ "wav"] error:&error];
+    [Piano36 prepareToPlay];
+   // [Piano addObject: Piano32];
+    // [Piano36 play];
+    
+    Piano37 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndantePiano37" withExtension:@ "wav"] error:&error];
+    [Piano37 prepareToPlay];
+   // [Piano addObject: Piano32];
+    //[Piano37 play];
+    
+    Piano38 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndantePiano38" withExtension:@ "wav"] error:&error];
+    [Piano38 prepareToPlay];
+   // [Piano addObject: Piano32];
+    // [Piano38 play];
+    
+    Piano39 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndantePiano39" withExtension:@ "wav"] error:&error];
+    [Piano39 prepareToPlay];
+   // [Piano addObject: Piano32];
+    // [Piano39 play];
+    
+    Piano40 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndantePiano40" withExtension:@ "wav"] error:&error];
+    [Piano40 prepareToPlay];
+   // [Piano addObject: Piano32];
+    // [Piano40 play];
+    
+    Piano41 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndantePiano41" withExtension:@ "wav"] error:&error];
+    [Piano41 prepareToPlay];
+   // [Piano addObject: Piano32];
+    //[Piano41 play];
+    
+    Piano42 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndantePiano42" withExtension:@ "wav"] error:&error];
+    [Piano42 prepareToPlay];
+   // [Piano addObject: Piano32];
+    //  [Piano42 play];
+    
+    Piano43 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndantePiano43" withExtension:@ "wav"] error:&error];
+    [Piano43 prepareToPlay];
+   // [Piano addObject: Piano32];
+    // [Piano43 play];
+
+  //  Piano44 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndantePiano44" withExtension:@ "wav"] error:&error];
+  //  [Piano44 prepareToPlay];
+   // [Piano addObject: Piano32];
+    // [Piano44 play];
+
+  //  Piano45 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndantePiano45" withExtension:@ "wav"] error:&error];
+  //  [Piano45 prepareToPlay];
+   // [Piano addObject: Piano32];
+    // [Piano45 play];
+
+   // Piano46 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndantePiano46" withExtension:@ "wav"] error:&error];
+   // [Piano46 prepareToPlay];
+   // [Piano addObject: Piano32];
+    // [Piano46 play];
+
+   // Piano47 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndantePiano47" withExtension:@ "wav"] error:&error];
+   // [Piano47 prepareToPlay];
+   // [Piano addObject: Piano32];
+    // [Piano47 play];
+
+    Piano48 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndantePiano48" withExtension:@ "wav"] error:&error];
+    [Piano48 prepareToPlay];
+   // [Piano addObject: Piano32];
+    // [Piano48 play];
+
+
+    Piano49 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndantePiano49" withExtension:@ "wav"] error:&error];
+    [Piano49 prepareToPlay];
+   // [Piano addObject: Piano32];
+    // [Piano49 play];
+
+    Piano50 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndantePiano50" withExtension:@ "wav"] error:&error];
+    [Piano50 prepareToPlay];
+    // [Piano50 play];
+
+    Piano51 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndantePiano51" withExtension:@ "wav"] error:&error];
+    [Piano51 prepareToPlay];
+    // [Piano51 play];
+
+    Piano52 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndantePiano52" withExtension:@ "wav"] error:&error];
+    [Piano52 prepareToPlay];
+    // [Piano52 play];
+
+
+    Piano53 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndantePiano53" withExtension:@ "wav"] error:&error];
+    [Piano53 prepareToPlay];
+    // [Piano53 play];
+
+    Piano54 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndantePiano54" withExtension:@ "wav"] error:&error];
+    [Piano54 prepareToPlay];
+    // [Piano54 play];
+
+    Piano55 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndantePiano55" withExtension:@ "wav"] error:&error];
+    [Piano55 prepareToPlay];
+   // [Piano55 play];
+
+  //  Piano56 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndantePiano56" withExtension:@ "wav"] error:&error];
+  //  [Piano56 prepareToPlay];
+    // [Piano56 play];
+
+    Piano57 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndantePiano57" withExtension:@ "wav"] error:&error];
+    [Piano57 prepareToPlay];
+    //[Piano57 play];
+    
+    Piano58 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndantePiano58" withExtension:@ "wav"] error:&error];
+    [Piano58 prepareToPlay];
+    //[Piano58 play];
+
+    Piano59 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndantePiano59" withExtension:@ "wav"] error:&error];
+    [Piano59 prepareToPlay];
+    //[Piano59 play];
+
+    Piano60 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndantePiano60" withExtension:@ "wav"] error:&error];
+    [Piano60 prepareToPlay];
+    //[Piano60 play];
+
+    Piano51 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndantePiano51" withExtension:@ "wav"] error:&error];
+    [Piano51 prepareToPlay];
+    // [Piano51 play];
+
+    Piano52 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndantePiano52" withExtension:@ "wav"] error:&error];
+    [Piano52 prepareToPlay];
+    // [Piano52 play];
+
+
+    Piano53 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndantePiano53" withExtension:@ "wav"] error:&error];
+    [Piano53 prepareToPlay];
+    //[Piano53 play];
+
+    Piano54 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndantePiano54" withExtension:@ "wav"] error:&error];
+    [Piano54 prepareToPlay];
+    // [Piano54 play];
+
+    Piano55 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndantePiano55" withExtension:@ "wav"] error:&error];
+    [Piano55 prepareToPlay];
+    // [Piano55 play];
+
+   // Piano56 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndantePiano56" withExtension:@ "wav"] error:&error];
+  //  [Piano56 prepareToPlay];
+    // [Piano56 play];
+
+    Piano57 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndantePiano57" withExtension:@ "wav"] error:&error];
+    [Piano57 prepareToPlay];
+    // [Piano57 play];
+
+    Piano58 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndantePiano58" withExtension:@ "wav"] error:&error];
+    [Piano58 prepareToPlay];
+    // [Piano58 play];
+
+    Piano59 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndantePiano59" withExtension:@ "wav"] error:&error];
+    [Piano59 prepareToPlay];
+    // [Piano59 play];
+
+    Piano60 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndantePiano60" withExtension:@ "wav"] error:&error];
+    [Piano60 prepareToPlay];
+    // [Piano60 play];
+    
+    Piano61 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndantePiano61" withExtension:@ "wav"] error:&error];
+    [Piano61 prepareToPlay];
+    // [Piano61 play];
+    
+    Piano62 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndantePiano62" withExtension:@ "wav"] error:&error];
+    [Piano62 prepareToPlay];
+    // [Piano62 play];
+    
+    Piano62 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndantePiano62" withExtension:@ "wav"] error:&error];
+    [Piano62 prepareToPlay];
+    //  [Piano62 play];
+    
+    Piano63 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndantePiano63" withExtension:@ "wav"] error:&error];
+    [Piano63 prepareToPlay];
+    //  [Piano63 play];
+    
+    Piano64 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndantePiano64" withExtension:@ "wav"] error:&error];
+    [Piano64 prepareToPlay];
+    // [Piano64 play];
+    
+    Piano65 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndantePiano65" withExtension:@ "wav"] error:&error];
+    [Piano65 prepareToPlay];
+    //  [Piano65 play];
+    
+    Piano66 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndantePiano66" withExtension:@ "wav"] error:&error];
+    [Piano66 prepareToPlay];
+    //  [Piano66 play];
+    
+    Piano67 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndantePiano67" withExtension:@ "wav"] error:&error];
+    [Piano67 prepareToPlay];
+    // [Piano67 play];
+    
+    Piano68 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndantePiano68" withExtension:@ "wav"] error:&error];
+    [Piano68 prepareToPlay];
+    // [Piano68 play];
+    
+    Piano69 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndantePiano69" withExtension:@ "wav"] error:&error];
+    [Piano69 prepareToPlay];
+    // [Piano69 play];
+    
+    
+    Piano70 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndantePiano70" withExtension:@ "wav"] error:&error];
+    [Piano70 prepareToPlay];
+    // [Piano70 play];
+    
+    Piano71 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndantePiano71" withExtension:@ "wav"] error:&error];
+    [Piano71 prepareToPlay];
+    //  [Piano71 play];
+    
+    Piano72 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndantePiano72" withExtension:@ "wav"] error:&error];
+    [Piano72 prepareToPlay];
+    //  [Piano72 play];
+    
+    Piano73 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndantePiano73" withExtension:@ "wav"] error:&error];
+    [Piano73 prepareToPlay];
+    //  [Piano73 play];
+    
+    Piano74 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndantePiano74" withExtension:@ "wav"] error:&error];
+    [Piano74 prepareToPlay];
+    // [Piano74 play];
+    
+    
+    Piano75 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndantePiano75" withExtension:@ "wav"] error:&error];
+    [Piano75 prepareToPlay];
+    //  [Piano75 play];
+    
+    Piano76 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndantePiano76" withExtension:@ "wav"] error:&error];
+    [Piano76 prepareToPlay];
+    // [Piano76 play];
+    
+    Piano77 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndantePiano77" withExtension:@ "wav"] error:&error];
+    [Piano77 prepareToPlay];
+    // [Piano77 play];
+    
+    Piano78 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndantePiano78" withExtension:@ "wav"] error:&error];
+    [Piano78 prepareToPlay];
+    // [Piano78 play];
+    
+    Piano79 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndantePiano79" withExtension:@ "wav"] error:&error];
+    [Piano79 prepareToPlay];
+    //[Piano79 play];
+    
+    Piano80 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndantePiano80" withExtension:@ "wav"] error:&error];
+    [Piano80 prepareToPlay];
+    // [Piano80 play];
+
 }
+
+
     // THIS CODE WORKS!!
     /*
     audioPlayer2 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndantePiano33" withExtension:@ "wav"] error:&error];
     [audioPlayer2 prepareToPlay];
     [audioPlayer2 play];
      */
-}
+
     
     
     
@@ -535,19 +897,49 @@ didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic error:(NSErro
 
 
 - (IBAction)buttonPressed:(id)sender {
+  //  [Piano33 play]; // A
+  //  [Piano37 play]; // C#
+   // [Piano40 play]; // E
+   // [soundOn addObject:Piano33]; // adds objects to array
+   // [soundOn addObject:Piano37]; // adds objects to array
+    //[soundOn addObject:Piano40]; // adds objects to array
+    
     if (prevGenre != Globalgenre) {
         [self turnOff]; // reset sounds
-      //  [no stop]; // stop Michael Scott, Melissa delete later
     }
-    if (Globalgenre == 0) { // Trap
+    if (Globalgenre == 0) { // Minor
       //  [self genreTrap];
-        [self Piano];
+        [self playPiano:Piano78];
+        
+        
+      //  [Piano33 stop]; // A
+      //  [Piano37 stop]; // C#
+      //  [Piano40 stop];
+      //  [Piano60 play];
+      //  [Piano63 play];
+      //  [Piano67 play];
+        
+        
+        
+        
+       // [soundOn addObject:Piano60]; // adds objects to array
+       // [soundOn addObject:Piano63]; // adds objects to array
+       // [soundOn addObject:Piano67]; // adds objects to array
+       // [self Piano];
         prevGenre = 0;
       //  [kick play];
     }
     else if (Globalgenre == 1) { // RandomSongs
-        [self genreRS];
+        //[Piano33 play]; // A
+       // [Piano37 play]; // C#
+       // [Piano40 play]; // E
+       // [Piano addObject:Piano33];
+        [Piano addObject:Piano37];
+        [Piano addObject:Piano40];
+        [[Piano objectAtIndex:(33-33)] play];
+      //  [self genreRS];
         prevGenre = 1;
+        
        // [phone play];
     }
     else if (Globalgenre == 2) { // Songs
@@ -560,16 +952,6 @@ didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic error:(NSErro
        // [no play];
     }
     
-    //else {
-      //  [self walkSunshineAP];
-       // [sunshine play];
-    //}
-        
-        // [self kickAP];
-       //  [kick play];
-       //  [self hatAP];
-       //  [hat play];) {
-
     
     //[self kickAP];
     //[kick play];
@@ -583,34 +965,60 @@ didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic error:(NSErro
       //  [_audioPlayer2 pause];
    // }
 }
+
+
+-(void)playPiano:(AVAudioPlayer*)key, ...{
+    [key play];
+    /*
+    va_list args;
+    va_start(args, normal);
+    
+    id arg = nil;
+    while((arg = va_arg(args,id))){
+        [args play];
+    }
+     */
+}
+
+
+
 - (IBAction)Genre:(id)sender {
     // resets for things that go to other pages because of memory, "pause music" truly only does pause
     [self turnOff];
 }
 
+
 -(void)turnOff {
     for(id tempObject in soundOn) { // loop through every element in the array
         [tempObject stop]; // change to stop later...
+        [soundOn removeObject:tempObject]; // remove object once it has been turned off
   //      NSLog(@"Single element: %@", tempObject);
     }
 }
 
 -(void)Piano {
    // [soundOn removeAllObjects];
-  //  [self kickAP];
-    for(int i = 33; i < [PianoTry count]; i++) {
-        [(AVAudioPlayer*)[PianoTry objectAtIndex:i] play];
+    [self APPiano48];
+    [self APPiano53];
+    [self APPiano55];
+    [Piano48 play];
+    [Piano53 play];
+    [Piano55 play];
+  //  for(int i = 33; i < [Piano count]; i++) {
+        //[(AVAudioPlayer*)[Piano objectAtIndex:i] play];
         
       //  if (![soundOn containsObject:[Trap objectAtIndex:i]]) {
       //  [soundOn addObject:[Trap objectAtIndex:i]]; // adds objects to array
       //  }
-    }
 }
+
 
 
 -(void)genreTrap {
    // [soundOn removeAllObjects];
   //  [self kickAP];
+    [Piano33 play];
+    /*
     NSMutableArray* Trap = [NSMutableArray arrayWithObjects: kick, hat, nil];
     for(int i = 0; i < [Trap count]; i++) {
         [(AVAudioPlayer*)[Trap objectAtIndex:i] play];
@@ -619,20 +1027,23 @@ didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic error:(NSErro
         [soundOn addObject:[Trap objectAtIndex:i]]; // adds objects to array
         }
     }
+     */
 }
 
 -(void)genreRS {
  //   NSInteger limit = [randomSoundsArrayAP count];
-    NSMutableArray* RS = [NSMutableArray arrayWithObjects: car, phone, nil];
-    for(int i = 0; i < [RS count]; i++) {
-        [(AVAudioPlayer*)[RS objectAtIndex:i] play];
-        
+   // NSMutableArray* RS = [NSMutableArray arrayWithObjects: car, phone, nil];
+ //   for(int i = 0; i < [RS count]; i++) {
+        //[(AVAudioPlayer*)[RS objectAtIndex:i] play];
+      /*
         if (![soundOn containsObject:[RS objectAtIndex:i]]) {
         [soundOn addObject:[RS objectAtIndex:i]]; // adds objects to array
         }
-    }
+   // }
     [self turnOff];
     [(AVAudioPlayer*)[RS objectAtIndex:1] play];
+       */
+    [Piano37 play];
 }
 
 -(void)genreSongs {

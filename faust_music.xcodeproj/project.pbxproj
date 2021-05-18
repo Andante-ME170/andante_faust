@@ -25,7 +25,6 @@
 		DB5A0425264E6FF500EBC762 /* Telephone.wav in Resources */ = {isa = PBXBuildFile; fileRef = DB5A0424264E6FF500EBC762 /* Telephone.wav */; };
 		DB5A0427264E6FFB00EBC762 /* Car.wav in Resources */ = {isa = PBXBuildFile; fileRef = DB5A0426264E6FFB00EBC762 /* Car.wav */; };
 		DB5A0430264F31B800EBC762 /* ViewController3.mm in Sources */ = {isa = PBXBuildFile; fileRef = DB5A042F264F31B800EBC762 /* ViewController3.mm */; };
-		DB5A0434264F398E00EBC762 /* please-no.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = DB5A0433264F398E00EBC762 /* please-no.mp3 */; };
 		DB78B3B82627841800B42591 /* CoreMIDI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB78B3B72627841800B42591 /* CoreMIDI.framework */; };
 		DB78B3BA2627842100B42591 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB78B3B92627842100B42591 /* AudioToolbox.framework */; };
 		DB78B3E626278C1900B42591 /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB78B3E526278C1900B42591 /* CoreBluetooth.framework */; };
@@ -150,7 +149,6 @@
 		DB5A0426264E6FFB00EBC762 /* Car.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Car.wav; sourceTree = "<group>"; };
 		DB5A042E264F31B800EBC762 /* ViewController3.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController3.h; sourceTree = "<group>"; };
 		DB5A042F264F31B800EBC762 /* ViewController3.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = ViewController3.mm; sourceTree = "<group>"; };
-		DB5A0433264F398E00EBC762 /* please-no.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "please-no.mp3"; sourceTree = "<group>"; };
 		DB78B3B72627841800B42591 /* CoreMIDI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMIDI.framework; path = System/Library/Frameworks/CoreMIDI.framework; sourceTree = SDKROOT; };
 		DB78B3B92627842100B42591 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		DB78B3E526278C1900B42591 /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
@@ -324,7 +322,6 @@
 			isa = PBXGroup;
 			children = (
 				DBAF348A265394EA0050A2C7 /* NumberedPiano */,
-				DB5A0433264F398E00EBC762 /* please-no.mp3 */,
 				DB5A0429264E702E00EBC762 /* RandomSounds */,
 				DB5A042A264E704800EBC762 /* Songs */,
 			);
@@ -574,7 +571,6 @@
 				DB5A0425264E6FF500EBC762 /* Telephone.wav in Resources */,
 				A2E7CC48262188CA006CA38B /* Assets.xcassets in Resources */,
 				DBAF34E8265394EA0050A2C7 /* AndantePiano95.wav in Resources */,
-				DB5A0434264F398E00EBC762 /* please-no.mp3 in Resources */,
 				DBAF34E0265394EA0050A2C7 /* AndantePiano41.wav in Resources */,
 				DBAF3503265394EA0050A2C7 /* AndantePiano108.wav in Resources */,
 				DBAF3510265394EA0050A2C7 /* AndantePiano72.wav in Resources */,
