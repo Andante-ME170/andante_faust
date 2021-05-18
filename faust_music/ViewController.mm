@@ -54,17 +54,6 @@ int prevGenre = -1;
 
 @end
 
-@interface Genre:NSObject {
-   //Instance variables
-   double length;    // Length of a box
-   double breadth;   // Breadth of a box
-}
-@property(nonatomic, readwrite) AVAudioPlayer *drum_AP;
-@property(nonatomic, readwrite) AVAudioPlayer *c4_AP;
-
-
-@end
-
 
 @implementation ViewController{
   DspFaust *dspFaust;
@@ -130,40 +119,32 @@ float detuneAmount = 0.0f;
     
     // For SoundFonts
     NSError *error;
-    NSURL *url = [[NSBundle mainBundle] URLForResource:@"smooth kick 1" withExtension:@ "wav"];
- //   NSURL *url2 = [[NSBundle mainBundle] URLForResource:@"trap snare 1" withExtension:@ "wav"];
-    NSURL *url3 = [[NSBundle mainBundle] URLForResource:@"basic hat" withExtension:@ "wav"];
-    kick = [[AVAudioPlayer alloc] initWithContentsOfURL:url error:&error];
-//    snare = [[AVAudioPlayer alloc] initWithContentsOfURL:url2 error:&error];
-    hat = [[AVAudioPlayer alloc] initWithContentsOfURL:url3 error:&error];
+   // NSURL *url = [[NSBundle mainBundle] URLForResource:@"smooth kick 1" withExtension:@ "wav"];
+    kick = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"smooth kick 1" withExtension:@ "wav"] error:&error];
+    hat = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"basic hat" withExtension:@ "wav"] error:&error];
     [kick prepareToPlay]; // function call
-  //  [snare prepareToPlay];
+
     [hat prepareToPlay];
     
     // Random Sounds
-    NSURL *url_RS_1 = [[NSBundle mainBundle] URLForResource:@"Car" withExtension:@ "wav"];
-    car = [[AVAudioPlayer alloc] initWithContentsOfURL:url_RS_1 error:&error];
+    car = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"Car" withExtension:@ "wav"] error:&error];
     [car prepareToPlay];
     
-    NSURL *url_RS_2 = [[NSBundle mainBundle] URLForResource:@"Telephone" withExtension:@ "wav"];
-    phone = [[AVAudioPlayer alloc] initWithContentsOfURL:url_RS_2 error:&error];
+    phone = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"Telephone" withExtension:@ "wav"] error:&error];
     [phone prepareToPlay];
     [randomSoundsArray addObject:car];
     [randomSoundsArray addObject:phone];
     
     // Songs
-    NSURL *url_S_1 = [[NSBundle mainBundle] URLForResource:@"WalkingOnSunshine" withExtension:@ "wav"];
-    sunshine = [[AVAudioPlayer alloc] initWithContentsOfURL:url_S_1 error:&error];
+    sunshine = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"WalkingOnSunshine" withExtension:@ "wav"] error:&error];
     [sunshine prepareToPlay];
     
-    NSURL *url_S_2 = [[NSBundle mainBundle] URLForResource:@"FUNKY_HOUSE" withExtension:@ "mp3"];
-    funky = [[AVAudioPlayer alloc] initWithContentsOfURL:url_S_2 error:&error];
+    funky = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"FUNKY_HOUSE" withExtension:@ "mp3"] error:&error];
     [funky prepareToPlay];
 
     // More gengres here
     
-    NSURL *url_no = [[NSBundle mainBundle] URLForResource:@"please-no" withExtension:@ "mp3"];
-    no = [[AVAudioPlayer alloc] initWithContentsOfURL:url_no error:&error];
+    no = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"please-no" withExtension:@ "mp3"] error:&error];
     [no prepareToPlay];
     
     switch(Globalgenre) {
@@ -576,9 +557,9 @@ didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic error:(NSErro
 
 -(void)genreTrap {
    // [soundOn removeAllObjects];
-    [self kickAP];
+  //  [self kickAP];
     [kick play];
-    [self hatAP];
+   // [self hatAP];
     [hat play];
     
     if (![soundOn containsObject:kick]) { // should already be empty?
@@ -590,23 +571,21 @@ didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic error:(NSErro
 }
 
 -(void)genreRS {
-    int limit = [randomSoundsArrayAP count];
+    NSInteger limit = [randomSoundsArrayAP count];
     for(int i = 0; i < limit; i ++)
     for(id tempObject in randomSoundsArray) { // loop through every element in the array
-      //  [self tempObject]; //
-     //   [tempObject play];
     }
     
-    [self telephoneAP];
+   // [self telephoneAP];
     [phone play];
-    [self carAP];
-    //[car play];
+   // [self carAP];
+    [car play];
     if (![soundOn containsObject:phone]) {
         [soundOn addObject:phone]; // adds objects to array
     }
-   // if (![soundOn containsObject:@"car"]) {
-   //     [soundOn addObject:@"car"]; // adds objects to array
-    //}
+    if (![soundOn containsObject: car]) {
+        [soundOn addObject:car]; // adds objects to array
+    }
 }
 
 -(void)genreSongs {
