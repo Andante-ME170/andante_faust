@@ -16,6 +16,7 @@ NSLock *theLock  = [[NSLock alloc] init];
 NSMutableArray *soundOn = [[NSMutableArray alloc]init];
 NSMutableArray *randomSoundsArray = [[NSMutableArray alloc]init];
 NSMutableArray *randomSoundsArrayAP = [[NSMutableArray alloc]init];
+NSMutableArray *PianoTry = [[NSMutableArray alloc]init];
 // Create an object maybe??
 // genre object, instance variables and stuffs
 
@@ -47,7 +48,7 @@ int prevGenre = -1;
 @property(nonatomic,strong)AVAudioPlayer *funkyAP;
 
 // Ya messed up!
-@property(nonatomic,strong)AVAudioPlayer *noAP;
+@property(nonatomic,strong)AVAudioPlayer *audioPlayer;
 
 
 // More genres here!
@@ -72,8 +73,9 @@ int prevGenre = -1;
 @synthesize walkSunshineAP = sunshine;
 @synthesize funkyAP = funky;
 
+@synthesize audioPlayer = audioPlayer2;
 // Ya messed up!
-@synthesize noAP = no;
+//@synthesize noAP = no;
 
 // Insert more genres
 
@@ -144,8 +146,8 @@ float detuneAmount = 0.0f;
 
     // More gengres here
     
-    no = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"please-no" withExtension:@ "mp3"] error:&error];
-    [no prepareToPlay];
+ //   no = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"please-no" withExtension:@ "mp3"] error:&error];
+  //  [no prepareToPlay];
     
     switch(Globalgenre) {
             case -1:
@@ -162,6 +164,40 @@ float detuneAmount = 0.0f;
                 break;
     }
     
+   // NSMutableArray *Piano = [NSMutableArray arrayWithObjects: @"AndantePiano1","AndantePiano2","AndantePiano3", nil];
+       // audioPlayer2 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"smooth kick 1" withExtension:@ "wav"]];
+   // for(int i = 1; i < 3; i++) {
+        //audioPlayer2 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndantePiano2" withExtension:@ "wav"] error:&error];
+       // NSString *temp = [NSString stringWithFormat:@"%d",i];
+        //NSString *song = @"AndantePiano" + temp;
+        //audioPlayer2 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource: Piano[i] withExtension:@ "wav"] error:&error];
+        
+
+
+    for(int i = 0; i < 33; i++) {
+        [PianoTry addObject:@"None"]; // want to be empty here
+    }
+    
+    for(int i = 33; i < 40; i++) {
+        NSString *check = @"AndantePiano";
+        check = [check stringByAppendingString:[NSString stringWithFormat:@"%d",i]];
+        audioPlayer2 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource: check withExtension:@ "wav"] error:&error];
+        [audioPlayer2 prepareToPlay];
+        [PianoTry addObject:audioPlayer2]; // adds objects to array
+      //  audioPlayer2.currentTime = 2 + 40*i;
+       // [audioPlayer2 play];
+        
+}
+    // THIS CODE WORKS!!
+    /*
+    audioPlayer2 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndantePiano33" withExtension:@ "wav"] error:&error];
+    [audioPlayer2 prepareToPlay];
+    [audioPlayer2 play];
+     */
+}
+    
+    
+    
     /*self.genreValue.text = [NSString stringWithFormat:@"%d", Globalgenre];
     */
     
@@ -177,7 +213,7 @@ float detuneAmount = 0.0f;
     dspFaust->setParamValue("/synth/gate", 1);
     //dspFaust->setParamValue(3, 1);*/
      
-}
+
 
 // The number of columns of data
 - (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView
@@ -495,13 +531,17 @@ didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic error:(NSErro
     _audioPlayer2.currentTime = 0;
 }
 */
+
+
+
 - (IBAction)buttonPressed:(id)sender {
     if (prevGenre != Globalgenre) {
         [self turnOff]; // reset sounds
-        [no stop]; // stop Michael Scott, Melissa delete later
+      //  [no stop]; // stop Michael Scott, Melissa delete later
     }
     if (Globalgenre == 0) { // Trap
-        [self genreTrap];
+      //  [self genreTrap];
+        [self Piano];
         prevGenre = 0;
       //  [kick play];
     }
@@ -511,13 +551,13 @@ didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic error:(NSErro
        // [phone play];
     }
     else if (Globalgenre == 2) { // Songs
-        [self genreSongs];
+       // [self genreSongs];
         prevGenre = 2;
        // [sunshine play];
     }
     else { // pick a genre
-        [self noAP];
-        [no play];
+      //  [self noAP];
+       // [no play];
     }
     
     //else {
@@ -555,37 +595,44 @@ didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic error:(NSErro
     }
 }
 
+-(void)Piano {
+   // [soundOn removeAllObjects];
+  //  [self kickAP];
+    for(int i = 33; i < [PianoTry count]; i++) {
+        [(AVAudioPlayer*)[PianoTry objectAtIndex:i] play];
+        
+      //  if (![soundOn containsObject:[Trap objectAtIndex:i]]) {
+      //  [soundOn addObject:[Trap objectAtIndex:i]]; // adds objects to array
+      //  }
+    }
+}
+
+
 -(void)genreTrap {
    // [soundOn removeAllObjects];
   //  [self kickAP];
-    [kick play];
-   // [self hatAP];
-    [hat play];
-    
-    if (![soundOn containsObject:kick]) { // should already be empty?
-        [soundOn addObject:kick]; // adds objects to array
-    }
-    if (![soundOn containsObject:hat]) {
-        [soundOn addObject:hat]; // adds objects to array
+    NSMutableArray* Trap = [NSMutableArray arrayWithObjects: kick, hat, nil];
+    for(int i = 0; i < [Trap count]; i++) {
+        [(AVAudioPlayer*)[Trap objectAtIndex:i] play];
+        
+        if (![soundOn containsObject:[Trap objectAtIndex:i]]) {
+        [soundOn addObject:[Trap objectAtIndex:i]]; // adds objects to array
+        }
     }
 }
 
 -(void)genreRS {
-    NSInteger limit = [randomSoundsArrayAP count];
-    for(int i = 0; i < limit; i ++)
-    for(id tempObject in randomSoundsArray) { // loop through every element in the array
+ //   NSInteger limit = [randomSoundsArrayAP count];
+    NSMutableArray* RS = [NSMutableArray arrayWithObjects: car, phone, nil];
+    for(int i = 0; i < [RS count]; i++) {
+        [(AVAudioPlayer*)[RS objectAtIndex:i] play];
+        
+        if (![soundOn containsObject:[RS objectAtIndex:i]]) {
+        [soundOn addObject:[RS objectAtIndex:i]]; // adds objects to array
+        }
     }
-    
-   // [self telephoneAP];
-    [phone play];
-   // [self carAP];
-    [car play];
-    if (![soundOn containsObject:phone]) {
-        [soundOn addObject:phone]; // adds objects to array
-    }
-    if (![soundOn containsObject: car]) {
-        [soundOn addObject:car]; // adds objects to array
-    }
+    [self turnOff];
+    [(AVAudioPlayer*)[RS objectAtIndex:1] play];
 }
 
 -(void)genreSongs {

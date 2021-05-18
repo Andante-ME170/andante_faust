@@ -416,7 +416,7 @@ void setup(){
   // Setup the on board blue LED to be enabled on CONNECT
   Bluefruit.autoConnLed(true);
 
-  // Configure and Start Device Information Service
+  // Configure and Start Device Information Serv ice
   bledis.setManufacturer("Adafruit Industries");
   bledis.setModel("Bluefruit Feather52");
   bledis.begin();
