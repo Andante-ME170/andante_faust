@@ -182,18 +182,10 @@
 			isa = PBXGroup;
 			children = (
 				DB5A0433264F398E00EBC762 /* please-no.mp3 */,
-				DB5A0428264E701000EBC762 /* Trap */,
 				DB5A0429264E702E00EBC762 /* RandomSounds */,
 				DB5A042A264E704800EBC762 /* Songs */,
 			);
 			path = "wav files";
-			sourceTree = "<group>";
-		};
-		DB5A0428264E701000EBC762 /* Trap */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Trap;
 			sourceTree = "<group>";
 		};
 		DB5A0429264E702E00EBC762 /* RandomSounds */ = {
