@@ -22,7 +22,7 @@ enum songNames {
 };
 
 int melody[32][8];
-bool melodyNotePlayed[8] = {false,false,false,false,false,false,false,false};;
+bool melodyNotePlayed[8] = {false,false,false,false,false,false,false,false};
 int melodyNotesPerChord = 8;
 int chords[32][3];
 
@@ -181,14 +181,14 @@ int marioChords[32][3] = {
 
 
 int iWantYouBackMelody[32][8] = {
-        {32, -1, -1, -1, -1, -1, -1, -1}, 
-        {-1, -1, -1, 34, 36, 39, 41, 37}, 
+        {44, -1, -1, -1, -1, -1, -1, -1}, 
+        {-1, -1, -1, 46, 48, 51, 53, 49}, 
         {-1, -1, -1, -1, -1, -1, -1, -1}, 
-        {-1, 34, 36, 37, -1, 38, 39, 40}, 
-        {41,  0,  0,  0, 36,  0,  0,  0}, 
-        {37,  0,  0, 32,  0,  0,  0,  0}, 
-        {34,  0,  0,  0, 39,  0,  0, 32}, 
-        {-1, 27, 29, 32, -1, 29, 32, -1}, 
+        {-1, 46, 48, 49, -1, 50, 51, 52}, 
+        {53,  0,  0,  0, 48,  0,  0,  0}, 
+        {49,  0,  0, 44,  0,  0,  0,  0}, 
+        {46,  0,  0,  0, 51,  0,  0, 44}, 
+        {-1, 39, 41, 44, -1, 41, 44, -1}, 
         
         {-1, -1, -1, -1, -1, -1, -1, -1},
         {-1, -1, -1, -1, -1, -1, -1, -1},
@@ -384,8 +384,8 @@ int prevChord = 0;
 int drumCounter = 0;
 
 int stepCounter = 0;
-int numCalibrationSteps = 4;
-float calibrationStepTimes[] = {0};
+const int numCalibrationSteps = 4;
+float calibrationStepTimes[numCalibrationSteps];
 float strideFreq = 0;
 
 float lastStepTime = 0;
@@ -540,6 +540,7 @@ void loop(){
     chordCounter = 0;
     drumCounter = 0;
     strideFreq = 0;
+    gaitState = calibration;
     for (int i = 0; i < numCalibrationSteps; i++){
       calibrationStepTimes[i] = 0;
     }
@@ -558,6 +559,7 @@ void loop(){
       if (heelVal > threshold && lastHeelVal < threshold && timeSinceLastStep > 500) {
         if (stepCounter < numCalibrationSteps){
           calibrationStepTimes[stepCounter] = millis();
+          Serial.println(calibrationStepTimes[stepCounter]);
           MIDI.sendNoteOn(2, 50, 1);
           digitalWrite(ledPin, HIGH);
           lastStepTime = millis();
@@ -569,6 +571,13 @@ void loop(){
           }
           strideFreq /= (numCalibrationSteps-1);
           gaitState = heelContact;
+          Serial.println(" ");
+          Serial.println(calibrationStepTimes[0]);
+          Serial.println(calibrationStepTimes[1]);
+          Serial.println(calibrationStepTimes[2]);
+          Serial.println(calibrationStepTimes[3]);
+          Serial.print("strideFreq  = ");
+          Serial.println(strideFreq);
         }
         stepCounter++;
       }
@@ -585,7 +594,7 @@ void loop(){
       }
       // turn off previous chord
       for (int j = 0; j < notesPerChord; j++){
-        if ((chordCounter+numChords-1) % numChords][j] != -1){
+        if (chords[(chordCounter+numChords-1) % numChords][j] != -1){
           MIDI.sendNoteOff(chords[(chordCounter+numChords-1) % numChords][j], 100, 1);
         }
       }
@@ -638,7 +647,8 @@ void loop(){
   if (playMelody){
     if (gaitState != calibration){
       for (int i = 0; i < melodyNotesPerChord; i++){
-        if (timeSinceLastStep >= i*strideFreq/melodyNotesPerChord && !melodyNotePlayed[i]){
+        if (timeSinceLastStep > i*strideFreq/melodyNotesPerChord && !melodyNotePlayed[i]){
+          //Serial.println(i);
           if (melody[(chordCounter+numChords-1) % numChords][i] == -1){
             MIDI.sendNoteOff(lastNotePlayed, 50, 1);
           }
@@ -651,13 +661,38 @@ void loop(){
           }
           melodyNotePlayed[i] = true;
         }
-        else if (timeSinceLastStep < i*strideFreq/melodyNotesPerChord){
+        else if (timeSinceLastStep <= i*strideFreq/melodyNotesPerChord){
           melodyNotePlayed[i] = false;
+          //Serial.println("made false " + i);
         }
       }
     }
   }
 
+  // drums
+  if (playDrums){
+    if (gaitState != calibration){
+      // check beat timing
+      for (int i = 0; i < drumHitsPerChord; i++){
+        if (timeSinceLastStep > i*strideFreq/drumHitsPerChord && !drumHitPlayed[i]){
+          // check each drum in beat
+          for (int j = 0; j < numDrums; j++){
+            if (drums[i][j] == 1){
+              MIDI.sendNoteOn(j, 50, 1);
+              //Serial.println(j);
+            }
+          }
+          drumHitPlayed[i] = true;
+        }
+        else if (timeSinceLastStep <= i*strideFreq/drumHitsPerChord){
+          drumHitPlayed[i] = false;
+        }
+      }
+    }
+  }
+  
+  
+/*
   // xtra chords
   if (playMelody && chordsPerStepCycle == 2){
     if (gaitState != calibration){
@@ -678,27 +713,7 @@ void loop(){
       }
     }
   }
-
-  // drums
-  if (playDrums){
-    if (gaitState != calibration){
-      // check beat timing
-      for (int i = 0; i < drumHitsPerChord; i++){
-        if (timeSinceLastStep >= i*strideFreq/drumHitsPerChord && !drumHitPlayed[i]){
-          // check each drum in beat
-          for (int j = 0; i < numDrums; i++){
-            if (drums[i][j] == 1){
-              MIDI.sendNoteOn(j, 50, 1);
-            }
-            drumHitPlayed[i] = true;
-          }
-        }
-        else if (timeSinceLastStep < i*strideFreq/drumHitsPerChord){
-          drumHitPlayed[i] = false;
-        }
-      }
-    }
-  }
+*/
 
   timeSinceLastStep = millis() - lastStepTime;
   
