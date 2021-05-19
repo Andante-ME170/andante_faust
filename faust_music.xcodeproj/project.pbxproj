@@ -101,6 +101,9 @@
 		DB78B3B82627841800B42591 /* CoreMIDI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB78B3B72627841800B42591 /* CoreMIDI.framework */; };
 		DB78B3BA2627842100B42591 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB78B3B92627842100B42591 /* AudioToolbox.framework */; };
 		DB78B3E626278C1900B42591 /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB78B3E526278C1900B42591 /* CoreBluetooth.framework */; };
+		DBA14CB62654B4C600D09251 /* AndanteDrumsAcousticSnare.wav in Resources */ = {isa = PBXBuildFile; fileRef = DBA14CB32654B4C500D09251 /* AndanteDrumsAcousticSnare.wav */; };
+		DBA14CB72654B4C600D09251 /* AndanteDrumsAcousticKick.wav in Resources */ = {isa = PBXBuildFile; fileRef = DBA14CB42654B4C500D09251 /* AndanteDrumsAcousticKick.wav */; };
+		DBA14CB82654B4C600D09251 /* AndanteDrumsAcousticHat.wav in Resources */ = {isa = PBXBuildFile; fileRef = DBA14CB52654B4C500D09251 /* AndanteDrumsAcousticHat.wav */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -227,6 +230,9 @@
 		DB78B3B72627841800B42591 /* CoreMIDI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMIDI.framework; path = System/Library/Frameworks/CoreMIDI.framework; sourceTree = SDKROOT; };
 		DB78B3B92627842100B42591 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		DB78B3E526278C1900B42591 /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
+		DBA14CB32654B4C500D09251 /* AndanteDrumsAcousticSnare.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = AndanteDrumsAcousticSnare.wav; sourceTree = "<group>"; };
+		DBA14CB42654B4C500D09251 /* AndanteDrumsAcousticKick.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = AndanteDrumsAcousticKick.wav; sourceTree = "<group>"; };
+		DBA14CB52654B4C500D09251 /* AndanteDrumsAcousticHat.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = AndanteDrumsAcousticHat.wav; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -325,6 +331,7 @@
 		DB5A0403264CB75300EBC762 /* wav files */ = {
 			isa = PBXGroup;
 			children = (
+				DBA14CB22654B4C500D09251 /* AndanteDrumsAcoustic */,
 				DB752B7526548CF4000BD73A /* numberedPiano */,
 				DB5A0429264E702E00EBC762 /* RandomSounds */,
 				DB5A042A264E704800EBC762 /* Songs */,
@@ -442,6 +449,17 @@
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
+		};
+		DBA14CB22654B4C500D09251 /* AndanteDrumsAcoustic */ = {
+			isa = PBXGroup;
+			children = (
+				DBA14CB32654B4C500D09251 /* AndanteDrumsAcousticSnare.wav */,
+				DBA14CB42654B4C500D09251 /* AndanteDrumsAcousticKick.wav */,
+				DBA14CB52654B4C500D09251 /* AndanteDrumsAcousticHat.wav */,
+			);
+			name = AndanteDrumsAcoustic;
+			path = "faust_music/wav files/AndanteDrumsAcoustic";
+			sourceTree = SOURCE_ROOT;
 		};
 /* End PBXGroup section */
 
@@ -572,6 +590,7 @@
 				DB752BC626548CF4000BD73A /* AndantePiano30.wav in Resources */,
 				DB752BFF26548CF5000BD73A /* AndantePiano70.wav in Resources */,
 				DB752BD826548CF4000BD73A /* AndantePiano81.wav in Resources */,
+				DBA14CB72654B4C600D09251 /* AndanteDrumsAcousticKick.wav in Resources */,
 				DB752BCF26548CF4000BD73A /* AndantePiano96.wav in Resources */,
 				DB752BDC26548CF4000BD73A /* AndantePiano52.wav in Resources */,
 				DB752BF326548CF4000BD73A /* AndantePiano48.wav in Resources */,
@@ -613,9 +632,11 @@
 				DB752C0426548CF5000BD73A /* AndantePiano29.wav in Resources */,
 				DB752BD326548CF4000BD73A /* AndantePiano69.wav in Resources */,
 				DB752BFB26548CF5000BD73A /* AndantePiano67.wav in Resources */,
+				DBA14CB82654B4C600D09251 /* AndanteDrumsAcousticHat.wav in Resources */,
 				DB752BEC26548CF4000BD73A /* AndantePiano50.wav in Resources */,
 				DB752C0026548CF5000BD73A /* AndantePiano58.wav in Resources */,
 				DB752BFA26548CF5000BD73A /* AndantePiano73.wav in Resources */,
+				DBA14CB62654B4C600D09251 /* AndanteDrumsAcousticSnare.wav in Resources */,
 				DB752BC326548CF4000BD73A /* AndantePiano31.wav in Resources */,
 				DB752BDA26548CF4000BD73A /* AndantePiano42.wav in Resources */,
 				DB752C0726548CF5000BD73A /* AndantePiano39.wav in Resources */,

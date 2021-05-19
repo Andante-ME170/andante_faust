@@ -12,6 +12,11 @@
 #import "ViewController3.h"
 #import <stdarg.h>
 
+#define HEEL_STRIKE         0       // tonic (do)
+#define TOE_OFF             9       // submediant (la)
+#define NUM_FIFTHS          12
+#define KNEE_DIFF_THRESH    30
+
 NSLock *theLock  = [[NSLock alloc] init];
 
 NSMutableArray *soundOn = [[NSMutableArray alloc]init];
@@ -21,11 +26,14 @@ NSMutableArray *randomSoundsArrayAP = [[NSMutableArray alloc]init];
 NSDictionary *Piano;
 // Can do this for each instrument
 
+BOOL modeToe;
 
 int prevGenre = -1;
                          
 @interface ViewController ()<AVAudioPlayerDelegate>
 
+@property (nonatomic, strong) NSString *footDeviceName;
+@property (nonatomic, strong) NSString *kneeDeviceName;
 
 @property (nonatomic, strong) NSString *bleDevice;
 @property (nonatomic, strong) NSMutableArray *pickerData;
@@ -34,6 +42,7 @@ int prevGenre = -1;
 
 @property (weak, nonatomic) IBOutlet UILabel *currInstrumentTextField;
 @property (weak, nonatomic) IBOutlet UIPickerView *picker;
+//@property(weak, nonatomic) IBOutlet UISwitch *modeSwitch;
 
 // Trap
 @property(nonatomic,strong)AVAudioPlayer *kickAP;
@@ -52,10 +61,12 @@ int prevGenre = -1;
 // Ya messed up!
 @property(nonatomic,strong)AVAudioPlayer *audioPlayer;
 
+// Drumset
+@property(nonatomic,strong)AVAudioPlayer *APkick;
+@property(nonatomic,strong)AVAudioPlayer *APhat;
+@property(nonatomic,strong)AVAudioPlayer *APsnare;
 
 // Piano
-
-
 @property(nonatomic,strong)AVAudioPlayer *APPiano24;
 @property(nonatomic,strong)AVAudioPlayer *APPiano25;
 @property(nonatomic,strong)AVAudioPlayer *APPiano26;
@@ -138,12 +149,13 @@ int prevGenre = -1;
 
 @implementation ViewController{
   DspFaust *dspFaust;
+    int state;
+    int circleOf5ths[NUM_FIFTHS];
+    int tonicIdx;
+    int kneeStanceAvg;
+    int numStanceAvg;
+    bool tonicChange;
 }
-
-// Trap
-@synthesize kickAP = kick;
-@synthesize snareAP = snare;
-@synthesize hatAP = hat;
 
 // Random Sounds
 @synthesize carAP = car;
@@ -158,6 +170,11 @@ int prevGenre = -1;
 //@synthesize noAP = no;
 
 // Insert more genres
+
+// DRUMSET
+@synthesize APkick = kick;
+@synthesize APsnare = snare;
+@synthesize APhat = hat;
 
 // PIANO
 @synthesize APPiano24 = Piano24;
@@ -217,7 +234,6 @@ int prevGenre = -1;
 @synthesize APPiano78 = Piano78;
 @synthesize APPiano79 = Piano79;
 @synthesize APPiano80 = Piano80;
-
 @synthesize APPiano81 = Piano81;
 @synthesize APPiano82 = Piano82;
 @synthesize APPiano83 = Piano83;
@@ -273,15 +289,24 @@ float detuneAmount = 0.0f;
     _picker.dataSource = self;
     _picker.delegate = self;
     
+    state = TOE_OFF;
+       int co5[NUM_FIFTHS] = {48,55,50,57,52,59,54,49,56,51,58,53};
+       memcpy(circleOf5ths, co5, sizeof(co5));
+       tonicIdx = 0;
+       kneeStanceAvg = 0;
+       numStanceAvg = 0;
+       tonicChange = false;
+       
+      // _midiCharUUID = @"7772E5DB-3868-4112-A1A9-F2669D106BF3";
+      // _midiServiceUUID = @"03B80E5A-EDE8-4B33-A751-6CE34EC4C700";
+       
+       _footDeviceName = @"Bluefruit52 MIDI foot";
+       _kneeDeviceName = @"Bluefruit52 MIDI knee";
+    
     
     // For SoundFonts
     NSError *error;
    // NSURL *url = [[NSBundle mainBundle] URLForResource:@"smooth kick 1" withExtension:@ "wav"];
-    kick = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"smooth kick 1" withExtension:@ "wav"] error:&error];
-    hat = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"basic hat" withExtension:@ "wav"] error:&error];
-    [kick prepareToPlay]; // function call
-
-    [hat prepareToPlay];
     
     // Random Sounds
     car = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"Car" withExtension:@ "wav"] error:&error];
@@ -316,6 +341,13 @@ float detuneAmount = 0.0f;
                 self.genreValue.text = @"Songs";
                 break;
     }
+    // Melissa, need to fix logic here
+    if(modeToe == true) { // reverse so easier
+        _modeLabel.text = @"Toe Off Mode";
+    }
+    else{
+        _modeLabel.text = @"Heel Strike Mode"; // rename later
+    }
     
    // NSMutableArray *Piano = [NSMutableArray arrayWithObjects: @"AndantePiano1","AndantePiano2","AndantePiano3", nil];
        // audioPlayer2 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"smooth kick 1" withExtension:@ "wav"]];
@@ -340,6 +372,16 @@ float detuneAmount = 0.0f;
        // [audioPlayer2 play];
         
         */
+ 
+    
+    kick = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndanteDrumsAcousticKick" withExtension:@ "wav"] error:&error];
+    [kick prepareToPlay];
+
+    snare = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndanteDrumsAcousticSnare" withExtension:@ "wav"] error:&error];
+    [snare prepareToPlay];
+    
+    hat = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndanteDrumsAcousticHat" withExtension:@ "wav"] error:&error];
+    [hat prepareToPlay];
     
     
     Piano24 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndantePiano24" withExtension:@ "wav"] error:&error];
@@ -640,9 +682,9 @@ float detuneAmount = 0.0f;
     
     
     // PIANO dictionary initialization
-    NSArray *values = [NSArray arrayWithObjects: Piano24, Piano25, Piano26, Piano27, Piano28, Piano29, Piano30, Piano31, Piano32, Piano33, Piano34, Piano35, Piano36, Piano37, Piano38, Piano39, Piano40, Piano41, Piano42, Piano43, Piano44, Piano45, Piano46, Piano47, Piano48, Piano49, Piano50, Piano51, Piano52, Piano53, Piano54, Piano55, Piano56, Piano57, Piano58, Piano59, Piano60, Piano61, Piano62, Piano63, Piano64, Piano65, Piano66, Piano67, Piano68, Piano69, Piano70, Piano71, Piano72, Piano73, Piano74, Piano75, Piano76, Piano77, Piano78, Piano79, Piano80, Piano81, Piano82, Piano83, Piano84, Piano85, Piano86, Piano87, Piano88, Piano89,Piano90, Piano91, Piano92, Piano93, Piano94, Piano95, Piano96, nil];
+    NSArray *values = [NSArray arrayWithObjects: kick, snare, hat, Piano24, Piano25, Piano26, Piano27, Piano28, Piano29, Piano30, Piano31, Piano32, Piano33, Piano34, Piano35, Piano36, Piano37, Piano38, Piano39, Piano40, Piano41, Piano42, Piano43, Piano44, Piano45, Piano46, Piano47, Piano48, Piano49, Piano50, Piano51, Piano52, Piano53, Piano54, Piano55, Piano56, Piano57, Piano58, Piano59, Piano60, Piano61, Piano62, Piano63, Piano64, Piano65, Piano66, Piano67, Piano68, Piano69, Piano70, Piano71, Piano72, Piano73, Piano74, Piano75, Piano76, Piano77, Piano78, Piano79, Piano80, Piano81, Piano82, Piano83, Piano84, Piano85, Piano86, Piano87, Piano88, Piano89,Piano90, Piano91, Piano92, Piano93, Piano94, Piano95, Piano96, nil];
     
-    NSArray *keys = [NSArray arrayWithObjects:[NSNumber numberWithInteger:24], [NSNumber numberWithInteger:25],[NSNumber numberWithInteger:26],[NSNumber numberWithInteger:27],[NSNumber numberWithInteger:28], [NSNumber numberWithInteger:29],[NSNumber numberWithInteger:30],[NSNumber numberWithInteger:31],[NSNumber numberWithInteger:32],[NSNumber numberWithInteger:33],[NSNumber numberWithInteger:34], [NSNumber numberWithInteger:35],[NSNumber numberWithInteger:36],[NSNumber numberWithInteger:37],[NSNumber numberWithInteger:38], [NSNumber numberWithInteger:39],[NSNumber numberWithInteger:40],[NSNumber numberWithInteger:41],[NSNumber numberWithInteger:42], [NSNumber numberWithInteger:43],[NSNumber numberWithInteger:44],[NSNumber numberWithInteger:45],[NSNumber numberWithInteger:46], [NSNumber numberWithInteger:47],[NSNumber numberWithInteger:48],[NSNumber numberWithInteger:49],[NSNumber numberWithInteger:50],[NSNumber numberWithInteger:51],[NSNumber numberWithInteger:52], [NSNumber numberWithInteger:53],[NSNumber numberWithInteger:54],[NSNumber numberWithInteger:55],[NSNumber numberWithInteger:56], [NSNumber numberWithInteger:57],[NSNumber numberWithInteger:58],[NSNumber numberWithInteger:59],[NSNumber numberWithInteger:60],[NSNumber numberWithInteger:61],[NSNumber numberWithInteger:62], [NSNumber numberWithInteger:63],[NSNumber numberWithInteger:64],[NSNumber numberWithInteger:65],[NSNumber numberWithInteger:66], [NSNumber numberWithInteger:67],[NSNumber numberWithInteger:68],[NSNumber numberWithInteger:69],[NSNumber numberWithInteger:70],[NSNumber numberWithInteger:71],[NSNumber numberWithInteger:72], [NSNumber numberWithInteger:73],[NSNumber numberWithInteger:74],[NSNumber numberWithInteger:75],[NSNumber numberWithInteger:76], [NSNumber numberWithInteger:77],[NSNumber numberWithInteger:78],[NSNumber numberWithInteger:79], [NSNumber numberWithInteger:80],[NSNumber numberWithInteger:81],[NSNumber numberWithInteger:82], [NSNumber numberWithInteger:83],[NSNumber numberWithInteger:84],[NSNumber numberWithInteger:85],[NSNumber numberWithInteger:86], [NSNumber numberWithInteger:87],[NSNumber numberWithInteger:88],[NSNumber numberWithInteger:89],[NSNumber numberWithInteger:90],[NSNumber numberWithInteger:91],[NSNumber numberWithInteger:92], [NSNumber numberWithInteger:93],[NSNumber numberWithInteger:94],[NSNumber numberWithInteger:95],[NSNumber numberWithInteger:96],nil];
+    NSArray *keys = [NSArray arrayWithObjects:[NSNumber numberWithInteger:0], [NSNumber numberWithInteger:1],[NSNumber numberWithInteger:2],[NSNumber numberWithInteger:24], [NSNumber numberWithInteger:25],[NSNumber numberWithInteger:26],[NSNumber numberWithInteger:27],[NSNumber numberWithInteger:28], [NSNumber numberWithInteger:29],[NSNumber numberWithInteger:30],[NSNumber numberWithInteger:31],[NSNumber numberWithInteger:32],[NSNumber numberWithInteger:33],[NSNumber numberWithInteger:34], [NSNumber numberWithInteger:35],[NSNumber numberWithInteger:36],[NSNumber numberWithInteger:37],[NSNumber numberWithInteger:38], [NSNumber numberWithInteger:39],[NSNumber numberWithInteger:40],[NSNumber numberWithInteger:41],[NSNumber numberWithInteger:42], [NSNumber numberWithInteger:43],[NSNumber numberWithInteger:44],[NSNumber numberWithInteger:45],[NSNumber numberWithInteger:46], [NSNumber numberWithInteger:47],[NSNumber numberWithInteger:48],[NSNumber numberWithInteger:49],[NSNumber numberWithInteger:50],[NSNumber numberWithInteger:51],[NSNumber numberWithInteger:52], [NSNumber numberWithInteger:53],[NSNumber numberWithInteger:54],[NSNumber numberWithInteger:55],[NSNumber numberWithInteger:56], [NSNumber numberWithInteger:57],[NSNumber numberWithInteger:58],[NSNumber numberWithInteger:59],[NSNumber numberWithInteger:60],[NSNumber numberWithInteger:61],[NSNumber numberWithInteger:62], [NSNumber numberWithInteger:63],[NSNumber numberWithInteger:64],[NSNumber numberWithInteger:65],[NSNumber numberWithInteger:66], [NSNumber numberWithInteger:67],[NSNumber numberWithInteger:68],[NSNumber numberWithInteger:69],[NSNumber numberWithInteger:70],[NSNumber numberWithInteger:71],[NSNumber numberWithInteger:72], [NSNumber numberWithInteger:73],[NSNumber numberWithInteger:74],[NSNumber numberWithInteger:75],[NSNumber numberWithInteger:76], [NSNumber numberWithInteger:77],[NSNumber numberWithInteger:78],[NSNumber numberWithInteger:79], [NSNumber numberWithInteger:80],[NSNumber numberWithInteger:81],[NSNumber numberWithInteger:82], [NSNumber numberWithInteger:83],[NSNumber numberWithInteger:84],[NSNumber numberWithInteger:85],[NSNumber numberWithInteger:86], [NSNumber numberWithInteger:87],[NSNumber numberWithInteger:88],[NSNumber numberWithInteger:89],[NSNumber numberWithInteger:90],[NSNumber numberWithInteger:91],[NSNumber numberWithInteger:92], [NSNumber numberWithInteger:93],[NSNumber numberWithInteger:94],[NSNumber numberWithInteger:95],[NSNumber numberWithInteger:96],nil];
 
         Piano = [NSDictionary dictionaryWithObjects: values forKeys: keys];
     
@@ -791,13 +833,27 @@ didDiscoverCharacteristicsForService:(CBService *)service error:(NSError *)error
     }
 }
 
+// Also moved this up
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    [self.view endEditing:YES];
+}
+- (IBAction)modeChange:(id)sender {
+    if (_modeSwitch.on) { // Footswitch Mode
+         modeToe = false;
+        _modeLabel.text = @"Heel Strike Mode"; // rename later
+    }
+    else {
+         modeToe = true;
+        _modeLabel.text = @"Toe Off Mode";
+    }
+}
+
 - (void)peripheral:(CBPeripheral *)peripheral
 didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic error:(NSError *)error {
     NSLog(@"reading value!");
     NSLog(@"<%@>", characteristic.value);
     
     NSData *rawData = characteristic.value;
-    
     
     // for MIDI specifically
     long longVal;
@@ -808,8 +864,13 @@ didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic error:(NSErro
 //    NSLog(@"MIDI int #1: %d", vals[0]);
 //    NSLog(@"MIDI int #2: %d", vals[1]);
 //    NSLog(@"MIDI int #3: %d", vals[2]);
-    
-    if ([theLock tryLock]) {
+ // Melissa ended here to add new function, this ok?
+
+    if (modeToe == false) { // Heel Mode
+        [Piano44 play];
+        
+        
+        [theLock lock];
         
         // Music code!
         
@@ -824,7 +885,8 @@ didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic error:(NSErro
         dspFaust->setParamValue("kick_gate", 0);
         dspFaust->setParamValue("detune", detuneAmount);
         
-        if ([peripheral.name containsString:@"Bluefruit52 MIDI 2"]) {
+        
+        if ([peripheral.name containsString:_kneeDeviceName]) {
             // Control changes
             if (vals[2] == 176){
              //   currentDetune = vals[0]/100.0f; // Melissa: maybe change denom to be slider value?
@@ -832,7 +894,7 @@ didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic error:(NSErro
                 detuneAmount = currentDetune;
             }
         }
-        else if ([peripheral.name containsString:@"Bluefruit52 MIDI"]) {
+        else if ([peripheral.name containsString:_footDeviceName]) {
             // Play music
             // noteOn
             if (vals[2] == 144){
@@ -943,16 +1005,65 @@ didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic error:(NSErro
                     
                 }
             }
-        }
-        */
+        }*/
+    
         [theLock unlock];
+        
+        
+        
+    }
+    else { // Toe off mode
+        switch (state) {
+             case TOE_OFF:
+             {
+                 // swing phase
+                 if ([peripheral.name containsString:_kneeDeviceName]) {
+                     if (vals[1] >= kneeStanceAvg + KNEE_DIFF_THRESH) {
+                         tonicChange = true;
+                     }
+                     NSLog(@"Knee angle = %d", vals[1]);
+                     NSLog(@"kneeStanceAvg = %d", kneeStanceAvg);
+                 } else if ([peripheral.name containsString:_footDeviceName]) {
+                     if (vals[1] == HEEL_STRIKE) {
+                         state = HEEL_STRIKE;
+                         kneeStanceAvg = 0;
+                         numStanceAvg = 0;
+                         if (tonicChange) {
+                             tonicIdx = (tonicIdx + 1) % NUM_FIFTHS;
+                         }
+                         tonicChange = false;
+                     }
+                 }
+                 break;
+             }
+             case HEEL_STRIKE:
+             {
+                 // stance phase
+                 if ([peripheral.name containsString:_kneeDeviceName]) {
+                     kneeStanceAvg += vals[1];
+                     numStanceAvg++;
+                 } else if ([peripheral.name containsString:_footDeviceName]) {
+                     if (vals[1] == TOE_OFF) {
+                         state = TOE_OFF;
+                         kneeStanceAvg /= numStanceAvg;
+                     }
+                 }
+                 break;
+             }
+         }
+
+         [theLock lock];
+         if ([peripheral.name containsString:_footDeviceName] && vals[2] == 144){
+             dspFaust->keyOn(circleOf5ths[tonicIdx] + vals[1], vals[0]);
+             NSLog(@"MIDI int: %d", vals[1]);
+         }
+         else if ([peripheral.name containsString:_footDeviceName] && vals[2] == 128){
+             dspFaust->keyOff(circleOf5ths[tonicIdx] + vals[1]);
+         }
+         [theLock unlock];
+        
     }
 }
-
-- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
-    [self.view endEditing:YES];
-}
-
 
 - (IBAction)connectWasPressed:(id)sender {
     for (int i = 0; i < [_devices count]; i++) {
@@ -964,22 +1075,7 @@ didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic error:(NSErro
         }
     }
 }
-
-//- (void)playFromBegin:(AVAudioPlayer)ap {
- //   ap.currentTime = 0;
-  //  [ap play];
-//}
-
 /*
-// Button Click Event
-- (void)audioPlay{
-   if (!_audioPlayer.isPlaying) {
-        [self startPlay];
-   }else{
-       [self stopPlay];
-    }
-}
-
 // Start playing
 - (void)startPlay {
     [_audioPlayer play];
@@ -1008,15 +1104,6 @@ didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic error:(NSErro
 NSInteger midi = 24;
 
 - (IBAction)buttonPressed:(id)sender {
-  //  [Piano33 play]; // A
-  //  [Piano37 play]; // C#
-   // [Piano40 play]; // E
-   // [soundOn addObject:Piano33]; // adds objects to array
-   // [soundOn addObject:Piano37]; // adds objects to array
-    //[soundOn addObject:Piano40]; // adds objects to array
-    
-    // delete all above
-
     
     [self playPiano:(midi)]; // instead of midi will be vals[1]
     // checking notes with button press
@@ -1024,51 +1111,21 @@ NSInteger midi = 24;
         midi = midi+1;
     }
     
-   // AVAudioPlayer *key = Piano2[[NSNumber numberWithInteger:34]];
-  //  [key play];
-    
     if (prevGenre != Globalgenre) {
         [self turnOff]; // reset sounds
     }
     if (Globalgenre == 0) { // Minor
-      //  [self genreTrap];
-    //    [self playPiano:Piano78];
-        
-        
-      //  [Piano33 stop]; // A
-      //  [Piano37 stop]; // C#
-      //  [Piano40 stop];
-      //  [Piano60 play];
-      //  [Piano63 play];
-      //  [Piano67 play];
-        
-        
-        
-        
-       // [soundOn addObject:Piano60]; // adds objects to array
-       // [soundOn addObject:Piano63]; // adds objects to array
-       // [soundOn addObject:Piano67]; // adds objects to array
-       // [self Piano];
         prevGenre = 0;
-      //  [kick play];
     }
     else if (Globalgenre == 1) { // RandomSongs
         //[Piano33 play]; // A
        // [Piano37 play]; // C#
-       // [Piano40 play]; // E
-       // [Piano addObject:Piano33];
-      //  [Piano addObject:Piano37];
-       // [Piano addObject:Piano40];
-       // [[Piano objectAtIndex:(33-33)] play];
-      //  [self genreRS];
         prevGenre = 1;
         
-       // [phone play];
     }
     else if (Globalgenre == 2) { // Songs
        // [self genreSongs];
         prevGenre = 2;
-       // [sunshine play];
     }
     else { // pick a genre
       //  [self noAP];
@@ -1092,7 +1149,6 @@ NSInteger midi = 24;
 /*
 -(void)playPiano:(AVAudioPlayer*)key, ...{
     [key play];
-    /*
     va_list args;
     va_start(args, normal);
     
@@ -1109,7 +1165,6 @@ NSInteger midi = 24;
     // resets for things that go to other pages because of memory, "pause music" truly only does pause
     [self turnOff];
 }
-
 
 -(void)turnOff {
     for(id tempObject in soundOn) { // loop through every element in the array
