@@ -62,13 +62,13 @@
             filePath = "faust_music/ViewController.mm"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "33"
-            endingLineNumber = "33"
-            landmarkName = "currInstrumentTextField"
+            startingLineNumber = "35"
+            endingLineNumber = "35"
+            landmarkName = "picker"
             landmarkType = "24">
             <Locations>
                <Location
-                  uuid = "AE7DB55B-630D-4221-95CA-9BF31A4D62C0 - e6d19cb60e6ffdfc"
+                  uuid = "AE7DB55B-630D-4221-95CA-9BF31A4D62C0 - e6d19cb60e6ffdbe"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
@@ -78,12 +78,12 @@
                   urlString = "file:///Users/Melissamarable/Desktop/NEWAPP/andante_faust/faust_music/ViewController.mm"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "33"
-                  endingLineNumber = "33"
+                  startingLineNumber = "35"
+                  endingLineNumber = "35"
                   offsetFromSymbolStart = "16">
                </Location>
                <Location
-                  uuid = "AE7DB55B-630D-4221-95CA-9BF31A4D62C0 - 6f5b66f7ce279342"
+                  uuid = "AE7DB55B-630D-4221-95CA-9BF31A4D62C0 - 6f5b66f7ce279300"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
@@ -93,8 +93,8 @@
                   urlString = "file:///Users/Melissamarable/Desktop/NEWAPP/andante_faust/faust_music/ViewController.mm"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "33"
-                  endingLineNumber = "33"
+                  startingLineNumber = "35"
+                  endingLineNumber = "35"
                   offsetFromSymbolStart = "49">
                </Location>
             </Locations>
@@ -110,8 +110,8 @@
             filePath = "faust_music/ViewController.mm"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1008"
-            endingLineNumber = "1008"
+            startingLineNumber = "1131"
+            endingLineNumber = "1131"
             landmarkName = "-Piano"
             landmarkType = "7">
          </BreakpointContent>
@@ -126,8 +126,8 @@
             filePath = "faust_music/ViewController.mm"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1036"
-            endingLineNumber = "1036"
+            startingLineNumber = "1159"
+            endingLineNumber = "1159"
             landmarkName = "-genreRS"
             landmarkType = "7">
          </BreakpointContent>
