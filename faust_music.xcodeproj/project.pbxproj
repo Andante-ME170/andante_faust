@@ -20,10 +20,7 @@
 		DB5A03FE264B8EF500EBC762 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB5A03FD264B8EF500EBC762 /* AVFoundation.framework */; };
 		DB5A0400264B9FAC00EBC762 /* SleepWalkChords.wav in Resources */ = {isa = PBXBuildFile; fileRef = DB5A03FF264B9FAC00EBC762 /* SleepWalkChords.wav */; };
 		DB5A041C264E581800EBC762 /* ViewController2.mm in Sources */ = {isa = PBXBuildFile; fileRef = DB5A041B264E581800EBC762 /* ViewController2.mm */; };
-		DB5A0421264E6FCA00EBC762 /* FUNKY_HOUSE.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = DB5A0420264E6FCA00EBC762 /* FUNKY_HOUSE.mp3 */; };
 		DB5A0423264E6FEB00EBC762 /* WalkingOnSunshine.wav in Resources */ = {isa = PBXBuildFile; fileRef = DB5A0422264E6FEB00EBC762 /* WalkingOnSunshine.wav */; };
-		DB5A0425264E6FF500EBC762 /* Telephone.wav in Resources */ = {isa = PBXBuildFile; fileRef = DB5A0424264E6FF500EBC762 /* Telephone.wav */; };
-		DB5A0427264E6FFB00EBC762 /* Car.wav in Resources */ = {isa = PBXBuildFile; fileRef = DB5A0426264E6FFB00EBC762 /* Car.wav */; };
 		DB5A0430264F31B800EBC762 /* ViewController3.mm in Sources */ = {isa = PBXBuildFile; fileRef = DB5A042F264F31B800EBC762 /* ViewController3.mm */; };
 		DB752BBF26548CF4000BD73A /* AndantePiano37.wav in Resources */ = {isa = PBXBuildFile; fileRef = DB752B7626548CF4000BD73A /* AndantePiano37.wav */; };
 		DB752BC026548CF4000BD73A /* AndantePiano36.wav in Resources */ = {isa = PBXBuildFile; fileRef = DB752B7726548CF4000BD73A /* AndantePiano36.wav */; };
@@ -148,10 +145,7 @@
 		DB5A03FF264B9FAC00EBC762 /* SleepWalkChords.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = SleepWalkChords.wav; sourceTree = "<group>"; };
 		DB5A041A264E581800EBC762 /* ViewController2.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController2.h; sourceTree = "<group>"; };
 		DB5A041B264E581800EBC762 /* ViewController2.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = ViewController2.mm; sourceTree = "<group>"; };
-		DB5A0420264E6FCA00EBC762 /* FUNKY_HOUSE.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = FUNKY_HOUSE.mp3; sourceTree = "<group>"; };
 		DB5A0422264E6FEB00EBC762 /* WalkingOnSunshine.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = WalkingOnSunshine.wav; sourceTree = "<group>"; };
-		DB5A0424264E6FF500EBC762 /* Telephone.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Telephone.wav; sourceTree = "<group>"; };
-		DB5A0426264E6FFB00EBC762 /* Car.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Car.wav; sourceTree = "<group>"; };
 		DB5A042E264F31B800EBC762 /* ViewController3.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController3.h; sourceTree = "<group>"; };
 		DB5A042F264F31B800EBC762 /* ViewController3.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = ViewController3.mm; sourceTree = "<group>"; };
 		DB752B7626548CF4000BD73A /* AndantePiano37.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = AndantePiano37.wav; sourceTree = "<group>"; };
@@ -333,19 +327,9 @@
 			children = (
 				DBA14CB22654B4C500D09251 /* AndanteDrumsAcoustic */,
 				DB752B7526548CF4000BD73A /* numberedPiano */,
-				DB5A0429264E702E00EBC762 /* RandomSounds */,
 				DB5A042A264E704800EBC762 /* Songs */,
 			);
 			path = "wav files";
-			sourceTree = "<group>";
-		};
-		DB5A0429264E702E00EBC762 /* RandomSounds */ = {
-			isa = PBXGroup;
-			children = (
-				DB5A0426264E6FFB00EBC762 /* Car.wav */,
-				DB5A0424264E6FF500EBC762 /* Telephone.wav */,
-			);
-			path = RandomSounds;
 			sourceTree = "<group>";
 		};
 		DB5A042A264E704800EBC762 /* Songs */ = {
@@ -353,7 +337,6 @@
 			children = (
 				DB5A0422264E6FEB00EBC762 /* WalkingOnSunshine.wav */,
 				DB5A03FF264B9FAC00EBC762 /* SleepWalkChords.wav */,
-				DB5A0420264E6FCA00EBC762 /* FUNKY_HOUSE.mp3 */,
 			);
 			path = Songs;
 			sourceTree = "<group>";
@@ -575,7 +558,6 @@
 				DB752BE926548CF4000BD73A /* AndantePiano93.wav in Resources */,
 				DB752BCE26548CF4000BD73A /* AndantePiano83.wav in Resources */,
 				DB752C0626548CF5000BD73A /* AndantePiano38.wav in Resources */,
-				DB5A0427264E6FFB00EBC762 /* Car.wav in Resources */,
 				DB752BF126548CF4000BD73A /* AndantePiano74.wav in Resources */,
 				DB752C0326548CF5000BD73A /* AndantePiano65.wav in Resources */,
 				DB752BF726548CF4000BD73A /* AndantePiano88.wav in Resources */,
@@ -596,13 +578,11 @@
 				DB752BF326548CF4000BD73A /* AndantePiano48.wav in Resources */,
 				DB752BDF26548CF4000BD73A /* AndantePiano85.wav in Resources */,
 				DB752C0226548CF5000BD73A /* AndantePiano71.wav in Resources */,
-				DB5A0425264E6FF500EBC762 /* Telephone.wav in Resources */,
 				DB752BEB26548CF4000BD73A /* AndantePiano78.wav in Resources */,
 				DB752BE126548CF4000BD73A /* AndantePiano90.wav in Resources */,
 				DB752BDD26548CF4000BD73A /* AndantePiano46.wav in Resources */,
 				DB752BBF26548CF4000BD73A /* AndantePiano37.wav in Resources */,
 				A2E7CC48262188CA006CA38B /* Assets.xcassets in Resources */,
-				DB5A0421264E6FCA00EBC762 /* FUNKY_HOUSE.mp3 in Resources */,
 				DB752BC726548CF4000BD73A /* AndantePiano26.wav in Resources */,
 				DB752BFD26548CF5000BD73A /* AndantePiano72.wav in Resources */,
 				DB752BD626548CF4000BD73A /* AndantePiano94.wav in Resources */,

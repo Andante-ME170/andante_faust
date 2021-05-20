@@ -51,12 +51,8 @@ int prevGenre = -1;
 //@property(nonatomic,strong)NSTimer *timer; not using rn
 
 // Random Sounds
-@property(nonatomic,strong)AVAudioPlayer *carAP;
-@property(nonatomic,strong)AVAudioPlayer *telephoneAP;
 
 // Songs
-@property(nonatomic,strong)AVAudioPlayer *walkSunshineAP;
-@property(nonatomic,strong)AVAudioPlayer *funkyAP;
 
 // Ya messed up!
 @property(nonatomic,strong)AVAudioPlayer *audioPlayer;
@@ -142,7 +138,7 @@ int prevGenre = -1;
 @property(nonatomic,strong)AVAudioPlayer *APPiano96;
 
 
-// More genres here!
+// More Instruments here
 
 @end
 
@@ -158,16 +154,12 @@ int prevGenre = -1;
 }
 
 // Random Sounds
-@synthesize carAP = car;
-@synthesize telephoneAP = phone;
 
 // Songs
-@synthesize walkSunshineAP = sunshine;
-@synthesize funkyAP = funky;
 
 @synthesize audioPlayer = audioPlayer2;
 // Ya messed up!
-//@synthesize noAP = no;
+
 
 // Insert more genres
 
@@ -297,9 +289,6 @@ float detuneAmount = 0.0f;
        numStanceAvg = 0;
        tonicChange = false;
        
-      // _midiCharUUID = @"7772E5DB-3868-4112-A1A9-F2669D106BF3";
-      // _midiServiceUUID = @"03B80E5A-EDE8-4B33-A751-6CE34EC4C700";
-       
        _footDeviceName = @"Bluefruit52 MIDI foot";
        _kneeDeviceName = @"Bluefruit52 MIDI knee";
     
@@ -309,20 +298,8 @@ float detuneAmount = 0.0f;
    // NSURL *url = [[NSBundle mainBundle] URLForResource:@"smooth kick 1" withExtension:@ "wav"];
     
     // Random Sounds
-    car = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"Car" withExtension:@ "wav"] error:&error];
-    [car prepareToPlay];
-    
-    phone = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"Telephone" withExtension:@ "wav"] error:&error];
-    [phone prepareToPlay];
-    [randomSoundsArray addObject:car];
-    [randomSoundsArray addObject:phone];
     
     // Songs
-    sunshine = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"WalkingOnSunshine" withExtension:@ "wav"] error:&error];
-    [sunshine prepareToPlay];
-    
-    funky = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"FUNKY_HOUSE" withExtension:@ "mp3"] error:&error];
-    [funky prepareToPlay];
 
     // More gengres here
 
@@ -689,9 +666,9 @@ float detuneAmount = 0.0f;
         Piano = [NSDictionary dictionaryWithObjects: values forKeys: keys];
     
     
-    // Below lines are in a function
-    AVAudioPlayer *key = Piano[[NSNumber numberWithInteger:34]];
-    [key play];
+    // Below lines are what goes in function
+   // AVAudioPlayer *key = Piano[[NSNumber numberWithInteger:34]];
+  //  [key play];
 
 
 }
@@ -1054,12 +1031,15 @@ didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic error:(NSErro
 
          [theLock lock];
          if ([peripheral.name containsString:_footDeviceName] && vals[2] == 144){
-             dspFaust->keyOn(circleOf5ths[tonicIdx] + vals[1], vals[0]);
+             //dspFaust->keyOn(circleOf5ths[tonicIdx] + vals[1], vals[0]);
+            [self playPiano:(circleOf5ths[tonicIdx] + vals[1])];
              NSLog(@"MIDI int: %d", vals[1]);
          }
-         else if ([peripheral.name containsString:_footDeviceName] && vals[2] == 128){
-             dspFaust->keyOff(circleOf5ths[tonicIdx] + vals[1]);
-         }
+        // Think we can delete below
+         //else if ([peripheral.name containsString:_footDeviceName] && vals[2] == 128){
+             //dspFaust->keyOff(circleOf5ths[tonicIdx] + vals[1]);
+             
+         //}
          [theLock unlock];
         
     }
@@ -1194,7 +1174,6 @@ NSInteger midi = 24;
 
 -(void)genreTrap {
    // [soundOn removeAllObjects];
-  //  [self kickAP];
     [Piano33 play];
     /*
     NSMutableArray* Trap = [NSMutableArray arrayWithObjects: kick, hat, nil];
@@ -1229,11 +1208,11 @@ NSInteger midi = 24;
   //  [car stop];
   //  [kick stop];
   //  [hat stop];
-    [self walkSunshineAP];
-    [sunshine play];
-    if (![soundOn containsObject:sunshine]) {
-        [soundOn addObject:sunshine]; // adds objects to array
-    }
+    //[self walkSunshineAP];
+   // [sunshine play];
+   // if (![soundOn containsObject:sunshine]) {
+    //    [soundOn addObject:sunshine]; // adds objects to array
+   // }
 }
 
     // your code here
