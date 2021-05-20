@@ -12,18 +12,28 @@
 #import "ViewController3.h"
 #import <stdarg.h>
 
+#define HEEL_STRIKE         0       // tonic (do)
+#define TOE_OFF             9       // submediant (la)
+#define NUM_FIFTHS          12
+#define KNEE_DIFF_THRESH    30
+
 NSLock *theLock  = [[NSLock alloc] init];
 
 NSMutableArray *soundOn = [[NSMutableArray alloc]init];
 NSMutableArray *randomSoundsArray = [[NSMutableArray alloc]init];
 NSMutableArray *randomSoundsArrayAP = [[NSMutableArray alloc]init];
-NSMutableArray *Piano = [[NSMutableArray alloc]init];
 
+NSDictionary *Piano;
+// Can do this for each instrument
+
+BOOL modeToe;
 
 int prevGenre = -1;
                          
 @interface ViewController ()<AVAudioPlayerDelegate>
 
+@property (nonatomic, strong) NSString *footDeviceName;
+@property (nonatomic, strong) NSString *kneeDeviceName;
 
 @property (nonatomic, strong) NSString *bleDevice;
 @property (nonatomic, strong) NSMutableArray *pickerData;
@@ -32,6 +42,7 @@ int prevGenre = -1;
 
 @property (weak, nonatomic) IBOutlet UILabel *currInstrumentTextField;
 @property (weak, nonatomic) IBOutlet UIPickerView *picker;
+//@property(weak, nonatomic) IBOutlet UISwitch *modeSwitch;
 
 // Trap
 @property(nonatomic,strong)AVAudioPlayer *kickAP;
@@ -40,18 +51,26 @@ int prevGenre = -1;
 //@property(nonatomic,strong)NSTimer *timer; not using rn
 
 // Random Sounds
-@property(nonatomic,strong)AVAudioPlayer *carAP;
-@property(nonatomic,strong)AVAudioPlayer *telephoneAP;
 
 // Songs
-@property(nonatomic,strong)AVAudioPlayer *walkSunshineAP;
-@property(nonatomic,strong)AVAudioPlayer *funkyAP;
 
 // Ya messed up!
 @property(nonatomic,strong)AVAudioPlayer *audioPlayer;
 
+// Drumset
+@property(nonatomic,strong)AVAudioPlayer *APkick;
+@property(nonatomic,strong)AVAudioPlayer *APhat;
+@property(nonatomic,strong)AVAudioPlayer *APsnare;
 
 // Piano
+@property(nonatomic,strong)AVAudioPlayer *APPiano24;
+@property(nonatomic,strong)AVAudioPlayer *APPiano25;
+@property(nonatomic,strong)AVAudioPlayer *APPiano26;
+@property(nonatomic,strong)AVAudioPlayer *APPiano27;
+@property(nonatomic,strong)AVAudioPlayer *APPiano28;
+@property(nonatomic,strong)AVAudioPlayer *APPiano29;
+@property(nonatomic,strong)AVAudioPlayer *APPiano30;
+@property(nonatomic,strong)AVAudioPlayer *APPiano31;
 @property(nonatomic,strong)AVAudioPlayer *APPiano32;
 @property(nonatomic,strong)AVAudioPlayer *APPiano33;
 @property(nonatomic,strong)AVAudioPlayer *APPiano34;
@@ -64,10 +83,10 @@ int prevGenre = -1;
 @property(nonatomic,strong)AVAudioPlayer *APPiano41;
 @property(nonatomic,strong)AVAudioPlayer *APPiano42;
 @property(nonatomic,strong)AVAudioPlayer *APPiano43;
-//@property(nonatomic,strong)AVAudioPlayer *APPiano44;
-//@property(nonatomic,strong)AVAudioPlayer *APPiano45;
-//@property(nonatomic,strong)AVAudioPlayer *APPiano46;
-//@property(nonatomic,strong)AVAudioPlayer *APPiano47;
+@property(nonatomic,strong)AVAudioPlayer *APPiano44;
+@property(nonatomic,strong)AVAudioPlayer *APPiano45;
+@property(nonatomic,strong)AVAudioPlayer *APPiano46;
+@property(nonatomic,strong)AVAudioPlayer *APPiano47;
 @property(nonatomic,strong)AVAudioPlayer *APPiano48;
 @property(nonatomic,strong)AVAudioPlayer *APPiano49;
 @property(nonatomic,strong)AVAudioPlayer *APPiano50;
@@ -76,7 +95,7 @@ int prevGenre = -1;
 @property(nonatomic,strong)AVAudioPlayer *APPiano53;
 @property(nonatomic,strong)AVAudioPlayer *APPiano54;
 @property(nonatomic,strong)AVAudioPlayer *APPiano55;
-//@property(nonatomic,strong)AVAudioPlayer *APPiano56;
+@property(nonatomic,strong)AVAudioPlayer *APPiano56;
 @property(nonatomic,strong)AVAudioPlayer *APPiano57;
 @property(nonatomic,strong)AVAudioPlayer *APPiano58;
 @property(nonatomic,strong)AVAudioPlayer *APPiano59;
@@ -101,36 +120,65 @@ int prevGenre = -1;
 @property(nonatomic,strong)AVAudioPlayer *APPiano78;
 @property(nonatomic,strong)AVAudioPlayer *APPiano79;
 @property(nonatomic,strong)AVAudioPlayer *APPiano80;
+@property(nonatomic,strong)AVAudioPlayer *APPiano81;
+@property(nonatomic,strong)AVAudioPlayer *APPiano82;
+@property(nonatomic,strong)AVAudioPlayer *APPiano83;
+@property(nonatomic,strong)AVAudioPlayer *APPiano84;
+@property(nonatomic,strong)AVAudioPlayer *APPiano85;
+@property(nonatomic,strong)AVAudioPlayer *APPiano86;
+@property(nonatomic,strong)AVAudioPlayer *APPiano87;
+@property(nonatomic,strong)AVAudioPlayer *APPiano88;
+@property(nonatomic,strong)AVAudioPlayer *APPiano89;
+@property(nonatomic,strong)AVAudioPlayer *APPiano90;
+@property(nonatomic,strong)AVAudioPlayer *APPiano91;
+@property(nonatomic,strong)AVAudioPlayer *APPiano92;
+@property(nonatomic,strong)AVAudioPlayer *APPiano93;
+@property(nonatomic,strong)AVAudioPlayer *APPiano94;
+@property(nonatomic,strong)AVAudioPlayer *APPiano95;
+@property(nonatomic,strong)AVAudioPlayer *APPiano96;
 
-// More genres here!
+
+// More Instruments here
 
 @end
 
 
 @implementation ViewController{
   DspFaust *dspFaust;
+    int state;
+    int circleOf5ths[NUM_FIFTHS];
+    int tonicIdx;
+    int kneeStanceAvg;
+    int numStanceAvg;
+    bool tonicChange;
 }
 
-// Trap
-@synthesize kickAP = kick;
-@synthesize snareAP = snare;
-@synthesize hatAP = hat;
-
 // Random Sounds
-@synthesize carAP = car;
-@synthesize telephoneAP = phone;
 
 // Songs
-@synthesize walkSunshineAP = sunshine;
-@synthesize funkyAP = funky;
 
 @synthesize audioPlayer = audioPlayer2;
 // Ya messed up!
-//@synthesize noAP = no;
+
 
 // Insert more genres
+
+// DRUMSET
+@synthesize APkick = kick;
+@synthesize APsnare = snare;
+@synthesize APhat = hat;
+
+// PIANO
+@synthesize APPiano24 = Piano24;
+@synthesize APPiano25 = Piano25;
+@synthesize APPiano26 = Piano26;
+@synthesize APPiano27 = Piano27;
+@synthesize APPiano28 = Piano28;
+@synthesize APPiano29 = Piano29;
+@synthesize APPiano30 = Piano30;
+@synthesize APPiano31 = Piano31;
 @synthesize APPiano32 = Piano32;
-@synthesize APPiano33 =  Piano33;
+@synthesize APPiano33 = Piano33;
 @synthesize APPiano34 = Piano34;
 @synthesize APPiano35 = Piano35;
 @synthesize APPiano36 = Piano36;
@@ -140,11 +188,11 @@ int prevGenre = -1;
 @synthesize APPiano40 = Piano40;
 @synthesize APPiano41 = Piano41;
 @synthesize APPiano42 = Piano42;
-@synthesize APPiano43 =  Piano43;
-//@synthesize APPiano44 = Piano44;
-//@synthesize APPiano45 = Piano45;
-//@synthesize APPiano46 = Piano46;
-//@synthesize APPiano47 = Piano47;
+@synthesize APPiano43 = Piano43;
+@synthesize APPiano44 = Piano44;
+@synthesize APPiano45 = Piano45;
+@synthesize APPiano46 = Piano46;
+@synthesize APPiano47 = Piano47;
 @synthesize APPiano48 = Piano48;
 @synthesize APPiano49 = Piano49;
 @synthesize APPiano50 = Piano50;
@@ -153,7 +201,7 @@ int prevGenre = -1;
 @synthesize APPiano53 = Piano53;
 @synthesize APPiano54 = Piano54;
 @synthesize APPiano55 = Piano55;
-//@synthesize APPiano56 = Piano56;
+@synthesize APPiano56 = Piano56;
 @synthesize APPiano57 = Piano57;
 @synthesize APPiano58 = Piano58;
 @synthesize APPiano59 = Piano59;
@@ -178,7 +226,22 @@ int prevGenre = -1;
 @synthesize APPiano78 = Piano78;
 @synthesize APPiano79 = Piano79;
 @synthesize APPiano80 = Piano80;
-
+@synthesize APPiano81 = Piano81;
+@synthesize APPiano82 = Piano82;
+@synthesize APPiano83 = Piano83;
+@synthesize APPiano84 = Piano84;
+@synthesize APPiano85 = Piano85;
+@synthesize APPiano86 = Piano86;
+@synthesize APPiano87 = Piano87;
+@synthesize APPiano88 = Piano88;
+@synthesize APPiano89 = Piano89;
+@synthesize APPiano90 = Piano90;
+@synthesize APPiano91 = Piano91;
+@synthesize APPiano92 = Piano92;
+@synthesize APPiano93 = Piano93;
+@synthesize APPiano94 = Piano94;
+@synthesize APPiano95 = Piano95;
+@synthesize APPiano96 = Piano96;
 
 int chordCounter = 0;
 int chordMIDIs[4][6] = {{48,55,60,64,60,55}, {43,50,55,59,55,50}, {45,52,57,60,57,52}, {41,48,53,57,53,48}}; // C G Am F
@@ -218,31 +281,25 @@ float detuneAmount = 0.0f;
     _picker.dataSource = self;
     _picker.delegate = self;
     
+    state = TOE_OFF;
+       int co5[NUM_FIFTHS] = {48,55,50,57,52,59,54,49,56,51,58,53};
+       memcpy(circleOf5ths, co5, sizeof(co5));
+       tonicIdx = 0;
+       kneeStanceAvg = 0;
+       numStanceAvg = 0;
+       tonicChange = false;
+       
+       _footDeviceName = @"Bluefruit52 MIDI foot";
+       _kneeDeviceName = @"Bluefruit52 MIDI knee";
+    
     
     // For SoundFonts
     NSError *error;
    // NSURL *url = [[NSBundle mainBundle] URLForResource:@"smooth kick 1" withExtension:@ "wav"];
-    kick = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"smooth kick 1" withExtension:@ "wav"] error:&error];
-    hat = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"basic hat" withExtension:@ "wav"] error:&error];
-    [kick prepareToPlay]; // function call
-
-    [hat prepareToPlay];
     
     // Random Sounds
-    car = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"Car" withExtension:@ "wav"] error:&error];
-    [car prepareToPlay];
-    
-    phone = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"Telephone" withExtension:@ "wav"] error:&error];
-    [phone prepareToPlay];
-    [randomSoundsArray addObject:car];
-    [randomSoundsArray addObject:phone];
     
     // Songs
-    sunshine = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"WalkingOnSunshine" withExtension:@ "wav"] error:&error];
-    [sunshine prepareToPlay];
-    
-    funky = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"FUNKY_HOUSE" withExtension:@ "mp3"] error:&error];
-    [funky prepareToPlay];
 
     // More gengres here
 
@@ -260,6 +317,13 @@ float detuneAmount = 0.0f;
             case 2:
                 self.genreValue.text = @"Songs";
                 break;
+    }
+    // Melissa, need to fix logic here
+    if(modeToe == true) { // reverse so easier
+        _modeLabel.text = @"Toe Off Mode";
+    }
+    else{
+        _modeLabel.text = @"Heel Strike Mode"; // rename later
     }
     
    // NSMutableArray *Piano = [NSMutableArray arrayWithObjects: @"AndantePiano1","AndantePiano2","AndantePiano3", nil];
@@ -285,10 +349,48 @@ float detuneAmount = 0.0f;
        // [audioPlayer2 play];
         
         */
+ 
     
+    kick = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndanteDrumsAcousticKick" withExtension:@ "wav"] error:&error];
+    [kick prepareToPlay];
+
+    snare = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndanteDrumsAcousticSnare" withExtension:@ "wav"] error:&error];
+    [snare prepareToPlay];
+    
+    hat = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndanteDrumsAcousticHat" withExtension:@ "wav"] error:&error];
+    [hat prepareToPlay];
+    
+    
+    Piano24 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndantePiano24" withExtension:@ "wav"] error:&error];
+    [Piano24 prepareToPlay];
+
+    Piano25 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndantePiano25" withExtension:@ "wav"] error:&error];
+    [Piano25 prepareToPlay];
+    
+    Piano26 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndantePiano26" withExtension:@ "wav"] error:&error];
+    [Piano26 prepareToPlay];
+    
+    Piano27 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndantePiano27" withExtension:@ "wav"] error:&error];
+    [Piano27 prepareToPlay];
+    
+    Piano28 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndantePiano28" withExtension:@ "wav"] error:&error];
+    [Piano28 prepareToPlay];
+    
+    Piano29 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndantePiano29" withExtension:@ "wav"] error:&error];
+    [Piano29 prepareToPlay];
+    
+    Piano30 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndantePiano30" withExtension:@ "wav"] error:&error];
+    [Piano30 prepareToPlay];
+    
+    Piano31 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndantePiano31" withExtension:@ "wav"] error:&error];
+    [Piano31 prepareToPlay];
+    
+    Piano32 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndantePiano32" withExtension:@ "wav"] error:&error];
+    [Piano32 prepareToPlay];
     
     Piano33 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndantePiano33" withExtension:@ "wav"] error:&error];
-        [Piano33 prepareToPlay];
+    [Piano33 prepareToPlay];
+
     // [Piano addObject: Piano32];
        // addObject:[Piano objectAtIndex:33];
    // [Piano33 play]; // A1
@@ -296,71 +398,45 @@ float detuneAmount = 0.0f;
         
     Piano34 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndantePiano34" withExtension:@ "wav"] error:&error];
     [Piano34 prepareToPlay];
-   // [Piano addObject: Piano32];
-    // [Piano34 play];
-    
+
     Piano35 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndantePiano35" withExtension:@ "wav"] error:&error];
     [Piano35 prepareToPlay];
-   // [Piano addObject: Piano32];
-    //[Piano35 play];
     
     Piano36 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndantePiano36" withExtension:@ "wav"] error:&error];
     [Piano36 prepareToPlay];
-   // [Piano addObject: Piano32];
-    // [Piano36 play];
     
     Piano37 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndantePiano37" withExtension:@ "wav"] error:&error];
     [Piano37 prepareToPlay];
-   // [Piano addObject: Piano32];
-    //[Piano37 play];
     
     Piano38 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndantePiano38" withExtension:@ "wav"] error:&error];
     [Piano38 prepareToPlay];
-   // [Piano addObject: Piano32];
-    // [Piano38 play];
     
     Piano39 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndantePiano39" withExtension:@ "wav"] error:&error];
     [Piano39 prepareToPlay];
-   // [Piano addObject: Piano32];
-    // [Piano39 play];
     
     Piano40 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndantePiano40" withExtension:@ "wav"] error:&error];
     [Piano40 prepareToPlay];
-   // [Piano addObject: Piano32];
-    // [Piano40 play];
     
     Piano41 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndantePiano41" withExtension:@ "wav"] error:&error];
     [Piano41 prepareToPlay];
-   // [Piano addObject: Piano32];
-    //[Piano41 play];
     
     Piano42 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndantePiano42" withExtension:@ "wav"] error:&error];
     [Piano42 prepareToPlay];
-   // [Piano addObject: Piano32];
-    //  [Piano42 play];
     
     Piano43 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndantePiano43" withExtension:@ "wav"] error:&error];
     [Piano43 prepareToPlay];
-   // [Piano addObject: Piano32];
-    // [Piano43 play];
 
-  //  Piano44 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndantePiano44" withExtension:@ "wav"] error:&error];
-  //  [Piano44 prepareToPlay];
-   // [Piano addObject: Piano32];
-    // [Piano44 play];
+    Piano44 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndantePiano44" withExtension:@ "wav"] error:&error];
+    [Piano44 prepareToPlay];
 
-  //  Piano45 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndantePiano45" withExtension:@ "wav"] error:&error];
-  //  [Piano45 prepareToPlay];
-   // [Piano addObject: Piano32];
-    // [Piano45 play];
+    Piano45 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndantePiano45" withExtension:@ "wav"] error:&error];
+    [Piano45 prepareToPlay];
 
-   // Piano46 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndantePiano46" withExtension:@ "wav"] error:&error];
-   // [Piano46 prepareToPlay];
-   // [Piano addObject: Piano32];
-    // [Piano46 play];
+    Piano46 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndantePiano46" withExtension:@ "wav"] error:&error];
+    [Piano46 prepareToPlay];
 
-   // Piano47 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndantePiano47" withExtension:@ "wav"] error:&error];
-   // [Piano47 prepareToPlay];
+    Piano47 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndantePiano47" withExtension:@ "wav"] error:&error];
+    [Piano47 prepareToPlay];
    // [Piano addObject: Piano32];
     // [Piano47 play];
 
@@ -400,8 +476,8 @@ float detuneAmount = 0.0f;
     [Piano55 prepareToPlay];
    // [Piano55 play];
 
-  //  Piano56 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndantePiano56" withExtension:@ "wav"] error:&error];
-  //  [Piano56 prepareToPlay];
+    Piano56 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndantePiano56" withExtension:@ "wav"] error:&error];
+    [Piano56 prepareToPlay];
     // [Piano56 play];
 
     Piano57 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndantePiano57" withExtension:@ "wav"] error:&error];
@@ -459,93 +535,141 @@ float detuneAmount = 0.0f;
 
     Piano60 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndantePiano60" withExtension:@ "wav"] error:&error];
     [Piano60 prepareToPlay];
-    // [Piano60 play];
     
     Piano61 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndantePiano61" withExtension:@ "wav"] error:&error];
     [Piano61 prepareToPlay];
-    // [Piano61 play];
     
     Piano62 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndantePiano62" withExtension:@ "wav"] error:&error];
     [Piano62 prepareToPlay];
-    // [Piano62 play];
-    
-    Piano62 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndantePiano62" withExtension:@ "wav"] error:&error];
-    [Piano62 prepareToPlay];
-    //  [Piano62 play];
     
     Piano63 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndantePiano63" withExtension:@ "wav"] error:&error];
     [Piano63 prepareToPlay];
-    //  [Piano63 play];
     
     Piano64 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndantePiano64" withExtension:@ "wav"] error:&error];
     [Piano64 prepareToPlay];
-    // [Piano64 play];
     
     Piano65 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndantePiano65" withExtension:@ "wav"] error:&error];
     [Piano65 prepareToPlay];
-    //  [Piano65 play];
     
     Piano66 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndantePiano66" withExtension:@ "wav"] error:&error];
     [Piano66 prepareToPlay];
-    //  [Piano66 play];
     
     Piano67 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndantePiano67" withExtension:@ "wav"] error:&error];
     [Piano67 prepareToPlay];
-    // [Piano67 play];
     
     Piano68 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndantePiano68" withExtension:@ "wav"] error:&error];
     [Piano68 prepareToPlay];
-    // [Piano68 play];
     
     Piano69 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndantePiano69" withExtension:@ "wav"] error:&error];
     [Piano69 prepareToPlay];
-    // [Piano69 play];
-    
-    
+
     Piano70 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndantePiano70" withExtension:@ "wav"] error:&error];
     [Piano70 prepareToPlay];
-    // [Piano70 play];
     
     Piano71 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndantePiano71" withExtension:@ "wav"] error:&error];
     [Piano71 prepareToPlay];
-    //  [Piano71 play];
     
     Piano72 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndantePiano72" withExtension:@ "wav"] error:&error];
     [Piano72 prepareToPlay];
-    //  [Piano72 play];
     
     Piano73 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndantePiano73" withExtension:@ "wav"] error:&error];
     [Piano73 prepareToPlay];
-    //  [Piano73 play];
     
     Piano74 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndantePiano74" withExtension:@ "wav"] error:&error];
     [Piano74 prepareToPlay];
-    // [Piano74 play];
-    
     
     Piano75 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndantePiano75" withExtension:@ "wav"] error:&error];
     [Piano75 prepareToPlay];
-    //  [Piano75 play];
     
     Piano76 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndantePiano76" withExtension:@ "wav"] error:&error];
     [Piano76 prepareToPlay];
-    // [Piano76 play];
     
     Piano77 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndantePiano77" withExtension:@ "wav"] error:&error];
     [Piano77 prepareToPlay];
-    // [Piano77 play];
     
     Piano78 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndantePiano78" withExtension:@ "wav"] error:&error];
     [Piano78 prepareToPlay];
-    // [Piano78 play];
     
     Piano79 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndantePiano79" withExtension:@ "wav"] error:&error];
     [Piano79 prepareToPlay];
-    //[Piano79 play];
-    
+
     Piano80 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndantePiano80" withExtension:@ "wav"] error:&error];
     [Piano80 prepareToPlay];
-    // [Piano80 play];
+
+    
+    Piano81 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndantePiano81" withExtension:@ "wav"] error:&error];
+    [Piano81 prepareToPlay];
+    
+    Piano82 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndantePiano82" withExtension:@ "wav"] error:&error];
+    [Piano82 prepareToPlay];
+    
+    Piano83 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndantePiano83" withExtension:@ "wav"] error:&error];
+    [Piano83 prepareToPlay];
+    
+    Piano84 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndantePiano84" withExtension:@ "wav"] error:&error];
+    [Piano84 prepareToPlay];
+    
+    Piano85 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndantePiano85" withExtension:@ "wav"] error:&error];
+    [Piano85 prepareToPlay];
+    
+    Piano86 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndantePiano86" withExtension:@ "wav"] error:&error];
+    [Piano86 prepareToPlay];
+    
+    Piano87 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndantePiano87" withExtension:@ "wav"] error:&error];
+    [Piano87 prepareToPlay];
+    
+    Piano88 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndantePiano88" withExtension:@ "wav"] error:&error];
+    [Piano88 prepareToPlay];
+    
+    Piano89 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndantePiano89" withExtension:@ "wav"] error:&error];
+    [Piano89 prepareToPlay];
+
+    Piano90 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndantePiano90" withExtension:@ "wav"] error:&error];
+    [Piano90 prepareToPlay];
+    
+    Piano91 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndantePiano91" withExtension:@ "wav"] error:&error];
+    [Piano91 prepareToPlay];
+    
+    Piano92 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndantePiano92" withExtension:@ "wav"] error:&error];
+    [Piano92 prepareToPlay];
+    
+    Piano93 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndantePiano93" withExtension:@ "wav"] error:&error];
+    [Piano93 prepareToPlay];
+    
+    Piano94 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndantePiano94" withExtension:@ "wav"] error:&error];
+    [Piano94 prepareToPlay];
+    
+    Piano95 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndantePiano95" withExtension:@ "wav"] error:&error];
+    [Piano95 prepareToPlay];
+    
+    Piano96 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndantePiano96" withExtension:@ "wav"] error:&error];
+    [Piano96 prepareToPlay];
+    
+    /*
+     // IDEAS TO MAKE CODE CLEANER MELISSA
+    NSString *p;
+
+    for(int i = 33; i < 33+ 30; i++) {
+        NSString *p;
+        p = [p stringByAppendingString: [NSString stringWithFormat:@"Piano%d",i]];
+    }
+    */
+    // min is 24
+    // max is 96
+    
+    
+    // PIANO dictionary initialization
+    NSArray *values = [NSArray arrayWithObjects: kick, snare, hat, Piano24, Piano25, Piano26, Piano27, Piano28, Piano29, Piano30, Piano31, Piano32, Piano33, Piano34, Piano35, Piano36, Piano37, Piano38, Piano39, Piano40, Piano41, Piano42, Piano43, Piano44, Piano45, Piano46, Piano47, Piano48, Piano49, Piano50, Piano51, Piano52, Piano53, Piano54, Piano55, Piano56, Piano57, Piano58, Piano59, Piano60, Piano61, Piano62, Piano63, Piano64, Piano65, Piano66, Piano67, Piano68, Piano69, Piano70, Piano71, Piano72, Piano73, Piano74, Piano75, Piano76, Piano77, Piano78, Piano79, Piano80, Piano81, Piano82, Piano83, Piano84, Piano85, Piano86, Piano87, Piano88, Piano89,Piano90, Piano91, Piano92, Piano93, Piano94, Piano95, Piano96, nil];
+    
+    NSArray *keys = [NSArray arrayWithObjects:[NSNumber numberWithInteger:0], [NSNumber numberWithInteger:1],[NSNumber numberWithInteger:2],[NSNumber numberWithInteger:24], [NSNumber numberWithInteger:25],[NSNumber numberWithInteger:26],[NSNumber numberWithInteger:27],[NSNumber numberWithInteger:28], [NSNumber numberWithInteger:29],[NSNumber numberWithInteger:30],[NSNumber numberWithInteger:31],[NSNumber numberWithInteger:32],[NSNumber numberWithInteger:33],[NSNumber numberWithInteger:34], [NSNumber numberWithInteger:35],[NSNumber numberWithInteger:36],[NSNumber numberWithInteger:37],[NSNumber numberWithInteger:38], [NSNumber numberWithInteger:39],[NSNumber numberWithInteger:40],[NSNumber numberWithInteger:41],[NSNumber numberWithInteger:42], [NSNumber numberWithInteger:43],[NSNumber numberWithInteger:44],[NSNumber numberWithInteger:45],[NSNumber numberWithInteger:46], [NSNumber numberWithInteger:47],[NSNumber numberWithInteger:48],[NSNumber numberWithInteger:49],[NSNumber numberWithInteger:50],[NSNumber numberWithInteger:51],[NSNumber numberWithInteger:52], [NSNumber numberWithInteger:53],[NSNumber numberWithInteger:54],[NSNumber numberWithInteger:55],[NSNumber numberWithInteger:56], [NSNumber numberWithInteger:57],[NSNumber numberWithInteger:58],[NSNumber numberWithInteger:59],[NSNumber numberWithInteger:60],[NSNumber numberWithInteger:61],[NSNumber numberWithInteger:62], [NSNumber numberWithInteger:63],[NSNumber numberWithInteger:64],[NSNumber numberWithInteger:65],[NSNumber numberWithInteger:66], [NSNumber numberWithInteger:67],[NSNumber numberWithInteger:68],[NSNumber numberWithInteger:69],[NSNumber numberWithInteger:70],[NSNumber numberWithInteger:71],[NSNumber numberWithInteger:72], [NSNumber numberWithInteger:73],[NSNumber numberWithInteger:74],[NSNumber numberWithInteger:75],[NSNumber numberWithInteger:76], [NSNumber numberWithInteger:77],[NSNumber numberWithInteger:78],[NSNumber numberWithInteger:79], [NSNumber numberWithInteger:80],[NSNumber numberWithInteger:81],[NSNumber numberWithInteger:82], [NSNumber numberWithInteger:83],[NSNumber numberWithInteger:84],[NSNumber numberWithInteger:85],[NSNumber numberWithInteger:86], [NSNumber numberWithInteger:87],[NSNumber numberWithInteger:88],[NSNumber numberWithInteger:89],[NSNumber numberWithInteger:90],[NSNumber numberWithInteger:91],[NSNumber numberWithInteger:92], [NSNumber numberWithInteger:93],[NSNumber numberWithInteger:94],[NSNumber numberWithInteger:95],[NSNumber numberWithInteger:96],nil];
+
+        Piano = [NSDictionary dictionaryWithObjects: values forKeys: keys];
+    
+    
+    // Below lines are what goes in function
+   // AVAudioPlayer *key = Piano[[NSNumber numberWithInteger:34]];
+  //  [key play];
+
 
 }
 
@@ -686,13 +810,27 @@ didDiscoverCharacteristicsForService:(CBService *)service error:(NSError *)error
     }
 }
 
+// Also moved this up
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    [self.view endEditing:YES];
+}
+- (IBAction)modeChange:(id)sender {
+    if (_modeSwitch.on) { // Footswitch Mode
+         modeToe = false;
+        _modeLabel.text = @"Heel Strike Mode"; // rename later
+    }
+    else {
+         modeToe = true;
+        _modeLabel.text = @"Toe Off Mode";
+    }
+}
+
 - (void)peripheral:(CBPeripheral *)peripheral
 didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic error:(NSError *)error {
     NSLog(@"reading value!");
     NSLog(@"<%@>", characteristic.value);
     
     NSData *rawData = characteristic.value;
-    
     
     // for MIDI specifically
     long longVal;
@@ -703,8 +841,13 @@ didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic error:(NSErro
 //    NSLog(@"MIDI int #1: %d", vals[0]);
 //    NSLog(@"MIDI int #2: %d", vals[1]);
 //    NSLog(@"MIDI int #3: %d", vals[2]);
-    
-    if ([theLock tryLock]) {
+ // Melissa ended here to add new function, this ok?
+
+    if (modeToe == false) { // Heel Mode
+        [Piano44 play];
+        
+        
+        [theLock lock];
         
         // Music code!
         
@@ -719,7 +862,8 @@ didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic error:(NSErro
         dspFaust->setParamValue("kick_gate", 0);
         dspFaust->setParamValue("detune", detuneAmount);
         
-        if ([peripheral.name containsString:@"Bluefruit52 MIDI 2"]) {
+        
+        if ([peripheral.name containsString:_kneeDeviceName]) {
             // Control changes
             if (vals[2] == 176){
              //   currentDetune = vals[0]/100.0f; // Melissa: maybe change denom to be slider value?
@@ -727,7 +871,7 @@ didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic error:(NSErro
                 detuneAmount = currentDetune;
             }
         }
-        else if ([peripheral.name containsString:@"Bluefruit52 MIDI"]) {
+        else if ([peripheral.name containsString:_footDeviceName]) {
             // Play music
             // noteOn
             if (vals[2] == 144){
@@ -838,16 +982,68 @@ didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic error:(NSErro
                     
                 }
             }
-        }
-        */
+        }*/
+    
         [theLock unlock];
+        
+        
+        
+    }
+    else { // Toe off mode
+        switch (state) {
+             case TOE_OFF:
+             {
+                 // swing phase
+                 if ([peripheral.name containsString:_kneeDeviceName]) {
+                     if (vals[1] >= kneeStanceAvg + KNEE_DIFF_THRESH) {
+                         tonicChange = true;
+                     }
+                     NSLog(@"Knee angle = %d", vals[1]);
+                     NSLog(@"kneeStanceAvg = %d", kneeStanceAvg);
+                 } else if ([peripheral.name containsString:_footDeviceName]) {
+                     if (vals[1] == HEEL_STRIKE) {
+                         state = HEEL_STRIKE;
+                         kneeStanceAvg = 0;
+                         numStanceAvg = 0;
+                         if (tonicChange) {
+                             tonicIdx = (tonicIdx + 1) % NUM_FIFTHS;
+                         }
+                         tonicChange = false;
+                     }
+                 }
+                 break;
+             }
+             case HEEL_STRIKE:
+             {
+                 // stance phase
+                 if ([peripheral.name containsString:_kneeDeviceName]) {
+                     kneeStanceAvg += vals[1];
+                     numStanceAvg++;
+                 } else if ([peripheral.name containsString:_footDeviceName]) {
+                     if (vals[1] == TOE_OFF) {
+                         state = TOE_OFF;
+                         kneeStanceAvg /= numStanceAvg;
+                     }
+                 }
+                 break;
+             }
+         }
+
+         [theLock lock];
+         if ([peripheral.name containsString:_footDeviceName] && vals[2] == 144){
+             //dspFaust->keyOn(circleOf5ths[tonicIdx] + vals[1], vals[0]);
+            [self playPiano:(circleOf5ths[tonicIdx] + vals[1])];
+             NSLog(@"MIDI int: %d", vals[1]);
+         }
+        // Think we can delete below
+         //else if ([peripheral.name containsString:_footDeviceName] && vals[2] == 128){
+             //dspFaust->keyOff(circleOf5ths[tonicIdx] + vals[1]);
+             
+         //}
+         [theLock unlock];
+        
     }
 }
-
-- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
-    [self.view endEditing:YES];
-}
-
 
 - (IBAction)connectWasPressed:(id)sender {
     for (int i = 0; i < [_devices count]; i++) {
@@ -859,22 +1055,7 @@ didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic error:(NSErro
         }
     }
 }
-
-//- (void)playFromBegin:(AVAudioPlayer)ap {
- //   ap.currentTime = 0;
-  //  [ap play];
-//}
-
 /*
-// Button Click Event
-- (void)audioPlay{
-   if (!_audioPlayer.isPlaying) {
-        [self startPlay];
-   }else{
-       [self stopPlay];
-    }
-}
-
 // Start playing
 - (void)startPlay {
     [_audioPlayer play];
@@ -894,58 +1075,37 @@ didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic error:(NSErro
 }
 */
 
+- (void) playPiano: (int) midi {
+    AVAudioPlayer *key = Piano[[NSNumber numberWithInteger: midi]];
+    [key play];
+}
 
+
+NSInteger midi = 24;
 
 - (IBAction)buttonPressed:(id)sender {
-  //  [Piano33 play]; // A
-  //  [Piano37 play]; // C#
-   // [Piano40 play]; // E
-   // [soundOn addObject:Piano33]; // adds objects to array
-   // [soundOn addObject:Piano37]; // adds objects to array
-    //[soundOn addObject:Piano40]; // adds objects to array
+    
+    [self playPiano:(midi)]; // instead of midi will be vals[1]
+    // checking notes with button press
+    if(midi+1 < 97) {
+        midi = midi+1;
+    }
     
     if (prevGenre != Globalgenre) {
         [self turnOff]; // reset sounds
     }
     if (Globalgenre == 0) { // Minor
-      //  [self genreTrap];
-        [self playPiano:Piano78];
-        
-        
-      //  [Piano33 stop]; // A
-      //  [Piano37 stop]; // C#
-      //  [Piano40 stop];
-      //  [Piano60 play];
-      //  [Piano63 play];
-      //  [Piano67 play];
-        
-        
-        
-        
-       // [soundOn addObject:Piano60]; // adds objects to array
-       // [soundOn addObject:Piano63]; // adds objects to array
-       // [soundOn addObject:Piano67]; // adds objects to array
-       // [self Piano];
         prevGenre = 0;
-      //  [kick play];
     }
     else if (Globalgenre == 1) { // RandomSongs
         //[Piano33 play]; // A
        // [Piano37 play]; // C#
-       // [Piano40 play]; // E
-       // [Piano addObject:Piano33];
-        [Piano addObject:Piano37];
-        [Piano addObject:Piano40];
-        [[Piano objectAtIndex:(33-33)] play];
-      //  [self genreRS];
         prevGenre = 1;
         
-       // [phone play];
     }
     else if (Globalgenre == 2) { // Songs
        // [self genreSongs];
         prevGenre = 2;
-       // [sunshine play];
     }
     else { // pick a genre
       //  [self noAP];
@@ -966,10 +1126,9 @@ didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic error:(NSErro
    // }
 }
 
-
+/*
 -(void)playPiano:(AVAudioPlayer*)key, ...{
     [key play];
-    /*
     va_list args;
     va_start(args, normal);
     
@@ -977,16 +1136,15 @@ didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic error:(NSErro
     while((arg = va_arg(args,id))){
         [args play];
     }
-     */
-}
 
+}
+ */
 
 
 - (IBAction)Genre:(id)sender {
     // resets for things that go to other pages because of memory, "pause music" truly only does pause
     [self turnOff];
 }
-
 
 -(void)turnOff {
     for(id tempObject in soundOn) { // loop through every element in the array
@@ -1016,7 +1174,6 @@ didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic error:(NSErro
 
 -(void)genreTrap {
    // [soundOn removeAllObjects];
-  //  [self kickAP];
     [Piano33 play];
     /*
     NSMutableArray* Trap = [NSMutableArray arrayWithObjects: kick, hat, nil];
@@ -1051,11 +1208,11 @@ didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic error:(NSErro
   //  [car stop];
   //  [kick stop];
   //  [hat stop];
-    [self walkSunshineAP];
-    [sunshine play];
-    if (![soundOn containsObject:sunshine]) {
-        [soundOn addObject:sunshine]; // adds objects to array
-    }
+    //[self walkSunshineAP];
+   // [sunshine play];
+   // if (![soundOn containsObject:sunshine]) {
+    //    [soundOn addObject:sunshine]; // adds objects to array
+   // }
 }
 
     // your code here
