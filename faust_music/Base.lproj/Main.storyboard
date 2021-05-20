@@ -151,66 +151,73 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="758"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UiU-M1-ayW">
-                                <rect key="frame" x="137" y="379" width="100" height="38"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UiU-M1-ayW">
+                                <rect key="frame" x="137.66666666666666" y="379" width="100" height="38"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                 <state key="normal" title="Play Chord"/>
                                 <connections>
                                     <action selector="playChord:" destination="ohV-6a-AI8" eventType="touchUpInside" id="rfz-ug-mO0"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dcD-AC-c93">
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dcD-AC-c93">
                                 <rect key="frame" x="308" y="44" width="41" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Home"/>
                                 <connections>
                                     <action selector="Home:" destination="ohV-6a-AI8" eventType="touchUpInside" id="8vg-w7-weN"/>
                                     <segue destination="BYZ-38-t0r" kind="show" id="eSL-yK-Fq5"/>
                                 </connections>
                             </button>
-                            <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="50" minValue="0.0" maxValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="spm-m8-Lvg">
-                                <rect key="frame" x="40" y="443" width="321" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <slider opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="50" minValue="0.0" maxValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="spm-m8-Lvg">
+                                <rect key="frame" x="40" y="442" width="321" height="31"/>
                                 <color key="thumbTintColor" name="AccentColor"/>
                                 <connections>
                                     <action selector="detune:" destination="ohV-6a-AI8" eventType="valueChanged" id="RzX-h7-Pjf"/>
                                 </connections>
                             </slider>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9HZ-2W-yiL">
+                            <textField opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9HZ-2W-yiL">
                                 <rect key="frame" x="139" y="480" width="97" height="34"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Select an amount just before it becomes unpleasant to your ear." textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="kV4-CB-5wa">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" text="Select an amount just before it becomes unpleasant to your ear." textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="kV4-CB-5wa">
                                 <rect key="frame" x="41" y="552" width="292" height="128"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <color key="textColor" name="AccentColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" fixedFrame="YES" image="speaker.2" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="dP7-C4-K9u">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" misplaced="YES" image="speaker.2" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="dP7-C4-K9u">
                                 <rect key="frame" x="134" y="269" width="106" height="82"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Select maximum detune value" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="ifu-0O-nxt">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" text="Select maximum detune value" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="ifu-0O-nxt">
                                 <rect key="frame" x="51" y="122" width="272" height="128"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <color key="textColor" systemColor="systemBlueColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="words"/>
                             </textView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o9F-4q-Ag3">
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o9F-4q-Ag3">
                                 <rect key="frame" x="34" y="669" width="118" height="43"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Music Resources"/>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="9fs-9T-xcx"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="kV4-CB-5wa" firstAttribute="centerX" secondItem="9fs-9T-xcx" secondAttribute="centerX" id="EGP-lm-Rgg"/>
+                            <constraint firstItem="dP7-C4-K9u" firstAttribute="top" secondItem="9fs-9T-xcx" secondAttribute="top" constant="267" id="LBy-B6-DNu"/>
+                            <constraint firstItem="9fs-9T-xcx" firstAttribute="bottom" secondItem="o9F-4q-Ag3" secondAttribute="bottom" constant="12" id="LD1-Hs-vRx"/>
+                            <constraint firstItem="UiU-M1-ayW" firstAttribute="centerX" secondItem="9fs-9T-xcx" secondAttribute="centerX" id="PC3-on-cxg"/>
+                            <constraint firstItem="ifu-0O-nxt" firstAttribute="top" secondItem="9fs-9T-xcx" secondAttribute="top" constant="122" id="SuM-bk-MlK"/>
+                            <constraint firstItem="9fs-9T-xcx" firstAttribute="bottom" secondItem="9HZ-2W-yiL" secondAttribute="bottom" constant="210" id="TNw-Sk-yTc"/>
+                            <constraint firstItem="spm-m8-Lvg" firstAttribute="centerX" secondItem="9fs-9T-xcx" secondAttribute="centerX" id="W1n-ux-WwM"/>
+                            <constraint firstItem="9fs-9T-xcx" firstAttribute="bottom" secondItem="UiU-M1-ayW" secondAttribute="bottom" constant="307" id="WMa-i1-fNo"/>
+                            <constraint firstItem="9fs-9T-xcx" firstAttribute="bottom" secondItem="kV4-CB-5wa" secondAttribute="bottom" constant="44" id="YwJ-2R-oy3"/>
+                            <constraint firstItem="dP7-C4-K9u" firstAttribute="centerX" secondItem="9fs-9T-xcx" secondAttribute="centerX" id="aS7-yO-FYF"/>
+                            <constraint firstItem="ifu-0O-nxt" firstAttribute="centerX" secondItem="9fs-9T-xcx" secondAttribute="centerX" id="gpI-jy-JOu"/>
+                            <constraint firstItem="dcD-AC-c93" firstAttribute="top" secondItem="9fs-9T-xcx" secondAttribute="top" constant="44" id="jV7-AB-9f0"/>
+                            <constraint firstItem="9HZ-2W-yiL" firstAttribute="centerX" secondItem="9fs-9T-xcx" secondAttribute="centerX" id="w38-JM-Y4U"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="9aa-hS-WX3"/>
                     <connections>
@@ -220,7 +227,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Nk4-zI-A1r" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-100" y="-1143.1034482758621"/>
+            <point key="canvasLocation" x="-777" y="-1069"/>
         </scene>
         <!--View Controller3-->
         <scene sceneID="CMW-xU-TZ2">
@@ -239,13 +246,11 @@
                                     <segue destination="BYZ-38-t0r" kind="presentation" id="kwn-tY-dhM"/>
                                 </connections>
                             </button>
-                            <pickerView contentMode="scaleToFill" fixedFrame="YES" preservesSuperviewLayoutMargins="YES" layoutMarginsFollowReadableWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xAz-dv-cFe">
+                            <pickerView contentMode="scaleToFill" misplaced="YES" preservesSuperviewLayoutMargins="YES" layoutMarginsFollowReadableWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xAz-dv-cFe">
                                 <rect key="frame" x="-8" y="261" width="373" height="207"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </pickerView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hJs-Z8-WNF">
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hJs-Z8-WNF">
                                 <rect key="frame" x="100" y="444" width="159" height="38"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" name="AccentColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                 <size key="titleShadowOffset" width="2" height="0.0"/>
@@ -257,13 +262,18 @@
                                     <action selector="playChord:" destination="ohV-6a-AI8" eventType="touchUpInside" id="SbH-7z-b48"/>
                                 </connections>
                             </button>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" fixedFrame="YES" image="speaker.2" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="iet-zg-svu">
-                                <rect key="frame" x="155" y="492" width="49" height="41"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" ambiguous="YES" misplaced="YES" image="speaker.2" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="iet-zg-svu">
+                                <rect key="frame" x="226" y="478" width="104" height="66"/>
                             </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Mze-tF-sBW"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="hJs-Z8-WNF" firstAttribute="centerX" secondItem="Mze-tF-sBW" secondAttribute="centerX" id="1oh-4X-JC0"/>
+                            <constraint firstItem="xAz-dv-cFe" firstAttribute="centerX" secondItem="Mze-tF-sBW" secondAttribute="centerX" id="8Zd-i5-4aG"/>
+                            <constraint firstItem="xAz-dv-cFe" firstAttribute="centerY" secondItem="Mze-tF-sBW" secondAttribute="centerY" id="gvr-Wv-Nhd"/>
+                            <constraint firstItem="iet-zg-svu" firstAttribute="centerX" secondItem="Mze-tF-sBW" secondAttribute="centerX" id="gxk-HR-sli"/>
+                        </constraints>
                     </view>
                     <connections>
                         <outlet property="picker" destination="xAz-dv-cFe" id="vLY-T4-gGm"/>
@@ -271,11 +281,11 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WoO-OO-iNd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="552.79999999999995" y="-1136.4532019704434"/>
+            <point key="canvasLocation" x="-90.400000000000006" y="-1069.2118226600985"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="eSL-yK-Fq5"/>
+        <segue reference="kwn-tY-dhM"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="Andante" width="680" height="269"/>
