@@ -598,6 +598,26 @@ void loop(){
           MIDI.sendNoteOff(chords[(chordCounter+numChords-1) % numChords][j], 100, 1);
         }
       }
+
+      // recalculate strideFreq
+      strideFreq = 0;
+      for (int i = 0; i < numCalibrationSteps-1; i++){
+        calibrationStepTimes[i] = calibrationStepTimes[i+1];
+      }
+      calibrationStepTimes[numCalibrationSteps-1] = millis();
+      for (int i = 1; i < numCalibrationSteps; i++){
+        strideFreq += (calibrationStepTimes[i] - calibrationStepTimes[i - 1]);
+      }
+      strideFreq /= (numCalibrationSteps-1);
+      Serial.println(calibrationStepTimes[0]);
+      Serial.println(calibrationStepTimes[1]);
+      Serial.println(calibrationStepTimes[2]);
+      Serial.println(calibrationStepTimes[3]);
+      Serial.print("strideFreq  = ");
+      Serial.println(strideFreq);
+
+
+        
       digitalWrite(ledPin, HIGH);
       ledOnTime = millis();
       lastStepTime = millis();
