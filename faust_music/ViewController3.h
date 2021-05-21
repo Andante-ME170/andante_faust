@@ -9,7 +9,7 @@
 #import "DspFaust.h"
 #import <Foundation/Foundation.h>
 
-extern int Globalgenre;
+//extern int Globalgenre;
 
 @interface ViewController3 : UIViewController <UIPickerViewDelegate, UIPickerViewDataSource>
 

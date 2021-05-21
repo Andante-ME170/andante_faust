@@ -20,6 +20,10 @@ extern BOOL modeToe;
 
 @property (weak, nonatomic) IBOutlet UILabel *modeLabel;
 
+@property (weak, nonatomic) IBOutlet UISwitch *genreSwitch;
+
+@property (weak, nonatomic) IBOutlet UILabel *genreLabel;
+
 @end
 
 
