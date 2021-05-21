@@ -25,6 +25,10 @@
 		DB78B3B82627841800B42591 /* CoreMIDI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB78B3B72627841800B42591 /* CoreMIDI.framework */; };
 		DB78B3BA2627842100B42591 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB78B3B92627842100B42591 /* AudioToolbox.framework */; };
 		DB78B3E626278C1900B42591 /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB78B3E526278C1900B42591 /* CoreBluetooth.framework */; };
+		DB85ABFB2657B2B3002C5493 /* Ding.wav in Resources */ = {isa = PBXBuildFile; fileRef = DB85ABFA2657B2B3002C5493 /* Ding.wav */; };
+		DB85AC002657BBAA002C5493 /* AndanteDrumsTrapSnare.wav in Resources */ = {isa = PBXBuildFile; fileRef = DB85ABFD2657BBAA002C5493 /* AndanteDrumsTrapSnare.wav */; };
+		DB85AC012657BBAA002C5493 /* AndanteDrumsTrapHat.wav in Resources */ = {isa = PBXBuildFile; fileRef = DB85ABFE2657BBAA002C5493 /* AndanteDrumsTrapHat.wav */; };
+		DB85AC022657BBAA002C5493 /* AndanteDrumsTrapKick.wav in Resources */ = {isa = PBXBuildFile; fileRef = DB85ABFF2657BBAA002C5493 /* AndanteDrumsTrapKick.wav */; };
 		DB9B9320265774890010EAEE /* AndanteBassAndEP28.wav in Resources */ = {isa = PBXBuildFile; fileRef = DB9B92D7265774890010EAEE /* AndanteBassAndEP28.wav */; };
 		DB9B9321265774890010EAEE /* AndanteBassAndEP29.wav in Resources */ = {isa = PBXBuildFile; fileRef = DB9B92D8265774890010EAEE /* AndanteBassAndEP29.wav */; };
 		DB9B9322265774890010EAEE /* AndanteBassAndEP39.wav in Resources */ = {isa = PBXBuildFile; fileRef = DB9B92D9265774890010EAEE /* AndanteBassAndEP39.wav */; };
@@ -297,6 +301,10 @@
 		DB78B3B72627841800B42591 /* CoreMIDI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMIDI.framework; path = System/Library/Frameworks/CoreMIDI.framework; sourceTree = SDKROOT; };
 		DB78B3B92627842100B42591 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		DB78B3E526278C1900B42591 /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
+		DB85ABFA2657B2B3002C5493 /* Ding.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Ding.wav; sourceTree = "<group>"; };
+		DB85ABFD2657BBAA002C5493 /* AndanteDrumsTrapSnare.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = AndanteDrumsTrapSnare.wav; sourceTree = "<group>"; };
+		DB85ABFE2657BBAA002C5493 /* AndanteDrumsTrapHat.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = AndanteDrumsTrapHat.wav; sourceTree = "<group>"; };
+		DB85ABFF2657BBAA002C5493 /* AndanteDrumsTrapKick.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = AndanteDrumsTrapKick.wav; sourceTree = "<group>"; };
 		DB9B92D7265774890010EAEE /* AndanteBassAndEP28.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = AndanteBassAndEP28.wav; sourceTree = "<group>"; };
 		DB9B92D8265774890010EAEE /* AndanteBassAndEP29.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = AndanteBassAndEP29.wav; sourceTree = "<group>"; };
 		DB9B92D9265774890010EAEE /* AndanteBassAndEP39.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = AndanteBassAndEP39.wav; sourceTree = "<group>"; };
@@ -617,6 +625,8 @@
 		DB5A0403264CB75300EBC762 /* wav files */ = {
 			isa = PBXGroup;
 			children = (
+				DB85ABFA2657B2B3002C5493 /* Ding.wav */,
+				DB85ABFC2657BBAA002C5493 /* trapKit */,
 				DB9B93FC265774A30010EAEE /* numberedPiano */,
 				DB9B92D6265774890010EAEE /* numberedBassAndEP */,
 				DB9B9369265774920010EAEE /* numberedEP */,
@@ -644,6 +654,16 @@
 				DB78B3B72627841800B42591 /* CoreMIDI.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		DB85ABFC2657BBAA002C5493 /* trapKit */ = {
+			isa = PBXGroup;
+			children = (
+				DB85ABFD2657BBAA002C5493 /* AndanteDrumsTrapSnare.wav */,
+				DB85ABFE2657BBAA002C5493 /* AndanteDrumsTrapHat.wav */,
+				DB85ABFF2657BBAA002C5493 /* AndanteDrumsTrapKick.wav */,
+			);
+			path = trapKit;
 			sourceTree = "<group>";
 		};
 		DB9B92D6265774890010EAEE /* numberedBassAndEP */ = {
@@ -1045,6 +1065,7 @@
 				DB9B93DE265774920010EAEE /* AndanteEP47.wav in Resources */,
 				DB9B948E265774A30010EAEE /* AndantePiano39.wav in Resources */,
 				DB9B9481265774A30010EAEE /* AndantePiano73.wav in Resources */,
+				DB85ABFB2657B2B3002C5493 /* Ding.wav in Resources */,
 				DB9B946F265774A30010EAEE /* AndantePiano92.wav in Resources */,
 				DB9B933B265774890010EAEE /* AndanteBassAndEP56.wav in Resources */,
 				DB9B93EA265774920010EAEE /* AndanteEP83.wav in Resources */,
@@ -1113,6 +1134,7 @@
 				DB9B9322265774890010EAEE /* AndanteBassAndEP39.wav in Resources */,
 				DB9B93CE265774920010EAEE /* AndanteEP51.wav in Resources */,
 				DB9B935E265774890010EAEE /* AndanteBassAndEP34.wav in Resources */,
+				DB85AC012657BBAA002C5493 /* AndanteDrumsTrapHat.wav in Resources */,
 				DB9B933C265774890010EAEE /* AndanteBassAndEP81.wav in Resources */,
 				DB9B9473265774A30010EAEE /* AndantePiano50.wav in Resources */,
 				DB9B93CC265774920010EAEE /* AndanteEP74.wav in Resources */,
@@ -1153,6 +1175,7 @@
 				DB9B9462265774A30010EAEE /* AndantePiano56.wav in Resources */,
 				DB9B9349265774890010EAEE /* AndanteBassAndEP54.wav in Resources */,
 				DB9B9336265774890010EAEE /* AndanteBassAndEP66.wav in Resources */,
+				DB85AC002657BBAA002C5493 /* AndanteDrumsTrapSnare.wav in Resources */,
 				DB9B93CF265774920010EAEE /* AndanteEP45.wav in Resources */,
 				DB9B947B265774A30010EAEE /* AndantePiano76.wav in Resources */,
 				DB9B93F8265774920010EAEE /* AndanteEP34.wav in Resources */,
@@ -1184,6 +1207,7 @@
 				DB9B9331265774890010EAEE /* AndanteBassAndEP65.wav in Resources */,
 				DB9B9354265774890010EAEE /* AndanteBassAndEP51.wav in Resources */,
 				DB9B945E265774A30010EAEE /* AndantePiano80.wav in Resources */,
+				DB85AC022657BBAA002C5493 /* AndanteDrumsTrapKick.wav in Resources */,
 				DB9B9326265774890010EAEE /* AndanteBassAndEP88.wav in Resources */,
 				DB9B93BD265774920010EAEE /* AndanteEP67.wav in Resources */,
 				DB9B93DC265774920010EAEE /* AndanteEP84.wav in Resources */,

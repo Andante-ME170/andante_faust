@@ -96,20 +96,6 @@
                                     <action selector="playChord:" destination="BYZ-38-t0r" eventType="touchUpInside" id="s3O-a5-fmd"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hJs-Z8-WNF">
-                                <rect key="frame" x="20" y="686" width="159" height="38"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" name="AccentColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
-                                <size key="titleShadowOffset" width="2" height="0.0"/>
-                                <state key="normal" title="Sample Genre">
-                                    <color key="titleColor" systemColor="secondarySystemBackgroundColor"/>
-                                </state>
-                                <connections>
-                                    <action selector="PlayGenre:" destination="Tn7-kI-o4l" eventType="touchUpInside" id="JBZ-eN-DFp"/>
-                                    <action selector="playChord:" destination="ohV-6a-AI8" eventType="touchUpInside" id="SbH-7z-b48"/>
-                                </connections>
-                            </button>
                             <pickerView contentMode="scaleToFill" fixedFrame="YES" preservesSuperviewLayoutMargins="YES" layoutMarginsFollowReadableWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xAz-dv-cFe">
                                 <rect key="frame" x="167" y="581" width="200" height="143"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -136,6 +122,25 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hJs-Z8-WNF">
+                                <rect key="frame" x="133" y="686" width="159" height="38"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" name="AccentColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                <size key="titleShadowOffset" width="2" height="0.0"/>
+                                <state key="normal" title="Sample Genre">
+                                    <color key="titleColor" systemColor="secondarySystemBackgroundColor"/>
+                                </state>
+                                <connections>
+                                    <action selector="PlayGenre:" destination="Tn7-kI-o4l" eventType="touchUpInside" id="JBZ-eN-DFp"/>
+                                    <action selector="playChord:" destination="ohV-6a-AI8" eventType="touchUpInside" id="SbH-7z-b48"/>
+                                </connections>
+                            </button>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FU0-Of-uYD">
+                                <rect key="frame" x="0.0" y="53" width="375" height="680"/>
+                                <viewLayoutGuide key="contentLayoutGuide" id="iAZ-KL-DUV"/>
+                                <viewLayoutGuide key="frameLayoutGuide" id="9Bq-ze-grB"/>
+                            </scrollView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY" userLabel="Hello World"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -143,6 +148,7 @@
                             <constraint firstItem="mge-Mv-e2R" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="53" id="1jG-RS-aNw"/>
                             <constraint firstItem="rYI-pR-FYm" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="1qs-MA-9F7"/>
                             <constraint firstItem="zNm-HW-coN" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="3oY-Yz-7EF"/>
+                            <constraint firstAttribute="bottom" secondItem="FU0-Of-uYD" secondAttribute="bottom" id="5cY-vF-PKU"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="cCE-Cg-kCT" secondAttribute="bottom" constant="233" id="7hT-xH-86X"/>
                             <constraint firstItem="Fdf-n0-izm" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="9BU-iU-aWd"/>
                             <constraint firstItem="Gve-Ee-pZX" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="273" id="CeP-b1-9Wd"/>
@@ -155,6 +161,7 @@
                             <constraint firstItem="Bcm-ns-dUd" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="124" id="UsZ-EJ-ZAH"/>
                             <constraint firstItem="cCE-Cg-kCT" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="adY-di-Rqt"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Fdf-n0-izm" secondAttribute="bottom" constant="114" id="feB-B9-qHm"/>
+                            <constraint firstItem="FU0-Of-uYD" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="nGX-lu-RXC"/>
                             <constraint firstItem="Bcm-ns-dUd" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="nrs-87-uJF"/>
                             <constraint firstItem="rYI-pR-FYm" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="367" id="rm2-1L-gXo"/>
                             <constraint firstItem="Bcm-ns-dUd" firstAttribute="top" secondItem="mge-Mv-e2R" secondAttribute="bottom" constant="-7" id="sVS-kt-WHZ"/>
@@ -171,6 +178,7 @@
                         <outlet property="modeLabel" destination="rYI-pR-FYm" id="wBx-zU-aaM"/>
                         <outlet property="modeSwitch" destination="zNm-HW-coN" id="fA8-cu-TOv"/>
                         <outlet property="picker" destination="Bcm-ns-dUd" id="pdw-8w-mL6"/>
+                        <outlet property="scrollView" destination="FU0-Of-uYD" id="83M-zM-zQA"/>
                         <outlet property="slider" destination="spm-m8-Lvg" id="6cc-w0-b9G"/>
                         <outlet property="tfValue" destination="9HZ-2W-yiL" id="2h9-Y7-PrJ"/>
                     </connections>
@@ -273,7 +281,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="kwn-tY-dhM"/>
+        <segue reference="eSL-yK-Fq5"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="Andante" width="680" height="269"/>

@@ -23,7 +23,6 @@ NSDictionary *Piano;
 NSDictionary *EP; // Electric Piano
 NSDictionary *BassAndEP; // Bass and Electric Piano
 
-
 BOOL modeToe;
 BOOL genreBass;
                          
@@ -39,6 +38,9 @@ BOOL genreBass;
 
 @property (weak, nonatomic) IBOutlet UILabel *currInstrumentTextField;
 @property (weak, nonatomic) IBOutlet UIPickerView *picker;
+@property(nonatomic,strong)NSTimer *timer; // for Ding
+@property(nonatomic,strong)IBOutlet UIScrollView *scrollView;
+
 //@property(weak, nonatomic) IBOutlet UISwitch *modeSwitch;
 
 // For Detune
@@ -49,10 +51,17 @@ BOOL genreBass;
 @property (weak, nonatomic) IBOutlet UIPickerView *genrePicker;
 @property (nonatomic, strong) NSMutableArray *genrePickerData;
 
-// Drumset
+// Acoustic Drumset
 @property(nonatomic,strong)AVAudioPlayer *APAcousticKick;
 @property(nonatomic,strong)AVAudioPlayer *APAcousticHat;
 @property(nonatomic,strong)AVAudioPlayer *APAcousticSnare;
+
+
+// Trap Kit
+@property(nonatomic,strong)AVAudioPlayer *APTrapKick;
+@property(nonatomic,strong)AVAudioPlayer *APTrapHat;
+@property(nonatomic,strong)AVAudioPlayer *APTrapSnare;
+
 
 // Piano
 @property(nonatomic,strong)AVAudioPlayer *APPiano24;
@@ -279,11 +288,11 @@ BOOL genreBass;
 @property(nonatomic,strong)AVAudioPlayer *APBassAndEP95;
 @property(nonatomic,strong)AVAudioPlayer *APBassAndEP96;
 
-
+// Sound Effects
+@property(nonatomic,strong)AVAudioPlayer *APDing;
 // More Instruments here
 
 
-// More Instruments here
 
 @end
 
@@ -301,10 +310,15 @@ BOOL genreBass;
 
 // Insert more genres
 
-// DRUMSET
+// ACOUSTIC DRUMSET
 @synthesize APAcousticKick = AcousticKick;
 @synthesize APAcousticSnare = AcousticSnare;
 @synthesize APAcousticHat = AcousticHat;
+
+// TRAP KIT
+@synthesize APTrapKick = TrapKick;
+@synthesize APTrapSnare = TrapSnare;
+@synthesize APTrapHat = TrapHat;
 
 // PIANO
 @synthesize APPiano24 = Piano24;
@@ -531,6 +545,8 @@ BOOL genreBass;
 @synthesize APBassAndEP95 = BassAndEP95;
 @synthesize APBassAndEP96 = BassAndEP96;
 
+@synthesize APDing = Ding;
+
 int chordCounter = 0;
 int chordMIDIs[4][6] = {{48,55,60,64,60,55}, {43,50,55,59,55,50}, {45,52,57,60,57,52}, {41,48,53,57,53,48}}; // C G Am F
 int notesPerChord = 6;    // update manually to match above
@@ -555,6 +571,17 @@ int Globalgenre = -1; // probably move later
      dspFaust->start();
     
     int globalMaxDetune = 0;
+    
+    _scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
+    
+    [self.view addSubview:_scrollView];
+    [_scrollView setContentSize:CGSizeMake(self.view.frame.size.width, self.view.frame.size.height*3)];
+    
+    [_scrollView addSubview:_modeLabel];
+    [_scrollView addSubview:_picker];
+    //[_scrollView addSubview: slider];
+    [_scrollView addSubview:_picker];
+    
     
     _myManager = [[CBCentralManager alloc] initWithDelegate:self queue:nil options:nil];
     NSDictionary *option = @{
@@ -626,6 +653,7 @@ int Globalgenre = -1; // probably move later
     _slider.value = globalMaxDetune/0.20; // change constants later (the 0.2)
     self.tfValue.text = [NSString stringWithFormat:@"%f", _slider.value];
     
+    // Acoustic Drums
     AcousticKick = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndanteDrumsAcousticKick" withExtension:@ "wav"] error:&error];
     [AcousticKick prepareToPlay];
 
@@ -634,6 +662,17 @@ int Globalgenre = -1; // probably move later
     
     AcousticHat = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndanteDrumsAcousticHat" withExtension:@ "wav"] error:&error];
     [AcousticHat prepareToPlay];
+    
+    // Trap Drums
+    TrapKick = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndanteDrumsTrapKick" withExtension:@ "wav"] error:&error];
+    [TrapKick prepareToPlay];
+
+    TrapSnare = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndanteDrumsTrapSnare" withExtension:@ "wav"] error:&error];
+    [TrapSnare prepareToPlay];
+    
+    TrapHat = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndanteDrumsTrapHat" withExtension:@ "wav"] error:&error];
+    [TrapHat prepareToPlay];
+    
         
     Piano24 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndantePiano24" withExtension:@ "wav"] error:&error];
     [Piano24 prepareToPlay];
@@ -1354,7 +1393,11 @@ int Globalgenre = -1; // probably move later
         NSArray *keysBassAndEP = [NSArray arrayWithObjects:[NSNumber numberWithInteger:0], [NSNumber numberWithInteger:1],[NSNumber numberWithInteger:2],[NSNumber numberWithInteger:24], [NSNumber numberWithInteger:25],[NSNumber numberWithInteger:26],[NSNumber numberWithInteger:27],[NSNumber numberWithInteger:28], [NSNumber numberWithInteger:29],[NSNumber numberWithInteger:30],[NSNumber numberWithInteger:31],[NSNumber numberWithInteger:32],[NSNumber numberWithInteger:33],[NSNumber numberWithInteger:34], [NSNumber numberWithInteger:35],[NSNumber numberWithInteger:36],[NSNumber numberWithInteger:37],[NSNumber numberWithInteger:38], [NSNumber numberWithInteger:39],[NSNumber numberWithInteger:40],[NSNumber numberWithInteger:41],[NSNumber numberWithInteger:42], [NSNumber numberWithInteger:43],[NSNumber numberWithInteger:44],[NSNumber numberWithInteger:45],[NSNumber numberWithInteger:46], [NSNumber numberWithInteger:47],[NSNumber numberWithInteger:48],[NSNumber numberWithInteger:49],[NSNumber numberWithInteger:50],[NSNumber numberWithInteger:51],[NSNumber numberWithInteger:52], [NSNumber numberWithInteger:53],[NSNumber numberWithInteger:54],[NSNumber numberWithInteger:55],[NSNumber numberWithInteger:56], [NSNumber numberWithInteger:57],[NSNumber numberWithInteger:58],[NSNumber numberWithInteger:59],[NSNumber numberWithInteger:60],[NSNumber numberWithInteger:61],[NSNumber numberWithInteger:62], [NSNumber numberWithInteger:63],[NSNumber numberWithInteger:64],[NSNumber numberWithInteger:65],[NSNumber numberWithInteger:66], [NSNumber numberWithInteger:67],[NSNumber numberWithInteger:68],[NSNumber numberWithInteger:69],[NSNumber numberWithInteger:70],[NSNumber numberWithInteger:71],[NSNumber numberWithInteger:72], [NSNumber numberWithInteger:73],[NSNumber numberWithInteger:74],[NSNumber numberWithInteger:75],[NSNumber numberWithInteger:76], [NSNumber numberWithInteger:77],[NSNumber numberWithInteger:78],[NSNumber numberWithInteger:79], [NSNumber numberWithInteger:80],[NSNumber numberWithInteger:81],[NSNumber numberWithInteger:82], [NSNumber numberWithInteger:83],[NSNumber numberWithInteger:84],[NSNumber numberWithInteger:85],[NSNumber numberWithInteger:86], [NSNumber numberWithInteger:87],[NSNumber numberWithInteger:88],[NSNumber numberWithInteger:89],[NSNumber numberWithInteger:90],[NSNumber numberWithInteger:91],[NSNumber numberWithInteger:92], [NSNumber numberWithInteger:93],[NSNumber numberWithInteger:94],[NSNumber numberWithInteger:95],[NSNumber numberWithInteger:96], nil];
 
             BassAndEP = [NSDictionary dictionaryWithObjects: valuesBassAndEP forKeys: keysBassAndEP];
-
+    
+    
+        // Sound Effects
+        Ding = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"Ding" withExtension:@ "wav"] error:&error];
+         [Ding prepareToPlay];
 }
 
     
@@ -1727,16 +1770,21 @@ didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic error:(NSErro
     }
 }
 
+
 - (IBAction)connectWasPressed:(id)sender {
     for (int i = 0; i < [_devices count]; i++) {
         CBPeripheral *peripheral = [_devices objectAtIndex:i];
         if ([peripheral.name isEqualToString:_bleDevice]) {
             [_myManager connectPeripheral:peripheral options:nil];
             [_currInstrumentTextField setText:[@"Connected: " stringByAppendingString:_bleDevice]];
+            // should solve issue of two buttons overlapping
+            Ding.currentTime = 0;
+            [Ding play];
             [_currInstrumentTextField setHidden:NO];
         }
     }
 }
+
 - (IBAction)detune:(id)sender {
     dspFaust->setParamValue("detune", _slider.value*0.20);
     dspFaust->keyOn(40, 100);
@@ -1784,6 +1832,7 @@ didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic error:(NSErro
 
 NSInteger midi = 24;
 
+// Remove later, for our own checking
 - (IBAction)buttonPressed:(id)sender {
     if(genreBass == false) {
         [self playPiano:(midi)]; // instead of midi will be vals[1]
@@ -1800,7 +1849,6 @@ NSInteger midi = 24;
         }
     }
 }
-
 
 // Added below method
 -(void)didReceiveMemoryWarning {
