@@ -21,8 +21,7 @@
     DspFaust *dspFaust;
 }
 
-int Globalgenre = -1; // Initialization of Global Variable
-NSString *g;
+//int Globalgenre = -1; // Initialization of Global Variable
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -49,21 +48,22 @@ NSString *g;
     return 3;
 }
 
+int i = 0;
  // The data to return for the row and component (column) that's being passed in
  - (NSString*)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
      NSString * title = nil;
          switch(row) {
                  case 0:
                      title = @"Minor Chord";
-                     Globalgenre = 0;
+                     i  = 0;
                      break;
                  case 1:
                      title = @"Random Sounds";
-                     Globalgenre = 1;
+                     i = 1;
                      break;
                  case 2:
                      title = @"Songs";
-                     Globalgenre = 2;
+                     i = 2;
                      break;
          }
          return title;
@@ -76,7 +76,7 @@ NSString *g;
  //}
  
 - (IBAction)PlayGenre:(id)sender {
-    switch(Globalgenre) {
+    switch(0) {
         case 0:
             dspFaust->keyOff(60);
             dspFaust->keyOff(64);

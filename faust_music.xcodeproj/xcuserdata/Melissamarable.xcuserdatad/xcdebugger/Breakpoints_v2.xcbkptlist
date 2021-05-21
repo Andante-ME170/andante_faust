@@ -46,8 +46,8 @@
             filePath = "faust_music/ViewController3.mm"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "39"
-            endingLineNumber = "39"
+            startingLineNumber = "38"
+            endingLineNumber = "38"
             landmarkName = "ViewController3"
             landmarkType = "3">
          </BreakpointContent>
@@ -62,13 +62,13 @@
             filePath = "faust_music/ViewController.mm"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "43"
-            endingLineNumber = "43"
+            startingLineNumber = "40"
+            endingLineNumber = "40"
             landmarkName = "currInstrumentTextField"
             landmarkType = "24">
             <Locations>
                <Location
-                  uuid = "AE7DB55B-630D-4221-95CA-9BF31A4D62C0 - e6d19cb60e6ffc46"
+                  uuid = "AE7DB55B-630D-4221-95CA-9BF31A4D62C0 - e6d19cb60e6ffd78"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
@@ -78,12 +78,12 @@
                   urlString = "file:///Users/Melissamarable/Desktop/NEWAPP/andante_faust/faust_music/ViewController.mm"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "43"
-                  endingLineNumber = "43"
-                  offsetFromSymbolStart = "20">
+                  startingLineNumber = "37"
+                  endingLineNumber = "37"
+                  offsetFromSymbolStart = "16">
                </Location>
                <Location
-                  uuid = "AE7DB55B-630D-4221-95CA-9BF31A4D62C0 - 6f5b66f7ce2792f8"
+                  uuid = "AE7DB55B-630D-4221-95CA-9BF31A4D62C0 - 6f5b66f7ce2793c6"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
@@ -93,9 +93,9 @@
                   urlString = "file:///Users/Melissamarable/Desktop/NEWAPP/andante_faust/faust_music/ViewController.mm"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "43"
-                  endingLineNumber = "43"
-                  offsetFromSymbolStart = "48">
+                  startingLineNumber = "37"
+                  endingLineNumber = "37"
+                  offsetFromSymbolStart = "49">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -103,33 +103,33 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "1E0ACF36-CDEE-44BE-9122-A06214756824"
+            uuid = "69B2E029-9E35-4CE7-891B-BFC75CE1B5B9"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "faust_music/ViewController.mm"
+            filePath = "faust_music/main.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1166"
-            endingLineNumber = "1166"
-            landmarkName = "-Piano"
-            landmarkType = "7">
+            startingLineNumber = "12"
+            endingLineNumber = "12"
+            landmarkName = "main(argc, argv)"
+            landmarkType = "9">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "23D3E8B0-07B5-4B31-8FE6-EBB2B2C63BB4"
+            uuid = "3EB0CE68-675C-4308-942E-FA7061A133C9"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "faust_music/ViewController.mm"
+            filePath = "faust_music/main.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1193"
-            endingLineNumber = "1193"
-            landmarkName = "-genreRS"
-            landmarkType = "7">
+            startingLineNumber = "5"
+            endingLineNumber = "5"
+            landmarkName = "unknown"
+            landmarkType = "0">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

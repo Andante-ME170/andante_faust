@@ -19,16 +19,13 @@
 
 NSLock *theLock  = [[NSLock alloc] init];
 
-NSMutableArray *soundOn = [[NSMutableArray alloc]init];
-NSMutableArray *randomSoundsArray = [[NSMutableArray alloc]init];
-NSMutableArray *randomSoundsArrayAP = [[NSMutableArray alloc]init];
-
 NSDictionary *Piano;
-// Can do this for each instrument
+NSDictionary *EP; // Electric Piano
+NSDictionary *BassAndEP; // Bass and Electric Piano
+
 
 BOOL modeToe;
-
-int prevGenre = -1;
+BOOL genreBass;
                          
 @interface ViewController ()<AVAudioPlayerDelegate>
 
@@ -44,23 +41,18 @@ int prevGenre = -1;
 @property (weak, nonatomic) IBOutlet UIPickerView *picker;
 //@property(weak, nonatomic) IBOutlet UISwitch *modeSwitch;
 
-// Trap
-@property(nonatomic,strong)AVAudioPlayer *kickAP;
-@property(nonatomic,strong)AVAudioPlayer *snareAP;
-@property(nonatomic,strong)AVAudioPlayer *hatAP;
-//@property(nonatomic,strong)NSTimer *timer; not using rn
+// For Detune
+@property (weak, nonatomic) IBOutlet UITextField *tfValue;
+@property (weak, nonatomic) IBOutlet UISlider *slider;
 
-// Random Sounds
-
-// Songs
-
-// Ya messed up!
-@property(nonatomic,strong)AVAudioPlayer *audioPlayer;
+// For Genre
+@property (weak, nonatomic) IBOutlet UIPickerView *genrePicker;
+@property (nonatomic, strong) NSMutableArray *genrePickerData;
 
 // Drumset
-@property(nonatomic,strong)AVAudioPlayer *APkick;
-@property(nonatomic,strong)AVAudioPlayer *APhat;
-@property(nonatomic,strong)AVAudioPlayer *APsnare;
+@property(nonatomic,strong)AVAudioPlayer *APAcousticKick;
+@property(nonatomic,strong)AVAudioPlayer *APAcousticHat;
+@property(nonatomic,strong)AVAudioPlayer *APAcousticSnare;
 
 // Piano
 @property(nonatomic,strong)AVAudioPlayer *APPiano24;
@@ -137,6 +129,159 @@ int prevGenre = -1;
 @property(nonatomic,strong)AVAudioPlayer *APPiano95;
 @property(nonatomic,strong)AVAudioPlayer *APPiano96;
 
+// Electric Piano
+@property(nonatomic,strong)AVAudioPlayer *APEP24;
+@property(nonatomic,strong)AVAudioPlayer *APEP25;
+@property(nonatomic,strong)AVAudioPlayer *APEP26;
+@property(nonatomic,strong)AVAudioPlayer *APEP27;
+@property(nonatomic,strong)AVAudioPlayer *APEP28;
+@property(nonatomic,strong)AVAudioPlayer *APEP29;
+@property(nonatomic,strong)AVAudioPlayer *APEP30;
+@property(nonatomic,strong)AVAudioPlayer *APEP31;
+@property(nonatomic,strong)AVAudioPlayer *APEP32;
+@property(nonatomic,strong)AVAudioPlayer *APEP33;
+@property(nonatomic,strong)AVAudioPlayer *APEP34;
+@property(nonatomic,strong)AVAudioPlayer *APEP35;
+@property(nonatomic,strong)AVAudioPlayer *APEP36;
+@property(nonatomic,strong)AVAudioPlayer *APEP37;
+@property(nonatomic,strong)AVAudioPlayer *APEP38;
+@property(nonatomic,strong)AVAudioPlayer *APEP39;
+@property(nonatomic,strong)AVAudioPlayer *APEP40;
+@property(nonatomic,strong)AVAudioPlayer *APEP41;
+@property(nonatomic,strong)AVAudioPlayer *APEP42;
+@property(nonatomic,strong)AVAudioPlayer *APEP43;
+@property(nonatomic,strong)AVAudioPlayer *APEP44;
+@property(nonatomic,strong)AVAudioPlayer *APEP45;
+@property(nonatomic,strong)AVAudioPlayer *APEP46;
+@property(nonatomic,strong)AVAudioPlayer *APEP47;
+@property(nonatomic,strong)AVAudioPlayer *APEP48;
+@property(nonatomic,strong)AVAudioPlayer *APEP49;
+@property(nonatomic,strong)AVAudioPlayer *APEP50;
+@property(nonatomic,strong)AVAudioPlayer *APEP51;
+@property(nonatomic,strong)AVAudioPlayer *APEP52;
+@property(nonatomic,strong)AVAudioPlayer *APEP53;
+@property(nonatomic,strong)AVAudioPlayer *APEP54;
+@property(nonatomic,strong)AVAudioPlayer *APEP55;
+@property(nonatomic,strong)AVAudioPlayer *APEP56;
+@property(nonatomic,strong)AVAudioPlayer *APEP57;
+@property(nonatomic,strong)AVAudioPlayer *APEP58;
+@property(nonatomic,strong)AVAudioPlayer *APEP59;
+@property(nonatomic,strong)AVAudioPlayer *APEP60;
+@property(nonatomic,strong)AVAudioPlayer *APEP61;
+@property(nonatomic,strong)AVAudioPlayer *APEP62;
+@property(nonatomic,strong)AVAudioPlayer *APEP63;
+@property(nonatomic,strong)AVAudioPlayer *APEP64;
+@property(nonatomic,strong)AVAudioPlayer *APEP65;
+@property(nonatomic,strong)AVAudioPlayer *APEP66;
+@property(nonatomic,strong)AVAudioPlayer *APEP67;
+@property(nonatomic,strong)AVAudioPlayer *APEP68;
+@property(nonatomic,strong)AVAudioPlayer *APEP69;
+@property(nonatomic,strong)AVAudioPlayer *APEP70;
+@property(nonatomic,strong)AVAudioPlayer *APEP71;
+@property(nonatomic,strong)AVAudioPlayer *APEP72;
+@property(nonatomic,strong)AVAudioPlayer *APEP73;
+@property(nonatomic,strong)AVAudioPlayer *APEP74;
+@property(nonatomic,strong)AVAudioPlayer *APEP75;
+@property(nonatomic,strong)AVAudioPlayer *APEP76;
+@property(nonatomic,strong)AVAudioPlayer *APEP77;
+@property(nonatomic,strong)AVAudioPlayer *APEP78;
+@property(nonatomic,strong)AVAudioPlayer *APEP79;
+@property(nonatomic,strong)AVAudioPlayer *APEP80;
+@property(nonatomic,strong)AVAudioPlayer *APEP81;
+@property(nonatomic,strong)AVAudioPlayer *APEP82;
+@property(nonatomic,strong)AVAudioPlayer *APEP83;
+@property(nonatomic,strong)AVAudioPlayer *APEP84;
+@property(nonatomic,strong)AVAudioPlayer *APEP85;
+@property(nonatomic,strong)AVAudioPlayer *APEP86;
+@property(nonatomic,strong)AVAudioPlayer *APEP87;
+@property(nonatomic,strong)AVAudioPlayer *APEP88;
+@property(nonatomic,strong)AVAudioPlayer *APEP89;
+@property(nonatomic,strong)AVAudioPlayer *APEP90;
+@property(nonatomic,strong)AVAudioPlayer *APEP91;
+@property(nonatomic,strong)AVAudioPlayer *APEP92;
+@property(nonatomic,strong)AVAudioPlayer *APEP93;
+@property(nonatomic,strong)AVAudioPlayer *APEP94;
+@property(nonatomic,strong)AVAudioPlayer *APEP95;
+@property(nonatomic,strong)AVAudioPlayer *APEP96;
+
+// Bass and Electric Piano
+@property(nonatomic,strong)AVAudioPlayer *APBassAndEP24;
+@property(nonatomic,strong)AVAudioPlayer *APBassAndEP25;
+@property(nonatomic,strong)AVAudioPlayer *APBassAndEP26;
+@property(nonatomic,strong)AVAudioPlayer *APBassAndEP27;
+@property(nonatomic,strong)AVAudioPlayer *APBassAndEP28;
+@property(nonatomic,strong)AVAudioPlayer *APBassAndEP29;
+@property(nonatomic,strong)AVAudioPlayer *APBassAndEP30;
+@property(nonatomic,strong)AVAudioPlayer *APBassAndEP31;
+@property(nonatomic,strong)AVAudioPlayer *APBassAndEP32;
+@property(nonatomic,strong)AVAudioPlayer *APBassAndEP33;
+@property(nonatomic,strong)AVAudioPlayer *APBassAndEP34;
+@property(nonatomic,strong)AVAudioPlayer *APBassAndEP35;
+@property(nonatomic,strong)AVAudioPlayer *APBassAndEP36;
+@property(nonatomic,strong)AVAudioPlayer *APBassAndEP37;
+@property(nonatomic,strong)AVAudioPlayer *APBassAndEP38;
+@property(nonatomic,strong)AVAudioPlayer *APBassAndEP39;
+@property(nonatomic,strong)AVAudioPlayer *APBassAndEP40;
+@property(nonatomic,strong)AVAudioPlayer *APBassAndEP41;
+@property(nonatomic,strong)AVAudioPlayer *APBassAndEP42;
+@property(nonatomic,strong)AVAudioPlayer *APBassAndEP43;
+@property(nonatomic,strong)AVAudioPlayer *APBassAndEP44;
+@property(nonatomic,strong)AVAudioPlayer *APBassAndEP45;
+@property(nonatomic,strong)AVAudioPlayer *APBassAndEP46;
+@property(nonatomic,strong)AVAudioPlayer *APBassAndEP47;
+@property(nonatomic,strong)AVAudioPlayer *APBassAndEP48;
+@property(nonatomic,strong)AVAudioPlayer *APBassAndEP49;
+@property(nonatomic,strong)AVAudioPlayer *APBassAndEP50;
+@property(nonatomic,strong)AVAudioPlayer *APBassAndEP51;
+@property(nonatomic,strong)AVAudioPlayer *APBassAndEP52;
+@property(nonatomic,strong)AVAudioPlayer *APBassAndEP53;
+@property(nonatomic,strong)AVAudioPlayer *APBassAndEP54;
+@property(nonatomic,strong)AVAudioPlayer *APBassAndEP55;
+@property(nonatomic,strong)AVAudioPlayer *APBassAndEP56;
+@property(nonatomic,strong)AVAudioPlayer *APBassAndEP57;
+@property(nonatomic,strong)AVAudioPlayer *APBassAndEP58;
+@property(nonatomic,strong)AVAudioPlayer *APBassAndEP59;
+@property(nonatomic,strong)AVAudioPlayer *APBassAndEP60;
+@property(nonatomic,strong)AVAudioPlayer *APBassAndEP61;
+@property(nonatomic,strong)AVAudioPlayer *APBassAndEP62;
+@property(nonatomic,strong)AVAudioPlayer *APBassAndEP63;
+@property(nonatomic,strong)AVAudioPlayer *APBassAndEP64;
+@property(nonatomic,strong)AVAudioPlayer *APBassAndEP65;
+@property(nonatomic,strong)AVAudioPlayer *APBassAndEP66;
+@property(nonatomic,strong)AVAudioPlayer *APBassAndEP67;
+@property(nonatomic,strong)AVAudioPlayer *APBassAndEP68;
+@property(nonatomic,strong)AVAudioPlayer *APBassAndEP69;
+@property(nonatomic,strong)AVAudioPlayer *APBassAndEP70;
+@property(nonatomic,strong)AVAudioPlayer *APBassAndEP71;
+@property(nonatomic,strong)AVAudioPlayer *APBassAndEP72;
+@property(nonatomic,strong)AVAudioPlayer *APBassAndEP73;
+@property(nonatomic,strong)AVAudioPlayer *APBassAndEP74;
+@property(nonatomic,strong)AVAudioPlayer *APBassAndEP75;
+@property(nonatomic,strong)AVAudioPlayer *APBassAndEP76;
+@property(nonatomic,strong)AVAudioPlayer *APBassAndEP77;
+@property(nonatomic,strong)AVAudioPlayer *APBassAndEP78;
+@property(nonatomic,strong)AVAudioPlayer *APBassAndEP79;
+@property(nonatomic,strong)AVAudioPlayer *APBassAndEP80;
+@property(nonatomic,strong)AVAudioPlayer *APBassAndEP81;
+@property(nonatomic,strong)AVAudioPlayer *APBassAndEP82;
+@property(nonatomic,strong)AVAudioPlayer *APBassAndEP83;
+@property(nonatomic,strong)AVAudioPlayer *APBassAndEP84;
+@property(nonatomic,strong)AVAudioPlayer *APBassAndEP85;
+@property(nonatomic,strong)AVAudioPlayer *APBassAndEP86;
+@property(nonatomic,strong)AVAudioPlayer *APBassAndEP87;
+@property(nonatomic,strong)AVAudioPlayer *APBassAndEP88;
+@property(nonatomic,strong)AVAudioPlayer *APBassAndEP89;
+@property(nonatomic,strong)AVAudioPlayer *APBassAndEP90;
+@property(nonatomic,strong)AVAudioPlayer *APBassAndEP91;
+@property(nonatomic,strong)AVAudioPlayer *APBassAndEP92;
+@property(nonatomic,strong)AVAudioPlayer *APBassAndEP93;
+@property(nonatomic,strong)AVAudioPlayer *APBassAndEP94;
+@property(nonatomic,strong)AVAudioPlayer *APBassAndEP95;
+@property(nonatomic,strong)AVAudioPlayer *APBassAndEP96;
+
+
+// More Instruments here
+
 
 // More Instruments here
 
@@ -153,20 +298,13 @@ int prevGenre = -1;
     bool tonicChange;
 }
 
-// Random Sounds
-
-// Songs
-
-@synthesize audioPlayer = audioPlayer2;
-// Ya messed up!
-
 
 // Insert more genres
 
 // DRUMSET
-@synthesize APkick = kick;
-@synthesize APsnare = snare;
-@synthesize APhat = hat;
+@synthesize APAcousticKick = AcousticKick;
+@synthesize APAcousticSnare = AcousticSnare;
+@synthesize APAcousticHat = AcousticHat;
 
 // PIANO
 @synthesize APPiano24 = Piano24;
@@ -243,6 +381,156 @@ int prevGenre = -1;
 @synthesize APPiano95 = Piano95;
 @synthesize APPiano96 = Piano96;
 
+// Electric Piano
+@synthesize APEP24 = EP24;
+@synthesize APEP25 = EP25;
+@synthesize APEP26 = EP26;
+@synthesize APEP27 = EP27;
+@synthesize APEP28 = EP28;
+@synthesize APEP29 = EP29;
+@synthesize APEP30 = EP30;
+@synthesize APEP31 = EP31;
+@synthesize APEP32 = EP32;
+@synthesize APEP33 = EP33;
+@synthesize APEP34 = EP34;
+@synthesize APEP35 = EP35;
+@synthesize APEP36 = EP36;
+@synthesize APEP37 = EP37;
+@synthesize APEP38 = EP38;
+@synthesize APEP39 = EP39;
+@synthesize APEP40 = EP40;
+@synthesize APEP41 = EP41;
+@synthesize APEP42 = EP42;
+@synthesize APEP43 = EP43;
+@synthesize APEP44 = EP44;
+@synthesize APEP45 = EP45;
+@synthesize APEP46 = EP46;
+@synthesize APEP47 = EP47;
+@synthesize APEP48 = EP48;
+@synthesize APEP49 = EP49;
+@synthesize APEP50 = EP50;
+@synthesize APEP51 = EP51;
+@synthesize APEP52 = EP52;
+@synthesize APEP53 = EP53;
+@synthesize APEP54 = EP54;
+@synthesize APEP55 = EP55;
+@synthesize APEP56 = EP56;
+@synthesize APEP57 = EP57;
+@synthesize APEP58 = EP58;
+@synthesize APEP59 = EP59;
+@synthesize APEP60 = EP60;
+@synthesize APEP61 = EP61;
+@synthesize APEP62 = EP62;
+@synthesize APEP63 = EP63;
+@synthesize APEP64 = EP64;
+@synthesize APEP65 = EP65;
+@synthesize APEP66 = EP66;
+@synthesize APEP67 = EP67;
+@synthesize APEP68 = EP68;
+@synthesize APEP69 = EP69;
+@synthesize APEP70 = EP70;
+@synthesize APEP71 = EP71;
+@synthesize APEP72 = EP72;
+@synthesize APEP73 = EP73;
+@synthesize APEP74 = EP74;
+@synthesize APEP75 = EP75;
+@synthesize APEP76 = EP76;
+@synthesize APEP77 = EP77;
+@synthesize APEP78 = EP78;
+@synthesize APEP79 = EP79;
+@synthesize APEP80 = EP80;
+@synthesize APEP81 = EP81;
+@synthesize APEP82 = EP82;
+@synthesize APEP83 = EP83;
+@synthesize APEP84 = EP84;
+@synthesize APEP85 = EP85;
+@synthesize APEP86 = EP86;
+@synthesize APEP87 = EP87;
+@synthesize APEP88 = EP88;
+@synthesize APEP89 = EP89;
+@synthesize APEP90 = EP90;
+@synthesize APEP91 = EP91;
+@synthesize APEP92 = EP92;
+@synthesize APEP93 = EP93;
+@synthesize APEP94 = EP94;
+@synthesize APEP95 = EP95;
+@synthesize APEP96 = EP96;
+
+// Bass and Electric Piano
+@synthesize APBassAndEP24 = BassAndEP24;
+@synthesize APBassAndEP25 = BassAndEP25;
+@synthesize APBassAndEP26 = BassAndEP26;
+@synthesize APBassAndEP27 = BassAndEP27;
+@synthesize APBassAndEP28 = BassAndEP28;
+@synthesize APBassAndEP29 = BassAndEP29;
+@synthesize APBassAndEP30 = BassAndEP30;
+@synthesize APBassAndEP31 = BassAndEP31;
+@synthesize APBassAndEP32 = BassAndEP32;
+@synthesize APBassAndEP33 = BassAndEP33;
+@synthesize APBassAndEP34 = BassAndEP34;
+@synthesize APBassAndEP35 = BassAndEP35;
+@synthesize APBassAndEP36 = BassAndEP36;
+@synthesize APBassAndEP37 = BassAndEP37;
+@synthesize APBassAndEP38 = BassAndEP38;
+@synthesize APBassAndEP39 = BassAndEP39;
+@synthesize APBassAndEP40 = BassAndEP40;
+@synthesize APBassAndEP41 = BassAndEP41;
+@synthesize APBassAndEP42 = BassAndEP42;
+@synthesize APBassAndEP43 = BassAndEP43;
+@synthesize APBassAndEP44 = BassAndEP44;
+@synthesize APBassAndEP45 = BassAndEP45;
+@synthesize APBassAndEP46 = BassAndEP46;
+@synthesize APBassAndEP47 = BassAndEP47;
+@synthesize APBassAndEP48 = BassAndEP48;
+@synthesize APBassAndEP49 = BassAndEP49;
+@synthesize APBassAndEP50 = BassAndEP50;
+@synthesize APBassAndEP51 = BassAndEP51;
+@synthesize APBassAndEP52 = BassAndEP52;
+@synthesize APBassAndEP53 = BassAndEP53;
+@synthesize APBassAndEP54 = BassAndEP54;
+@synthesize APBassAndEP55 = BassAndEP55;
+@synthesize APBassAndEP56 = BassAndEP56;
+@synthesize APBassAndEP57 = BassAndEP57;
+@synthesize APBassAndEP58 = BassAndEP58;
+@synthesize APBassAndEP59 = BassAndEP59;
+@synthesize APBassAndEP60 = BassAndEP60;
+@synthesize APBassAndEP61 = BassAndEP61;
+@synthesize APBassAndEP62 = BassAndEP62;
+@synthesize APBassAndEP63 = BassAndEP63;
+@synthesize APBassAndEP64 = BassAndEP64;
+@synthesize APBassAndEP65 = BassAndEP65;
+@synthesize APBassAndEP66 = BassAndEP66;
+@synthesize APBassAndEP67 = BassAndEP67;
+@synthesize APBassAndEP68 = BassAndEP68;
+@synthesize APBassAndEP69 = BassAndEP69;
+@synthesize APBassAndEP70 = BassAndEP70;
+@synthesize APBassAndEP71 = BassAndEP71;
+@synthesize APBassAndEP72 = BassAndEP72;
+@synthesize APBassAndEP73 = BassAndEP73;
+@synthesize APBassAndEP74 = BassAndEP74;
+@synthesize APBassAndEP75 = BassAndEP75;
+@synthesize APBassAndEP76 = BassAndEP76;
+@synthesize APBassAndEP77 = BassAndEP77;
+@synthesize APBassAndEP78 = BassAndEP78;
+@synthesize APBassAndEP79 = BassAndEP79;
+@synthesize APBassAndEP80 = BassAndEP80;
+@synthesize APBassAndEP81 = BassAndEP81;
+@synthesize APBassAndEP82 = BassAndEP82;
+@synthesize APBassAndEP83 = BassAndEP83;
+@synthesize APBassAndEP84 = BassAndEP84;
+@synthesize APBassAndEP85 = BassAndEP85;
+@synthesize APBassAndEP86 = BassAndEP86;
+@synthesize APBassAndEP87 = BassAndEP87;
+@synthesize APBassAndEP88 = BassAndEP88;
+@synthesize APBassAndEP89 = BassAndEP89;
+@synthesize APBassAndEP90 = BassAndEP90;
+@synthesize APBassAndEP91 = BassAndEP91;
+@synthesize APBassAndEP92 = BassAndEP92;
+@synthesize APBassAndEP93 = BassAndEP93;
+@synthesize APBassAndEP94 = BassAndEP94;
+@synthesize APBassAndEP95 = BassAndEP95;
+@synthesize APBassAndEP96 = BassAndEP96;
+
 int chordCounter = 0;
 int chordMIDIs[4][6] = {{48,55,60,64,60,55}, {43,50,55,59,55,50}, {45,52,57,60,57,52}, {41,48,53,57,53,48}}; // C G Am F
 int notesPerChord = 6;    // update manually to match above
@@ -254,6 +542,7 @@ float currentDetune = 0.0f;
 float detuneAmount = 0.0f;
 
 
+int Globalgenre = -1; // probably move later
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
@@ -264,6 +553,8 @@ float detuneAmount = 0.0f;
        
      dspFaust = new DspFaust(SR,bufferSize);
      dspFaust->start();
+    
+    int globalMaxDetune = 0;
     
     _myManager = [[CBCentralManager alloc] initWithDelegate:self queue:nil options:nil];
     NSDictionary *option = @{
@@ -281,6 +572,9 @@ float detuneAmount = 0.0f;
     _picker.dataSource = self;
     _picker.delegate = self;
     
+
+  //  _genrePicker.delegate = self;
+    
     state = TOE_OFF;
        int co5[NUM_FIFTHS] = {48,55,50,57,52,59,54,49,56,51,58,53};
        memcpy(circleOf5ths, co5, sizeof(co5));
@@ -295,11 +589,6 @@ float detuneAmount = 0.0f;
     
     // For SoundFonts
     NSError *error;
-   // NSURL *url = [[NSBundle mainBundle] URLForResource:@"smooth kick 1" withExtension:@ "wav"];
-    
-    // Random Sounds
-    
-    // Songs
 
     // More gengres here
 
@@ -325,42 +614,27 @@ float detuneAmount = 0.0f;
     else{
         _modeLabel.text = @"Heel Strike Mode"; // rename later
     }
-    
-   // NSMutableArray *Piano = [NSMutableArray arrayWithObjects: @"AndantePiano1","AndantePiano2","AndantePiano3", nil];
-       // audioPlayer2 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"smooth kick 1" withExtension:@ "wav"]];
-   // for(int i = 1; i < 3; i++) {
-        //audioPlayer2 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndantePiano2" withExtension:@ "wav"] error:&error];
-       // NSString *temp = [NSString stringWithFormat:@"%d",i];
-        //NSString *song = @"AndantePiano" + temp;
-        //audioPlayer2 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource: Piano[i] withExtension:@ "wav"] error:&error];
-        
-
-/*
-    for(int i = 0; i < 33; i++) {
-        [Piano addObject:@"None"]; // want to be empty here
+    if(genreBass == true) { // reverse so easier
+        _genreLabel.text = @"Bass";
     }
-    for(int i = 33; i < 40; i++) {
-        NSString *check = @"AndantePiano";
-        check = [check stringByAppendingString:[NSString stringWithFormat:@"%d",i]];
-        audioPlayer2 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource: check withExtension:@ "wav"] error:&error];
-        [audioPlayer2 prepareToPlay];
-        [Piano addObject:audioPlayer2]; // adds objects to array
-      //  audioPlayer2.currentTime = 2 + 40*i;
-       // [audioPlayer2 play];
-        
-        */
- 
+    else{
+        _genreLabel.text = @"Piano"; // rename later
+    }
     
-    kick = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndanteDrumsAcousticKick" withExtension:@ "wav"] error:&error];
-    [kick prepareToPlay];
+    
 
-    snare = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndanteDrumsAcousticSnare" withExtension:@ "wav"] error:&error];
-    [snare prepareToPlay];
+    _slider.value = globalMaxDetune/0.20; // change constants later (the 0.2)
+    self.tfValue.text = [NSString stringWithFormat:@"%f", _slider.value];
     
-    hat = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndanteDrumsAcousticHat" withExtension:@ "wav"] error:&error];
-    [hat prepareToPlay];
+    AcousticKick = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndanteDrumsAcousticKick" withExtension:@ "wav"] error:&error];
+    [AcousticKick prepareToPlay];
+
+    AcousticSnare = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndanteDrumsAcousticSnare" withExtension:@ "wav"] error:&error];
+    [AcousticSnare prepareToPlay];
     
-    
+    AcousticHat = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndanteDrumsAcousticHat" withExtension:@ "wav"] error:&error];
+    [AcousticHat prepareToPlay];
+        
     Piano24 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndantePiano24" withExtension:@ "wav"] error:&error];
     [Piano24 prepareToPlay];
 
@@ -390,11 +664,6 @@ float detuneAmount = 0.0f;
     
     Piano33 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndantePiano33" withExtension:@ "wav"] error:&error];
     [Piano33 prepareToPlay];
-
-    // [Piano addObject: Piano32];
-       // addObject:[Piano objectAtIndex:33];
-   // [Piano33 play]; // A1
-    // [(AVAudioPlayer*)[Piano objectAtIndex: 0] play]; ***ISSSUE MELISSA
         
     Piano34 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndantePiano34" withExtension:@ "wav"] error:&error];
     [Piano34 prepareToPlay];
@@ -437,101 +706,74 @@ float detuneAmount = 0.0f;
 
     Piano47 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndantePiano47" withExtension:@ "wav"] error:&error];
     [Piano47 prepareToPlay];
-   // [Piano addObject: Piano32];
-    // [Piano47 play];
 
     Piano48 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndantePiano48" withExtension:@ "wav"] error:&error];
     [Piano48 prepareToPlay];
-   // [Piano addObject: Piano32];
-    // [Piano48 play];
 
 
     Piano49 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndantePiano49" withExtension:@ "wav"] error:&error];
     [Piano49 prepareToPlay];
-   // [Piano addObject: Piano32];
-    // [Piano49 play];
 
     Piano50 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndantePiano50" withExtension:@ "wav"] error:&error];
     [Piano50 prepareToPlay];
-    // [Piano50 play];
 
     Piano51 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndantePiano51" withExtension:@ "wav"] error:&error];
     [Piano51 prepareToPlay];
-    // [Piano51 play];
 
     Piano52 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndantePiano52" withExtension:@ "wav"] error:&error];
     [Piano52 prepareToPlay];
-    // [Piano52 play];
-
 
     Piano53 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndantePiano53" withExtension:@ "wav"] error:&error];
     [Piano53 prepareToPlay];
-    // [Piano53 play];
 
     Piano54 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndantePiano54" withExtension:@ "wav"] error:&error];
     [Piano54 prepareToPlay];
-    // [Piano54 play];
 
     Piano55 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndantePiano55" withExtension:@ "wav"] error:&error];
     [Piano55 prepareToPlay];
-   // [Piano55 play];
 
     Piano56 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndantePiano56" withExtension:@ "wav"] error:&error];
     [Piano56 prepareToPlay];
-    // [Piano56 play];
 
     Piano57 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndantePiano57" withExtension:@ "wav"] error:&error];
     [Piano57 prepareToPlay];
-    //[Piano57 play];
     
     Piano58 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndantePiano58" withExtension:@ "wav"] error:&error];
     [Piano58 prepareToPlay];
-    //[Piano58 play];
 
     Piano59 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndantePiano59" withExtension:@ "wav"] error:&error];
     [Piano59 prepareToPlay];
-    //[Piano59 play];
 
     Piano60 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndantePiano60" withExtension:@ "wav"] error:&error];
     [Piano60 prepareToPlay];
-    //[Piano60 play];
 
     Piano51 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndantePiano51" withExtension:@ "wav"] error:&error];
     [Piano51 prepareToPlay];
-    // [Piano51 play];
 
     Piano52 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndantePiano52" withExtension:@ "wav"] error:&error];
     [Piano52 prepareToPlay];
-    // [Piano52 play];
-
 
     Piano53 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndantePiano53" withExtension:@ "wav"] error:&error];
     [Piano53 prepareToPlay];
-    //[Piano53 play];
 
     Piano54 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndantePiano54" withExtension:@ "wav"] error:&error];
     [Piano54 prepareToPlay];
-    // [Piano54 play];
 
     Piano55 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndantePiano55" withExtension:@ "wav"] error:&error];
     [Piano55 prepareToPlay];
-    // [Piano55 play];
 
-   // Piano56 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndantePiano56" withExtension:@ "wav"] error:&error];
-  //  [Piano56 prepareToPlay];
-    // [Piano56 play];
+
+   Piano56 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndantePiano56" withExtension:@ "wav"] error:&error];
+    [Piano56 prepareToPlay];
 
     Piano57 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndantePiano57" withExtension:@ "wav"] error:&error];
     [Piano57 prepareToPlay];
-    // [Piano57 play];
 
     Piano58 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndantePiano58" withExtension:@ "wav"] error:&error];
     [Piano58 prepareToPlay];
-    // [Piano58 play];
 
     Piano59 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndantePiano59" withExtension:@ "wav"] error:&error];
     [Piano59 prepareToPlay];
-    // [Piano59 play];
 
     Piano60 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndantePiano60" withExtension:@ "wav"] error:&error];
     [Piano60 prepareToPlay];
@@ -645,47 +887,476 @@ float detuneAmount = 0.0f;
     Piano96 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndantePiano96" withExtension:@ "wav"] error:&error];
     [Piano96 prepareToPlay];
     
-    /*
-     // IDEAS TO MAKE CODE CLEANER MELISSA
-    NSString *p;
-
-    for(int i = 33; i < 33+ 30; i++) {
-        NSString *p;
-        p = [p stringByAppendingString: [NSString stringWithFormat:@"Piano%d",i]];
-    }
-    */
-    // min is 24
-    // max is 96
-    
     
     // PIANO dictionary initialization
-    NSArray *values = [NSArray arrayWithObjects: kick, snare, hat, Piano24, Piano25, Piano26, Piano27, Piano28, Piano29, Piano30, Piano31, Piano32, Piano33, Piano34, Piano35, Piano36, Piano37, Piano38, Piano39, Piano40, Piano41, Piano42, Piano43, Piano44, Piano45, Piano46, Piano47, Piano48, Piano49, Piano50, Piano51, Piano52, Piano53, Piano54, Piano55, Piano56, Piano57, Piano58, Piano59, Piano60, Piano61, Piano62, Piano63, Piano64, Piano65, Piano66, Piano67, Piano68, Piano69, Piano70, Piano71, Piano72, Piano73, Piano74, Piano75, Piano76, Piano77, Piano78, Piano79, Piano80, Piano81, Piano82, Piano83, Piano84, Piano85, Piano86, Piano87, Piano88, Piano89,Piano90, Piano91, Piano92, Piano93, Piano94, Piano95, Piano96, nil];
+    NSArray *valuesPiano = [NSArray arrayWithObjects: AcousticKick, AcousticSnare, AcousticHat, Piano24, Piano25, Piano26, Piano27, Piano28, Piano29, Piano30, Piano31, Piano32, Piano33, Piano34, Piano35, Piano36, Piano37, Piano38, Piano39, Piano40, Piano41, Piano42, Piano43, Piano44, Piano45, Piano46, Piano47, Piano48, Piano49, Piano50, Piano51, Piano52, Piano53, Piano54, Piano55, Piano56, Piano57, Piano58, Piano59, Piano60, Piano61, Piano62, Piano63, Piano64, Piano65, Piano66, Piano67, Piano68, Piano69, Piano70, Piano71, Piano72, Piano73, Piano74, Piano75, Piano76, Piano77, Piano78, Piano79, Piano80, Piano81, Piano82, Piano83, Piano84, Piano85, Piano86, Piano87, Piano88, Piano89,Piano90, Piano91, Piano92, Piano93, Piano94, Piano95, Piano96, nil];
     
-    NSArray *keys = [NSArray arrayWithObjects:[NSNumber numberWithInteger:0], [NSNumber numberWithInteger:1],[NSNumber numberWithInteger:2],[NSNumber numberWithInteger:24], [NSNumber numberWithInteger:25],[NSNumber numberWithInteger:26],[NSNumber numberWithInteger:27],[NSNumber numberWithInteger:28], [NSNumber numberWithInteger:29],[NSNumber numberWithInteger:30],[NSNumber numberWithInteger:31],[NSNumber numberWithInteger:32],[NSNumber numberWithInteger:33],[NSNumber numberWithInteger:34], [NSNumber numberWithInteger:35],[NSNumber numberWithInteger:36],[NSNumber numberWithInteger:37],[NSNumber numberWithInteger:38], [NSNumber numberWithInteger:39],[NSNumber numberWithInteger:40],[NSNumber numberWithInteger:41],[NSNumber numberWithInteger:42], [NSNumber numberWithInteger:43],[NSNumber numberWithInteger:44],[NSNumber numberWithInteger:45],[NSNumber numberWithInteger:46], [NSNumber numberWithInteger:47],[NSNumber numberWithInteger:48],[NSNumber numberWithInteger:49],[NSNumber numberWithInteger:50],[NSNumber numberWithInteger:51],[NSNumber numberWithInteger:52], [NSNumber numberWithInteger:53],[NSNumber numberWithInteger:54],[NSNumber numberWithInteger:55],[NSNumber numberWithInteger:56], [NSNumber numberWithInteger:57],[NSNumber numberWithInteger:58],[NSNumber numberWithInteger:59],[NSNumber numberWithInteger:60],[NSNumber numberWithInteger:61],[NSNumber numberWithInteger:62], [NSNumber numberWithInteger:63],[NSNumber numberWithInteger:64],[NSNumber numberWithInteger:65],[NSNumber numberWithInteger:66], [NSNumber numberWithInteger:67],[NSNumber numberWithInteger:68],[NSNumber numberWithInteger:69],[NSNumber numberWithInteger:70],[NSNumber numberWithInteger:71],[NSNumber numberWithInteger:72], [NSNumber numberWithInteger:73],[NSNumber numberWithInteger:74],[NSNumber numberWithInteger:75],[NSNumber numberWithInteger:76], [NSNumber numberWithInteger:77],[NSNumber numberWithInteger:78],[NSNumber numberWithInteger:79], [NSNumber numberWithInteger:80],[NSNumber numberWithInteger:81],[NSNumber numberWithInteger:82], [NSNumber numberWithInteger:83],[NSNumber numberWithInteger:84],[NSNumber numberWithInteger:85],[NSNumber numberWithInteger:86], [NSNumber numberWithInteger:87],[NSNumber numberWithInteger:88],[NSNumber numberWithInteger:89],[NSNumber numberWithInteger:90],[NSNumber numberWithInteger:91],[NSNumber numberWithInteger:92], [NSNumber numberWithInteger:93],[NSNumber numberWithInteger:94],[NSNumber numberWithInteger:95],[NSNumber numberWithInteger:96],nil];
+    NSArray *keysPiano = [NSArray arrayWithObjects:[NSNumber numberWithInteger:0], [NSNumber numberWithInteger:1],[NSNumber numberWithInteger:2],[NSNumber numberWithInteger:24], [NSNumber numberWithInteger:25],[NSNumber numberWithInteger:26],[NSNumber numberWithInteger:27],[NSNumber numberWithInteger:28], [NSNumber numberWithInteger:29],[NSNumber numberWithInteger:30],[NSNumber numberWithInteger:31],[NSNumber numberWithInteger:32],[NSNumber numberWithInteger:33],[NSNumber numberWithInteger:34], [NSNumber numberWithInteger:35],[NSNumber numberWithInteger:36],[NSNumber numberWithInteger:37],[NSNumber numberWithInteger:38], [NSNumber numberWithInteger:39],[NSNumber numberWithInteger:40],[NSNumber numberWithInteger:41],[NSNumber numberWithInteger:42], [NSNumber numberWithInteger:43],[NSNumber numberWithInteger:44],[NSNumber numberWithInteger:45],[NSNumber numberWithInteger:46], [NSNumber numberWithInteger:47],[NSNumber numberWithInteger:48],[NSNumber numberWithInteger:49],[NSNumber numberWithInteger:50],[NSNumber numberWithInteger:51],[NSNumber numberWithInteger:52], [NSNumber numberWithInteger:53],[NSNumber numberWithInteger:54],[NSNumber numberWithInteger:55],[NSNumber numberWithInteger:56], [NSNumber numberWithInteger:57],[NSNumber numberWithInteger:58],[NSNumber numberWithInteger:59],[NSNumber numberWithInteger:60],[NSNumber numberWithInteger:61],[NSNumber numberWithInteger:62], [NSNumber numberWithInteger:63],[NSNumber numberWithInteger:64],[NSNumber numberWithInteger:65],[NSNumber numberWithInteger:66], [NSNumber numberWithInteger:67],[NSNumber numberWithInteger:68],[NSNumber numberWithInteger:69],[NSNumber numberWithInteger:70],[NSNumber numberWithInteger:71],[NSNumber numberWithInteger:72], [NSNumber numberWithInteger:73],[NSNumber numberWithInteger:74],[NSNumber numberWithInteger:75],[NSNumber numberWithInteger:76], [NSNumber numberWithInteger:77],[NSNumber numberWithInteger:78],[NSNumber numberWithInteger:79], [NSNumber numberWithInteger:80],[NSNumber numberWithInteger:81],[NSNumber numberWithInteger:82], [NSNumber numberWithInteger:83],[NSNumber numberWithInteger:84],[NSNumber numberWithInteger:85],[NSNumber numberWithInteger:86], [NSNumber numberWithInteger:87],[NSNumber numberWithInteger:88],[NSNumber numberWithInteger:89],[NSNumber numberWithInteger:90],[NSNumber numberWithInteger:91],[NSNumber numberWithInteger:92], [NSNumber numberWithInteger:93],[NSNumber numberWithInteger:94],[NSNumber numberWithInteger:95],[NSNumber numberWithInteger:96],nil];
 
-        Piano = [NSDictionary dictionaryWithObjects: values forKeys: keys];
-    
-    
-    // Below lines are what goes in function
-   // AVAudioPlayer *key = Piano[[NSNumber numberWithInteger:34]];
-  //  [key play];
+        Piano = [NSDictionary dictionaryWithObjects: valuesPiano forKeys: keysPiano];
 
+        // Electric Piano
+        EP24 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndanteEP24" withExtension:@ "wav"] error:&error];
+        [EP24 prepareToPlay];
+
+        EP25 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndanteEP25" withExtension:@ "wav"] error:&error];
+        [EP25 prepareToPlay];
+        
+        EP26 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndanteEP26" withExtension:@ "wav"] error:&error];
+        [EP26 prepareToPlay];
+        
+        EP27 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndanteEP27" withExtension:@ "wav"] error:&error];
+        [EP27 prepareToPlay];
+        
+        EP28 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndanteEP28" withExtension:@ "wav"] error:&error];
+        [EP28 prepareToPlay];
+        
+        EP29 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndanteEP29" withExtension:@ "wav"] error:&error];
+        [EP29 prepareToPlay];
+        
+        EP30 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndanteEP30" withExtension:@ "wav"] error:&error];
+        [EP30 prepareToPlay];
+        
+        EP31 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndanteEP31" withExtension:@ "wav"] error:&error];
+        [EP31 prepareToPlay];
+        
+        EP32 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndanteEP32" withExtension:@ "wav"] error:&error];
+        [EP32 prepareToPlay];
+        
+        EP33 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndanteEP33" withExtension:@ "wav"] error:&error];
+        [EP33 prepareToPlay];
+
+        EP34 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndanteEP34" withExtension:@ "wav"] error:&error];
+        [EP34 prepareToPlay];
+
+        EP35 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndanteEP35" withExtension:@ "wav"] error:&error];
+        [EP35 prepareToPlay];
+        
+        EP36 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndanteEP36" withExtension:@ "wav"] error:&error];
+        [EP36 prepareToPlay];
+        
+        EP37 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndanteEP37" withExtension:@ "wav"] error:&error];
+        [EP37 prepareToPlay];
+        
+        EP38 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndanteEP38" withExtension:@ "wav"] error:&error];
+        [EP38 prepareToPlay];
+        
+        EP39 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndanteEP39" withExtension:@ "wav"] error:&error];
+        [EP39 prepareToPlay];
+        
+        EP40 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndanteEP40" withExtension:@ "wav"] error:&error];
+        [EP40 prepareToPlay];
+        
+        EP41 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndanteEP41" withExtension:@ "wav"] error:&error];
+        [EP41 prepareToPlay];
+        
+        EP42 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndanteEP42" withExtension:@ "wav"] error:&error];
+        [EP42 prepareToPlay];
+        
+        EP43 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndanteEP43" withExtension:@ "wav"] error:&error];
+        [EP43 prepareToPlay];
+
+        EP44 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndanteEP44" withExtension:@ "wav"] error:&error];
+        [EP44 prepareToPlay];
+
+        EP45 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndanteEP45" withExtension:@ "wav"] error:&error];
+        [EP45 prepareToPlay];
+
+        EP46 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndanteEP46" withExtension:@ "wav"] error:&error];
+        [EP46 prepareToPlay];
+
+        EP47 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndanteEP47" withExtension:@ "wav"] error:&error];
+        [EP47 prepareToPlay];
+
+       EP48 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndanteEP48" withExtension:@ "wav"] error:&error];
+        [EP48 prepareToPlay];
+
+       EP49 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndanteEP49" withExtension:@ "wav"] error:&error];
+        [EP49 prepareToPlay];
+
+       EP50 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndanteEP50" withExtension:@ "wav"] error:&error];
+        [EP50 prepareToPlay];
+
+       EP51 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndanteEP51" withExtension:@ "wav"] error:&error];
+        [EP51 prepareToPlay];
+
+       EP52 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndanteEP51" withExtension:@ "wav"] error:&error];
+        [EP52 prepareToPlay];
+
+       EP53 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndanteEP53" withExtension:@ "wav"] error:&error];
+        [EP53 prepareToPlay];
+
+       EP54 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndanteEP54" withExtension:@ "wav"] error:&error];
+        [EP54 prepareToPlay];
+
+       EP55 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndanteEP55" withExtension:@ "wav"] error:&error];
+        [EP55 prepareToPlay];
+
+       EP56 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndanteEP56" withExtension:@ "wav"] error:&error];
+        [EP56 prepareToPlay];
+
+       EP57 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndanteEP57" withExtension:@ "wav"] error:&error];
+        [EP57 prepareToPlay];
+        
+       EP58 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndanteEP58" withExtension:@ "wav"] error:&error];
+        [EP58 prepareToPlay];
+
+       EP59 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndanteEP59" withExtension:@ "wav"] error:&error];
+        [EP59 prepareToPlay];
+
+       EP60 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndanteEP60" withExtension:@ "wav"] error:&error];
+        [EP60 prepareToPlay];
+        
+       EP61 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndanteEP61" withExtension:@ "wav"] error:&error];
+        [EP61 prepareToPlay];
+        
+       EP62 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndanteEP62" withExtension:@ "wav"] error:&error];
+        [EP62 prepareToPlay];
+        
+       EP63 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndanteEP63" withExtension:@ "wav"] error:&error];
+        [EP63 prepareToPlay];
+        
+       EP64 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndanteEP64" withExtension:@ "wav"] error:&error];
+        [EP64 prepareToPlay];
+        
+       EP65 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndanteEP65" withExtension:@ "wav"] error:&error];
+        [EP65 prepareToPlay];
+        
+       EP66 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndanteEP66" withExtension:@ "wav"] error:&error];
+        [EP66 prepareToPlay];
+        
+       EP67 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndanteEP67" withExtension:@ "wav"] error:&error];
+        [EP67 prepareToPlay];
+        
+       EP68 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndanteEP68" withExtension:@ "wav"] error:&error];
+        [EP68 prepareToPlay];
+        
+       EP69 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndanteEP69" withExtension:@ "wav"] error:&error];
+        [EP69 prepareToPlay];
+
+       EP70 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndanteEP70" withExtension:@ "wav"] error:&error];
+        [EP70 prepareToPlay];
+        
+       EP71 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndanteEP71" withExtension:@ "wav"] error:&error];
+        [EP71 prepareToPlay];
+        
+       EP72 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndanteEP72" withExtension:@ "wav"] error:&error];
+        [EP72 prepareToPlay];
+        
+       EP73 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndanteEP73" withExtension:@ "wav"] error:&error];
+        [EP73 prepareToPlay];
+        
+       EP74 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndanteEP74" withExtension:@ "wav"] error:&error];
+        [EP74 prepareToPlay];
+        
+       EP75 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndanteEP75" withExtension:@ "wav"] error:&error];
+        [EP75 prepareToPlay];
+        
+       EP76 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndanteEP76" withExtension:@ "wav"] error:&error];
+        [EP76 prepareToPlay];
+        
+       EP77 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndanteEP77" withExtension:@ "wav"] error:&error];
+        [EP77 prepareToPlay];
+        
+       EP78 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndanteEP78" withExtension:@ "wav"] error:&error];
+        [EP78 prepareToPlay];
+        
+       EP79 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndanteEP79" withExtension:@ "wav"] error:&error];
+        [EP79 prepareToPlay];
+
+       EP80 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndanteEP80" withExtension:@ "wav"] error:&error];
+        [EP80 prepareToPlay];
+
+        
+       EP81 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndanteEP81" withExtension:@ "wav"] error:&error];
+        [EP81 prepareToPlay];
+        
+       EP82 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndanteEP82" withExtension:@ "wav"] error:&error];
+        [EP82 prepareToPlay];
+        
+       EP83 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndanteEP83" withExtension:@ "wav"] error:&error];
+        [EP83 prepareToPlay];
+        
+       EP84 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndanteEP84" withExtension:@ "wav"] error:&error];
+        [EP84 prepareToPlay];
+        
+       EP85 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndanteEP85" withExtension:@ "wav"] error:&error];
+        [EP85 prepareToPlay];
+        
+       EP86 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndanteEP86" withExtension:@ "wav"] error:&error];
+        [EP86 prepareToPlay];
+        
+       EP87 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndanteEP87" withExtension:@ "wav"] error:&error];
+        [EP87 prepareToPlay];
+        
+       EP88 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndanteEP88" withExtension:@ "wav"] error:&error];
+        [EP88 prepareToPlay];
+        
+       EP89 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndanteEP89" withExtension:@ "wav"] error:&error];
+        [EP89 prepareToPlay];
+
+       EP90 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndanteEP90" withExtension:@ "wav"] error:&error];
+        [EP90 prepareToPlay];
+        
+       EP91 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndanteEP91" withExtension:@ "wav"] error:&error];
+        [EP91 prepareToPlay];
+        
+       EP92 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndanteEP92" withExtension:@ "wav"] error:&error];
+        [EP92 prepareToPlay];
+        
+       EP93 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndanteEP93" withExtension:@ "wav"] error:&error];
+        [EP93 prepareToPlay];
+        
+       EP94 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndanteEP94" withExtension:@ "wav"] error:&error];
+        [EP94 prepareToPlay];
+        
+       EP95 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndanteEP95" withExtension:@ "wav"] error:&error];
+        [EP95 prepareToPlay];
+        
+       EP96 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndanteEP96" withExtension:@ "wav"] error:&error];
+        [EP96 prepareToPlay];
+        
+     
+        // EP dictionary initialization
+        NSArray *valuesEP = [NSArray arrayWithObjects: AcousticKick, AcousticSnare, AcousticHat, EP24, EP25, EP26, EP27, EP28, EP29, EP30, EP31, EP32, EP33, EP34, EP35, EP36, EP37, EP38, EP39, EP40, EP41, EP42, EP43, EP44, EP45, EP46, EP47, EP48, EP49, EP50, EP51, EP52, EP53, EP54, EP55, EP56, EP57, EP58, EP59, EP60, EP61, EP62, EP63, EP64, EP65, EP66, EP67, EP68, EP69, EP70, EP71, EP72, EP73, EP74, EP75, EP76, EP77, EP78, EP79, EP80, EP81, EP82, EP83, EP84, EP85, EP86, EP87, EP88, EP89,EP90, EP91, EP92, EP93, EP94, EP95, EP96, nil];
+        NSLog(@"Number of values: %lu", (unsigned long)[valuesEP count]);
+        
+        NSArray *keysEP = [NSArray arrayWithObjects:[NSNumber numberWithInteger:0], [NSNumber numberWithInteger:1],[NSNumber numberWithInteger:2],[NSNumber numberWithInteger:24], [NSNumber numberWithInteger:25],[NSNumber numberWithInteger:26],[NSNumber numberWithInteger:27],[NSNumber numberWithInteger:28], [NSNumber numberWithInteger:29],[NSNumber numberWithInteger:30],[NSNumber numberWithInteger:31],[NSNumber numberWithInteger:32],[NSNumber numberWithInteger:33],[NSNumber numberWithInteger:34], [NSNumber numberWithInteger:35],[NSNumber numberWithInteger:36],[NSNumber numberWithInteger:37],[NSNumber numberWithInteger:38], [NSNumber numberWithInteger:39],[NSNumber numberWithInteger:40],[NSNumber numberWithInteger:41],[NSNumber numberWithInteger:42], [NSNumber numberWithInteger:43],[NSNumber numberWithInteger:44],[NSNumber numberWithInteger:45],[NSNumber numberWithInteger:46], [NSNumber numberWithInteger:47],[NSNumber numberWithInteger:48],[NSNumber numberWithInteger:49],[NSNumber numberWithInteger:50],[NSNumber numberWithInteger:51],[NSNumber numberWithInteger:52], [NSNumber numberWithInteger:53],[NSNumber numberWithInteger:54],[NSNumber numberWithInteger:55],[NSNumber numberWithInteger:56], [NSNumber numberWithInteger:57],[NSNumber numberWithInteger:58],[NSNumber numberWithInteger:59],[NSNumber numberWithInteger:60],[NSNumber numberWithInteger:61],[NSNumber numberWithInteger:62], [NSNumber numberWithInteger:63],[NSNumber numberWithInteger:64],[NSNumber numberWithInteger:65],[NSNumber numberWithInteger:66], [NSNumber numberWithInteger:67],[NSNumber numberWithInteger:68],[NSNumber numberWithInteger:69],[NSNumber numberWithInteger:70],[NSNumber numberWithInteger:71],[NSNumber numberWithInteger:72], [NSNumber numberWithInteger:73],[NSNumber numberWithInteger:74],[NSNumber numberWithInteger:75],[NSNumber numberWithInteger:76], [NSNumber numberWithInteger:77],[NSNumber numberWithInteger:78],[NSNumber numberWithInteger:79], [NSNumber numberWithInteger:80],[NSNumber numberWithInteger:81],[NSNumber numberWithInteger:82], [NSNumber numberWithInteger:83],[NSNumber numberWithInteger:84],[NSNumber numberWithInteger:85],[NSNumber numberWithInteger:86], [NSNumber numberWithInteger:87],[NSNumber numberWithInteger:88],[NSNumber numberWithInteger:89],[NSNumber numberWithInteger:90],[NSNumber numberWithInteger:91],[NSNumber numberWithInteger:92], [NSNumber numberWithInteger:93],[NSNumber numberWithInteger:94],[NSNumber numberWithInteger:95],[NSNumber numberWithInteger:96], nil];
+
+            EP = [NSDictionary dictionaryWithObjects: valuesEP forKeys: keysEP];
+    
+    // Bass and Electric Piano
+        BassAndEP24 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndanteBassAndEP24" withExtension:@ "wav"] error:&error];
+        [BassAndEP24 prepareToPlay];
+
+        BassAndEP25 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndanteBassAndEP25" withExtension:@ "wav"] error:&error];
+        [BassAndEP25 prepareToPlay];
+        
+        BassAndEP26 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndanteBassAndEP26" withExtension:@ "wav"] error:&error];
+        [BassAndEP26 prepareToPlay];
+        
+        BassAndEP27 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndanteBassAndEP27" withExtension:@ "wav"] error:&error];
+        [BassAndEP27 prepareToPlay];
+        
+        BassAndEP28 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndanteBassAndEP28" withExtension:@ "wav"] error:&error];
+        [BassAndEP28 prepareToPlay];
+        
+        BassAndEP29 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndanteBassAndEP29" withExtension:@ "wav"] error:&error];
+        [BassAndEP29 prepareToPlay];
+        
+        BassAndEP30 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndanteBassAndEP30" withExtension:@ "wav"] error:&error];
+        [BassAndEP30 prepareToPlay];
+        
+        BassAndEP31 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndanteBassAndEP31" withExtension:@ "wav"] error:&error];
+        [BassAndEP31 prepareToPlay];
+        
+        BassAndEP32 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndanteBassAndEP32" withExtension:@ "wav"] error:&error];
+        [BassAndEP32 prepareToPlay];
+        
+        BassAndEP33 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndanteBassAndEP33" withExtension:@ "wav"] error:&error];
+        [BassAndEP33 prepareToPlay];
+
+        BassAndEP34 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndanteBassAndEP34" withExtension:@ "wav"] error:&error];
+        [BassAndEP34 prepareToPlay];
+
+        BassAndEP35 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndanteBassAndEP35" withExtension:@ "wav"] error:&error];
+        [BassAndEP35 prepareToPlay];
+        
+        BassAndEP36 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndanteBassAndEP36" withExtension:@ "wav"] error:&error];
+        [BassAndEP36 prepareToPlay];
+        
+        BassAndEP37 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndanteBassAndEP37" withExtension:@ "wav"] error:&error];
+        [BassAndEP37 prepareToPlay];
+        
+        BassAndEP38 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndanteBassAndEP38" withExtension:@ "wav"] error:&error];
+        [BassAndEP38 prepareToPlay];
+        
+        BassAndEP39 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndanteBassAndEP39" withExtension:@ "wav"] error:&error];
+        [BassAndEP39 prepareToPlay];
+        
+        BassAndEP40 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndanteBassAndEP40" withExtension:@ "wav"] error:&error];
+        [BassAndEP40 prepareToPlay];
+        
+        BassAndEP41 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndanteBassAndEP41" withExtension:@ "wav"] error:&error];
+        [BassAndEP41 prepareToPlay];
+        
+        BassAndEP42 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndanteBassAndEP42" withExtension:@ "wav"] error:&error];
+        [BassAndEP42 prepareToPlay];
+        
+        BassAndEP43 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndanteBassAndEP43" withExtension:@ "wav"] error:&error];
+        [BassAndEP43 prepareToPlay];
+
+        BassAndEP44 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndanteBassAndEP44" withExtension:@ "wav"] error:&error];
+        [BassAndEP44 prepareToPlay];
+
+        BassAndEP45 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndanteBassAndEP45" withExtension:@ "wav"] error:&error];
+        [BassAndEP45 prepareToPlay];
+
+        BassAndEP46 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndanteBassAndEP46" withExtension:@ "wav"] error:&error];
+        [BassAndEP46 prepareToPlay];
+
+        BassAndEP47 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndanteBassAndEP47" withExtension:@ "wav"] error:&error];
+        [BassAndEP47 prepareToPlay];
+
+       BassAndEP48 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndanteBassAndEP48" withExtension:@ "wav"] error:&error];
+        [BassAndEP48 prepareToPlay];
+
+       BassAndEP49 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndanteBassAndEP49" withExtension:@ "wav"] error:&error];
+        [BassAndEP49 prepareToPlay];
+
+       BassAndEP50 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndanteBassAndEP50" withExtension:@ "wav"] error:&error];
+        [BassAndEP50 prepareToPlay];
+
+       BassAndEP51 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndanteBassAndEP51" withExtension:@ "wav"] error:&error];
+        [BassAndEP51 prepareToPlay];
+
+       BassAndEP52 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndanteBassAndEP51" withExtension:@ "wav"] error:&error];
+        [BassAndEP52 prepareToPlay];
+
+       BassAndEP53 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndanteBassAndEP53" withExtension:@ "wav"] error:&error];
+        [BassAndEP53 prepareToPlay];
+
+       BassAndEP54 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndanteBassAndEP54" withExtension:@ "wav"] error:&error];
+        [BassAndEP54 prepareToPlay];
+
+       BassAndEP55 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndanteBassAndEP55" withExtension:@ "wav"] error:&error];
+        [BassAndEP55 prepareToPlay];
+
+       BassAndEP56 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndanteBassAndEP56" withExtension:@ "wav"] error:&error];
+        [BassAndEP56 prepareToPlay];
+
+       BassAndEP57 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndanteBassAndEP57" withExtension:@ "wav"] error:&error];
+        [BassAndEP57 prepareToPlay];
+        
+       BassAndEP58 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndanteBassAndEP58" withExtension:@ "wav"] error:&error];
+        [BassAndEP58 prepareToPlay];
+
+       BassAndEP59 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndanteBassAndEP59" withExtension:@ "wav"] error:&error];
+        [BassAndEP59 prepareToPlay];
+
+       BassAndEP60 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndanteBassAndEP60" withExtension:@ "wav"] error:&error];
+        [BassAndEP60 prepareToPlay];
+        
+       BassAndEP61 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndanteBassAndEP61" withExtension:@ "wav"] error:&error];
+        [BassAndEP61 prepareToPlay];
+        
+       BassAndEP62 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndanteBassAndEP62" withExtension:@ "wav"] error:&error];
+        [BassAndEP62 prepareToPlay];
+        
+       BassAndEP63 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndanteBassAndEP63" withExtension:@ "wav"] error:&error];
+        [BassAndEP63 prepareToPlay];
+        
+       BassAndEP64 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndanteBassAndEP64" withExtension:@ "wav"] error:&error];
+        [BassAndEP64 prepareToPlay];
+        
+       BassAndEP65 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndanteBassAndEP65" withExtension:@ "wav"] error:&error];
+        [BassAndEP65 prepareToPlay];
+        
+       BassAndEP66 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndanteBassAndEP66" withExtension:@ "wav"] error:&error];
+        [BassAndEP66 prepareToPlay];
+        
+       BassAndEP67 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndanteBassAndEP67" withExtension:@ "wav"] error:&error];
+        [BassAndEP67 prepareToPlay];
+        
+       BassAndEP68 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndanteBassAndEP68" withExtension:@ "wav"] error:&error];
+        [BassAndEP68 prepareToPlay];
+        
+       BassAndEP69 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndanteBassAndEP69" withExtension:@ "wav"] error:&error];
+        [BassAndEP69 prepareToPlay];
+
+       BassAndEP70 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndanteBassAndEP70" withExtension:@ "wav"] error:&error];
+        [BassAndEP70 prepareToPlay];
+        
+       BassAndEP71 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndanteBassAndEP71" withExtension:@ "wav"] error:&error];
+        [BassAndEP71 prepareToPlay];
+        
+       BassAndEP72 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndanteBassAndEP72" withExtension:@ "wav"] error:&error];
+        [BassAndEP72 prepareToPlay];
+        
+       BassAndEP73 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndanteBassAndEP73" withExtension:@ "wav"] error:&error];
+        [BassAndEP73 prepareToPlay];
+        
+       BassAndEP74 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndanteBassAndEP74" withExtension:@ "wav"] error:&error];
+        [BassAndEP74 prepareToPlay];
+        
+       BassAndEP75 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndanteBassAndEP75" withExtension:@ "wav"] error:&error];
+        [BassAndEP75 prepareToPlay];
+        
+       BassAndEP76 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndanteBassAndEP76" withExtension:@ "wav"] error:&error];
+        [BassAndEP76 prepareToPlay];
+        
+       BassAndEP77 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndanteBassAndEP77" withExtension:@ "wav"] error:&error];
+        [BassAndEP77 prepareToPlay];
+        
+       BassAndEP78 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndanteBassAndEP78" withExtension:@ "wav"] error:&error];
+        [BassAndEP78 prepareToPlay];
+        
+       BassAndEP79 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndanteBassAndEP79" withExtension:@ "wav"] error:&error];
+        [BassAndEP79 prepareToPlay];
+
+       BassAndEP80 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndanteBassAndEP80" withExtension:@ "wav"] error:&error];
+        [BassAndEP80 prepareToPlay];
+
+        
+       BassAndEP81 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndanteBassAndEP81" withExtension:@ "wav"] error:&error];
+        [BassAndEP81 prepareToPlay];
+        
+       BassAndEP82 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndanteBassAndEP82" withExtension:@ "wav"] error:&error];
+        [BassAndEP82 prepareToPlay];
+        
+       BassAndEP83 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndanteBassAndEP83" withExtension:@ "wav"] error:&error];
+        [BassAndEP83 prepareToPlay];
+        
+       BassAndEP84 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndanteBassAndEP84" withExtension:@ "wav"] error:&error];
+        [BassAndEP84 prepareToPlay];
+        
+       BassAndEP85 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndanteBassAndEP85" withExtension:@ "wav"] error:&error];
+        [BassAndEP85 prepareToPlay];
+        
+       BassAndEP86 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndanteBassAndEP86" withExtension:@ "wav"] error:&error];
+        [BassAndEP86 prepareToPlay];
+        
+       BassAndEP87 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndanteBassAndEP87" withExtension:@ "wav"] error:&error];
+        [BassAndEP87 prepareToPlay];
+        
+       BassAndEP88 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndanteBassAndEP88" withExtension:@ "wav"] error:&error];
+        [BassAndEP88 prepareToPlay];
+        
+       BassAndEP89 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndanteBassAndEP89" withExtension:@ "wav"] error:&error];
+        [BassAndEP89 prepareToPlay];
+
+       BassAndEP90 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndanteBassAndEP90" withExtension:@ "wav"] error:&error];
+        [BassAndEP90 prepareToPlay];
+        
+       BassAndEP91 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndanteBassAndEP91" withExtension:@ "wav"] error:&error];
+        [BassAndEP91 prepareToPlay];
+        
+       BassAndEP92 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndanteBassAndEP92" withExtension:@ "wav"] error:&error];
+        [BassAndEP92 prepareToPlay];
+        
+       BassAndEP93 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndanteBassAndEP93" withExtension:@ "wav"] error:&error];
+        [BassAndEP93 prepareToPlay];
+        
+       BassAndEP94 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndanteBassAndEP94" withExtension:@ "wav"] error:&error];
+        [BassAndEP94 prepareToPlay];
+        
+       BassAndEP95 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndanteBassAndEP95" withExtension:@ "wav"] error:&error];
+        [BassAndEP95 prepareToPlay];
+        
+       BassAndEP96 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndanteBassAndEP96" withExtension:@ "wav"] error:&error];
+        [BassAndEP96 prepareToPlay];
+        
+     
+        // EP dictionary initialization
+        NSArray *valuesBassAndEP = [NSArray arrayWithObjects: AcousticKick, AcousticSnare, AcousticHat, BassAndEP24, BassAndEP25, BassAndEP26, BassAndEP27, BassAndEP28, BassAndEP29, BassAndEP30, BassAndEP31, BassAndEP32, BassAndEP33, BassAndEP34, BassAndEP35, BassAndEP36, BassAndEP37, BassAndEP38, BassAndEP39, BassAndEP40, BassAndEP41, BassAndEP42, BassAndEP43, BassAndEP44, BassAndEP45, BassAndEP46, BassAndEP47, BassAndEP48, BassAndEP49, BassAndEP50, BassAndEP51, BassAndEP52, BassAndEP53, BassAndEP54, BassAndEP55, BassAndEP56, BassAndEP57, BassAndEP58, BassAndEP59, BassAndEP60, BassAndEP61, BassAndEP62, BassAndEP63, BassAndEP64, BassAndEP65, BassAndEP66, BassAndEP67, BassAndEP68, BassAndEP69, BassAndEP70, BassAndEP71, BassAndEP72, BassAndEP73, BassAndEP74, BassAndEP75, BassAndEP76, BassAndEP77, BassAndEP78, BassAndEP79, BassAndEP80, BassAndEP81, BassAndEP82, BassAndEP83, BassAndEP84, BassAndEP85, BassAndEP86, BassAndEP87, BassAndEP88, BassAndEP89,BassAndEP90, BassAndEP91, BassAndEP92, BassAndEP93, BassAndEP94, BassAndEP95, BassAndEP96, nil];
+        NSLog(@"Number of values: %lu", (unsigned long)[valuesBassAndEP count]);
+        
+        NSArray *keysBassAndEP = [NSArray arrayWithObjects:[NSNumber numberWithInteger:0], [NSNumber numberWithInteger:1],[NSNumber numberWithInteger:2],[NSNumber numberWithInteger:24], [NSNumber numberWithInteger:25],[NSNumber numberWithInteger:26],[NSNumber numberWithInteger:27],[NSNumber numberWithInteger:28], [NSNumber numberWithInteger:29],[NSNumber numberWithInteger:30],[NSNumber numberWithInteger:31],[NSNumber numberWithInteger:32],[NSNumber numberWithInteger:33],[NSNumber numberWithInteger:34], [NSNumber numberWithInteger:35],[NSNumber numberWithInteger:36],[NSNumber numberWithInteger:37],[NSNumber numberWithInteger:38], [NSNumber numberWithInteger:39],[NSNumber numberWithInteger:40],[NSNumber numberWithInteger:41],[NSNumber numberWithInteger:42], [NSNumber numberWithInteger:43],[NSNumber numberWithInteger:44],[NSNumber numberWithInteger:45],[NSNumber numberWithInteger:46], [NSNumber numberWithInteger:47],[NSNumber numberWithInteger:48],[NSNumber numberWithInteger:49],[NSNumber numberWithInteger:50],[NSNumber numberWithInteger:51],[NSNumber numberWithInteger:52], [NSNumber numberWithInteger:53],[NSNumber numberWithInteger:54],[NSNumber numberWithInteger:55],[NSNumber numberWithInteger:56], [NSNumber numberWithInteger:57],[NSNumber numberWithInteger:58],[NSNumber numberWithInteger:59],[NSNumber numberWithInteger:60],[NSNumber numberWithInteger:61],[NSNumber numberWithInteger:62], [NSNumber numberWithInteger:63],[NSNumber numberWithInteger:64],[NSNumber numberWithInteger:65],[NSNumber numberWithInteger:66], [NSNumber numberWithInteger:67],[NSNumber numberWithInteger:68],[NSNumber numberWithInteger:69],[NSNumber numberWithInteger:70],[NSNumber numberWithInteger:71],[NSNumber numberWithInteger:72], [NSNumber numberWithInteger:73],[NSNumber numberWithInteger:74],[NSNumber numberWithInteger:75],[NSNumber numberWithInteger:76], [NSNumber numberWithInteger:77],[NSNumber numberWithInteger:78],[NSNumber numberWithInteger:79], [NSNumber numberWithInteger:80],[NSNumber numberWithInteger:81],[NSNumber numberWithInteger:82], [NSNumber numberWithInteger:83],[NSNumber numberWithInteger:84],[NSNumber numberWithInteger:85],[NSNumber numberWithInteger:86], [NSNumber numberWithInteger:87],[NSNumber numberWithInteger:88],[NSNumber numberWithInteger:89],[NSNumber numberWithInteger:90],[NSNumber numberWithInteger:91],[NSNumber numberWithInteger:92], [NSNumber numberWithInteger:93],[NSNumber numberWithInteger:94],[NSNumber numberWithInteger:95],[NSNumber numberWithInteger:96], nil];
+
+            BassAndEP = [NSDictionary dictionaryWithObjects: valuesBassAndEP forKeys: keysBassAndEP];
 
 }
 
-
-    // THIS CODE WORKS!!
-    /*
-    audioPlayer2 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndantePiano33" withExtension:@ "wav"] error:&error];
-    [audioPlayer2 prepareToPlay];
-    [audioPlayer2 play];
-     */
-
-    
-    
-    
-    /*self.genreValue.text = [NSString stringWithFormat:@"%d", Globalgenre];
-    */
     
     /*
     // Moved below to button press area rather than here
@@ -724,6 +1395,7 @@ float detuneAmount = 0.0f;
     _bleDevice = [_pickerData objectAtIndex: row];
     NSLog(@"You selected this: %@", _bleDevice);
 }
+
 
 - (void)centralManagerDidUpdateState:(CBCentralManager *)central {
     [self beginSearching];
@@ -825,6 +1497,17 @@ didDiscoverCharacteristicsForService:(CBService *)service error:(NSError *)error
     }
 }
 
+- (IBAction)genreChange:(id)sender {
+    if (_genreSwitch.on) { // Footswitch Mode
+         genreBass = false;
+        _genreLabel.text = @"Piano"; // rename later
+    }
+    else {
+         genreBass = true;
+        _genreLabel.text = @"Bass";
+    }
+}
+
 - (void)peripheral:(CBPeripheral *)peripheral
 didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic error:(NSError *)error {
     NSLog(@"reading value!");
@@ -841,10 +1524,9 @@ didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic error:(NSErro
 //    NSLog(@"MIDI int #1: %d", vals[0]);
 //    NSLog(@"MIDI int #2: %d", vals[1]);
 //    NSLog(@"MIDI int #3: %d", vals[2]);
- // Melissa ended here to add new function, this ok?
 
     if (modeToe == false) { // Heel Mode
-        [Piano44 play];
+       // [Piano44 play];
         
         
         [theLock lock];
@@ -878,18 +1560,18 @@ didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic error:(NSErro
                 // drums
                 if (vals[1] == 3){
                     //dspFaust->setParamValue("kick_gate", 1);
-                    kick.currentTime = 0;
-                    [kick play];
+                    AcousticKick.currentTime = 0;
+                    [AcousticKick play];
                 }
                 else if (vals[1] == 1){
                     //dspFaust->setParamValue("snare_gate", 1);
-                    snare.currentTime = 0;
-                    [snare play];
+                    AcousticSnare.currentTime = 0;
+                    [AcousticSnare play];
                 }
                 else if (vals[1] == 2){
                     //dspFaust->setParamValue("hat_gate", 1);
-                    hat.currentTime = 0;
-                    [hat play];
+                    AcousticHat.currentTime = 0;
+                    [AcousticHat play];
                 }
                 
                 // chord synth
@@ -909,15 +1591,15 @@ didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic error:(NSErro
                 // drums
                 if (vals[1] == 3){
                     //dspFaust->setParamValue("kick_gate", 0);
-                    [kick pause];
+                    [AcousticKick pause];
                 }
                 else if (vals[1] == 1){
                     dspFaust->setParamValue("snare_gate", 0);
-                    [snare pause];
+                    [AcousticSnare pause];
                 }
                 else if (vals[1] == 2){
                     dspFaust->setParamValue("hat_gate", 0);
-                    [hat pause];
+                    [AcousticHat pause];
                 }
                 
                 // chord synth
@@ -1032,7 +1714,7 @@ didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic error:(NSErro
          [theLock lock];
          if ([peripheral.name containsString:_footDeviceName] && vals[2] == 144){
              //dspFaust->keyOn(circleOf5ths[tonicIdx] + vals[1], vals[0]);
-            [self playPiano:(circleOf5ths[tonicIdx] + vals[1])];
+            [self playNote:(circleOf5ths[tonicIdx] + vals[1])];
              NSLog(@"MIDI int: %d", vals[1]);
          }
         // Think we can delete below
@@ -1055,179 +1737,70 @@ didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic error:(NSErro
         }
     }
 }
-/*
-// Start playing
-- (void)startPlay {
-    [_audioPlayer play];
-    [_audioPlayer2 play]; //added
-    if ( !self.timer ) {
-        self.timer = [NSTimer scheduledTimerWithTimeInterval:1 repeats:YES block:^(NSTimer * _Nonnull timer) {
-        }];
-    }
+- (IBAction)detune:(id)sender {
+    dspFaust->setParamValue("detune", _slider.value*0.20);
+    dspFaust->keyOn(40, 100);
+    dspFaust->keyOn(44, 100);
+    dspFaust->keyOn(47, 100);
+    self.tfValue.text = [NSString stringWithFormat:@"%f", _slider.value];
+    int detuneAmount = _slider.value*0.20; // 0.25 best so far
+    dspFaust->setParamValue("detune", detuneAmount);
+    globalMaxDetune = detuneAmount;
+    // slider value is currently from 1 to 100, can change
+    // then need to connect this back to old stuff***
 }
 
-//Stop playing
-- (void)stopPlay{
-   [_audioPlayer pause];
-   [_audioPlayer2 pause];
-    _audioPlayer.currentTime = 0;
-    _audioPlayer2.currentTime = 0;
+-(IBAction)playChord:(id)sender {
+    dspFaust->setParamValue("detune", _slider.value*0.20);
+    dspFaust->keyOn(40, 100);
+    dspFaust->keyOn(44, 100);
+    dspFaust->keyOn(47, 100);
 }
-*/
+
+
+- (void) playNote: (int) midi {
+    if(genreBass == true) {
+        [self playBassAndEP:midi];
+    }
+    else {
+        [self playPiano:midi];
+    }
+}
 
 - (void) playPiano: (int) midi {
     AVAudioPlayer *key = Piano[[NSNumber numberWithInteger: midi]];
     [key play];
 }
 
+- (void) playEP: (int) midi {
+    AVAudioPlayer *key = EP[[NSNumber numberWithInteger: midi]];
+    [key play];
+}
+
+- (void) playBassAndEP: (int) midi {
+    AVAudioPlayer *key = BassAndEP[[NSNumber numberWithInteger: midi]];
+    [key play];
+}
 
 NSInteger midi = 24;
 
 - (IBAction)buttonPressed:(id)sender {
-    
-    [self playPiano:(midi)]; // instead of midi will be vals[1]
-    // checking notes with button press
-    if(midi+1 < 97) {
-        midi = midi+1;
-    }
-    
-    if (prevGenre != Globalgenre) {
-        [self turnOff]; // reset sounds
-    }
-    if (Globalgenre == 0) { // Minor
-        prevGenre = 0;
-    }
-    else if (Globalgenre == 1) { // RandomSongs
-        //[Piano33 play]; // A
-       // [Piano37 play]; // C#
-        prevGenre = 1;
-        
-    }
-    else if (Globalgenre == 2) { // Songs
-       // [self genreSongs];
-        prevGenre = 2;
-    }
-    else { // pick a genre
-      //  [self noAP];
-       // [no play];
-    }
-    
-    
-    //[self kickAP];
-    //[kick play];
-    //if (!_audioPlayer.isPlaying) {//} && !_playButton.selected ) {
-      //  [self startPlay];
-     //   [_audioPlayer play];
-     //   [_audioPlayer2 play];
-  //  }
-   // else { // pause if button is pressed while music is already playing
-      //  [_audioPlayer pause];
-      //  [_audioPlayer2 pause];
-   // }
-}
-
-/*
--(void)playPiano:(AVAudioPlayer*)key, ...{
-    [key play];
-    va_list args;
-    va_start(args, normal);
-    
-    id arg = nil;
-    while((arg = va_arg(args,id))){
-        [args play];
-    }
-
-}
- */
-
-
-- (IBAction)Genre:(id)sender {
-    // resets for things that go to other pages because of memory, "pause music" truly only does pause
-    [self turnOff];
-}
-
--(void)turnOff {
-    for(id tempObject in soundOn) { // loop through every element in the array
-        [tempObject stop]; // change to stop later...
-        [soundOn removeObject:tempObject]; // remove object once it has been turned off
-  //      NSLog(@"Single element: %@", tempObject);
-    }
-}
-
--(void)Piano {
-   // [soundOn removeAllObjects];
-    [self APPiano48];
-    [self APPiano53];
-    [self APPiano55];
-    [Piano48 play];
-    [Piano53 play];
-    [Piano55 play];
-  //  for(int i = 33; i < [Piano count]; i++) {
-        //[(AVAudioPlayer*)[Piano objectAtIndex:i] play];
-        
-      //  if (![soundOn containsObject:[Trap objectAtIndex:i]]) {
-      //  [soundOn addObject:[Trap objectAtIndex:i]]; // adds objects to array
-      //  }
-}
-
-
-
--(void)genreTrap {
-   // [soundOn removeAllObjects];
-    [Piano33 play];
-    /*
-    NSMutableArray* Trap = [NSMutableArray arrayWithObjects: kick, hat, nil];
-    for(int i = 0; i < [Trap count]; i++) {
-        [(AVAudioPlayer*)[Trap objectAtIndex:i] play];
-        
-        if (![soundOn containsObject:[Trap objectAtIndex:i]]) {
-        [soundOn addObject:[Trap objectAtIndex:i]]; // adds objects to array
+    if(genreBass == false) {
+        [self playPiano:(midi)]; // instead of midi will be vals[1]
+        // checking notes with button press
+        if(midi+1 < 97) {
+            midi = midi+1;
         }
     }
-     */
-}
-
--(void)genreRS {
- //   NSInteger limit = [randomSoundsArrayAP count];
-   // NSMutableArray* RS = [NSMutableArray arrayWithObjects: car, phone, nil];
- //   for(int i = 0; i < [RS count]; i++) {
-        //[(AVAudioPlayer*)[RS objectAtIndex:i] play];
-      /*
-        if (![soundOn containsObject:[RS objectAtIndex:i]]) {
-        [soundOn addObject:[RS objectAtIndex:i]]; // adds objects to array
+    else {
+        [self playBassAndEP:(midi)]; // instead of midi will be vals[1]
+        // checking notes with button press
+        if(midi+1 < 97) {
+            midi = midi+1;
         }
-   // }
-    [self turnOff];
-    [(AVAudioPlayer*)[RS objectAtIndex:1] play];
-       */
-    [Piano37 play];
+    }
 }
 
--(void)genreSongs {
-   // [phone stop]; // need to do this for all of them.....
-  //  [car stop];
-  //  [kick stop];
-  //  [hat stop];
-    //[self walkSunshineAP];
-   // [sunshine play];
-   // if (![soundOn containsObject:sunshine]) {
-    //    [soundOn addObject:sunshine]; // adds objects to array
-   // }
-}
-
-    // your code here
-    // play Faust music
-    
-    /* Added below, modeled off of (https://ccrma.stanford.edu/~rmichon/faustTutorials/#adding-faust-real-time-audio-support-to-ios-apps)
-     */
-    //const int SR = 44100;
-    //const int bufferSize = 256;
-                      
-    //dspFaust = new DspFaust(SR,bufferSize);
-    // dspFaust->start();
-    //dspFaust->setParamValue("/synth/gate", 1);
-    //dspFaust->setParamValue(3, 1); // in example, this line was commented out and above line was include, try this again after other fixes
-//}
 
 // Added below method
 -(void)didReceiveMemoryWarning {
