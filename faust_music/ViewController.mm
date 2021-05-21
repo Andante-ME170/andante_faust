@@ -16,6 +16,9 @@
 #define TOE_OFF             9       // submediant (la)
 #define NUM_FIFTHS          12
 #define KNEE_DIFF_THRESH    30
+#define PLAY_SNARE          100
+#define PLAY_KICK           101
+#define PLAY_HAT            102
 
 NSLock *theLock  = [[NSLock alloc] init];
 
@@ -1712,16 +1715,39 @@ didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic error:(NSErro
          }
 
          [theLock lock];
-         if ([peripheral.name containsString:_footDeviceName] && vals[2] == 144){
-             //dspFaust->keyOn(circleOf5ths[tonicIdx] + vals[1], vals[0]);
-            [self playNote:(circleOf5ths[tonicIdx] + vals[1])];
-             NSLog(@"MIDI int: %d", vals[1]);
+        if ([peripheral.name containsString:_footDeviceName] && vals[2] == 144){
+            if (vals[1] == PLAY_SNARE) {
+                AcousticSnare.currentTime = 0;
+                [AcousticSnare setVolume:3];
+                [AcousticSnare play];
+            } else if (vals[1] == PLAY_KICK) {
+                AcousticKick.currentTime = 0;
+                [AcousticKick play];
+            } else if (vals[1] == PLAY_HAT) {
+                AcousticHat.currentTime = 0;
+                [AcousticHat play];
+            } else {
+                [self playNote:(circleOf5ths[tonicIdx] + vals[1])];
+                 NSLog(@"MIDI int: %d", vals[1]);
+                NSLog(@"MIDI int: %d", vals[1]);
+                if (vals[1] == 0 || vals[1] == 5 || vals[1] == 7) {
+                    AcousticKick.currentTime = 0;
+                    [AcousticKick play];
+                }
+                AcousticHat.currentTime = 0;
+                [AcousticHat play];
+            }
+            
+            // stop all notes except tonic
+            if (vals[1] == 12) {
+                for (int i = 0; i < 12; i++) {
+                    [self stopNote:(circleOf5ths[tonicIdx] + i)];
+                }
+            }
+        }
+         else if ([peripheral.name containsString:_footDeviceName] && vals[2] == 128){
+             //[self stopNote:(circleOf5ths[tonicIdx] + vals[1])];
          }
-        // Think we can delete below
-         //else if ([peripheral.name containsString:_footDeviceName] && vals[2] == 128){
-             //dspFaust->keyOff(circleOf5ths[tonicIdx] + vals[1]);
-             
-         //}
          [theLock unlock];
         
     }
@@ -1767,18 +1793,36 @@ didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic error:(NSErro
     }
 }
 
+- (void) stopNote: (int) midi {
+    if(genreBass == true) {
+        AVAudioPlayer *key = BassAndEP[[NSNumber numberWithInteger: midi]];
+        [key stop];
+    }
+    else {
+        AVAudioPlayer *key = Piano[[NSNumber numberWithInteger: midi]];
+        NSTimeInterval t = 0.2;
+        //[key setVolume:0 fadeDuration:t];
+        [key stop];
+        
+    }
+}
+
 - (void) playPiano: (int) midi {
     AVAudioPlayer *key = Piano[[NSNumber numberWithInteger: midi]];
+    key.currentTime = 0;
     [key play];
+    
 }
 
 - (void) playEP: (int) midi {
     AVAudioPlayer *key = EP[[NSNumber numberWithInteger: midi]];
+    key.currentTime = 0;
     [key play];
 }
 
 - (void) playBassAndEP: (int) midi {
     AVAudioPlayer *key = BassAndEP[[NSNumber numberWithInteger: midi]];
+    key.currentTime = 0;
     [key play];
 }
 
