@@ -2,7 +2,6 @@
 //  ViewController.m
 //  faust_music
 //
-//  Created by Kevin Supakkul on 4/10/21.
 //
 
 #import "ViewController.h"
@@ -19,6 +18,7 @@
 #define PLAY_SNARE          100
 #define PLAY_KICK           101
 #define PLAY_HAT            102
+#define CALIBRATION         103
 
 NSLock *theLock  = [[NSLock alloc] init];
 
@@ -1513,8 +1513,8 @@ didDiscoverCharacteristicsForService:(CBService *)service error:(NSError *)error
 
 - (void)peripheral:(CBPeripheral *)peripheral
 didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic error:(NSError *)error {
-    NSLog(@"reading value!");
-    NSLog(@"<%@>", characteristic.value);
+    //NSLog(@"reading value!");
+    //NSLog(@"<%@>", characteristic.value);
     
     NSData *rawData = characteristic.value;
     
@@ -1683,14 +1683,14 @@ didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic error:(NSErro
                      if (vals[1] >= kneeStanceAvg + KNEE_DIFF_THRESH) {
                          tonicChange = true;
                      }
-                     NSLog(@"Knee angle = %d", vals[1]);
-                     NSLog(@"kneeStanceAvg = %d", kneeStanceAvg);
+                     //NSLog(@"Knee angle = %d", vals[1]);
+                     //NSLog(@"kneeStanceAvg = %d", kneeStanceAvg);
                  } else if ([peripheral.name containsString:_footDeviceName]) {
                      if (vals[1] == HEEL_STRIKE) {
                          state = HEEL_STRIKE;
                          kneeStanceAvg = 0;
                          numStanceAvg = 0;
-                         if (tonicChange) {
+                         if (tonicChange && vals[0] != CALIBRATION) {
                              tonicIdx = (tonicIdx + 1) % NUM_FIFTHS;
                          }
                          tonicChange = false;
@@ -1718,13 +1718,15 @@ didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic error:(NSErro
         if ([peripheral.name containsString:_footDeviceName] && vals[2] == 144){
             if (vals[1] == PLAY_SNARE) {
                 AcousticSnare.currentTime = 0;
-                [AcousticSnare setVolume:3];
+                [AcousticSnare setVolume:0.5];
                 [AcousticSnare play];
             } else if (vals[1] == PLAY_KICK) {
                 AcousticKick.currentTime = 0;
+                [AcousticKick setVolume:0.5];
                 [AcousticKick play];
             } else if (vals[1] == PLAY_HAT) {
                 AcousticHat.currentTime = 0;
+                [AcousticHat setVolume:0.5];
                 [AcousticHat play];
             } else {
                 [self playNote:(circleOf5ths[tonicIdx] + vals[1])];
