@@ -8,6 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		120E3DE3262D447400BF7E24 /* DspFaust.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 120E3DE2262D447400BF7E24 /* DspFaust.cpp */; };
+		A2CDC6E7265780A400BE75DE /* Piano.sf2 in Resources */ = {isa = PBXBuildFile; fileRef = A2CDC6E6265780A400BE75DE /* Piano.sf2 */; };
+		A2CDC6EE265780E100BE75DE /* AndanteDrumsAcousticKick.wav in Resources */ = {isa = PBXBuildFile; fileRef = A2CDC6EB265780E100BE75DE /* AndanteDrumsAcousticKick.wav */; };
+		A2CDC6EF265780E100BE75DE /* AndanteDrumsAcousticHat.wav in Resources */ = {isa = PBXBuildFile; fileRef = A2CDC6EC265780E100BE75DE /* AndanteDrumsAcousticHat.wav */; };
+		A2CDC6F0265780E100BE75DE /* AndanteDrumsAcousticSnare.wav in Resources */ = {isa = PBXBuildFile; fileRef = A2CDC6ED265780E100BE75DE /* AndanteDrumsAcousticSnare.wav */; };
+		A2CDC6F6265787BE00BE75DE /* AVKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2CDC6F4265787BE00BE75DE /* AVKit.framework */; };
+		A2CDC6F7265787BE00BE75DE /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2CDC6F5265787BE00BE75DE /* AVFoundation.framework */; };
 		A2E7CC3D262188C6006CA38B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A2E7CC3C262188C6006CA38B /* AppDelegate.m */; };
 		A2E7CC40262188C6006CA38B /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A2E7CC3F262188C6006CA38B /* SceneDelegate.m */; };
 		A2E7CC43262188C6006CA38B /* ViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = A2E7CC42262188C6006CA38B /* ViewController.mm */; };
@@ -42,6 +48,12 @@
 /* Begin PBXFileReference section */
 		120E3DE1262D447400BF7E24 /* DspFaust.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DspFaust.h; sourceTree = "<group>"; };
 		120E3DE2262D447400BF7E24 /* DspFaust.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DspFaust.cpp; sourceTree = "<group>"; };
+		A2CDC6E6265780A400BE75DE /* Piano.sf2 */ = {isa = PBXFileReference; lastKnownFileType = file; path = Piano.sf2; sourceTree = "<group>"; };
+		A2CDC6EB265780E100BE75DE /* AndanteDrumsAcousticKick.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = AndanteDrumsAcousticKick.wav; sourceTree = "<group>"; };
+		A2CDC6EC265780E100BE75DE /* AndanteDrumsAcousticHat.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = AndanteDrumsAcousticHat.wav; sourceTree = "<group>"; };
+		A2CDC6ED265780E100BE75DE /* AndanteDrumsAcousticSnare.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = AndanteDrumsAcousticSnare.wav; sourceTree = "<group>"; };
+		A2CDC6F4265787BE00BE75DE /* AVKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVKit.framework; path = System/Library/Frameworks/AVKit.framework; sourceTree = SDKROOT; };
+		A2CDC6F5265787BE00BE75DE /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		A2E7CC38262188C6006CA38B /* faust_music.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = faust_music.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A2E7CC3B262188C6006CA38B /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		A2E7CC3C262188C6006CA38B /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -70,6 +82,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A2CDC6F6265787BE00BE75DE /* AVKit.framework in Frameworks */,
+				A2CDC6F7265787BE00BE75DE /* AVFoundation.framework in Frameworks */,
 				DB78B3E626278C1900B42591 /* CoreBluetooth.framework in Frameworks */,
 				DB78B3BA2627842100B42591 /* AudioToolbox.framework in Frameworks */,
 				DB78B3B82627841800B42591 /* CoreMIDI.framework in Frameworks */,
@@ -130,6 +144,10 @@
 				A2E7CC49262188CA006CA38B /* LaunchScreen.storyboard */,
 				A2E7CC4C262188CA006CA38B /* Info.plist */,
 				A2E7CC4D262188CA006CA38B /* main.m */,
+				A2CDC6E6265780A400BE75DE /* Piano.sf2 */,
+				A2CDC6EC265780E100BE75DE /* AndanteDrumsAcousticHat.wav */,
+				A2CDC6EB265780E100BE75DE /* AndanteDrumsAcousticKick.wav */,
+				A2CDC6ED265780E100BE75DE /* AndanteDrumsAcousticSnare.wav */,
 			);
 			path = faust_music;
 			sourceTree = "<group>";
@@ -155,6 +173,8 @@
 		DB78B3B62627841800B42591 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A2CDC6F5265787BE00BE75DE /* AVFoundation.framework */,
+				A2CDC6F4265787BE00BE75DE /* AVKit.framework */,
 				DB78B3E526278C1900B42591 /* CoreBluetooth.framework */,
 				DB78B3B92627842100B42591 /* AudioToolbox.framework */,
 				DB78B3B72627841800B42591 /* CoreMIDI.framework */,
@@ -264,7 +284,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A2CDC6F0265780E100BE75DE /* AndanteDrumsAcousticSnare.wav in Resources */,
 				A2E7CC4B262188CA006CA38B /* LaunchScreen.storyboard in Resources */,
+				A2CDC6E7265780A400BE75DE /* Piano.sf2 in Resources */,
+				A2CDC6EE265780E100BE75DE /* AndanteDrumsAcousticKick.wav in Resources */,
+				A2CDC6EF265780E100BE75DE /* AndanteDrumsAcousticHat.wav in Resources */,
 				A2E7CC48262188CA006CA38B /* Assets.xcassets in Resources */,
 				A2E7CC46262188C6006CA38B /* Main.storyboard in Resources */,
 			);

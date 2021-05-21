@@ -20,12 +20,6 @@
                                 <rect key="frame" x="0.0" y="192" width="375" height="207"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </pickerView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalCompressionResistancePriority="500" verticalCompressionResistancePriority="500" preservesSuperviewLayoutMargins="YES" layoutMarginsFollowReadableWidth="YES" text="Andante" textAlignment="center" lineBreakMode="tailTruncation" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aUI-HY-GQ6">
-                                <rect key="frame" x="136.66666666666666" y="227.33333333333334" width="102" height="33.666666666666657"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="28"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fdf-n0-izm">
                                 <rect key="frame" x="117" y="696.33333333333337" width="141" height="51"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="32"/>
@@ -43,10 +37,18 @@
                                     <action selector="connectWasPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="xVp-6u-qRp"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalCompressionResistancePriority="500" verticalCompressionResistancePriority="500" misplaced="YES" preservesSuperviewLayoutMargins="YES" layoutMarginsFollowReadableWidth="YES" text="Andante" textAlignment="center" lineBreakMode="tailTruncation" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aUI-HY-GQ6">
+                                <rect key="frame" x="136" y="158" width="102" height="33.666666666666657"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="28"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY" userLabel="Hello World"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="aUI-HY-GQ6" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="114" id="14G-IQ-q5o"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Fdf-n0-izm" secondAttribute="bottom" constant="30.666666666666629" id="5N6-0V-qMr"/>
                             <constraint firstItem="aUI-HY-GQ6" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="AY1-27-RHR"/>
                             <constraint firstItem="aUI-HY-GQ6" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" priority="750" constant="-162" id="BPX-zj-SnU"/>
                             <constraint firstItem="Fdf-n0-izm" firstAttribute="centerX" secondItem="aUI-HY-GQ6" secondAttribute="centerX" id="Itu-vS-DQB"/>

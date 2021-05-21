@@ -10,11 +10,18 @@
 
 #import "ViewController.h"
 #import "DspFaust.h"
+#import <AVFoundation/AVFoundation.h>
+#import <stdarg.h>
+#import <AudioToolbox/AudioToolbox.h>
+#import <UIKit/UIKit.h>
 
 #define HEEL_STRIKE         0       // tonic (do)
 #define TOE_OFF             9       // submediant (la)
 #define NUM_FIFTHS          12
 #define KNEE_DIFF_THRESH    30
+#define PLAY_SNARE          100
+#define PLAY_KICK           101
+#define PLAY_HAT            102
 
 NSLock *theLock = [[NSLock alloc] init];
 
@@ -22,6 +29,10 @@ NSLock *theLock = [[NSLock alloc] init];
 
 @property (nonatomic, strong) NSString *midiServiceUUID;
 @property (nonatomic, strong) NSString *midiCharUUID;
+
+@property(nonatomic,strong) AVAudioPlayer *kick;
+@property(nonatomic,strong) AVAudioPlayer *snare;
+@property(nonatomic,strong) AVAudioPlayer *hat;
 
 @property (nonatomic, strong) NSString *footDeviceName;
 @property (nonatomic, strong) NSString *kneeDeviceName;
@@ -56,6 +67,18 @@ NSLock *theLock = [[NSLock alloc] init];
     kneeStanceAvg = 0;
     numStanceAvg = 0;
     tonicChange = false;
+    
+    NSError *error;
+    
+    _kick = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndanteDrumsAcousticKick" withExtension:@ "wav"] error:&error];
+    [_kick prepareToPlay];
+
+    _snare = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndanteDrumsAcousticSnare" withExtension:@ "wav"] error:&error];
+    [_snare prepareToPlay];
+    
+    _hat = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndanteDrumsAcousticHat" withExtension:@ "wav"] error:&error];
+    [_hat prepareToPlay];
+    
     
     _midiCharUUID = @"7772E5DB-3868-4112-A1A9-F2669D106BF3";
     _midiServiceUUID = @"03B80E5A-EDE8-4B33-A751-6CE34EC4C700";
@@ -272,12 +295,31 @@ didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic error:(NSErro
 
     [theLock lock];
     if ([peripheral.name containsString:_footDeviceName] && vals[2] == 144){
-        dspFaust->keyOn(circleOf5ths[tonicIdx] + vals[1], vals[0]);
-        NSLog(@"MIDI int: %d", vals[1]);
+        if (vals[1] == PLAY_SNARE) {
+            _snare.currentTime = 0;
+            [_snare setVolume:3];
+            [_snare play];
+        } else if (vals[1] == PLAY_KICK) {
+            _kick.currentTime = 0;
+            [_kick play];
+        } else if (vals[1] == PLAY_HAT) {
+            _hat.currentTime = 0;
+            [_hat play];
+        } else {
+            dspFaust->keyOn(circleOf5ths[tonicIdx] + vals[1], vals[0]);
+            NSLog(@"MIDI int: %d", vals[1]);
+            if (vals[1] == 0 || vals[1] == 5 || vals[1] == 7) {
+                _kick.currentTime = 0;
+                [_kick play];
+            }
+            _hat.currentTime = 0;
+            [_hat play];
+        }
     }
     else if ([peripheral.name containsString:_footDeviceName] && vals[2] == 128){
         dspFaust->keyOff(circleOf5ths[tonicIdx] + vals[1]);
     }
+    
     [theLock unlock];
 
      

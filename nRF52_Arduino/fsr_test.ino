@@ -15,6 +15,7 @@ const int heelThreshold = 375;   // again, using same fsr for testing
 const int hysteresis = 100;
 
 int majorSteps[8] = {0,2,4,5,7,9,11,12};  // distance of each note from tonic (half steps)
+//int majorSteps[8] = {0,4,7,11,12,11,7,4};  // arpeggios
 int numNotes = 8;
 int noteCounter = 1;
 int tonic = 0;
@@ -27,6 +28,11 @@ int avgIdx = 0;
 
 int stepCounter = 0;
 const int numCalibrationSteps = 4;
+const int numHearToeOffSteps = 8;
+const int numHearDrumsSteps = 12;
+const int snareNote = 100;
+const int kickNote = 101;
+const int hatNote = 102;
 float calibrationStepTimes[numCalibrationSteps];
 float lastStepTime = 0;
 float lastTOTime = 0;
@@ -100,22 +106,35 @@ void loop() {
     case TOE_OFF:
     {
       float incr = strideFreq / numNotes;
-      if ( (currTime - lastStepTime) > incr * noteCounter && noteCounter != 5 && noteCounter < numNotes) {
-        MIDI.sendNoteOff(tonic + majorSteps[noteCounter - (noteCounter == 6 ? 2 : 1)], 50, 1);
-        MIDI.sendNoteOn(tonic + majorSteps[noteCounter], 50, 1);
-        noteCounter++;
-      } else if (noteCounter == 5) {
-        noteCounter++;
-      } else if (currTime - lastStepTime > incr * noteCounter && noteCounter <= numNotes) {
-        // turn off do
-        MIDI.sendNoteOff(tonic + majorSteps[7], 50, 1);
-        noteCounter++;
+      if (stepCounter >= numHearToeOffSteps) {
+          if ( (currTime - lastStepTime) > incr * noteCounter 
+                    && noteCounter != 5 && noteCounter < numNotes) {
+            if (stepCounter < numHearDrumsSteps) {
+              if (noteCounter == 3 || noteCounter == 4) {
+                MIDI.sendNoteOn(kickNote, 50, 1);
+              } else {
+                MIDI.sendNoteOn(hatNote, 50, 1);
+              }
+            } else {
+              MIDI.sendNoteOff(tonic + majorSteps[noteCounter - (noteCounter == 6 ? 2 : 1)], 50, 1);
+              MIDI.sendNoteOn(tonic + majorSteps[noteCounter], 50, 1);
+            }
+            noteCounter++;
+          } else if (noteCounter == 5 && currTime - lastStepTime > incr * noteCounter) {
+            noteCounter++;
+            MIDI.sendNoteOn(snareNote, 50, 1);
+          } else if (currTime - lastStepTime > incr * noteCounter && noteCounter <= numNotes) {
+            // turn off do
+            MIDI.sendNoteOff(tonic + majorSteps[7], 50, 1);
+            noteCounter++;
+          }
+    
+          if (currTime - laTime > incr && laOn) {
+            MIDI.sendNoteOff(tonic + majorSteps[5], 50, 1);
+            laOn = false;
+          }
       }
-
-      if (currTime - laTime > incr && laOn) {
-        MIDI.sendNoteOff(tonic + majorSteps[5], 50, 1);
-        laOn = false;
-      }
+      
       
       if (fsrValHeel > heelThreshold + hysteresis && currTime - lastStepTime > stepTimeThreshold) {
         state = HEEL_STRIKE;
@@ -123,20 +142,34 @@ void loop() {
         MIDI.sendNoteOn(tonic, 50, 1);
         noteCounter = 1;
         lastStepTime = currTime;
+        if (stepCounter < numHearDrumsSteps) {
+          stepCounter++;       
+          MIDI.sendNoteOff(tonic + majorSteps[5], 50, 1);   
+        }
+
       }
       break;
     }
     case HEEL_STRIKE:
     {
-      if (stepCounter > numCalibrationSteps) {
+      if (stepCounter >= numHearToeOffSteps) {
         // i.e. not calibrating
         float incr = strideFreq / numNotes;
         if ( (currTime - lastStepTime) > incr * noteCounter && noteCounter != 5 && noteCounter < numNotes) {
-          MIDI.sendNoteOff(tonic + majorSteps[noteCounter - (noteCounter == 6 ? 2 : 1)], 50, 1);
-          MIDI.sendNoteOn(tonic + majorSteps[noteCounter], 50, 1);
+          if (stepCounter < numHearDrumsSteps) {
+            if (noteCounter == 3 || noteCounter == 4) {
+              MIDI.sendNoteOn(kickNote, 50, 1);
+            } else {
+              MIDI.sendNoteOn(hatNote, 50, 1);
+            }
+          } else {
+            MIDI.sendNoteOff(tonic + majorSteps[noteCounter - (noteCounter == 6 ? 2 : 1)], 50, 1);
+            MIDI.sendNoteOn(tonic + majorSteps[noteCounter], 50, 1);
+          }  
           noteCounter++;
-        } else if (noteCounter == 5) {
+        } else if (noteCounter == 5 && currTime - lastStepTime > incr * noteCounter) {
           noteCounter++;
+          MIDI.sendNoteOn(snareNote, 50, 1);
         }
       } 
       
@@ -144,6 +177,9 @@ void loop() {
         if (stepCounter <= numCalibrationSteps) {
           state = CALIBRATION;
           break;
+        }
+        if (stepCounter < numHearDrumsSteps) {
+          MIDI.sendNoteOff(tonic, 50, 1);
         }
         MIDI.sendNoteOn(tonic + majorSteps[5], 50, 1);
         Serial.println("Toe Off");
