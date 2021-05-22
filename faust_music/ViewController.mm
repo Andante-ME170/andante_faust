@@ -1675,44 +1675,46 @@ didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic error:(NSErro
         
     }
     else { // Toe off mode
-        switch (state) {
-             case TOE_OFF:
-             {
-                 // swing phase
-                 if ([peripheral.name containsString:_kneeDeviceName]) {
-                     if (vals[1] >= kneeStanceAvg + KNEE_DIFF_THRESH) {
-                         tonicChange = true;
-                     }
-                     //NSLog(@"Knee angle = %d", vals[1]);
-                     //NSLog(@"kneeStanceAvg = %d", kneeStanceAvg);
-                 } else if ([peripheral.name containsString:_footDeviceName]) {
-                     if (vals[1] == HEEL_STRIKE) {
-                         state = HEEL_STRIKE;
-                         kneeStanceAvg = 0;
-                         numStanceAvg = 0;
-                         if (tonicChange && vals[0] != CALIBRATION) {
-                             tonicIdx = (tonicIdx + 1) % NUM_FIFTHS;
+        if (vals[2] == 144) {
+            switch (state) {
+                 case TOE_OFF:
+                 {
+                     // swing phase
+                     if ([peripheral.name containsString:_kneeDeviceName]) {
+                         if (vals[1] >= kneeStanceAvg + KNEE_DIFF_THRESH) {
+                             tonicChange = true;
                          }
-                         tonicChange = false;
+                         //NSLog(@"Knee angle = %d", vals[1]);
+                         //NSLog(@"kneeStanceAvg = %d", kneeStanceAvg);
+                     } else if ([peripheral.name containsString:_footDeviceName]) {
+                         if (vals[1] == HEEL_STRIKE) {
+                             state = HEEL_STRIKE;
+                             kneeStanceAvg = 0;
+                             numStanceAvg = 0;
+                             if (tonicChange && vals[0] != CALIBRATION) {
+                                 tonicIdx = (tonicIdx + 1) % NUM_FIFTHS;
+                             }
+                             tonicChange = false;
+                         }
                      }
+                     break;
                  }
-                 break;
-             }
-             case HEEL_STRIKE:
-             {
-                 // stance phase
-                 if ([peripheral.name containsString:_kneeDeviceName]) {
-                     kneeStanceAvg += vals[1];
-                     numStanceAvg++;
-                 } else if ([peripheral.name containsString:_footDeviceName]) {
-                     if (vals[1] == TOE_OFF) {
-                         state = TOE_OFF;
-                         kneeStanceAvg /= numStanceAvg;
+                 case HEEL_STRIKE:
+                 {
+                     // stance phase
+                     if ([peripheral.name containsString:_kneeDeviceName]) {
+                         kneeStanceAvg += vals[1];
+                         numStanceAvg++;
+                     } else if ([peripheral.name containsString:_footDeviceName]) {
+                         if (vals[1] == TOE_OFF) {
+                             state = TOE_OFF;
+                             kneeStanceAvg /= numStanceAvg;
+                         }
                      }
+                     break;
                  }
-                 break;
              }
-         }
+        }
 
          [theLock lock];
         if ([peripheral.name containsString:_footDeviceName] && vals[2] == 144){
