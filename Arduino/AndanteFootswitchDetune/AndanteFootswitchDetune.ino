@@ -26,7 +26,6 @@ int melody[32][8];
 bool melodyNotePlayed[8] = {false,false,false,false,false,false,false,false};
 int melodyNotesPerChord = 8;
 int chords[32][3];
-
 // 0 is sustain, -1 is rest
 
 int canonInDMelody [32][8] = {
@@ -357,7 +356,7 @@ enum gaitStates {
 
 
 // states
-songNames songName = CanonInD;
+songNames songName = ImDifferent;
 gaitStates gaitState = calibration;
 bool playMelody = true;
 bool playDrums = true;

@@ -696,7 +696,7 @@ int Globalgenre = -1; // probably move later
     // Acoustic Drum Kit dictionary initialization
     NSArray *valuesAcoustic = [NSArray arrayWithObjects: AcousticKick, AcousticSnare, AcousticHat, nil];
     
-    NSArray *keysAcoustic = [NSArray arrayWithObjects:[NSNumber numberWithInteger:0], [NSNumber numberWithInteger:1],[NSNumber numberWithInteger:2],nil];
+    NSArray *keysAcoustic = [NSArray arrayWithObjects:[NSNumber numberWithInteger:3], [NSNumber numberWithInteger:1],[NSNumber numberWithInteger:2],nil];
 
     Acoustic = [NSDictionary dictionaryWithObjects: valuesAcoustic forKeys: keysAcoustic];
     
@@ -716,10 +716,9 @@ int Globalgenre = -1; // probably move later
     // Trap Drum Kit dictionary initialization
     NSArray *valuesTrap = [NSArray arrayWithObjects: TrapKick, TrapSnare, TrapHat, nil];
     
-    NSArray *keysTrap = [NSArray arrayWithObjects:[NSNumber numberWithInteger:0], [NSNumber numberWithInteger:1],[NSNumber numberWithInteger:2],nil];
+    NSArray *keysTrap = [NSArray arrayWithObjects:[NSNumber numberWithInteger:3], [NSNumber numberWithInteger:1],[NSNumber numberWithInteger:2],nil];
 
     Trap = [NSDictionary dictionaryWithObjects: valuesTrap forKeys: keysTrap];
-    
     
         
     Piano24 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndantePiano24" withExtension:@ "wav"] error:&error];
@@ -1696,6 +1695,8 @@ didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic error:(NSErro
             // noteOn
             if (vals[2] == 144){
                 // drums
+                /*
+                
                 if (vals[1] == 3){
                     //dspFaust->setParamValue("kick_gate", 1);
                     AcousticKick.currentTime = 0;
@@ -1711,12 +1712,13 @@ didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic error:(NSErro
                     AcousticHat.currentTime = 0;
                     [AcousticHat play];
                 }
+                 */
                 
                 // chord synth
-                else{
+                //else{
                     [self playNote:vals[1]];
                     //dspFaust->keyOn(vals[1], vals[0]);
-                }
+               // }
                 //NSLog(@"MIDI int #2: %d", vals[1]);
                 
                 // dspFaust->setParamValue("synth_midi", vals[1]);
@@ -1726,6 +1728,9 @@ didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic error:(NSErro
             }
 
             // noteOff
+            
+            // Melissa just changed!
+            /*
             if (vals[2] == 128){
                 // drums
                 if (vals[1] == 3){
@@ -1745,10 +1750,12 @@ didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic error:(NSErro
                 else{
                     dspFaust->keyOff(vals[1]);
                     }
+                */
+                
                 // dspFaust->setParamValue("synth_midi", vals[1]);
                 // dspFaust->setParamValue("synth_gate", 0);
                 // problematic; shuts all off if one key is off; learn multi-channel midi later
-                }
+                //}
             }
 
         
@@ -1965,18 +1972,15 @@ didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic error:(NSErro
 
 
 - (void) playNote: (int) midi {
-    /*
-    if(midi <= 2) { // MIDI is DRUM               Brad this is correct right?
-        if([_drumPicker isEqual: @"Acoustic"]) {
+    if(midi <= 3) { // MIDI is DRUM               Brad this is correct right?
+        if([drumKit isEqual: @"Acoustic"]) {
             [self playAcoustic:midi];
         }
-        if([_drumPicker isEqual: @"Trap"]) {
+        else if([drumKit isEqual: @"Trap"]) {
             [self playTrap:midi];
         }
     }
     else { // MIDI is Instrument
-        */
-        //if([_genrePicker isEqual:@"Piano"]) {
         if([instrument isEqual:@"Piano"]) {
             [self playPiano:midi];
         }
@@ -1988,6 +1992,7 @@ didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic error:(NSErro
         if([instrument isEqual:@"Electric Piano"]) {
             [self playEP:midi];
         }
+    }
 }
 
 - (void) stopNote: (int) midi {
@@ -2025,12 +2030,14 @@ didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic error:(NSErro
 - (void) playAcoustic: (int) midi {
     AVAudioPlayer *key = Acoustic[[NSNumber numberWithInteger: midi]];
     key.currentTime = 0;
+    [key setVolume:0.5]; // Just added
     [key play];
 }
 
 - (void) playTrap: (int) midi {
     AVAudioPlayer *key = Trap[[NSNumber numberWithInteger: midi]];
     key.currentTime = 0;
+    [key setVolume:0.5];
     [key play];
 }
 
