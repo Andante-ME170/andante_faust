@@ -8,6 +8,7 @@
 
 BLEDis bledis;
 BLEMidi blemidi;
+const char *deviceName = "Bluefruit52 MIDI foot";
 
 // Create a new instance of the Arduino MIDI Library, and attach BluefruitLE MIDI as the transport.
 MIDI_CREATE_BLE_INSTANCE(blemidi);
@@ -356,7 +357,7 @@ enum gaitStates {
 
 
 // states
-songNames songName = Mario;
+songNames songName = CanonInD;
 gaitStates gaitState = calibration;
 bool playMelody = true;
 bool playDrums = true;
@@ -394,7 +395,6 @@ float lastTOTime = 0;
 float timeSinceLastTO = 0;
 
 int threshold = 500;
-
 // timers
 float ledOnTime = 0.0f;
 
@@ -410,7 +410,7 @@ void setup(){
   Bluefruit.configPrphBandwidth(BANDWIDTH_MAX);
 
   Bluefruit.begin();
-  Bluefruit.setName("Bluefruit52 MIDI");
+  Bluefruit.setName(deviceName);
   Bluefruit.setTxPower(4);
 
   // Setup the on board blue LED to be enabled on CONNECT

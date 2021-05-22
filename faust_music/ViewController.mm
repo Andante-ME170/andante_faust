@@ -24,7 +24,16 @@ NSLock *theLock  = [[NSLock alloc] init];
 NSDictionary *Piano;
 NSDictionary *EP; // Electric Piano
 NSDictionary *BassAndEP; // Bass and Electric Piano
+NSDictionary *Acoustic; // Acoustic Drum Kit
+NSDictionary *Trap; // Trap Drum Kit
 
+NSString *instrument = @"Piano";
+NSString *drumKit = @"Acoustic";
+/*
+NSArray *instruments = [NSArray arrayWithObjects: @"@Piano",@"Bass",@"Electric Piano", nil];
+
+NSArray *drumKits = [NSArray arrayWithObjects: @"Acoustic",@"Trap", nil];
+*/
 BOOL modeToe;
 BOOL genreBass;
                          
@@ -52,6 +61,10 @@ BOOL genreBass;
 // For Genre
 @property (weak, nonatomic) IBOutlet UIPickerView *genrePicker;
 @property (nonatomic, strong) NSMutableArray *genrePickerData;
+
+// For Drum Kit
+@property (weak, nonatomic) IBOutlet UIPickerView *drumPicker;
+@property (nonatomic, strong) NSMutableArray *drumPickerData;
 
 // Acoustic Drumset
 @property(nonatomic,strong)AVAudioPlayer *APAcousticKick;
@@ -601,8 +614,22 @@ int Globalgenre = -1; // probably move later
     _picker.dataSource = self;
     _picker.delegate = self;
     
-
-  //  _genrePicker.delegate = self;
+    _genrePickerData = [[NSMutableArray alloc]init];
+    [_genrePickerData addObject:@"Piano"];
+    [_genrePickerData addObject:@"Bass"];
+    [_genrePickerData addObject:@"Electric Piano"];
+    _genrePicker.dataSource = self;
+    _genrePicker.delegate = self;
+    
+    _drumPickerData = [[NSMutableArray alloc]init];
+    [_drumPickerData addObject:@"Acoustic"];
+    [_drumPickerData addObject:@"Trap"];
+    _drumPicker.dataSource = self;
+    _drumPicker.delegate = self;
+    
+    _picker.tag = 1;
+    _genrePicker.tag = 2;
+    _drumPicker.tag = 3;
     
     state = TOE_OFF;
        int co5[NUM_FIFTHS] = {48,55,50,57,52,59,54,49,56,51,58,53};
@@ -665,6 +692,16 @@ int Globalgenre = -1; // probably move later
     AcousticHat = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndanteDrumsAcousticHat" withExtension:@ "wav"] error:&error];
     [AcousticHat prepareToPlay];
     
+    
+    // Acoustic Drum Kit dictionary initialization
+    NSArray *valuesAcoustic = [NSArray arrayWithObjects: AcousticKick, AcousticSnare, AcousticHat, nil];
+    
+    NSArray *keysAcoustic = [NSArray arrayWithObjects:[NSNumber numberWithInteger:0], [NSNumber numberWithInteger:1],[NSNumber numberWithInteger:2],nil];
+
+    Acoustic = [NSDictionary dictionaryWithObjects: valuesAcoustic forKeys: keysAcoustic];
+    
+
+    
     // Trap Drums
     TrapKick = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndanteDrumsTrapKick" withExtension:@ "wav"] error:&error];
     [TrapKick prepareToPlay];
@@ -674,6 +711,15 @@ int Globalgenre = -1; // probably move later
     
     TrapHat = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndanteDrumsTrapHat" withExtension:@ "wav"] error:&error];
     [TrapHat prepareToPlay];
+    
+    
+    // Trap Drum Kit dictionary initialization
+    NSArray *valuesTrap = [NSArray arrayWithObjects: TrapKick, TrapSnare, TrapHat, nil];
+    
+    NSArray *keysTrap = [NSArray arrayWithObjects:[NSNumber numberWithInteger:0], [NSNumber numberWithInteger:1],[NSNumber numberWithInteger:2],nil];
+
+    Trap = [NSDictionary dictionaryWithObjects: valuesTrap forKeys: keysTrap];
+    
     
         
     Piano24 = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndantePiano24" withExtension:@ "wav"] error:&error];
@@ -1426,19 +1472,66 @@ int Globalgenre = -1; // probably move later
 // The number of rows of data
 - (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component
  {
-     return _pickerData.count;
+    if (pickerView == _picker) {
+        return _pickerData.count;
+    }
+    if (pickerView == _genrePicker) {
+        return _genrePickerData.count;
+     }
+    else {
+        return _drumPickerData.count;
+    }
  }
 
 // The data to return for the row and component (column) that's being passed in
  - (NSString*)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
  {
-     return _pickerData[row];
+    if (pickerView == _picker) {
+        return _pickerData[row];
+    }
+    if (pickerView == _genrePicker) {
+        return _genrePickerData[row];
+    }
+    else {
+        return _drumPickerData[row];
+    }
  }
+
 
 // Do something with the selected row
 -(void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component{
-    _bleDevice = [_pickerData objectAtIndex: row];
-    NSLog(@"You selected this: %@", _bleDevice);
+    if (pickerView == _picker) {
+        _bleDevice = [_pickerData objectAtIndex: row];
+        NSLog(@"You selected this: %@", _bleDevice);
+    }
+    if (pickerView == _genrePicker) {
+        switch(row) {
+                case 0:
+                instrument = @"Piano";
+                   // [_genrePicker isEqual: @"Piano"];
+                    break;
+                case 1:
+                instrument = @"Bass";
+                   // [_genrePicker isEqual: @"Bass"];
+                    break;
+                case 2:
+                instrument = @"Electric Piano";
+                    //[_genrePicker isEqual: @"Electric Piano"];
+                    break;
+        }
+    }
+    if (pickerView == _drumPicker) {
+        switch(row) {
+                case 0:
+                drumKit = @"Acoustic";
+                   // [_genrePicker isEqual: @"Piano"];
+                    break;
+                case 1:
+                drumKit = @"Trap";
+                   // [_genrePicker isEqual: @"Bass"];
+                    break;
+        }
+    }
 }
 
 
@@ -1581,12 +1674,12 @@ didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic error:(NSErro
         // footswitch + knee brace (or just footswitch), chords+drums+detune
         
         // initial parameters (do elsewhere?)
-        dspFaust->setParamValue("hat_gain", .8);
-        dspFaust->setParamValue("snare_gain", .9);
-        dspFaust->setParamValue("kick_gain", .9);
+       // dspFaust->setParamValue("hat_gain", .8);
+      //  dspFaust->setParamValue("snare_gain", .9);
+     //   dspFaust->setParamValue("kick_gain", .9);
         //dspFaust->setParamValue("kick_freq", 100);
         //dspFaust->setParamValue("detune", 0.5);
-        dspFaust->setParamValue("kick_gate", 0);
+      //  dspFaust->setParamValue("kick_gate", 0);
         dspFaust->setParamValue("detune", detuneAmount);
         
         
@@ -1621,7 +1714,8 @@ didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic error:(NSErro
                 
                 // chord synth
                 else{
-                    dspFaust->keyOn(vals[1], vals[0]);
+                    [self playNote:vals[1]];
+                    //dspFaust->keyOn(vals[1], vals[0]);
                 }
                 //NSLog(@"MIDI int #2: %d", vals[1]);
                 
@@ -1761,27 +1855,63 @@ didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic error:(NSErro
          [theLock lock];
         if ([peripheral.name containsString:_footDeviceName] && vals[2] == 144){
             if (vals[1] == PLAY_SNARE) {
-                AcousticSnare.currentTime = 0;
-                [AcousticSnare setVolume:0.5];
-                [AcousticSnare play];
-            } else if (vals[1] == PLAY_KICK) {
-                AcousticKick.currentTime = 0;
-                [AcousticKick setVolume:0.5];
-                [AcousticKick play];
-            } else if (vals[1] == PLAY_HAT) {
-                AcousticHat.currentTime = 0;
-                [AcousticHat setVolume:0.5];
-                [AcousticHat play];
+                if([drumKit isEqual:@"Acoustic"]) {
+                    AcousticSnare.currentTime = 0;
+                    [AcousticSnare setVolume:0.5];
+                    [AcousticSnare play];
+                }
+                else if([drumKit isEqual:@"Trap"]) {
+                    TrapSnare.currentTime = 0;
+                    [TrapSnare setVolume:0.5];
+                    [TrapSnare play];
+                }
+            }
+            if (vals[1] == PLAY_KICK) {
+                if([drumKit isEqual:@"Acoustic"]) {
+                    AcousticKick.currentTime = 0;
+                    [AcousticKick setVolume:0.5];
+                    [AcousticKick play];
+                }
+                else if([drumKit isEqual:@"Trap"]) {
+                    TrapKick.currentTime = 0;
+                    [TrapKick setVolume:0.5];
+                    [TrapKick play];
+                }
+            }
+            else if (vals[1] == PLAY_HAT) {
+                if([drumKit isEqual:@"Acoustic"]) {
+                    AcousticHat.currentTime = 0;
+                    [AcousticHat setVolume:0.5];
+                    [AcousticHat play];
+                }
+                else if([drumKit isEqual:@"Trap"]) {
+                    TrapHat.currentTime = 0;
+                    [TrapHat setVolume:0.5];
+                    [TrapHat play];
+                }
             } else {
                 [self playNote:(circleOf5ths[tonicIdx] + vals[1])];
                  NSLog(@"MIDI int: %d", vals[1]);
                 NSLog(@"MIDI int: %d", vals[1]);
                 if (vals[1] == 0 || vals[1] == 5 || vals[1] == 7) {
-                    AcousticKick.currentTime = 0;
-                    [AcousticKick play];
+                    if([drumKit isEqual:@"Acoustic"]) {
+                        AcousticKick.currentTime = 0;
+                        [AcousticKick play];
+                    }
+                    else { // drumKit is Trap
+                        TrapKick.currentTime = 0;
+                        [TrapKick play];
+                        
+                    }
                 }
-                AcousticHat.currentTime = 0;
-                [AcousticHat play];
+                if([drumKit isEqual:@"Acoustic"]) {
+                    AcousticHat.currentTime = 0;
+                    [AcousticHat play];
+                }
+                else {
+                    TrapHat.currentTime = 0;
+                    [TrapHat play];
+                }
             }
             
             // stop all notes except tonic
@@ -1835,12 +1965,29 @@ didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic error:(NSErro
 
 
 - (void) playNote: (int) midi {
-    if(genreBass == true) {
-        [self playBassAndEP:midi];
+    /*
+    if(midi <= 2) { // MIDI is DRUM               Brad this is correct right?
+        if([_drumPicker isEqual: @"Acoustic"]) {
+            [self playAcoustic:midi];
+        }
+        if([_drumPicker isEqual: @"Trap"]) {
+            [self playTrap:midi];
+        }
     }
-    else {
-        [self playPiano:midi];
-    }
+    else { // MIDI is Instrument
+        */
+        //if([_genrePicker isEqual:@"Piano"]) {
+        if([instrument isEqual:@"Piano"]) {
+            [self playPiano:midi];
+        }
+       // if([_genrePicker isEqual: @"Bass"]) {
+        if([instrument isEqual:@"Bass"]) {
+            [self playBassAndEP:midi];
+        }
+      //  if([_genrePicker isEqual: @"Electric Piano"]) {
+        if([instrument isEqual:@"Electric Piano"]) {
+            [self playEP:midi];
+        }
 }
 
 - (void) stopNote: (int) midi {
@@ -1853,7 +2000,6 @@ didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic error:(NSErro
         NSTimeInterval t = 0.2;
         //[key setVolume:0 fadeDuration:t];
         [key stop];
-        
     }
 }
 
@@ -1876,11 +2022,23 @@ didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic error:(NSErro
     [key play];
 }
 
+- (void) playAcoustic: (int) midi {
+    AVAudioPlayer *key = Acoustic[[NSNumber numberWithInteger: midi]];
+    key.currentTime = 0;
+    [key play];
+}
+
+- (void) playTrap: (int) midi {
+    AVAudioPlayer *key = Trap[[NSNumber numberWithInteger: midi]];
+    key.currentTime = 0;
+    [key play];
+}
+
 NSInteger midi = 24;
 
 // Remove later, for our own checking
 - (IBAction)buttonPressed:(id)sender {
-    if(genreBass == false) {
+    if([_genrePicker isEqual: @"Piano"]) {
         [self playPiano:(midi)]; // instead of midi will be vals[1]
         // checking notes with button press
         if(midi+1 < 97) {
