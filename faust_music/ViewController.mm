@@ -3,7 +3,6 @@
 //  faust_music
 //
 //
-
 #import "ViewController.h"
 #import "DspFaust.h"
 #import <AVFoundation/AVFoundation.h>
@@ -42,7 +41,7 @@ BOOL genreBass;
 @property (weak, nonatomic) IBOutlet UILabel *currInstrumentTextField;
 @property (weak, nonatomic) IBOutlet UIPickerView *picker;
 @property(nonatomic,strong)NSTimer *timer; // for Ding
-@property(nonatomic,strong)IBOutlet UIScrollView *scrollView;
+//@property(nonatomic,strong)IBOutlet UIScrollView *scrollView;
 
 //@property(weak, nonatomic) IBOutlet UISwitch *modeSwitch;
 
@@ -574,7 +573,7 @@ int Globalgenre = -1; // probably move later
      dspFaust->start();
     
     int globalMaxDetune = 0;
-    
+    /*
     _scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
     
     [self.view addSubview:_scrollView];
@@ -585,7 +584,7 @@ int Globalgenre = -1; // probably move later
     //[_scrollView addSubview: slider];
     [_scrollView addSubview:_picker];
     
-    
+    */
     _myManager = [[CBCentralManager alloc] initWithDelegate:self queue:nil options:nil];
     NSDictionary *option = @{
         CBCentralManagerScanOptionAllowDuplicatesKey:[NSNumber numberWithBool:YES]
@@ -1535,11 +1534,11 @@ didDiscoverCharacteristicsForService:(CBService *)service error:(NSError *)error
 - (IBAction)modeChange:(id)sender {
     if (_modeSwitch.on) { // Footswitch Mode
          modeToe = false;
-        _modeLabel.text = @"Heel Strike Mode"; // rename later
+        _modeLabel.text = @"Stance Mode"; // rename later
     }
     else {
          modeToe = true;
-        _modeLabel.text = @"Toe Off Mode";
+        _modeLabel.text = @"Swing Mode";
     }
 }
 
@@ -1799,7 +1798,6 @@ didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic error:(NSErro
         
     }
 }
-
 
 - (IBAction)connectWasPressed:(id)sender {
     for (int i = 0; i < [_devices count]; i++) {

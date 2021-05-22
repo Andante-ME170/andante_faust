@@ -8,10 +8,12 @@ MIDI_CREATE_BLE_INSTANCE(blemidi);
 const uint8_t ledPin = 17;
 const char *deviceName = "Bluefruit52 MIDI foot";
 
-const uint8_t fsrPinToe = 30;
-const int toeThreshold = 375;  // depends on each FSR
-const uint8_t fsrPinHeel = 30;  // using the same fsr for testing
-const int heelThreshold = 375;   // again, using same fsr for testing
+//const uint8_t fsrPinToe = 30;
+int fsrPinToe = A1;
+const int toeThreshold = 300;  // depends on each FSR
+//const uint8_t fsrPinHeel = 30;  // using the same fsr for testing
+int fsrPinHeel = A3;
+const int heelThreshold = 300;   // again, using same fsr for testing
 const int hysteresis = 100;
 
 int majorSteps[8] = {0,2,4,5,7,9,11,12};  // distance of each note from tonic (half steps)
@@ -237,6 +239,11 @@ void setupBLE() {
 void updateMovingAverages(int &fsrValHeel, int &fsrValToe) {
   toeAvg[avgIdx] = analogRead(fsrPinToe);
   heelAvg[avgIdx] = analogRead(fsrPinHeel);
+   Serial.printf("Toe Begin: %d", toeAvg[avgIdx]); 
+  Serial.print('\n');
+  Serial.printf("Heel Begin: %d ", heelAvg[avgIdx]); 
+  Serial.print('\n');
+  Serial.print('\n');
   avgIdx = (avgIdx + 1) % SIZE_AVG;
   fsrValHeel = 0;
   fsrValToe = 0;
@@ -246,6 +253,11 @@ void updateMovingAverages(int &fsrValHeel, int &fsrValToe) {
   }
   fsrValHeel /= SIZE_AVG;
   fsrValToe /= SIZE_AVG;
+  Serial.printf("Toe End: %d", toeAvg[avgIdx]); 
+  Serial.print('\n');
+  Serial.printf("Heel End: %d ", heelAvg[avgIdx]); 
+  Serial.print('\n');
+  Serial.print('\n');
 }
 
 void startAdv(void){
