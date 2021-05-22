@@ -29,11 +29,7 @@ NSDictionary *Trap; // Trap Drum Kit
 
 NSString *instrument = @"Piano";
 NSString *drumKit = @"Acoustic";
-/*
-NSArray *instruments = [NSArray arrayWithObjects: @"@Piano",@"Bass",@"Electric Piano", nil];
 
-NSArray *drumKits = [NSArray arrayWithObjects: @"Acoustic",@"Trap", nil];
-*/
 BOOL modeToe;
 BOOL genreBass;
                          
@@ -52,7 +48,6 @@ BOOL genreBass;
 @property(nonatomic,strong)NSTimer *timer; // for Ding
 //@property(nonatomic,strong)IBOutlet UIScrollView *scrollView;
 
-//@property(weak, nonatomic) IBOutlet UISwitch *modeSwitch;
 
 // For Detune
 @property (weak, nonatomic) IBOutlet UITextField *tfValue;
@@ -305,6 +300,8 @@ BOOL genreBass;
 
 // Sound Effects
 @property(nonatomic,strong)AVAudioPlayer *APDing;
+
+
 // More Instruments here
 
 
@@ -670,15 +667,7 @@ int Globalgenre = -1; // probably move later
     else{
         _modeLabel.text = @"Heel Strike Mode"; // rename later
     }
-    if(genreBass == true) { // reverse so easier
-        _genreLabel.text = @"Bass";
-    }
-    else{
-        _genreLabel.text = @"Piano"; // rename later
-    }
     
-    
-
     _slider.value = globalMaxDetune/0.20; // change constants later (the 0.2)
     self.tfValue.text = [NSString stringWithFormat:@"%f", _slider.value];
     
@@ -975,9 +964,9 @@ int Globalgenre = -1; // probably move later
     
     
     // PIANO dictionary initialization
-    NSArray *valuesPiano = [NSArray arrayWithObjects: AcousticKick, AcousticSnare, AcousticHat, Piano24, Piano25, Piano26, Piano27, Piano28, Piano29, Piano30, Piano31, Piano32, Piano33, Piano34, Piano35, Piano36, Piano37, Piano38, Piano39, Piano40, Piano41, Piano42, Piano43, Piano44, Piano45, Piano46, Piano47, Piano48, Piano49, Piano50, Piano51, Piano52, Piano53, Piano54, Piano55, Piano56, Piano57, Piano58, Piano59, Piano60, Piano61, Piano62, Piano63, Piano64, Piano65, Piano66, Piano67, Piano68, Piano69, Piano70, Piano71, Piano72, Piano73, Piano74, Piano75, Piano76, Piano77, Piano78, Piano79, Piano80, Piano81, Piano82, Piano83, Piano84, Piano85, Piano86, Piano87, Piano88, Piano89,Piano90, Piano91, Piano92, Piano93, Piano94, Piano95, Piano96, nil];
+    NSArray *valuesPiano = [NSArray arrayWithObjects: Piano24, Piano25, Piano26, Piano27, Piano28, Piano29, Piano30, Piano31, Piano32, Piano33, Piano34, Piano35, Piano36, Piano37, Piano38, Piano39, Piano40, Piano41, Piano42, Piano43, Piano44, Piano45, Piano46, Piano47, Piano48, Piano49, Piano50, Piano51, Piano52, Piano53, Piano54, Piano55, Piano56, Piano57, Piano58, Piano59, Piano60, Piano61, Piano62, Piano63, Piano64, Piano65, Piano66, Piano67, Piano68, Piano69, Piano70, Piano71, Piano72, Piano73, Piano74, Piano75, Piano76, Piano77, Piano78, Piano79, Piano80, Piano81, Piano82, Piano83, Piano84, Piano85, Piano86, Piano87, Piano88, Piano89,Piano90, Piano91, Piano92, Piano93, Piano94, Piano95, Piano96, nil];
     
-    NSArray *keysPiano = [NSArray arrayWithObjects:[NSNumber numberWithInteger:0], [NSNumber numberWithInteger:1],[NSNumber numberWithInteger:2],[NSNumber numberWithInteger:24], [NSNumber numberWithInteger:25],[NSNumber numberWithInteger:26],[NSNumber numberWithInteger:27],[NSNumber numberWithInteger:28], [NSNumber numberWithInteger:29],[NSNumber numberWithInteger:30],[NSNumber numberWithInteger:31],[NSNumber numberWithInteger:32],[NSNumber numberWithInteger:33],[NSNumber numberWithInteger:34], [NSNumber numberWithInteger:35],[NSNumber numberWithInteger:36],[NSNumber numberWithInteger:37],[NSNumber numberWithInteger:38], [NSNumber numberWithInteger:39],[NSNumber numberWithInteger:40],[NSNumber numberWithInteger:41],[NSNumber numberWithInteger:42], [NSNumber numberWithInteger:43],[NSNumber numberWithInteger:44],[NSNumber numberWithInteger:45],[NSNumber numberWithInteger:46], [NSNumber numberWithInteger:47],[NSNumber numberWithInteger:48],[NSNumber numberWithInteger:49],[NSNumber numberWithInteger:50],[NSNumber numberWithInteger:51],[NSNumber numberWithInteger:52], [NSNumber numberWithInteger:53],[NSNumber numberWithInteger:54],[NSNumber numberWithInteger:55],[NSNumber numberWithInteger:56], [NSNumber numberWithInteger:57],[NSNumber numberWithInteger:58],[NSNumber numberWithInteger:59],[NSNumber numberWithInteger:60],[NSNumber numberWithInteger:61],[NSNumber numberWithInteger:62], [NSNumber numberWithInteger:63],[NSNumber numberWithInteger:64],[NSNumber numberWithInteger:65],[NSNumber numberWithInteger:66], [NSNumber numberWithInteger:67],[NSNumber numberWithInteger:68],[NSNumber numberWithInteger:69],[NSNumber numberWithInteger:70],[NSNumber numberWithInteger:71],[NSNumber numberWithInteger:72], [NSNumber numberWithInteger:73],[NSNumber numberWithInteger:74],[NSNumber numberWithInteger:75],[NSNumber numberWithInteger:76], [NSNumber numberWithInteger:77],[NSNumber numberWithInteger:78],[NSNumber numberWithInteger:79], [NSNumber numberWithInteger:80],[NSNumber numberWithInteger:81],[NSNumber numberWithInteger:82], [NSNumber numberWithInteger:83],[NSNumber numberWithInteger:84],[NSNumber numberWithInteger:85],[NSNumber numberWithInteger:86], [NSNumber numberWithInteger:87],[NSNumber numberWithInteger:88],[NSNumber numberWithInteger:89],[NSNumber numberWithInteger:90],[NSNumber numberWithInteger:91],[NSNumber numberWithInteger:92], [NSNumber numberWithInteger:93],[NSNumber numberWithInteger:94],[NSNumber numberWithInteger:95],[NSNumber numberWithInteger:96],nil];
+    NSArray *keysPiano = [NSArray arrayWithObjects: [NSNumber numberWithInteger:24], [NSNumber numberWithInteger:25],[NSNumber numberWithInteger:26],[NSNumber numberWithInteger:27],[NSNumber numberWithInteger:28], [NSNumber numberWithInteger:29],[NSNumber numberWithInteger:30],[NSNumber numberWithInteger:31],[NSNumber numberWithInteger:32],[NSNumber numberWithInteger:33],[NSNumber numberWithInteger:34], [NSNumber numberWithInteger:35],[NSNumber numberWithInteger:36],[NSNumber numberWithInteger:37],[NSNumber numberWithInteger:38], [NSNumber numberWithInteger:39],[NSNumber numberWithInteger:40],[NSNumber numberWithInteger:41],[NSNumber numberWithInteger:42], [NSNumber numberWithInteger:43],[NSNumber numberWithInteger:44],[NSNumber numberWithInteger:45],[NSNumber numberWithInteger:46], [NSNumber numberWithInteger:47],[NSNumber numberWithInteger:48],[NSNumber numberWithInteger:49],[NSNumber numberWithInteger:50],[NSNumber numberWithInteger:51],[NSNumber numberWithInteger:52], [NSNumber numberWithInteger:53],[NSNumber numberWithInteger:54],[NSNumber numberWithInteger:55],[NSNumber numberWithInteger:56], [NSNumber numberWithInteger:57],[NSNumber numberWithInteger:58],[NSNumber numberWithInteger:59],[NSNumber numberWithInteger:60],[NSNumber numberWithInteger:61],[NSNumber numberWithInteger:62], [NSNumber numberWithInteger:63],[NSNumber numberWithInteger:64],[NSNumber numberWithInteger:65],[NSNumber numberWithInteger:66], [NSNumber numberWithInteger:67],[NSNumber numberWithInteger:68],[NSNumber numberWithInteger:69],[NSNumber numberWithInteger:70],[NSNumber numberWithInteger:71],[NSNumber numberWithInteger:72], [NSNumber numberWithInteger:73],[NSNumber numberWithInteger:74],[NSNumber numberWithInteger:75],[NSNumber numberWithInteger:76], [NSNumber numberWithInteger:77],[NSNumber numberWithInteger:78],[NSNumber numberWithInteger:79], [NSNumber numberWithInteger:80],[NSNumber numberWithInteger:81],[NSNumber numberWithInteger:82], [NSNumber numberWithInteger:83],[NSNumber numberWithInteger:84],[NSNumber numberWithInteger:85],[NSNumber numberWithInteger:86], [NSNumber numberWithInteger:87],[NSNumber numberWithInteger:88],[NSNumber numberWithInteger:89],[NSNumber numberWithInteger:90],[NSNumber numberWithInteger:91],[NSNumber numberWithInteger:92], [NSNumber numberWithInteger:93],[NSNumber numberWithInteger:94],[NSNumber numberWithInteger:95],[NSNumber numberWithInteger:96],nil];
 
         Piano = [NSDictionary dictionaryWithObjects: valuesPiano forKeys: keysPiano];
 
@@ -1204,10 +1193,10 @@ int Globalgenre = -1; // probably move later
         
      
         // EP dictionary initialization
-        NSArray *valuesEP = [NSArray arrayWithObjects: AcousticKick, AcousticSnare, AcousticHat, EP24, EP25, EP26, EP27, EP28, EP29, EP30, EP31, EP32, EP33, EP34, EP35, EP36, EP37, EP38, EP39, EP40, EP41, EP42, EP43, EP44, EP45, EP46, EP47, EP48, EP49, EP50, EP51, EP52, EP53, EP54, EP55, EP56, EP57, EP58, EP59, EP60, EP61, EP62, EP63, EP64, EP65, EP66, EP67, EP68, EP69, EP70, EP71, EP72, EP73, EP74, EP75, EP76, EP77, EP78, EP79, EP80, EP81, EP82, EP83, EP84, EP85, EP86, EP87, EP88, EP89,EP90, EP91, EP92, EP93, EP94, EP95, EP96, nil];
+        NSArray *valuesEP = [NSArray arrayWithObjects: EP24, EP25, EP26, EP27, EP28, EP29, EP30, EP31, EP32, EP33, EP34, EP35, EP36, EP37, EP38, EP39, EP40, EP41, EP42, EP43, EP44, EP45, EP46, EP47, EP48, EP49, EP50, EP51, EP52, EP53, EP54, EP55, EP56, EP57, EP58, EP59, EP60, EP61, EP62, EP63, EP64, EP65, EP66, EP67, EP68, EP69, EP70, EP71, EP72, EP73, EP74, EP75, EP76, EP77, EP78, EP79, EP80, EP81, EP82, EP83, EP84, EP85, EP86, EP87, EP88, EP89,EP90, EP91, EP92, EP93, EP94, EP95, EP96, nil];
         NSLog(@"Number of values: %lu", (unsigned long)[valuesEP count]);
         
-        NSArray *keysEP = [NSArray arrayWithObjects:[NSNumber numberWithInteger:0], [NSNumber numberWithInteger:1],[NSNumber numberWithInteger:2],[NSNumber numberWithInteger:24], [NSNumber numberWithInteger:25],[NSNumber numberWithInteger:26],[NSNumber numberWithInteger:27],[NSNumber numberWithInteger:28], [NSNumber numberWithInteger:29],[NSNumber numberWithInteger:30],[NSNumber numberWithInteger:31],[NSNumber numberWithInteger:32],[NSNumber numberWithInteger:33],[NSNumber numberWithInteger:34], [NSNumber numberWithInteger:35],[NSNumber numberWithInteger:36],[NSNumber numberWithInteger:37],[NSNumber numberWithInteger:38], [NSNumber numberWithInteger:39],[NSNumber numberWithInteger:40],[NSNumber numberWithInteger:41],[NSNumber numberWithInteger:42], [NSNumber numberWithInteger:43],[NSNumber numberWithInteger:44],[NSNumber numberWithInteger:45],[NSNumber numberWithInteger:46], [NSNumber numberWithInteger:47],[NSNumber numberWithInteger:48],[NSNumber numberWithInteger:49],[NSNumber numberWithInteger:50],[NSNumber numberWithInteger:51],[NSNumber numberWithInteger:52], [NSNumber numberWithInteger:53],[NSNumber numberWithInteger:54],[NSNumber numberWithInteger:55],[NSNumber numberWithInteger:56], [NSNumber numberWithInteger:57],[NSNumber numberWithInteger:58],[NSNumber numberWithInteger:59],[NSNumber numberWithInteger:60],[NSNumber numberWithInteger:61],[NSNumber numberWithInteger:62], [NSNumber numberWithInteger:63],[NSNumber numberWithInteger:64],[NSNumber numberWithInteger:65],[NSNumber numberWithInteger:66], [NSNumber numberWithInteger:67],[NSNumber numberWithInteger:68],[NSNumber numberWithInteger:69],[NSNumber numberWithInteger:70],[NSNumber numberWithInteger:71],[NSNumber numberWithInteger:72], [NSNumber numberWithInteger:73],[NSNumber numberWithInteger:74],[NSNumber numberWithInteger:75],[NSNumber numberWithInteger:76], [NSNumber numberWithInteger:77],[NSNumber numberWithInteger:78],[NSNumber numberWithInteger:79], [NSNumber numberWithInteger:80],[NSNumber numberWithInteger:81],[NSNumber numberWithInteger:82], [NSNumber numberWithInteger:83],[NSNumber numberWithInteger:84],[NSNumber numberWithInteger:85],[NSNumber numberWithInteger:86], [NSNumber numberWithInteger:87],[NSNumber numberWithInteger:88],[NSNumber numberWithInteger:89],[NSNumber numberWithInteger:90],[NSNumber numberWithInteger:91],[NSNumber numberWithInteger:92], [NSNumber numberWithInteger:93],[NSNumber numberWithInteger:94],[NSNumber numberWithInteger:95],[NSNumber numberWithInteger:96], nil];
+        NSArray *keysEP = [NSArray arrayWithObjects:[NSNumber numberWithInteger:24], [NSNumber numberWithInteger:25],[NSNumber numberWithInteger:26],[NSNumber numberWithInteger:27],[NSNumber numberWithInteger:28], [NSNumber numberWithInteger:29],[NSNumber numberWithInteger:30],[NSNumber numberWithInteger:31],[NSNumber numberWithInteger:32],[NSNumber numberWithInteger:33],[NSNumber numberWithInteger:34], [NSNumber numberWithInteger:35],[NSNumber numberWithInteger:36],[NSNumber numberWithInteger:37],[NSNumber numberWithInteger:38], [NSNumber numberWithInteger:39],[NSNumber numberWithInteger:40],[NSNumber numberWithInteger:41],[NSNumber numberWithInteger:42], [NSNumber numberWithInteger:43],[NSNumber numberWithInteger:44],[NSNumber numberWithInteger:45],[NSNumber numberWithInteger:46], [NSNumber numberWithInteger:47],[NSNumber numberWithInteger:48],[NSNumber numberWithInteger:49],[NSNumber numberWithInteger:50],[NSNumber numberWithInteger:51],[NSNumber numberWithInteger:52], [NSNumber numberWithInteger:53],[NSNumber numberWithInteger:54],[NSNumber numberWithInteger:55],[NSNumber numberWithInteger:56], [NSNumber numberWithInteger:57],[NSNumber numberWithInteger:58],[NSNumber numberWithInteger:59],[NSNumber numberWithInteger:60],[NSNumber numberWithInteger:61],[NSNumber numberWithInteger:62], [NSNumber numberWithInteger:63],[NSNumber numberWithInteger:64],[NSNumber numberWithInteger:65],[NSNumber numberWithInteger:66], [NSNumber numberWithInteger:67],[NSNumber numberWithInteger:68],[NSNumber numberWithInteger:69],[NSNumber numberWithInteger:70],[NSNumber numberWithInteger:71],[NSNumber numberWithInteger:72], [NSNumber numberWithInteger:73],[NSNumber numberWithInteger:74],[NSNumber numberWithInteger:75],[NSNumber numberWithInteger:76], [NSNumber numberWithInteger:77],[NSNumber numberWithInteger:78],[NSNumber numberWithInteger:79], [NSNumber numberWithInteger:80],[NSNumber numberWithInteger:81],[NSNumber numberWithInteger:82], [NSNumber numberWithInteger:83],[NSNumber numberWithInteger:84],[NSNumber numberWithInteger:85],[NSNumber numberWithInteger:86], [NSNumber numberWithInteger:87],[NSNumber numberWithInteger:88],[NSNumber numberWithInteger:89],[NSNumber numberWithInteger:90],[NSNumber numberWithInteger:91],[NSNumber numberWithInteger:92], [NSNumber numberWithInteger:93],[NSNumber numberWithInteger:94],[NSNumber numberWithInteger:95],[NSNumber numberWithInteger:96], nil];
 
             EP = [NSDictionary dictionaryWithObjects: valuesEP forKeys: keysEP];
     
@@ -1434,10 +1423,10 @@ int Globalgenre = -1; // probably move later
         
      
         // EP dictionary initialization
-        NSArray *valuesBassAndEP = [NSArray arrayWithObjects: AcousticKick, AcousticSnare, AcousticHat, BassAndEP24, BassAndEP25, BassAndEP26, BassAndEP27, BassAndEP28, BassAndEP29, BassAndEP30, BassAndEP31, BassAndEP32, BassAndEP33, BassAndEP34, BassAndEP35, BassAndEP36, BassAndEP37, BassAndEP38, BassAndEP39, BassAndEP40, BassAndEP41, BassAndEP42, BassAndEP43, BassAndEP44, BassAndEP45, BassAndEP46, BassAndEP47, BassAndEP48, BassAndEP49, BassAndEP50, BassAndEP51, BassAndEP52, BassAndEP53, BassAndEP54, BassAndEP55, BassAndEP56, BassAndEP57, BassAndEP58, BassAndEP59, BassAndEP60, BassAndEP61, BassAndEP62, BassAndEP63, BassAndEP64, BassAndEP65, BassAndEP66, BassAndEP67, BassAndEP68, BassAndEP69, BassAndEP70, BassAndEP71, BassAndEP72, BassAndEP73, BassAndEP74, BassAndEP75, BassAndEP76, BassAndEP77, BassAndEP78, BassAndEP79, BassAndEP80, BassAndEP81, BassAndEP82, BassAndEP83, BassAndEP84, BassAndEP85, BassAndEP86, BassAndEP87, BassAndEP88, BassAndEP89,BassAndEP90, BassAndEP91, BassAndEP92, BassAndEP93, BassAndEP94, BassAndEP95, BassAndEP96, nil];
+        NSArray *valuesBassAndEP = [NSArray arrayWithObjects: BassAndEP24, BassAndEP25, BassAndEP26, BassAndEP27, BassAndEP28, BassAndEP29, BassAndEP30, BassAndEP31, BassAndEP32, BassAndEP33, BassAndEP34, BassAndEP35, BassAndEP36, BassAndEP37, BassAndEP38, BassAndEP39, BassAndEP40, BassAndEP41, BassAndEP42, BassAndEP43, BassAndEP44, BassAndEP45, BassAndEP46, BassAndEP47, BassAndEP48, BassAndEP49, BassAndEP50, BassAndEP51, BassAndEP52, BassAndEP53, BassAndEP54, BassAndEP55, BassAndEP56, BassAndEP57, BassAndEP58, BassAndEP59, BassAndEP60, BassAndEP61, BassAndEP62, BassAndEP63, BassAndEP64, BassAndEP65, BassAndEP66, BassAndEP67, BassAndEP68, BassAndEP69, BassAndEP70, BassAndEP71, BassAndEP72, BassAndEP73, BassAndEP74, BassAndEP75, BassAndEP76, BassAndEP77, BassAndEP78, BassAndEP79, BassAndEP80, BassAndEP81, BassAndEP82, BassAndEP83, BassAndEP84, BassAndEP85, BassAndEP86, BassAndEP87, BassAndEP88, BassAndEP89,BassAndEP90, BassAndEP91, BassAndEP92, BassAndEP93, BassAndEP94, BassAndEP95, BassAndEP96, nil];
         NSLog(@"Number of values: %lu", (unsigned long)[valuesBassAndEP count]);
         
-        NSArray *keysBassAndEP = [NSArray arrayWithObjects:[NSNumber numberWithInteger:0], [NSNumber numberWithInteger:1],[NSNumber numberWithInteger:2],[NSNumber numberWithInteger:24], [NSNumber numberWithInteger:25],[NSNumber numberWithInteger:26],[NSNumber numberWithInteger:27],[NSNumber numberWithInteger:28], [NSNumber numberWithInteger:29],[NSNumber numberWithInteger:30],[NSNumber numberWithInteger:31],[NSNumber numberWithInteger:32],[NSNumber numberWithInteger:33],[NSNumber numberWithInteger:34], [NSNumber numberWithInteger:35],[NSNumber numberWithInteger:36],[NSNumber numberWithInteger:37],[NSNumber numberWithInteger:38], [NSNumber numberWithInteger:39],[NSNumber numberWithInteger:40],[NSNumber numberWithInteger:41],[NSNumber numberWithInteger:42], [NSNumber numberWithInteger:43],[NSNumber numberWithInteger:44],[NSNumber numberWithInteger:45],[NSNumber numberWithInteger:46], [NSNumber numberWithInteger:47],[NSNumber numberWithInteger:48],[NSNumber numberWithInteger:49],[NSNumber numberWithInteger:50],[NSNumber numberWithInteger:51],[NSNumber numberWithInteger:52], [NSNumber numberWithInteger:53],[NSNumber numberWithInteger:54],[NSNumber numberWithInteger:55],[NSNumber numberWithInteger:56], [NSNumber numberWithInteger:57],[NSNumber numberWithInteger:58],[NSNumber numberWithInteger:59],[NSNumber numberWithInteger:60],[NSNumber numberWithInteger:61],[NSNumber numberWithInteger:62], [NSNumber numberWithInteger:63],[NSNumber numberWithInteger:64],[NSNumber numberWithInteger:65],[NSNumber numberWithInteger:66], [NSNumber numberWithInteger:67],[NSNumber numberWithInteger:68],[NSNumber numberWithInteger:69],[NSNumber numberWithInteger:70],[NSNumber numberWithInteger:71],[NSNumber numberWithInteger:72], [NSNumber numberWithInteger:73],[NSNumber numberWithInteger:74],[NSNumber numberWithInteger:75],[NSNumber numberWithInteger:76], [NSNumber numberWithInteger:77],[NSNumber numberWithInteger:78],[NSNumber numberWithInteger:79], [NSNumber numberWithInteger:80],[NSNumber numberWithInteger:81],[NSNumber numberWithInteger:82], [NSNumber numberWithInteger:83],[NSNumber numberWithInteger:84],[NSNumber numberWithInteger:85],[NSNumber numberWithInteger:86], [NSNumber numberWithInteger:87],[NSNumber numberWithInteger:88],[NSNumber numberWithInteger:89],[NSNumber numberWithInteger:90],[NSNumber numberWithInteger:91],[NSNumber numberWithInteger:92], [NSNumber numberWithInteger:93],[NSNumber numberWithInteger:94],[NSNumber numberWithInteger:95],[NSNumber numberWithInteger:96], nil];
+        NSArray *keysBassAndEP = [NSArray arrayWithObjects:[NSNumber numberWithInteger:24], [NSNumber numberWithInteger:25],[NSNumber numberWithInteger:26],[NSNumber numberWithInteger:27],[NSNumber numberWithInteger:28], [NSNumber numberWithInteger:29],[NSNumber numberWithInteger:30],[NSNumber numberWithInteger:31],[NSNumber numberWithInteger:32],[NSNumber numberWithInteger:33],[NSNumber numberWithInteger:34], [NSNumber numberWithInteger:35],[NSNumber numberWithInteger:36],[NSNumber numberWithInteger:37],[NSNumber numberWithInteger:38], [NSNumber numberWithInteger:39],[NSNumber numberWithInteger:40],[NSNumber numberWithInteger:41],[NSNumber numberWithInteger:42], [NSNumber numberWithInteger:43],[NSNumber numberWithInteger:44],[NSNumber numberWithInteger:45],[NSNumber numberWithInteger:46], [NSNumber numberWithInteger:47],[NSNumber numberWithInteger:48],[NSNumber numberWithInteger:49],[NSNumber numberWithInteger:50],[NSNumber numberWithInteger:51],[NSNumber numberWithInteger:52], [NSNumber numberWithInteger:53],[NSNumber numberWithInteger:54],[NSNumber numberWithInteger:55],[NSNumber numberWithInteger:56], [NSNumber numberWithInteger:57],[NSNumber numberWithInteger:58],[NSNumber numberWithInteger:59],[NSNumber numberWithInteger:60],[NSNumber numberWithInteger:61],[NSNumber numberWithInteger:62], [NSNumber numberWithInteger:63],[NSNumber numberWithInteger:64],[NSNumber numberWithInteger:65],[NSNumber numberWithInteger:66], [NSNumber numberWithInteger:67],[NSNumber numberWithInteger:68],[NSNumber numberWithInteger:69],[NSNumber numberWithInteger:70],[NSNumber numberWithInteger:71],[NSNumber numberWithInteger:72], [NSNumber numberWithInteger:73],[NSNumber numberWithInteger:74],[NSNumber numberWithInteger:75],[NSNumber numberWithInteger:76], [NSNumber numberWithInteger:77],[NSNumber numberWithInteger:78],[NSNumber numberWithInteger:79], [NSNumber numberWithInteger:80],[NSNumber numberWithInteger:81],[NSNumber numberWithInteger:82], [NSNumber numberWithInteger:83],[NSNumber numberWithInteger:84],[NSNumber numberWithInteger:85],[NSNumber numberWithInteger:86], [NSNumber numberWithInteger:87],[NSNumber numberWithInteger:88],[NSNumber numberWithInteger:89],[NSNumber numberWithInteger:90],[NSNumber numberWithInteger:91],[NSNumber numberWithInteger:92], [NSNumber numberWithInteger:93],[NSNumber numberWithInteger:94],[NSNumber numberWithInteger:95],[NSNumber numberWithInteger:96], nil];
 
             BassAndEP = [NSDictionary dictionaryWithObjects: valuesBassAndEP forKeys: keysBassAndEP];
     
@@ -1446,8 +1435,6 @@ int Globalgenre = -1; // probably move later
         Ding = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"Ding" withExtension:@ "wav"] error:&error];
          [Ding prepareToPlay];
 }
-
-    
     /*
     // Moved below to button press area rather than here
     // Added below, modeled off of (https://ccrma.stanford.edu/~rmichon/faustTutorials/#adding-faust-real-time-audio-support-to-ios-apps)
@@ -1896,6 +1883,11 @@ didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic error:(NSErro
                     [TrapHat setVolume:0.5];
                     [TrapHat play];
                 }
+                
+                
+                
+                
+                
             } else {
                 [self playNote:(circleOf5ths[tonicIdx] + vals[1])];
                  NSLog(@"MIDI int: %d", vals[1]);
@@ -1972,7 +1964,7 @@ didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic error:(NSErro
 
 
 - (void) playNote: (int) midi {
-    if(midi <= 3) { // MIDI is DRUM               Brad this is correct right?
+    if(midi <= 3) { // MIDI is DRUM
         if([drumKit isEqual: @"Acoustic"]) {
             [self playAcoustic:midi];
         }
@@ -2045,19 +2037,9 @@ NSInteger midi = 24;
 
 // Remove later, for our own checking
 - (IBAction)buttonPressed:(id)sender {
-    if([_genrePicker isEqual: @"Piano"]) {
-        [self playPiano:(midi)]; // instead of midi will be vals[1]
-        // checking notes with button press
-        if(midi+1 < 97) {
-            midi = midi+1;
-        }
-    }
-    else {
-        [self playBassAndEP:(midi)]; // instead of midi will be vals[1]
-        // checking notes with button press
-        if(midi+1 < 97) {
-            midi = midi+1;
-        }
+    [self playNote:midi];
+    if(midi+1 < 97) {
+        midi = midi+1;
     }
 }
 

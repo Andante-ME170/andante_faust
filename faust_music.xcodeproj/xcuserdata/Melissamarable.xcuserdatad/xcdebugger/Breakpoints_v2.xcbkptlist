@@ -62,9 +62,9 @@
             filePath = "faust_music/ViewController.mm"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "47"
-            endingLineNumber = "47"
-            landmarkName = "myManager"
+            startingLineNumber = "43"
+            endingLineNumber = "43"
+            landmarkName = "kneeDeviceName"
             landmarkType = "24">
             <Locations>
                <Location

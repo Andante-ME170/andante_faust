@@ -362,7 +362,6 @@ bool playMelody = true;
 bool playDrums = true;
 
 
-
 int notesPerChord;
 int numChords;
 int lastNotePlayed = -1;
