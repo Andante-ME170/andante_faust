@@ -7,7 +7,7 @@
 
 #import <UIKit/UIKit.h>
 #import <CoreBluetooth/CoreBluetooth.h>
-#import "ViewController3.h"
+//#import "ViewController3.h"
 
 //extern int globalMaxDetune = 100; // global variable for detuning
 extern BOOL modeToe;

@@ -6,8 +6,8 @@
 #import "ViewController.h"
 #import "DspFaust.h"
 #import <AVFoundation/AVFoundation.h>
-#import "ViewController2.h"
-#import "ViewController3.h"
+//#import "ViewController2.h"
+//#import "ViewController3.h"
 #import <stdarg.h>
 
 #define HEEL_STRIKE         0       // tonic (do)
@@ -44,10 +44,22 @@ BOOL genreBass;
 @property CBCentralManager *myManager;
 
 @property (weak, nonatomic) IBOutlet UILabel *currInstrumentTextField;
+
 @property (weak, nonatomic) IBOutlet UIPickerView *picker;
 @property(nonatomic,strong)NSTimer *timer; // for Ding
 //@property(nonatomic,strong)IBOutlet UIScrollView *scrollView;
 
+/*
+@property(nonatomic,strong)IBOutlet UIButton *Genre; // to allow for scrolling
+
+@property(nonatomic,strong)IBOutlet UIButton *DrumKit; // to allow for scrolling
+
+@property(nonatomic,strong)IBOutlet UIImageView *Logo; // to allow for scrolling
+
+@property(nonatomic,strong)IBOutlet UIButton *PlayChord; // to allow for scrolling
+
+@property(nonatomic,strong)IBOutlet UIButton *Connect; // to allow for scrolling
+*/
 
 // For Detune
 @property (weak, nonatomic) IBOutlet UITextField *tfValue;
@@ -571,6 +583,9 @@ float detuneAmount = 0.0f;
 
 
 int Globalgenre = -1; // probably move later
+
+int globalMaxDetune = 0; // here?
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
@@ -581,20 +596,29 @@ int Globalgenre = -1; // probably move later
        
      dspFaust = new DspFaust(SR,bufferSize);
      dspFaust->start();
-    
-    int globalMaxDetune = 0;
     /*
+    
     _scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
     
     [self.view addSubview:_scrollView];
     [_scrollView setContentSize:CGSizeMake(self.view.frame.size.width, self.view.frame.size.height*3)];
     
+    // Add items for them to be included in scroll
+
+    [_scrollView addSubview:_Logo];
+    [_scrollView addSubview:_picker];
+    [_scrollView addSubview:_Connect];
+    [_scrollView addSubview:_modeSwitch];
     [_scrollView addSubview:_modeLabel];
-    [_scrollView addSubview:_picker];
-    //[_scrollView addSubview: slider];
-    [_scrollView addSubview:_picker];
-    
+    [_scrollView addSubview: _Genre];
+    [_scrollView addSubview:_DrumKit];
+    [_scrollView addSubview:_genrePicker];
+    [_scrollView addSubview: _drumPicker];
+    [_scrollView addSubview: _slider];
+    [_scrollView addSubview:_tfValue];
+    [_scrollView addSubview:_PlayChord];
     */
+   
     _myManager = [[CBCentralManager alloc] initWithDelegate:self queue:nil options:nil];
     NSDictionary *option = @{
         CBCentralManagerScanOptionAllowDuplicatesKey:[NSNumber numberWithBool:YES]
@@ -627,6 +651,7 @@ int Globalgenre = -1; // probably move later
     _picker.tag = 1;
     _genrePicker.tag = 2;
     _drumPicker.tag = 3;
+    
     
     state = TOE_OFF;
        int co5[NUM_FIFTHS] = {48,55,50,57,52,59,54,49,56,51,58,53};
@@ -1848,7 +1873,9 @@ didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic error:(NSErro
 
          [theLock lock];
         if ([peripheral.name containsString:_footDeviceName] && vals[2] == 144){
-            if (vals[1] == PLAY_SNARE) {
+            if (vals[1] == PLAY_SNARE) { // 1
+                [self playNote:1];
+                /*
                 if([drumKit isEqual:@"Acoustic"]) {
                     AcousticSnare.currentTime = 0;
                     [AcousticSnare setVolume:0.5];
@@ -1858,9 +1885,10 @@ didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic error:(NSErro
                     TrapSnare.currentTime = 0;
                     [TrapSnare setVolume:0.5];
                     [TrapSnare play];
-                }
+                }*/
             }
-            if (vals[1] == PLAY_KICK) {
+            else if (vals[1] == PLAY_KICK) { // 3
+                [self playNote:3];/*
                 if([drumKit isEqual:@"Acoustic"]) {
                     AcousticKick.currentTime = 0;
                     [AcousticKick setVolume:0.5];
@@ -1871,8 +1899,10 @@ didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic error:(NSErro
                     [TrapKick setVolume:0.5];
                     [TrapKick play];
                 }
+                                   */
             }
-            else if (vals[1] == PLAY_HAT) {
+            else if (vals[1] == PLAY_HAT) { // 2
+                [self playNote:2];/*
                 if([drumKit isEqual:@"Acoustic"]) {
                     AcousticHat.currentTime = 0;
                     [AcousticHat setVolume:0.5];
@@ -1883,11 +1913,9 @@ didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic error:(NSErro
                     [TrapHat setVolume:0.5];
                     [TrapHat play];
                 }
+                                   */
                 
-                
-                
-                
-                
+
             } else {
                 [self playNote:(circleOf5ths[tonicIdx] + vals[1])];
                  NSLog(@"MIDI int: %d", vals[1]);

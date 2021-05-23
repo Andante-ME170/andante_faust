@@ -19,9 +19,7 @@
 		A2E7CC63262188CA006CA38B /* faust_musicUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = A2E7CC62262188CA006CA38B /* faust_musicUITests.m */; };
 		DB5A03FE264B8EF500EBC762 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB5A03FD264B8EF500EBC762 /* AVFoundation.framework */; };
 		DB5A0400264B9FAC00EBC762 /* SleepWalkChords.wav in Resources */ = {isa = PBXBuildFile; fileRef = DB5A03FF264B9FAC00EBC762 /* SleepWalkChords.wav */; };
-		DB5A041C264E581800EBC762 /* ViewController2.mm in Sources */ = {isa = PBXBuildFile; fileRef = DB5A041B264E581800EBC762 /* ViewController2.mm */; };
 		DB5A0423264E6FEB00EBC762 /* WalkingOnSunshine.wav in Resources */ = {isa = PBXBuildFile; fileRef = DB5A0422264E6FEB00EBC762 /* WalkingOnSunshine.wav */; };
-		DB5A0430264F31B800EBC762 /* ViewController3.mm in Sources */ = {isa = PBXBuildFile; fileRef = DB5A042F264F31B800EBC762 /* ViewController3.mm */; };
 		DB78B3B82627841800B42591 /* CoreMIDI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB78B3B72627841800B42591 /* CoreMIDI.framework */; };
 		DB78B3BA2627842100B42591 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB78B3B92627842100B42591 /* AudioToolbox.framework */; };
 		DB78B3E626278C1900B42591 /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB78B3E526278C1900B42591 /* CoreBluetooth.framework */; };
@@ -293,11 +291,7 @@
 		A2E7CC64262188CA006CA38B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DB5A03FD264B8EF500EBC762 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		DB5A03FF264B9FAC00EBC762 /* SleepWalkChords.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = SleepWalkChords.wav; sourceTree = "<group>"; };
-		DB5A041A264E581800EBC762 /* ViewController2.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController2.h; sourceTree = "<group>"; };
-		DB5A041B264E581800EBC762 /* ViewController2.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = ViewController2.mm; sourceTree = "<group>"; };
 		DB5A0422264E6FEB00EBC762 /* WalkingOnSunshine.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = WalkingOnSunshine.wav; sourceTree = "<group>"; };
-		DB5A042E264F31B800EBC762 /* ViewController3.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController3.h; sourceTree = "<group>"; };
-		DB5A042F264F31B800EBC762 /* ViewController3.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = ViewController3.mm; sourceTree = "<group>"; };
 		DB78B3B72627841800B42591 /* CoreMIDI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMIDI.framework; path = System/Library/Frameworks/CoreMIDI.framework; sourceTree = SDKROOT; };
 		DB78B3B92627842100B42591 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		DB78B3E526278C1900B42591 /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
@@ -590,10 +584,6 @@
 				121C26022638B2FA00CFA2F1 /* DspFaust.h */,
 				A2E7CC41262188C6006CA38B /* ViewController.h */,
 				A2E7CC42262188C6006CA38B /* ViewController.mm */,
-				DB5A041A264E581800EBC762 /* ViewController2.h */,
-				DB5A041B264E581800EBC762 /* ViewController2.mm */,
-				DB5A042E264F31B800EBC762 /* ViewController3.h */,
-				DB5A042F264F31B800EBC762 /* ViewController3.mm */,
 				DB5A0403264CB75300EBC762 /* wav files */,
 				A2E7CC44262188C6006CA38B /* Main.storyboard */,
 				A2E7CC47262188CA006CA38B /* Assets.xcassets */,
@@ -1279,8 +1269,6 @@
 				A2E7CC3D262188C6006CA38B /* AppDelegate.m in Sources */,
 				A2E7CC4E262188CA006CA38B /* main.m in Sources */,
 				A2E7CC40262188C6006CA38B /* SceneDelegate.m in Sources */,
-				DB5A041C264E581800EBC762 /* ViewController2.mm in Sources */,
-				DB5A0430264F31B800EBC762 /* ViewController3.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

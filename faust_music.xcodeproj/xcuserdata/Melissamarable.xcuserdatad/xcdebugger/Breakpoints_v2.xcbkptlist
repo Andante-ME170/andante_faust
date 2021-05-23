@@ -64,37 +64,37 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "43"
             endingLineNumber = "43"
-            landmarkName = "kneeDeviceName"
+            landmarkName = "devices"
             landmarkType = "24">
             <Locations>
                <Location
-                  uuid = "AE7DB55B-630D-4221-95CA-9BF31A4D62C0 - e6d19cb60e6ffd78"
+                  uuid = "AE7DB55B-630D-4221-95CA-9BF31A4D62C0 - 9b0b2223e2761eed"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "-[ViewController currInstrumentTextField]"
+                  symbolName = "-[ViewController devices]"
                   moduleName = "faust_music"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/Melissamarable/Desktop/NEWAPP/andante_faust/faust_music/ViewController.mm"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "37"
-                  endingLineNumber = "37"
-                  offsetFromSymbolStart = "16">
+                  startingLineNumber = "43"
+                  endingLineNumber = "43"
+                  offsetFromSymbolStart = "12">
                </Location>
                <Location
-                  uuid = "AE7DB55B-630D-4221-95CA-9BF31A4D62C0 - 6f5b66f7ce2793c6"
+                  uuid = "AE7DB55B-630D-4221-95CA-9BF31A4D62C0 - 2b2e2319bc0f9007"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "-[ViewController setCurrInstrumentTextField:]"
+                  symbolName = "-[ViewController setDevices:]"
                   moduleName = "faust_music"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/Melissamarable/Desktop/NEWAPP/andante_faust/faust_music/ViewController.mm"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "37"
-                  endingLineNumber = "37"
+                  startingLineNumber = "43"
+                  endingLineNumber = "43"
                   offsetFromSymbolStart = "49">
                </Location>
             </Locations>
@@ -119,17 +119,49 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "3EB0CE68-675C-4308-942E-FA7061A133C9"
+            uuid = "C408B62E-5DD0-47FA-B927-1FDD364EF650"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "faust_music/main.m"
+            filePath = "faust_music/ViewController.mm"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "5"
-            endingLineNumber = "5"
-            landmarkName = "unknown"
-            landmarkType = "0">
+            startingLineNumber = "44"
+            endingLineNumber = "44"
+            landmarkName = "myManager"
+            landmarkType = "24">
+            <Locations>
+               <Location
+                  uuid = "C408B62E-5DD0-47FA-B927-1FDD364EF650 - 603cab1efe717c8a"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[ViewController myManager]"
+                  moduleName = "faust_music"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Melissamarable/Desktop/NEWAPP/andante_faust/faust_music/ViewController.mm"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "44"
+                  endingLineNumber = "44"
+                  offsetFromSymbolStart = "12">
+               </Location>
+               <Location
+                  uuid = "C408B62E-5DD0-47FA-B927-1FDD364EF650 - b214e5087aa2ade0"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[ViewController setMyManager:]"
+                  moduleName = "faust_music"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Melissamarable/Desktop/NEWAPP/andante_faust/faust_music/ViewController.mm"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "44"
+                  endingLineNumber = "44"
+                  offsetFromSymbolStart = "20">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
