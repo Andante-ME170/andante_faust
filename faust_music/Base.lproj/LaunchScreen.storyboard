@@ -17,15 +17,15 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" fixedFrame="YES" image="Andante.png" translatesAutoresizingMaskIntoConstraints="NO" id="MBs-Bl-70u">
-                                <rect key="frame" x="33" y="310" width="321" height="152"/>
+                                <rect key="frame" x="47" y="278" width="321" height="152"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" fixedFrame="YES" image="Capstone" translatesAutoresizingMaskIntoConstraints="NO" id="bKa-gL-GUF">
-                                <rect key="frame" x="45" y="75" width="296" height="72"/>
+                                <rect key="frame" x="59" y="75" width="296" height="72"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" fixedFrame="YES" image="us!" translatesAutoresizingMaskIntoConstraints="NO" id="Pyf-0k-kgi">
-                                <rect key="frame" x="-759" y="579" width="1917" height="170"/>
+                                <rect key="frame" x="-751" y="579" width="1917" height="170"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                         </subviews>

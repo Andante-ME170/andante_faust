@@ -55,11 +55,17 @@ BOOL genreBass;
 
 @property(nonatomic,strong)IBOutlet UIButton *DividingLine; // to allow for scrolling
 
+@property(nonatomic,strong)IBOutlet UIImageView *SpeakerOnImg; // to allow for scrolling
+
+@property(nonatomic,strong)IBOutlet UIImageView *SpeakerOffImg; // to allow for scrolling
+
 @property(nonatomic,strong)IBOutlet UITextView *detuneInstructions; // to allow for scrolling
 
 @property(nonatomic,strong)IBOutlet UIButton *DrumKit; // to allow for scrolling
 
 @property(nonatomic,strong)IBOutlet UIImageView *Logo; // to allow for scrolling
+
+@property(nonatomic,strong)IBOutlet UIImageView *Walking; // to allow for scrolling
 
 @property(nonatomic,strong)IBOutlet UIButton *Detune; // to allow for scrolling
 
@@ -633,6 +639,9 @@ int globalMaxDetune = 0; // here?
     [_scrollView addSubview:_Detune];
     [_scrollView addSubview:_MusicSelection];
     [_scrollView addSubview:_DividingLine];
+    [_scrollView addSubview:_Walking];
+    [_scrollView addSubview:_SpeakerOnImg];
+    [_scrollView addSubview:_SpeakerOffImg];
     [_scrollView addSubview:_detuneInstructions];
     [_scrollView addSubview:_GaitMode];
  
