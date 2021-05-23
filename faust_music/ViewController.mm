@@ -1902,11 +1902,7 @@ didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic error:(NSErro
                     [TrapHat setVolume:0.5];
                     [TrapHat play];
                 }
-                
-                
-                
-                
-                
+  
             } else {
                 [self playNote:(circleOf5ths[tonicIdx] + vals[1])];
                  NSLog(@"MIDI int: %d", vals[1]);
@@ -1946,10 +1942,6 @@ didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic error:(NSErro
         
     }
 }
-
-
-
-
 
 - (IBAction)connectWasPressed:(id)sender {
     for (int i = 0; i < [_devices count]; i++) {
