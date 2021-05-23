@@ -356,7 +356,7 @@ enum gaitStates {
 
 
 // states
-songNames songName = ImDifferent;
+songNames songName = CanonInD;
 gaitStates gaitState = calibration;
 bool playMelody = true;
 bool playDrums = true;

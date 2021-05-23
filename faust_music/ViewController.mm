@@ -47,23 +47,37 @@ BOOL genreBass;
 
 @property (weak, nonatomic) IBOutlet UIPickerView *picker;
 @property(nonatomic,strong)NSTimer *timer; // for Ding
-//@property(nonatomic,strong)IBOutlet UIScrollView *scrollView;
+@property(nonatomic,strong)IBOutlet UIScrollView *scrollView;
 
-/*
 @property(nonatomic,strong)IBOutlet UIButton *Genre; // to allow for scrolling
+
+@property(nonatomic,strong)IBOutlet UIButton *MusicSelection; // to allow for scrolling
+
+@property(nonatomic,strong)IBOutlet UIButton *DividingLine; // to allow for scrolling
+
+@property(nonatomic,strong)IBOutlet UITextView *detuneInstructions; // to allow for scrolling
 
 @property(nonatomic,strong)IBOutlet UIButton *DrumKit; // to allow for scrolling
 
 @property(nonatomic,strong)IBOutlet UIImageView *Logo; // to allow for scrolling
 
-@property(nonatomic,strong)IBOutlet UIButton *PlayChord; // to allow for scrolling
+@property(nonatomic,strong)IBOutlet UIButton *Detune; // to allow for scrolling
+
+@property(nonatomic,strong)IBOutlet UIButton *PlayChord;
+
+@property(nonatomic,strong)IBOutlet UIButton *StopChord;
 
 @property(nonatomic,strong)IBOutlet UIButton *Connect; // to allow for scrolling
-*/
+
+@property(nonatomic,strong)IBOutlet UIButton *GaitMode; // to allow for scrolling
+
+@property (strong, nonatomic) IBOutlet UISwitch *modeSwitch;
+
+@property (strong, nonatomic) IBOutlet UILabel *modeLabel;
 
 // For Detune
-@property (weak, nonatomic) IBOutlet UITextField *tfValue;
-@property (weak, nonatomic) IBOutlet UISlider *slider;
+@property (strong, nonatomic) IBOutlet UITextField *tfValue;
+@property (strong, nonatomic) IBOutlet UISlider *slider;
 
 // For Genre
 @property (weak, nonatomic) IBOutlet UIPickerView *genrePicker;
@@ -313,10 +327,7 @@ BOOL genreBass;
 // Sound Effects
 @property(nonatomic,strong)AVAudioPlayer *APDing;
 
-
 // More Instruments here
-
-
 
 @end
 
@@ -596,18 +607,19 @@ int globalMaxDetune = 0; // here?
        
      dspFaust = new DspFaust(SR,bufferSize);
      dspFaust->start();
-    /*
+    
     
     _scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
     
     [self.view addSubview:_scrollView];
-    [_scrollView setContentSize:CGSizeMake(self.view.frame.size.width, self.view.frame.size.height*3)];
+    [_scrollView setContentSize:CGSizeMake(self.view.frame.size.width, self.view.frame.size.height*1.5)];
     
     // Add items for them to be included in scroll
 
     [_scrollView addSubview:_Logo];
     [_scrollView addSubview:_picker];
     [_scrollView addSubview:_Connect];
+
     [_scrollView addSubview:_modeSwitch];
     [_scrollView addSubview:_modeLabel];
     [_scrollView addSubview: _Genre];
@@ -617,8 +629,13 @@ int globalMaxDetune = 0; // here?
     [_scrollView addSubview: _slider];
     [_scrollView addSubview:_tfValue];
     [_scrollView addSubview:_PlayChord];
-    */
-   
+    [_scrollView addSubview:_StopChord];
+    [_scrollView addSubview:_Detune];
+    [_scrollView addSubview:_MusicSelection];
+    [_scrollView addSubview:_DividingLine];
+    [_scrollView addSubview:_detuneInstructions];
+    [_scrollView addSubview:_GaitMode];
+ 
     _myManager = [[CBCentralManager alloc] initWithDelegate:self queue:nil options:nil];
     NSDictionary *option = @{
         CBCentralManagerScanOptionAllowDuplicatesKey:[NSNumber numberWithBool:YES]
@@ -665,37 +682,18 @@ int globalMaxDetune = 0; // here?
        _kneeDeviceName = @"Bluefruit52 MIDI knee";
     
     
-    // For SoundFonts
     NSError *error;
-
-    // More gengres here
-
-    
-    switch(Globalgenre) {
-            case -1:
-                self.genreValue.text = @"Current: Not set";
-                break;
-            case 0:
-                self.genreValue.text = @"Current: Minor Chord";
-                break;
-            case 1:
-                self.genreValue.text = @"Random Sounds";
-                break;
-            case 2:
-                self.genreValue.text = @"Songs";
-                break;
-    }
-    // Melissa, need to fix logic here
-    if(modeToe == true) { // reverse so easier
-        _modeLabel.text = @"Toe Off Mode";
+    if(modeToe == true) {
+        _modeLabel.text = @"Swing Phase";
     }
     else{
-        _modeLabel.text = @"Heel Strike Mode"; // rename later
+        _modeLabel.text = @"Stance Phase";
     }
     
     _slider.value = globalMaxDetune/0.20; // change constants later (the 0.2)
     self.tfValue.text = [NSString stringWithFormat:@"%f", _slider.value];
     
+    // For Sound Fonts
     // Acoustic Drums
     AcousticKick = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"AndanteDrumsAcousticKick" withExtension:@ "wav"] error:&error];
     [AcousticKick prepareToPlay];
@@ -1636,31 +1634,19 @@ didDiscoverCharacteristicsForService:(CBService *)service error:(NSError *)error
     [self.view endEditing:YES];
 }
 - (IBAction)modeChange:(id)sender {
-    if (_modeSwitch.on) { // Footswitch Mode
+    if (_modeSwitch.on) {
          modeToe = false;
-        _modeLabel.text = @"Stance Mode"; // rename later
+        _modeLabel.text = @"Stance Phase";
     }
     else {
          modeToe = true;
-        _modeLabel.text = @"Swing Mode";
-    }
-}
-
-- (IBAction)genreChange:(id)sender {
-    if (_genreSwitch.on) { // Footswitch Mode
-         genreBass = false;
-        _genreLabel.text = @"Piano"; // rename later
-    }
-    else {
-         genreBass = true;
-        _genreLabel.text = @"Bass";
+        _modeLabel.text = @"Swing Phase";
     }
 }
 
 - (void)peripheral:(CBPeripheral *)peripheral
 didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic error:(NSError *)error {
-    //NSLog(@"reading value!");
-    //NSLog(@"<%@>", characteristic.value);
+
     
     NSData *rawData = characteristic.value;
     
@@ -1807,7 +1793,6 @@ didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic error:(NSErro
             }
         }
         else if ([peripheral.name containsString:@"Bluefruit52 MIDI"]) {
-
             // noteOn
             if (vals[2] == 144){
                 // drums
@@ -1873,9 +1858,7 @@ didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic error:(NSErro
 
          [theLock lock];
         if ([peripheral.name containsString:_footDeviceName] && vals[2] == 144){
-            if (vals[1] == PLAY_SNARE) { // 1
-                [self playNote:1];
-                /*
+            if (vals[1] == PLAY_SNARE) {
                 if([drumKit isEqual:@"Acoustic"]) {
                     AcousticSnare.currentTime = 0;
                     [AcousticSnare setVolume:0.5];
@@ -1885,10 +1868,9 @@ didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic error:(NSErro
                     TrapSnare.currentTime = 0;
                     [TrapSnare setVolume:0.5];
                     [TrapSnare play];
-                }*/
+                }
             }
-            else if (vals[1] == PLAY_KICK) { // 3
-                [self playNote:3];/*
+            if (vals[1] == PLAY_KICK) {
                 if([drumKit isEqual:@"Acoustic"]) {
                     AcousticKick.currentTime = 0;
                     [AcousticKick setVolume:0.5];
@@ -1899,10 +1881,8 @@ didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic error:(NSErro
                     [TrapKick setVolume:0.5];
                     [TrapKick play];
                 }
-                                   */
             }
-            else if (vals[1] == PLAY_HAT) { // 2
-                [self playNote:2];/*
+            else if (vals[1] == PLAY_HAT) {
                 if([drumKit isEqual:@"Acoustic"]) {
                     AcousticHat.currentTime = 0;
                     [AcousticHat setVolume:0.5];
@@ -1913,9 +1893,11 @@ didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic error:(NSErro
                     [TrapHat setVolume:0.5];
                     [TrapHat play];
                 }
-                                   */
                 
-
+                
+                
+                
+                
             } else {
                 [self playNote:(circleOf5ths[tonicIdx] + vals[1])];
                  NSLog(@"MIDI int: %d", vals[1]);
@@ -1956,6 +1938,10 @@ didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic error:(NSErro
     }
 }
 
+
+
+
+
 - (IBAction)connectWasPressed:(id)sender {
     for (int i = 0; i < [_devices count]; i++) {
         CBPeripheral *peripheral = [_devices objectAtIndex:i];
@@ -1984,10 +1970,21 @@ didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic error:(NSErro
 }
 
 -(IBAction)playChord:(id)sender {
+    const int SR = 44100;
+    const int bufferSize = 256;
+    dspFaust = new DspFaust(SR,bufferSize);
+    dspFaust->start();
     dspFaust->setParamValue("detune", _slider.value*0.20);
     dspFaust->keyOn(40, 100);
     dspFaust->keyOn(44, 100);
     dspFaust->keyOn(47, 100);
+}
+
+-(IBAction)stopChord:(id)sender {
+    dspFaust->keyOff(40);
+    dspFaust->keyOff(44);
+    dspFaust->keyOff(47);
+    dspFaust->stop();
 }
 
 

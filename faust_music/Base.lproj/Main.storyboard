@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
-    <device id="retina5_9" orientation="portrait" appearance="light"/>
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
@@ -14,43 +14,221 @@
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC" customClass="UILabel" customModule="faust_music" customModuleProvider="target">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qry-ta-kOj">
                                 <rect key="frame" x="60" y="600" width="30" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </button>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sff-5n-ZhW">
+                                <rect key="frame" x="0.0" y="-1" width="414" height="950"/>
+                                <subviews>
+                                    <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XkD-0r-sOr">
+                                        <rect key="frame" x="221" y="461" width="193" height="162"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                    </pickerView>
+                                    <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nDL-Zp-TcI">
+                                        <rect key="frame" x="0.0" y="154" width="414" height="162"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                    </pickerView>
+                                    <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="w0V-dp-Lmc">
+                                        <rect key="frame" x="0.0" y="461" width="213" height="162"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                    </pickerView>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MWU-0F-VVJ">
+                                        <rect key="frame" x="0.0" y="482" width="213" height="44"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="26"/>
+                                        <state key="normal" title="Genre:">
+                                            <color key="titleShadowColor" name="AccentColor"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="connectWasPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="eYm-Du-X2p"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mpr-y2-n1a">
+                                        <rect key="frame" x="221" y="482" width="193" height="44"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="26"/>
+                                        <state key="normal" title="Drum Kit:"/>
+                                        <connections>
+                                            <action selector="connectWasPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="SIe-2Z-uSk"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OLS-9s-3QU">
+                                        <rect key="frame" x="0.0" y="631" width="414" height="44"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" red="0.22047486597126864" green="0.52832886691131375" blue="1" alpha="0.95191218577274661" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="26"/>
+                                        <state key="normal" title="       Detune:">
+                                            <color key="titleColor" systemColor="systemGray6Color"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rGW-R2-q0x">
+                                        <rect key="frame" x="0.0" y="437" width="414" height="44"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="0.94943652509832055" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="26"/>
+                                        <state key="normal" title="     Music Selection:">
+                                            <color key="titleColor" systemColor="systemGray6Color"/>
+                                            <color key="titleShadowColor" name="AccentColor"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="connectWasPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="vKa-br-nfc"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gl6-aN-tvx">
+                                        <rect key="frame" x="0.0" y="514" width="414" height="3"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" name="AccentColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="26"/>
+                                        <state key="normal">
+                                            <color key="titleColor" systemColor="systemGray6Color"/>
+                                            <color key="titleShadowColor" name="AccentColor"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="connectWasPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="xos-5H-4BT"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GeG-gt-sdy">
+                                        <rect key="frame" x="38" y="825" width="138" height="44"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="26"/>
+                                        <color key="tintColor" red="0.22047486599999999" green="0.52832886690000003" blue="1" alpha="0.95191218580000003" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <state key="normal" title="Play Chord:"/>
+                                        <connections>
+                                            <action selector="connectWasPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="KES-R4-sqX"/>
+                                            <action selector="playChord:" destination="BYZ-38-t0r" eventType="touchUpInside" id="50C-mX-wOB"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u8z-A7-xxS">
+                                        <rect key="frame" x="0.0" y="162" width="414" height="44"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" red="0.092577007150728155" green="0.22184435887743634" blue="0.41989823530629744" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="26"/>
+                                        <state key="normal" title="  Connect to Bluetooth:">
+                                            <color key="titleColor" systemColor="systemGray6Color"/>
+                                            <color key="titleShadowColor" name="AccentColor"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="connectWasPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Gr1-6B-vge"/>
+                                        </connections>
+                                    </button>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" fixedFrame="YES" image="Andante" translatesAutoresizingMaskIntoConstraints="NO" id="5Ad-g8-O0m">
+                                        <rect key="frame" x="60" y="32" width="294" height="134"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GLD-Ik-6nX">
+                                        <rect key="frame" x="0.0" y="272" width="414" height="44"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" red="0.14077775676696422" green="0.33734889639846399" blue="0.63852065924516666" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="26"/>
+                                        <state key="normal" title="   Gait Mode:">
+                                            <color key="titleColor" systemColor="systemGray6Color"/>
+                                            <color key="titleShadowColor" name="AccentColor"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="connectWasPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="fko-EX-IRq"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AYe-Jw-eUe">
+                                        <rect key="frame" x="248" y="825" width="138" height="44"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="26"/>
+                                        <color key="tintColor" red="0.22047486599999999" green="0.52832886690000003" blue="1" alpha="0.95191218580000003" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <state key="normal" title="Stop Chord:"/>
+                                        <connections>
+                                            <action selector="connectWasPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="c4Z-s6-kPh"/>
+                                            <action selector="playChord:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Rec-th-LbV"/>
+                                            <action selector="stopChord:" destination="BYZ-38-t0r" eventType="touchUpInside" id="oaS-Qj-AwA"/>
+                                        </connections>
+                                    </button>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" text="Select an amount just before it becomes unpleasant to your ear." textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ihc-mD-4Hp">
+                                        <rect key="frame" x="85" y="683" width="269" height="90"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <color key="textColor" red="0.22047486599999999" green="0.52832886690000003" blue="1" alpha="0.95191218580000003" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
+                                </subviews>
+                                <viewLayoutGuide key="contentLayoutGuide" id="zgF-MJ-4xh"/>
+                                <viewLayoutGuide key="frameLayoutGuide" id="SLa-Wi-vUR"/>
+                            </scrollView>
+                            <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="7Ho-aw-Tzh">
+                                <rect key="frame" x="10" y="-124" width="118" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </slider>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2YH-6Z-Q53">
+                                <rect key="frame" x="183" y="331" width="49" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="onTintColor" red="0.14300253720791678" green="0.34268018767430536" blue="0.64861151668214312" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <connections>
+                                    <action selector="modeChange:" destination="BYZ-38-t0r" eventType="valueChanged" id="6on-tM-faD"/>
+                                </connections>
+                            </switch>
+                            <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="jcD-BF-I9P">
+                                <rect key="frame" x="18" y="957" width="378" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <action selector="detune:" destination="BYZ-38-t0r" eventType="valueChanged" id="Cj3-Ig-DRs"/>
+                                </connections>
+                            </slider>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4mh-l3-skL">
+                                <rect key="frame" x="158" y="1004" width="97" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g0z-sH-1Iz">
+                                <rect key="frame" x="74" y="358" width="266" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="26"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY" userLabel="Hello World"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="sff-5n-ZhW" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="iDs-NE-kab"/>
+                            <constraint firstItem="sff-5n-ZhW" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="lsm-2N-TaT"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="SfN-Nc-566"/>
                     <connections>
-                        <outlet property="Connect" destination="Gve-Ee-pZX" id="eLu-A6-3DB"/>
-                        <outlet property="DrumKit" destination="Tt9-kS-qqr" id="lgm-Mn-48Q"/>
-                        <outlet property="Genre" destination="hZ2-t6-X1x" id="aaq-0g-pr5"/>
-                        <outlet property="Logo" destination="roE-iS-WUU" id="uVZ-ou-za2"/>
-                        <outlet property="PlayChord" destination="hJs-Z8-WNF" id="MFJ-gb-NT7"/>
-                        <outlet property="drumPicker" destination="4HG-Zn-QAk" id="LqO-NF-0kM"/>
-                        <outlet property="genrePicker" destination="xAz-dv-cFe" id="zVg-C0-jMZ"/>
-                        <outlet property="modeLabel" destination="fG8-6A-aVF" id="uUC-o9-CqK"/>
-                        <outlet property="modeSwitch" destination="zNm-HW-coN" id="fA8-cu-TOv"/>
-                        <outlet property="picker" destination="Bcm-ns-dUd" id="pdw-8w-mL6"/>
-                        <outlet property="slider" destination="ieu-YC-lHm" id="iV1-n7-avo"/>
-                        <outlet property="tfValue" destination="Cnj-XN-6G3" id="4Q1-Uh-SKR"/>
+                        <outlet property="Connect" destination="u8z-A7-xxS" id="MfY-pL-8VY"/>
+                        <outlet property="Detune" destination="OLS-9s-3QU" id="QsE-80-R7G"/>
+                        <outlet property="DividingLine" destination="MWU-0F-VVJ" id="TtV-ab-ZH1"/>
+                        <outlet property="DrumKit" destination="mpr-y2-n1a" id="Xp2-bC-tX4"/>
+                        <outlet property="GaitMode" destination="GLD-Ik-6nX" id="eQR-R7-gld"/>
+                        <outlet property="Genre" destination="MWU-0F-VVJ" id="w2X-uB-fea"/>
+                        <outlet property="Logo" destination="5Ad-g8-O0m" id="g9b-go-yCD"/>
+                        <outlet property="MusicSelection" destination="rGW-R2-q0x" id="Spq-9j-xMS"/>
+                        <outlet property="PlayChord" destination="GeG-gt-sdy" id="5a4-Bi-R9M"/>
+                        <outlet property="StopChord" destination="AYe-Jw-eUe" id="ecB-aB-ZdU"/>
+                        <outlet property="detuneInstructions" destination="ihc-mD-4Hp" id="XCv-RX-3Ze"/>
+                        <outlet property="drumPicker" destination="XkD-0r-sOr" id="3wi-xK-Iny"/>
+                        <outlet property="genrePicker" destination="w0V-dp-Lmc" id="4fx-sk-zNV"/>
+                        <outlet property="modeLabel" destination="g0z-sH-1Iz" id="WbS-Lq-xIF"/>
+                        <outlet property="modeSwitch" destination="2YH-6Z-Q53" id="7nt-Qq-Pk4"/>
+                        <outlet property="picker" destination="nDL-Zp-TcI" id="Zlw-sC-HUp"/>
+                        <outlet property="scrollView" destination="sff-5n-ZhW" id="mCo-I2-ja9"/>
+                        <outlet property="slider" destination="jcD-BF-I9P" id="3gk-R3-123"/>
+                        <outlet property="tfValue" destination="4mh-l3-skL" id="hRJ-wk-Att"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1410.4000000000001" y="-1069.2118226600985"/>
+            <point key="canvasLocation" x="-1411.5942028985507" y="-1069.4196428571429"/>
         </scene>
         <!--View Controller3-->
         <scene sceneID="CMW-xU-TZ2">
             <objects>
                 <viewController id="Tn7-kI-o4l" customClass="ViewController3" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="g9W-uf-Ycx">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="80y-we-tsL">
@@ -61,23 +239,6 @@
                                     <action selector="stopMusic:" destination="Tn7-kI-o4l" eventType="touchUpInside" id="h52-VG-NBg"/>
                                 </connections>
                             </button>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Select an amount just before it becomes unpleasant to your ear." textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="kV4-CB-5wa">
-                                <rect key="frame" x="38" y="601" width="292" height="128"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <color key="textColor" name="AccentColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o9F-4q-Ag3">
-                                <rect key="frame" x="27" y="686" width="118" height="43"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Music Resources"/>
-                            </button>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" fixedFrame="YES" image="speaker.2" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="iet-zg-svu">
-                                <rect key="frame" x="89" y="390" width="104" height="66"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fdf-n0-izm">
                                 <rect key="frame" x="89" y="505" width="182" height="51"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -90,131 +251,26 @@
                                     <action selector="buttonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="E5b-sn-7PA"/>
                                 </connections>
                             </button>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" placeholderIntrinsicWidth="206" placeholderIntrinsicHeight="86" image="Andante.png" translatesAutoresizingMaskIntoConstraints="NO" id="roE-iS-WUU">
-                                <rect key="frame" x="93" y="124" width="206" height="86"/>
-                            </imageView>
-                            <pickerView contentMode="scaleToFill" placeholderIntrinsicWidth="222" placeholderIntrinsicHeight="113" preservesSuperviewLayoutMargins="YES" layoutMarginsFollowReadableWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Bcm-ns-dUd">
-                                <rect key="frame" x="60" y="239" width="239" height="113"/>
-                            </pickerView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gve-Ee-pZX">
-                                <rect key="frame" x="-17" y="301" width="150" height="51"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="32"/>
-                                <state key="normal" title="Connect"/>
-                                <connections>
-                                    <action selector="connectWasPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="xVp-6u-qRp"/>
-                                </connections>
-                            </button>
-                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zNm-HW-coN">
-                                <rect key="frame" x="156" y="349" width="83" height="31"/>
-                                <color key="tintColor" name="AccentColor"/>
-                                <color key="onTintColor" systemColor="systemBlueColor"/>
-                                <connections>
-                                    <action selector="modeChange:" destination="BYZ-38-t0r" eventType="valueChanged" id="dPU-pi-Hyz"/>
-                                </connections>
-                            </switch>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fG8-6A-aVF">
-                                <rect key="frame" x="286" y="337" width="44" height="55"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hZ2-t6-X1x">
-                                <rect key="frame" x="53" y="465" width="67" height="73"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
-                                <state key="normal" title="Genre:"/>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tt9-kS-qqr">
-                                <rect key="frame" x="210" y="458" width="89" height="39"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
-                                <state key="normal" title="Drum Kit:"/>
-                            </button>
-                            <pickerView contentMode="scaleToFill" misplaced="YES" placeholderIntrinsicWidth="195" placeholderIntrinsicHeight="74" preservesSuperviewLayoutMargins="YES" layoutMarginsFollowReadableWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xAz-dv-cFe">
-                                <rect key="frame" x="38" y="618" width="149" height="178"/>
-                            </pickerView>
-                            <pickerView contentMode="scaleToFill" misplaced="YES" placeholderIntrinsicWidth="195" placeholderIntrinsicHeight="74" preservesSuperviewLayoutMargins="YES" layoutMarginsFollowReadableWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4HG-Zn-QAk">
-                                <rect key="frame" x="227" y="576" width="163" height="178"/>
-                            </pickerView>
-                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="ieu-YC-lHm">
-                                <rect key="frame" x="83" y="563" width="226" height="31"/>
-                            </slider>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Cnj-XN-6G3">
-                                <rect key="frame" x="260" y="534" width="97" height="34"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hJs-Z8-WNF">
-                                <rect key="frame" x="248" y="576" width="90" height="39"/>
-                                <color key="backgroundColor" name="AccentColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
-                                <size key="titleShadowOffset" width="2" height="0.0"/>
-                                <state key="normal" title="Detune">
-                                    <color key="titleColor" systemColor="secondarySystemBackgroundColor"/>
-                                </state>
-                                <connections>
-                                    <action selector="PlayGenre:" destination="Tn7-kI-o4l" eventType="touchUpInside" id="JBZ-eN-DFp"/>
-                                    <action selector="playChord:" destination="BYZ-38-t0r" eventType="touchUpInside" id="vPQ-Hz-b0b"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Mze-tF-sBW"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstAttribute="trailing" secondItem="Cnj-XN-6G3" secondAttribute="trailing" constant="18" id="ADm-88-4UW"/>
-                            <constraint firstItem="hZ2-t6-X1x" firstAttribute="leading" secondItem="g9W-uf-Ycx" secondAttribute="leading" constant="53" id="FKB-QO-gLK"/>
-                            <constraint firstItem="hZ2-t6-X1x" firstAttribute="top" secondItem="g9W-uf-Ycx" secondAttribute="top" constant="465" id="IY0-DZ-1Ki"/>
-                            <constraint firstItem="4HG-Zn-QAk" firstAttribute="top" secondItem="g9W-uf-Ycx" secondAttribute="top" constant="576" id="JoF-kK-qZf"/>
-                            <constraint firstAttribute="trailing" secondItem="xAz-dv-cFe" secondAttribute="trailing" constant="188" id="MfK-B5-64B"/>
-                            <constraint firstItem="roE-iS-WUU" firstAttribute="top" secondItem="g9W-uf-Ycx" secondAttribute="top" constant="124" id="MxD-Mb-mLC"/>
-                            <constraint firstAttribute="trailing" secondItem="roE-iS-WUU" secondAttribute="trailing" constant="76" id="ODO-kN-pvq"/>
-                            <constraint firstAttribute="trailing" secondItem="zNm-HW-coN" secondAttribute="trailing" constant="138" id="OHn-Nx-8h8"/>
-                            <constraint firstItem="Bcm-ns-dUd" firstAttribute="leading" secondItem="g9W-uf-Ycx" secondAttribute="leading" constant="60" id="OZG-I6-hhM"/>
-                            <constraint firstItem="xAz-dv-cFe" firstAttribute="top" secondItem="g9W-uf-Ycx" secondAttribute="top" constant="618" id="PJM-lD-o5r"/>
-                            <constraint firstItem="hJs-Z8-WNF" firstAttribute="centerX" secondItem="g9W-uf-Ycx" secondAttribute="centerX" constant="105.5" id="PaN-bY-brQ"/>
-                            <constraint firstItem="hJs-Z8-WNF" firstAttribute="top" secondItem="g9W-uf-Ycx" secondAttribute="top" constant="576" id="RjV-H5-W25"/>
-                            <constraint firstItem="zNm-HW-coN" firstAttribute="top" secondItem="g9W-uf-Ycx" secondAttribute="top" constant="349" id="RuQ-KQ-gvn"/>
-                            <constraint firstAttribute="trailing" secondItem="Tt9-kS-qqr" secondAttribute="trailing" constant="76" id="XL0-YJ-qZ9"/>
-                            <constraint firstAttribute="bottom" secondItem="roE-iS-WUU" secondAttribute="bottom" constant="602" id="Xe5-lY-oxJ"/>
-                            <constraint firstItem="ieu-YC-lHm" firstAttribute="leading" secondItem="g9W-uf-Ycx" secondAttribute="leading" constant="85" id="ZEE-ta-LpL"/>
-                            <constraint firstAttribute="trailing" secondItem="ieu-YC-lHm" secondAttribute="trailing" constant="68" id="cGD-Kd-Hqn"/>
-                            <constraint firstItem="Bcm-ns-dUd" firstAttribute="top" secondItem="g9W-uf-Ycx" secondAttribute="top" constant="239" id="cKD-1z-4ZK"/>
-                            <constraint firstItem="ieu-YC-lHm" firstAttribute="top" secondItem="g9W-uf-Ycx" secondAttribute="top" constant="563" id="dIr-5e-HR9"/>
-                            <constraint firstItem="Tt9-kS-qqr" firstAttribute="top" secondItem="g9W-uf-Ycx" secondAttribute="top" constant="458" id="dUk-vr-uX1"/>
-                            <constraint firstItem="Cnj-XN-6G3" firstAttribute="top" secondItem="g9W-uf-Ycx" secondAttribute="top" constant="534" id="e4g-Ew-1hc"/>
-                            <constraint firstItem="Gve-Ee-pZX" firstAttribute="top" secondItem="g9W-uf-Ycx" secondAttribute="top" constant="301" id="f3y-x9-hsa"/>
-                            <constraint firstItem="xAz-dv-cFe" firstAttribute="leading" secondItem="g9W-uf-Ycx" secondAttribute="leading" constant="38" id="fQi-Ml-osE"/>
-                            <constraint firstItem="zNm-HW-coN" firstAttribute="leading" secondItem="g9W-uf-Ycx" secondAttribute="leading" constant="156" id="icV-xO-f5z"/>
-                            <constraint firstItem="Tt9-kS-qqr" firstAttribute="leading" secondItem="g9W-uf-Ycx" secondAttribute="leading" constant="210" id="idt-Mt-Yft"/>
-                            <constraint firstItem="4HG-Zn-QAk" firstAttribute="leading" secondItem="g9W-uf-Ycx" secondAttribute="leading" constant="227" id="ksx-TU-n2F"/>
-                            <constraint firstItem="Gve-Ee-pZX" firstAttribute="leading" secondItem="g9W-uf-Ycx" secondAttribute="leading" constant="-17" id="lfs-nn-a6M"/>
-                            <constraint firstAttribute="trailing" secondItem="fG8-6A-aVF" secondAttribute="trailing" constant="45" id="pfo-eL-rnI"/>
-                            <constraint firstAttribute="trailing" secondItem="Gve-Ee-pZX" secondAttribute="trailing" constant="242" id="rbl-hw-adu"/>
-                            <constraint firstAttribute="trailing" secondItem="4HG-Zn-QAk" secondAttribute="trailing" constant="-15" id="xhq-tI-8Yy"/>
-                            <constraint firstAttribute="trailing" secondItem="Bcm-ns-dUd" secondAttribute="trailing" constant="76" id="y1B-gT-iLF"/>
-                            <constraint firstAttribute="trailing" secondItem="hZ2-t6-X1x" secondAttribute="trailing" constant="255" id="y6R-4c-bGe"/>
-                            <constraint firstItem="Cnj-XN-6G3" firstAttribute="leading" secondItem="g9W-uf-Ycx" secondAttribute="leading" constant="260" id="yOT-pn-gbI"/>
-                            <constraint firstItem="fG8-6A-aVF" firstAttribute="leading" secondItem="g9W-uf-Ycx" secondAttribute="leading" constant="286" id="ySP-ry-tPK"/>
-                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WoO-OO-iNd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-662" y="-1051"/>
+            <point key="canvasLocation" x="-662.31884057971024" y="-1051.3392857142858"/>
         </scene>
     </scenes>
     <resources>
-        <image name="Andante.png" width="680" height="269"/>
-        <image name="speaker.2" catalog="system" width="128" height="90"/>
+        <image name="Andante" width="680" height="269"/>
         <namedColor name="AccentColor">
             <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <systemColor name="secondarySystemBackgroundColor">
-            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
-        <systemColor name="systemBlueColor">
-            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <systemColor name="systemGray6Color">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemTealColor">
             <color red="0.35294117647058826" green="0.78431372549019607" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
