@@ -37,10 +37,10 @@
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                     </pickerView>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MWU-0F-VVJ">
-                                        <rect key="frame" x="0.0" y="503" width="213" height="44"/>
+                                        <rect key="frame" x="5" y="503" width="213" height="44"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="26"/>
-                                        <state key="normal" title="Genre:">
+                                        <state key="normal" title="Instrument:">
                                             <color key="titleShadowColor" name="AccentColor"/>
                                         </state>
                                         <connections>
