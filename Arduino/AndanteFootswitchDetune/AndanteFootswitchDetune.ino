@@ -411,7 +411,7 @@ int theHammerChords[32][3] = {
 
 
 // update w more beats
-int drumBeat = 0;
+int drumBeat = 1;
 int numDrums;
 int drumHitsPerChord;
 int drums[8][3];
