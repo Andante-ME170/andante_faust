@@ -717,7 +717,7 @@ int globalMaxDetune = 0; // here?
     // Acoustic Drum Kit dictionary initialization
     NSArray *valuesAcoustic = [NSArray arrayWithObjects: AcousticKick, AcousticSnare, AcousticHat, nil];
     
-    NSArray *keysAcoustic = [NSArray arrayWithObjects:[NSNumber numberWithInteger:3], [NSNumber numberWithInteger:1],[NSNumber numberWithInteger:2],nil];
+    NSArray *keysAcoustic = [NSArray arrayWithObjects:[NSNumber numberWithInteger:0], [NSNumber numberWithInteger:1],[NSNumber numberWithInteger:2],nil];
 
     Acoustic = [NSDictionary dictionaryWithObjects: valuesAcoustic forKeys: keysAcoustic];
     
@@ -737,7 +737,7 @@ int globalMaxDetune = 0; // here?
     // Trap Drum Kit dictionary initialization
     NSArray *valuesTrap = [NSArray arrayWithObjects: TrapKick, TrapSnare, TrapHat, nil];
     
-    NSArray *keysTrap = [NSArray arrayWithObjects:[NSNumber numberWithInteger:3], [NSNumber numberWithInteger:1],[NSNumber numberWithInteger:2],nil];
+    NSArray *keysTrap = [NSArray arrayWithObjects:[NSNumber numberWithInteger:0], [NSNumber numberWithInteger:1],[NSNumber numberWithInteger:2],nil];
 
     Trap = [NSDictionary dictionaryWithObjects: valuesTrap forKeys: keysTrap];
     
@@ -1990,7 +1990,7 @@ didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic error:(NSErro
 
 
 - (void) playNote: (int) midi {
-    if(midi <= 3) { // MIDI is DRUM
+    if(midi <= 2) { // MIDI is DRUM
         if([drumKit isEqual: @"Acoustic"]) {
             [self playAcoustic:midi];
         }
