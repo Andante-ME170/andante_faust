@@ -20,6 +20,7 @@ enum songNames {
   Mario,
   IWantYouBack,
   ImDifferent,
+  TheHammer,
 };
 
 int melody[32][8];
@@ -27,6 +28,9 @@ bool melodyNotePlayed[8] = {false,false,false,false,false,false,false,false};
 int melodyNotesPerChord = 8;
 int chords[32][3];
 // 0 is sustain, -1 is rest
+// TODO: int key = __   //MIDI val of starting key
+//       map intervals to halfsteps; 1 = key + 0, 2 = key + 2, 3 = key + 4, 4 = key + 5, etc.
+//       write melodies w intervals instead of actual note numbers
 
 int canonInDMelody [32][8] = {
         {81,  0, 78, 79, 81,  0, 78, 79}, 
@@ -326,6 +330,85 @@ int imDifferentChords[32][3] = {
         {-1, -1, -1},
         };
 
+int theHammerMelody [32][8] = {
+        {51,  0,  0,  0, 63,  0, 63,  0}, 
+        { 0, 62,  0, 62,  0, 60, 60,  0}, 
+        {62,  0,  0,  0,  0, 58,  0, 62}, 
+        {65, 62,  0, 65,  0, 62, 58,  0}, 
+        {51,  0,  0,  0, 63,  0, 63,  0}, 
+        { 0, 62,  0, 60,  0, 62, 60,  0}, 
+        {58,  0,  0, 58,  0, 58,  0, 58}, 
+        {58, 55,  0, 58,  0, 60, 62,  0},
+        
+        {60, 58,  0, 55,  0,  0,  0,  0},
+        { 0, 60,  0, 60,  0, 62, 63,  0},
+        {62,  0, 62,  0, 60, 60,  0, 58},
+        { 0, 55,  0, 58,  0, 60, 62,  0},
+        {60, 58,  0, 55,  0,  0,  0,  0},
+        { 0, 57,  0, 55,  0, 57, 55,  0},
+        {53,  0,  0,  0,  0,  0,  0,  0},
+        { 0, 62,  0, 62,  0, 62,  0, 62},
+
+        {54, 57,  0, 62,  0,  0,  0,  0},
+        { 0, 62,  0, 62,  0, 62,  0, 62},
+        {55, 58,  0, 62,  0,  0,  0,  0},
+        { 0, 62,  0, 62,  0, 62,  0, 62},
+        {54, 57,  0, 62,  0,  0,  0,  0},
+        { 0, 62,  0, 63,  0, 62,  0, 58},
+        {55, 58,  0, 62,  0,  0,  0,  0},
+        { 0,  0,  0,  0,  0,  0,  0,  0},
+
+        { 0, 60,  0, 60,  0, 62, 63,  0},
+        {62,  0, 62, 60,  0, 62, 60,  0},
+        {58,  0,  0,  0,  0,  0,  0,  0},
+        { 0,  0,  0,  0,  0,  0,  0,  0},
+        { 0, 60,  0, 60,  0, 60,  0, 60},
+        { 0, 60,  0, 60,  0, 64, 67,  0},
+        {69,  0,  0, 65, 65, 65, 65, 65},
+        {65, 62,  0, 65,  0, 62, 58,  0},
+        };
+int theHammerChords[32][3] = {
+        // Eb F Bb Bb/F
+        {27, 34, 43}, 
+        {29, 36, 45}, 
+        {34, 41, 50}, 
+        {29, 38, 46}, 
+        {27, 34, 43}, 
+        {29, 36, 45}, 
+        {34, 41, 50}, 
+        {29, 38, 46},
+ 
+        {27, 34, 43}, 
+        {29, 36, 45}, 
+        {34, 41, 50}, 
+        {29, 38, 46}, 
+        {27, 34, 43}, 
+        {29, 36, 45}, 
+        {34, 41, 50}, 
+        {29, 38, 46},
+
+        // D Gm
+        {26, 33, 42},
+        {30, 38, 45},
+        {31, 38, 46},
+        {31, 38, 46},
+        {26, 33, 42},
+        {30, 38, 45},
+        {31, 38, 46},
+        {29, 36, 45},
+        
+        // C7 part
+        {27, 34, 43}, 
+        {29, 36, 45}, 
+        {34, 41, 50}, 
+        {31, 38, 46}, 
+        {24, 31, 40}, 
+        {24, 31, 40},  
+        {29, 36, 45},
+        {-1, -1, -1},
+        };
+        
+
 
 // update w more beats
 int drumBeat = 0;
@@ -345,6 +428,19 @@ int beat0[8][3] = {
         {0, 0, 0}
       };
 
+      
+// calypso beat
+int beat1[8][3] = {
+        {1, 0, 1},
+        {0, 0, 1},
+        {0, 0, 1},
+        {1, 1, 1},
+        {0, 0, 1},
+        {0, 0, 1},
+        {0, 1, 1},
+        {0, 0, 1}
+      };
+
 enum gaitStates {
   calibration,
   stance,
@@ -356,7 +452,9 @@ enum gaitStates {
 
 
 // states
-songNames songName = CanonInD;
+
+songNames songName = TheHammer;
+//songNames songName = CanonInD;
 gaitStates gaitState = calibration;
 bool playMelody = true;
 bool playDrums = true;
@@ -475,6 +573,15 @@ void setup(){
       memcpy(melody, imDifferentMelody, sizeof(melody));
       memcpy(chords, imDifferentChords, sizeof(chords));
       break;
+
+    case TheHammer:
+      notesPerChord = 3;
+      numChords = 32;
+      melodyNotesPerChord = 8;
+      chordsPerStepCycle = 1;
+      memcpy(melody, theHammerMelody, sizeof(melody));
+      memcpy(chords, theHammerChords, sizeof(chords));
+      break;
   }
   
   switch (drumBeat){
@@ -482,6 +589,12 @@ void setup(){
       numDrums = 3;
       drumHitsPerChord = melodyNotesPerChord;
       memcpy(drums, beat0, sizeof(drums));
+      break;
+
+    case 1:
+      numDrums = 3;
+      drumHitsPerChord = melodyNotesPerChord;
+      memcpy(drums, beat1, sizeof(drums));
       break;
   }
 }

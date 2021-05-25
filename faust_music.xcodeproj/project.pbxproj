@@ -173,82 +173,82 @@
 		DB9B93F9265774920010EAEE /* AndanteEP35.wav in Resources */ = {isa = PBXBuildFile; fileRef = DB9B93B0265774920010EAEE /* AndanteEP35.wav */; };
 		DB9B93FA265774920010EAEE /* AndanteEP37.wav in Resources */ = {isa = PBXBuildFile; fileRef = DB9B93B1265774920010EAEE /* AndanteEP37.wav */; };
 		DB9B93FB265774920010EAEE /* AndanteEP36.wav in Resources */ = {isa = PBXBuildFile; fileRef = DB9B93B2265774920010EAEE /* AndanteEP36.wav */; };
-		DB9B9446265774A30010EAEE /* AndantePiano37.wav in Resources */ = {isa = PBXBuildFile; fileRef = DB9B93FD265774A30010EAEE /* AndantePiano37.wav */; };
-		DB9B9447265774A30010EAEE /* AndantePiano36.wav in Resources */ = {isa = PBXBuildFile; fileRef = DB9B93FE265774A30010EAEE /* AndantePiano36.wav */; };
-		DB9B9448265774A30010EAEE /* AndantePiano34.wav in Resources */ = {isa = PBXBuildFile; fileRef = DB9B93FF265774A30010EAEE /* AndantePiano34.wav */; };
-		DB9B9449265774A30010EAEE /* AndantePiano35.wav in Resources */ = {isa = PBXBuildFile; fileRef = DB9B9400265774A30010EAEE /* AndantePiano35.wav */; };
-		DB9B944A265774A30010EAEE /* AndantePiano31.wav in Resources */ = {isa = PBXBuildFile; fileRef = DB9B9401265774A30010EAEE /* AndantePiano31.wav */; };
-		DB9B944B265774A30010EAEE /* AndantePiano25.wav in Resources */ = {isa = PBXBuildFile; fileRef = DB9B9402265774A30010EAEE /* AndantePiano25.wav */; };
-		DB9B944C265774A30010EAEE /* AndantePiano24.wav in Resources */ = {isa = PBXBuildFile; fileRef = DB9B9403265774A30010EAEE /* AndantePiano24.wav */; };
-		DB9B944D265774A30010EAEE /* AndantePiano30.wav in Resources */ = {isa = PBXBuildFile; fileRef = DB9B9404265774A30010EAEE /* AndantePiano30.wav */; };
-		DB9B944E265774A30010EAEE /* AndantePiano26.wav in Resources */ = {isa = PBXBuildFile; fileRef = DB9B9405265774A30010EAEE /* AndantePiano26.wav */; };
-		DB9B944F265774A30010EAEE /* AndantePiano32.wav in Resources */ = {isa = PBXBuildFile; fileRef = DB9B9406265774A30010EAEE /* AndantePiano32.wav */; };
-		DB9B9450265774A30010EAEE /* AndantePiano33.wav in Resources */ = {isa = PBXBuildFile; fileRef = DB9B9407265774A30010EAEE /* AndantePiano33.wav */; };
-		DB9B9451265774A30010EAEE /* AndantePiano27.wav in Resources */ = {isa = PBXBuildFile; fileRef = DB9B9408265774A30010EAEE /* AndantePiano27.wav */; };
-		DB9B9452265774A30010EAEE /* AndantePiano68.wav in Resources */ = {isa = PBXBuildFile; fileRef = DB9B9409265774A30010EAEE /* AndantePiano68.wav */; };
-		DB9B9453265774A30010EAEE /* AndantePiano40.wav in Resources */ = {isa = PBXBuildFile; fileRef = DB9B940A265774A30010EAEE /* AndantePiano40.wav */; };
-		DB9B9454265774A30010EAEE /* AndantePiano54.wav in Resources */ = {isa = PBXBuildFile; fileRef = DB9B940B265774A30010EAEE /* AndantePiano54.wav */; };
-		DB9B9455265774A30010EAEE /* AndantePiano83.wav in Resources */ = {isa = PBXBuildFile; fileRef = DB9B940C265774A30010EAEE /* AndantePiano83.wav */; };
-		DB9B9456265774A30010EAEE /* AndantePiano96.wav in Resources */ = {isa = PBXBuildFile; fileRef = DB9B940D265774A30010EAEE /* AndantePiano96.wav */; };
-		DB9B9457265774A30010EAEE /* AndantePiano82.wav in Resources */ = {isa = PBXBuildFile; fileRef = DB9B940E265774A30010EAEE /* AndantePiano82.wav */; };
-		DB9B9458265774A30010EAEE /* AndantePiano55.wav in Resources */ = {isa = PBXBuildFile; fileRef = DB9B940F265774A30010EAEE /* AndantePiano55.wav */; };
-		DB9B9459265774A30010EAEE /* AndantePiano41.wav in Resources */ = {isa = PBXBuildFile; fileRef = DB9B9410265774A30010EAEE /* AndantePiano41.wav */; };
-		DB9B945A265774A30010EAEE /* AndantePiano69.wav in Resources */ = {isa = PBXBuildFile; fileRef = DB9B9411265774A30010EAEE /* AndantePiano69.wav */; };
-		DB9B945B265774A30010EAEE /* AndantePiano57.wav in Resources */ = {isa = PBXBuildFile; fileRef = DB9B9412265774A30010EAEE /* AndantePiano57.wav */; };
-		DB9B945C265774A30010EAEE /* AndantePiano43.wav in Resources */ = {isa = PBXBuildFile; fileRef = DB9B9413265774A30010EAEE /* AndantePiano43.wav */; };
-		DB9B945D265774A30010EAEE /* AndantePiano94.wav in Resources */ = {isa = PBXBuildFile; fileRef = DB9B9414265774A30010EAEE /* AndantePiano94.wav */; };
-		DB9B945E265774A30010EAEE /* AndantePiano80.wav in Resources */ = {isa = PBXBuildFile; fileRef = DB9B9415265774A30010EAEE /* AndantePiano80.wav */; };
-		DB9B945F265774A30010EAEE /* AndantePiano81.wav in Resources */ = {isa = PBXBuildFile; fileRef = DB9B9416265774A30010EAEE /* AndantePiano81.wav */; };
-		DB9B9460265774A30010EAEE /* AndantePiano95.wav in Resources */ = {isa = PBXBuildFile; fileRef = DB9B9417265774A30010EAEE /* AndantePiano95.wav */; };
-		DB9B9461265774A30010EAEE /* AndantePiano42.wav in Resources */ = {isa = PBXBuildFile; fileRef = DB9B9418265774A30010EAEE /* AndantePiano42.wav */; };
-		DB9B9462265774A30010EAEE /* AndantePiano56.wav in Resources */ = {isa = PBXBuildFile; fileRef = DB9B9419265774A30010EAEE /* AndantePiano56.wav */; };
-		DB9B9463265774A30010EAEE /* AndantePiano52.wav in Resources */ = {isa = PBXBuildFile; fileRef = DB9B941A265774A30010EAEE /* AndantePiano52.wav */; };
-		DB9B9464265774A30010EAEE /* AndantePiano46.wav in Resources */ = {isa = PBXBuildFile; fileRef = DB9B941B265774A30010EAEE /* AndantePiano46.wav */; };
-		DB9B9465265774A30010EAEE /* AndantePiano91.wav in Resources */ = {isa = PBXBuildFile; fileRef = DB9B941C265774A30010EAEE /* AndantePiano91.wav */; };
-		DB9B9466265774A30010EAEE /* AndantePiano85.wav in Resources */ = {isa = PBXBuildFile; fileRef = DB9B941D265774A30010EAEE /* AndantePiano85.wav */; };
-		DB9B9467265774A30010EAEE /* AndantePiano84.wav in Resources */ = {isa = PBXBuildFile; fileRef = DB9B941E265774A30010EAEE /* AndantePiano84.wav */; };
-		DB9B9468265774A30010EAEE /* AndantePiano90.wav in Resources */ = {isa = PBXBuildFile; fileRef = DB9B941F265774A30010EAEE /* AndantePiano90.wav */; };
-		DB9B9469265774A30010EAEE /* AndantePiano47.wav in Resources */ = {isa = PBXBuildFile; fileRef = DB9B9420265774A30010EAEE /* AndantePiano47.wav */; };
-		DB9B946A265774A30010EAEE /* AndantePiano53.wav in Resources */ = {isa = PBXBuildFile; fileRef = DB9B9421265774A30010EAEE /* AndantePiano53.wav */; };
-		DB9B946B265774A30010EAEE /* AndantePiano45.wav in Resources */ = {isa = PBXBuildFile; fileRef = DB9B9422265774A30010EAEE /* AndantePiano45.wav */; };
-		DB9B946C265774A30010EAEE /* AndantePiano51.wav in Resources */ = {isa = PBXBuildFile; fileRef = DB9B9423265774A30010EAEE /* AndantePiano51.wav */; };
-		DB9B946D265774A30010EAEE /* AndantePiano79.wav in Resources */ = {isa = PBXBuildFile; fileRef = DB9B9424265774A30010EAEE /* AndantePiano79.wav */; };
-		DB9B946E265774A30010EAEE /* AndantePiano86.wav in Resources */ = {isa = PBXBuildFile; fileRef = DB9B9425265774A30010EAEE /* AndantePiano86.wav */; };
-		DB9B946F265774A30010EAEE /* AndantePiano92.wav in Resources */ = {isa = PBXBuildFile; fileRef = DB9B9426265774A30010EAEE /* AndantePiano92.wav */; };
-		DB9B9470265774A30010EAEE /* AndantePiano93.wav in Resources */ = {isa = PBXBuildFile; fileRef = DB9B9427265774A30010EAEE /* AndantePiano93.wav */; };
-		DB9B9471265774A30010EAEE /* AndantePiano87.wav in Resources */ = {isa = PBXBuildFile; fileRef = DB9B9428265774A30010EAEE /* AndantePiano87.wav */; };
-		DB9B9472265774A30010EAEE /* AndantePiano78.wav in Resources */ = {isa = PBXBuildFile; fileRef = DB9B9429265774A30010EAEE /* AndantePiano78.wav */; };
-		DB9B9473265774A30010EAEE /* AndantePiano50.wav in Resources */ = {isa = PBXBuildFile; fileRef = DB9B942A265774A30010EAEE /* AndantePiano50.wav */; };
-		DB9B9474265774A30010EAEE /* AndantePiano44.wav in Resources */ = {isa = PBXBuildFile; fileRef = DB9B942B265774A30010EAEE /* AndantePiano44.wav */; };
-		DB9B9475265774A30010EAEE /* AndantePiano49.wav in Resources */ = {isa = PBXBuildFile; fileRef = DB9B942C265774A30010EAEE /* AndantePiano49.wav */; };
-		DB9B9476265774A30010EAEE /* AndantePiano61.wav in Resources */ = {isa = PBXBuildFile; fileRef = DB9B942D265774A30010EAEE /* AndantePiano61.wav */; };
-		DB9B9477265774A30010EAEE /* AndantePiano75.wav in Resources */ = {isa = PBXBuildFile; fileRef = DB9B942E265774A30010EAEE /* AndantePiano75.wav */; };
-		DB9B9478265774A30010EAEE /* AndantePiano74.wav in Resources */ = {isa = PBXBuildFile; fileRef = DB9B942F265774A30010EAEE /* AndantePiano74.wav */; };
-		DB9B9479265774A30010EAEE /* AndantePiano60.wav in Resources */ = {isa = PBXBuildFile; fileRef = DB9B9430265774A30010EAEE /* AndantePiano60.wav */; };
-		DB9B947A265774A30010EAEE /* AndantePiano48.wav in Resources */ = {isa = PBXBuildFile; fileRef = DB9B9431265774A30010EAEE /* AndantePiano48.wav */; };
-		DB9B947B265774A30010EAEE /* AndantePiano76.wav in Resources */ = {isa = PBXBuildFile; fileRef = DB9B9432265774A30010EAEE /* AndantePiano76.wav */; };
-		DB9B947C265774A30010EAEE /* AndantePiano62.wav in Resources */ = {isa = PBXBuildFile; fileRef = DB9B9433265774A30010EAEE /* AndantePiano62.wav */; };
-		DB9B947D265774A30010EAEE /* AndantePiano89.wav in Resources */ = {isa = PBXBuildFile; fileRef = DB9B9434265774A30010EAEE /* AndantePiano89.wav */; };
-		DB9B947E265774A30010EAEE /* AndantePiano88.wav in Resources */ = {isa = PBXBuildFile; fileRef = DB9B9435265774A30010EAEE /* AndantePiano88.wav */; };
-		DB9B947F265774A30010EAEE /* AndantePiano63.wav in Resources */ = {isa = PBXBuildFile; fileRef = DB9B9436265774A30010EAEE /* AndantePiano63.wav */; };
-		DB9B9480265774A30010EAEE /* AndantePiano77.wav in Resources */ = {isa = PBXBuildFile; fileRef = DB9B9437265774A30010EAEE /* AndantePiano77.wav */; };
-		DB9B9481265774A30010EAEE /* AndantePiano73.wav in Resources */ = {isa = PBXBuildFile; fileRef = DB9B9438265774A30010EAEE /* AndantePiano73.wav */; };
-		DB9B9482265774A30010EAEE /* AndantePiano67.wav in Resources */ = {isa = PBXBuildFile; fileRef = DB9B9439265774A30010EAEE /* AndantePiano67.wav */; };
-		DB9B9483265774A30010EAEE /* AndantePiano66.wav in Resources */ = {isa = PBXBuildFile; fileRef = DB9B943A265774A30010EAEE /* AndantePiano66.wav */; };
-		DB9B9484265774A30010EAEE /* AndantePiano72.wav in Resources */ = {isa = PBXBuildFile; fileRef = DB9B943B265774A30010EAEE /* AndantePiano72.wav */; };
-		DB9B9485265774A30010EAEE /* AndantePiano64.wav in Resources */ = {isa = PBXBuildFile; fileRef = DB9B943C265774A30010EAEE /* AndantePiano64.wav */; };
-		DB9B9486265774A30010EAEE /* AndantePiano70.wav in Resources */ = {isa = PBXBuildFile; fileRef = DB9B943D265774A30010EAEE /* AndantePiano70.wav */; };
-		DB9B9487265774A30010EAEE /* AndantePiano58.wav in Resources */ = {isa = PBXBuildFile; fileRef = DB9B943E265774A30010EAEE /* AndantePiano58.wav */; };
-		DB9B9488265774A30010EAEE /* AndantePiano59.wav in Resources */ = {isa = PBXBuildFile; fileRef = DB9B943F265774A30010EAEE /* AndantePiano59.wav */; };
-		DB9B9489265774A30010EAEE /* AndantePiano71.wav in Resources */ = {isa = PBXBuildFile; fileRef = DB9B9440265774A30010EAEE /* AndantePiano71.wav */; };
-		DB9B948A265774A30010EAEE /* AndantePiano65.wav in Resources */ = {isa = PBXBuildFile; fileRef = DB9B9441265774A30010EAEE /* AndantePiano65.wav */; };
-		DB9B948B265774A30010EAEE /* AndantePiano29.wav in Resources */ = {isa = PBXBuildFile; fileRef = DB9B9442265774A30010EAEE /* AndantePiano29.wav */; };
-		DB9B948C265774A30010EAEE /* AndantePiano28.wav in Resources */ = {isa = PBXBuildFile; fileRef = DB9B9443265774A30010EAEE /* AndantePiano28.wav */; };
-		DB9B948D265774A30010EAEE /* AndantePiano38.wav in Resources */ = {isa = PBXBuildFile; fileRef = DB9B9444265774A30010EAEE /* AndantePiano38.wav */; };
-		DB9B948E265774A30010EAEE /* AndantePiano39.wav in Resources */ = {isa = PBXBuildFile; fileRef = DB9B9445265774A30010EAEE /* AndantePiano39.wav */; };
 		DBA14CB62654B4C600D09251 /* AndanteDrumsAcousticSnare.wav in Resources */ = {isa = PBXBuildFile; fileRef = DBA14CB32654B4C500D09251 /* AndanteDrumsAcousticSnare.wav */; };
 		DBA14CB72654B4C600D09251 /* AndanteDrumsAcousticKick.wav in Resources */ = {isa = PBXBuildFile; fileRef = DBA14CB42654B4C500D09251 /* AndanteDrumsAcousticKick.wav */; };
 		DBA14CB82654B4C600D09251 /* AndanteDrumsAcousticHat.wav in Resources */ = {isa = PBXBuildFile; fileRef = DBA14CB52654B4C500D09251 /* AndanteDrumsAcousticHat.wav */; };
+		DBEB6A19265C890E0088609B /* AndantePiano37.wav in Resources */ = {isa = PBXBuildFile; fileRef = DBEB69D0265C89080088609B /* AndantePiano37.wav */; };
+		DBEB6A1A265C890E0088609B /* AndantePiano36.wav in Resources */ = {isa = PBXBuildFile; fileRef = DBEB69D1265C89080088609B /* AndantePiano36.wav */; };
+		DBEB6A1B265C890E0088609B /* AndantePiano34.wav in Resources */ = {isa = PBXBuildFile; fileRef = DBEB69D2265C89080088609B /* AndantePiano34.wav */; };
+		DBEB6A1C265C890E0088609B /* AndantePiano35.wav in Resources */ = {isa = PBXBuildFile; fileRef = DBEB69D3265C89080088609B /* AndantePiano35.wav */; };
+		DBEB6A1D265C890E0088609B /* AndantePiano31.wav in Resources */ = {isa = PBXBuildFile; fileRef = DBEB69D4265C89080088609B /* AndantePiano31.wav */; };
+		DBEB6A1E265C890E0088609B /* AndantePiano25.wav in Resources */ = {isa = PBXBuildFile; fileRef = DBEB69D5265C89080088609B /* AndantePiano25.wav */; };
+		DBEB6A1F265C890E0088609B /* AndantePiano24.wav in Resources */ = {isa = PBXBuildFile; fileRef = DBEB69D6265C89080088609B /* AndantePiano24.wav */; };
+		DBEB6A20265C890E0088609B /* AndantePiano30.wav in Resources */ = {isa = PBXBuildFile; fileRef = DBEB69D7265C89080088609B /* AndantePiano30.wav */; };
+		DBEB6A21265C890E0088609B /* AndantePiano26.wav in Resources */ = {isa = PBXBuildFile; fileRef = DBEB69D8265C89080088609B /* AndantePiano26.wav */; };
+		DBEB6A22265C890E0088609B /* AndantePiano32.wav in Resources */ = {isa = PBXBuildFile; fileRef = DBEB69D9265C89080088609B /* AndantePiano32.wav */; };
+		DBEB6A23265C890E0088609B /* AndantePiano33.wav in Resources */ = {isa = PBXBuildFile; fileRef = DBEB69DA265C89080088609B /* AndantePiano33.wav */; };
+		DBEB6A24265C890E0088609B /* AndantePiano27.wav in Resources */ = {isa = PBXBuildFile; fileRef = DBEB69DB265C89080088609B /* AndantePiano27.wav */; };
+		DBEB6A25265C890E0088609B /* AndantePiano68.wav in Resources */ = {isa = PBXBuildFile; fileRef = DBEB69DC265C89080088609B /* AndantePiano68.wav */; };
+		DBEB6A26265C890E0088609B /* AndantePiano40.wav in Resources */ = {isa = PBXBuildFile; fileRef = DBEB69DD265C89080088609B /* AndantePiano40.wav */; };
+		DBEB6A27265C890E0088609B /* AndantePiano54.wav in Resources */ = {isa = PBXBuildFile; fileRef = DBEB69DE265C89080088609B /* AndantePiano54.wav */; };
+		DBEB6A28265C890F0088609B /* AndantePiano83.wav in Resources */ = {isa = PBXBuildFile; fileRef = DBEB69DF265C89080088609B /* AndantePiano83.wav */; };
+		DBEB6A29265C890F0088609B /* AndantePiano96.wav in Resources */ = {isa = PBXBuildFile; fileRef = DBEB69E0265C89080088609B /* AndantePiano96.wav */; };
+		DBEB6A2A265C890F0088609B /* AndantePiano82.wav in Resources */ = {isa = PBXBuildFile; fileRef = DBEB69E1265C89080088609B /* AndantePiano82.wav */; };
+		DBEB6A2B265C890F0088609B /* AndantePiano55.wav in Resources */ = {isa = PBXBuildFile; fileRef = DBEB69E2265C89080088609B /* AndantePiano55.wav */; };
+		DBEB6A2C265C890F0088609B /* AndantePiano41.wav in Resources */ = {isa = PBXBuildFile; fileRef = DBEB69E3265C89080088609B /* AndantePiano41.wav */; };
+		DBEB6A2D265C890F0088609B /* AndantePiano69.wav in Resources */ = {isa = PBXBuildFile; fileRef = DBEB69E4265C89080088609B /* AndantePiano69.wav */; };
+		DBEB6A2E265C890F0088609B /* AndantePiano57.wav in Resources */ = {isa = PBXBuildFile; fileRef = DBEB69E5265C89080088609B /* AndantePiano57.wav */; };
+		DBEB6A2F265C890F0088609B /* AndantePiano43.wav in Resources */ = {isa = PBXBuildFile; fileRef = DBEB69E6265C89080088609B /* AndantePiano43.wav */; };
+		DBEB6A30265C890F0088609B /* AndantePiano94.wav in Resources */ = {isa = PBXBuildFile; fileRef = DBEB69E7265C89080088609B /* AndantePiano94.wav */; };
+		DBEB6A31265C890F0088609B /* AndantePiano80.wav in Resources */ = {isa = PBXBuildFile; fileRef = DBEB69E8265C89080088609B /* AndantePiano80.wav */; };
+		DBEB6A32265C890F0088609B /* AndantePiano81.wav in Resources */ = {isa = PBXBuildFile; fileRef = DBEB69E9265C89080088609B /* AndantePiano81.wav */; };
+		DBEB6A33265C890F0088609B /* AndantePiano95.wav in Resources */ = {isa = PBXBuildFile; fileRef = DBEB69EA265C89090088609B /* AndantePiano95.wav */; };
+		DBEB6A34265C890F0088609B /* AndantePiano42.wav in Resources */ = {isa = PBXBuildFile; fileRef = DBEB69EB265C89090088609B /* AndantePiano42.wav */; };
+		DBEB6A35265C890F0088609B /* AndantePiano56.wav in Resources */ = {isa = PBXBuildFile; fileRef = DBEB69EC265C89090088609B /* AndantePiano56.wav */; };
+		DBEB6A36265C890F0088609B /* AndantePiano52.wav in Resources */ = {isa = PBXBuildFile; fileRef = DBEB69ED265C89090088609B /* AndantePiano52.wav */; };
+		DBEB6A37265C890F0088609B /* AndantePiano46.wav in Resources */ = {isa = PBXBuildFile; fileRef = DBEB69EE265C89090088609B /* AndantePiano46.wav */; };
+		DBEB6A38265C890F0088609B /* AndantePiano91.wav in Resources */ = {isa = PBXBuildFile; fileRef = DBEB69EF265C89090088609B /* AndantePiano91.wav */; };
+		DBEB6A39265C890F0088609B /* AndantePiano85.wav in Resources */ = {isa = PBXBuildFile; fileRef = DBEB69F0265C89090088609B /* AndantePiano85.wav */; };
+		DBEB6A3A265C890F0088609B /* AndantePiano84.wav in Resources */ = {isa = PBXBuildFile; fileRef = DBEB69F1265C89090088609B /* AndantePiano84.wav */; };
+		DBEB6A3B265C890F0088609B /* AndantePiano90.wav in Resources */ = {isa = PBXBuildFile; fileRef = DBEB69F2265C89090088609B /* AndantePiano90.wav */; };
+		DBEB6A3C265C890F0088609B /* AndantePiano47.wav in Resources */ = {isa = PBXBuildFile; fileRef = DBEB69F3265C89090088609B /* AndantePiano47.wav */; };
+		DBEB6A3D265C890F0088609B /* AndantePiano53.wav in Resources */ = {isa = PBXBuildFile; fileRef = DBEB69F4265C89090088609B /* AndantePiano53.wav */; };
+		DBEB6A3E265C890F0088609B /* AndantePiano45.wav in Resources */ = {isa = PBXBuildFile; fileRef = DBEB69F5265C89090088609B /* AndantePiano45.wav */; };
+		DBEB6A3F265C890F0088609B /* AndantePiano51.wav in Resources */ = {isa = PBXBuildFile; fileRef = DBEB69F6265C89090088609B /* AndantePiano51.wav */; };
+		DBEB6A40265C890F0088609B /* AndantePiano79.wav in Resources */ = {isa = PBXBuildFile; fileRef = DBEB69F7265C89090088609B /* AndantePiano79.wav */; };
+		DBEB6A41265C890F0088609B /* AndantePiano86.wav in Resources */ = {isa = PBXBuildFile; fileRef = DBEB69F8265C89090088609B /* AndantePiano86.wav */; };
+		DBEB6A42265C890F0088609B /* AndantePiano92.wav in Resources */ = {isa = PBXBuildFile; fileRef = DBEB69F9265C89090088609B /* AndantePiano92.wav */; };
+		DBEB6A43265C890F0088609B /* AndantePiano93.wav in Resources */ = {isa = PBXBuildFile; fileRef = DBEB69FA265C89090088609B /* AndantePiano93.wav */; };
+		DBEB6A44265C890F0088609B /* AndantePiano87.wav in Resources */ = {isa = PBXBuildFile; fileRef = DBEB69FB265C89090088609B /* AndantePiano87.wav */; };
+		DBEB6A45265C890F0088609B /* AndantePiano78.wav in Resources */ = {isa = PBXBuildFile; fileRef = DBEB69FC265C89090088609B /* AndantePiano78.wav */; };
+		DBEB6A46265C890F0088609B /* AndantePiano50.wav in Resources */ = {isa = PBXBuildFile; fileRef = DBEB69FD265C89090088609B /* AndantePiano50.wav */; };
+		DBEB6A47265C890F0088609B /* AndantePiano44.wav in Resources */ = {isa = PBXBuildFile; fileRef = DBEB69FE265C89090088609B /* AndantePiano44.wav */; };
+		DBEB6A48265C890F0088609B /* AndantePiano49.wav in Resources */ = {isa = PBXBuildFile; fileRef = DBEB69FF265C89090088609B /* AndantePiano49.wav */; };
+		DBEB6A49265C890F0088609B /* AndantePiano61.wav in Resources */ = {isa = PBXBuildFile; fileRef = DBEB6A00265C89090088609B /* AndantePiano61.wav */; };
+		DBEB6A4A265C890F0088609B /* AndantePiano75.wav in Resources */ = {isa = PBXBuildFile; fileRef = DBEB6A01265C89090088609B /* AndantePiano75.wav */; };
+		DBEB6A4B265C890F0088609B /* AndantePiano74.wav in Resources */ = {isa = PBXBuildFile; fileRef = DBEB6A02265C89090088609B /* AndantePiano74.wav */; };
+		DBEB6A4C265C890F0088609B /* AndantePiano60.wav in Resources */ = {isa = PBXBuildFile; fileRef = DBEB6A03265C89090088609B /* AndantePiano60.wav */; };
+		DBEB6A4D265C890F0088609B /* AndantePiano48.wav in Resources */ = {isa = PBXBuildFile; fileRef = DBEB6A04265C89090088609B /* AndantePiano48.wav */; };
+		DBEB6A4E265C890F0088609B /* AndantePiano76.wav in Resources */ = {isa = PBXBuildFile; fileRef = DBEB6A05265C89090088609B /* AndantePiano76.wav */; };
+		DBEB6A4F265C890F0088609B /* AndantePiano62.wav in Resources */ = {isa = PBXBuildFile; fileRef = DBEB6A06265C89090088609B /* AndantePiano62.wav */; };
+		DBEB6A50265C890F0088609B /* AndantePiano89.wav in Resources */ = {isa = PBXBuildFile; fileRef = DBEB6A07265C89090088609B /* AndantePiano89.wav */; };
+		DBEB6A51265C890F0088609B /* AndantePiano88.wav in Resources */ = {isa = PBXBuildFile; fileRef = DBEB6A08265C89090088609B /* AndantePiano88.wav */; };
+		DBEB6A52265C890F0088609B /* AndantePiano63.wav in Resources */ = {isa = PBXBuildFile; fileRef = DBEB6A09265C89090088609B /* AndantePiano63.wav */; };
+		DBEB6A53265C890F0088609B /* AndantePiano77.wav in Resources */ = {isa = PBXBuildFile; fileRef = DBEB6A0A265C890A0088609B /* AndantePiano77.wav */; };
+		DBEB6A54265C890F0088609B /* AndantePiano73.wav in Resources */ = {isa = PBXBuildFile; fileRef = DBEB6A0B265C890A0088609B /* AndantePiano73.wav */; };
+		DBEB6A55265C890F0088609B /* AndantePiano67.wav in Resources */ = {isa = PBXBuildFile; fileRef = DBEB6A0C265C890A0088609B /* AndantePiano67.wav */; };
+		DBEB6A56265C890F0088609B /* AndantePiano66.wav in Resources */ = {isa = PBXBuildFile; fileRef = DBEB6A0D265C890A0088609B /* AndantePiano66.wav */; };
+		DBEB6A57265C890F0088609B /* AndantePiano72.wav in Resources */ = {isa = PBXBuildFile; fileRef = DBEB6A0E265C890A0088609B /* AndantePiano72.wav */; };
+		DBEB6A58265C890F0088609B /* AndantePiano64.wav in Resources */ = {isa = PBXBuildFile; fileRef = DBEB6A0F265C890A0088609B /* AndantePiano64.wav */; };
+		DBEB6A59265C890F0088609B /* AndantePiano70.wav in Resources */ = {isa = PBXBuildFile; fileRef = DBEB6A10265C890A0088609B /* AndantePiano70.wav */; };
+		DBEB6A5A265C890F0088609B /* AndantePiano58.wav in Resources */ = {isa = PBXBuildFile; fileRef = DBEB6A11265C890A0088609B /* AndantePiano58.wav */; };
+		DBEB6A5B265C890F0088609B /* AndantePiano59.wav in Resources */ = {isa = PBXBuildFile; fileRef = DBEB6A12265C890A0088609B /* AndantePiano59.wav */; };
+		DBEB6A5C265C890F0088609B /* AndantePiano71.wav in Resources */ = {isa = PBXBuildFile; fileRef = DBEB6A13265C890A0088609B /* AndantePiano71.wav */; };
+		DBEB6A5D265C890F0088609B /* AndantePiano65.wav in Resources */ = {isa = PBXBuildFile; fileRef = DBEB6A14265C890A0088609B /* AndantePiano65.wav */; };
+		DBEB6A5E265C890F0088609B /* AndantePiano29.wav in Resources */ = {isa = PBXBuildFile; fileRef = DBEB6A15265C890A0088609B /* AndantePiano29.wav */; };
+		DBEB6A5F265C890F0088609B /* AndantePiano28.wav in Resources */ = {isa = PBXBuildFile; fileRef = DBEB6A16265C890A0088609B /* AndantePiano28.wav */; };
+		DBEB6A60265C890F0088609B /* AndantePiano38.wav in Resources */ = {isa = PBXBuildFile; fileRef = DBEB6A17265C890A0088609B /* AndantePiano38.wav */; };
+		DBEB6A61265C890F0088609B /* AndantePiano39.wav in Resources */ = {isa = PBXBuildFile; fileRef = DBEB6A18265C890A0088609B /* AndantePiano39.wav */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -445,82 +445,82 @@
 		DB9B93B0265774920010EAEE /* AndanteEP35.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = AndanteEP35.wav; sourceTree = "<group>"; };
 		DB9B93B1265774920010EAEE /* AndanteEP37.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = AndanteEP37.wav; sourceTree = "<group>"; };
 		DB9B93B2265774920010EAEE /* AndanteEP36.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = AndanteEP36.wav; sourceTree = "<group>"; };
-		DB9B93FD265774A30010EAEE /* AndantePiano37.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = AndantePiano37.wav; sourceTree = "<group>"; };
-		DB9B93FE265774A30010EAEE /* AndantePiano36.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = AndantePiano36.wav; sourceTree = "<group>"; };
-		DB9B93FF265774A30010EAEE /* AndantePiano34.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = AndantePiano34.wav; sourceTree = "<group>"; };
-		DB9B9400265774A30010EAEE /* AndantePiano35.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = AndantePiano35.wav; sourceTree = "<group>"; };
-		DB9B9401265774A30010EAEE /* AndantePiano31.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = AndantePiano31.wav; sourceTree = "<group>"; };
-		DB9B9402265774A30010EAEE /* AndantePiano25.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = AndantePiano25.wav; sourceTree = "<group>"; };
-		DB9B9403265774A30010EAEE /* AndantePiano24.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = AndantePiano24.wav; sourceTree = "<group>"; };
-		DB9B9404265774A30010EAEE /* AndantePiano30.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = AndantePiano30.wav; sourceTree = "<group>"; };
-		DB9B9405265774A30010EAEE /* AndantePiano26.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = AndantePiano26.wav; sourceTree = "<group>"; };
-		DB9B9406265774A30010EAEE /* AndantePiano32.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = AndantePiano32.wav; sourceTree = "<group>"; };
-		DB9B9407265774A30010EAEE /* AndantePiano33.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = AndantePiano33.wav; sourceTree = "<group>"; };
-		DB9B9408265774A30010EAEE /* AndantePiano27.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = AndantePiano27.wav; sourceTree = "<group>"; };
-		DB9B9409265774A30010EAEE /* AndantePiano68.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = AndantePiano68.wav; sourceTree = "<group>"; };
-		DB9B940A265774A30010EAEE /* AndantePiano40.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = AndantePiano40.wav; sourceTree = "<group>"; };
-		DB9B940B265774A30010EAEE /* AndantePiano54.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = AndantePiano54.wav; sourceTree = "<group>"; };
-		DB9B940C265774A30010EAEE /* AndantePiano83.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = AndantePiano83.wav; sourceTree = "<group>"; };
-		DB9B940D265774A30010EAEE /* AndantePiano96.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = AndantePiano96.wav; sourceTree = "<group>"; };
-		DB9B940E265774A30010EAEE /* AndantePiano82.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = AndantePiano82.wav; sourceTree = "<group>"; };
-		DB9B940F265774A30010EAEE /* AndantePiano55.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = AndantePiano55.wav; sourceTree = "<group>"; };
-		DB9B9410265774A30010EAEE /* AndantePiano41.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = AndantePiano41.wav; sourceTree = "<group>"; };
-		DB9B9411265774A30010EAEE /* AndantePiano69.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = AndantePiano69.wav; sourceTree = "<group>"; };
-		DB9B9412265774A30010EAEE /* AndantePiano57.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = AndantePiano57.wav; sourceTree = "<group>"; };
-		DB9B9413265774A30010EAEE /* AndantePiano43.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = AndantePiano43.wav; sourceTree = "<group>"; };
-		DB9B9414265774A30010EAEE /* AndantePiano94.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = AndantePiano94.wav; sourceTree = "<group>"; };
-		DB9B9415265774A30010EAEE /* AndantePiano80.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = AndantePiano80.wav; sourceTree = "<group>"; };
-		DB9B9416265774A30010EAEE /* AndantePiano81.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = AndantePiano81.wav; sourceTree = "<group>"; };
-		DB9B9417265774A30010EAEE /* AndantePiano95.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = AndantePiano95.wav; sourceTree = "<group>"; };
-		DB9B9418265774A30010EAEE /* AndantePiano42.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = AndantePiano42.wav; sourceTree = "<group>"; };
-		DB9B9419265774A30010EAEE /* AndantePiano56.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = AndantePiano56.wav; sourceTree = "<group>"; };
-		DB9B941A265774A30010EAEE /* AndantePiano52.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = AndantePiano52.wav; sourceTree = "<group>"; };
-		DB9B941B265774A30010EAEE /* AndantePiano46.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = AndantePiano46.wav; sourceTree = "<group>"; };
-		DB9B941C265774A30010EAEE /* AndantePiano91.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = AndantePiano91.wav; sourceTree = "<group>"; };
-		DB9B941D265774A30010EAEE /* AndantePiano85.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = AndantePiano85.wav; sourceTree = "<group>"; };
-		DB9B941E265774A30010EAEE /* AndantePiano84.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = AndantePiano84.wav; sourceTree = "<group>"; };
-		DB9B941F265774A30010EAEE /* AndantePiano90.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = AndantePiano90.wav; sourceTree = "<group>"; };
-		DB9B9420265774A30010EAEE /* AndantePiano47.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = AndantePiano47.wav; sourceTree = "<group>"; };
-		DB9B9421265774A30010EAEE /* AndantePiano53.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = AndantePiano53.wav; sourceTree = "<group>"; };
-		DB9B9422265774A30010EAEE /* AndantePiano45.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = AndantePiano45.wav; sourceTree = "<group>"; };
-		DB9B9423265774A30010EAEE /* AndantePiano51.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = AndantePiano51.wav; sourceTree = "<group>"; };
-		DB9B9424265774A30010EAEE /* AndantePiano79.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = AndantePiano79.wav; sourceTree = "<group>"; };
-		DB9B9425265774A30010EAEE /* AndantePiano86.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = AndantePiano86.wav; sourceTree = "<group>"; };
-		DB9B9426265774A30010EAEE /* AndantePiano92.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = AndantePiano92.wav; sourceTree = "<group>"; };
-		DB9B9427265774A30010EAEE /* AndantePiano93.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = AndantePiano93.wav; sourceTree = "<group>"; };
-		DB9B9428265774A30010EAEE /* AndantePiano87.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = AndantePiano87.wav; sourceTree = "<group>"; };
-		DB9B9429265774A30010EAEE /* AndantePiano78.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = AndantePiano78.wav; sourceTree = "<group>"; };
-		DB9B942A265774A30010EAEE /* AndantePiano50.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = AndantePiano50.wav; sourceTree = "<group>"; };
-		DB9B942B265774A30010EAEE /* AndantePiano44.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = AndantePiano44.wav; sourceTree = "<group>"; };
-		DB9B942C265774A30010EAEE /* AndantePiano49.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = AndantePiano49.wav; sourceTree = "<group>"; };
-		DB9B942D265774A30010EAEE /* AndantePiano61.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = AndantePiano61.wav; sourceTree = "<group>"; };
-		DB9B942E265774A30010EAEE /* AndantePiano75.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = AndantePiano75.wav; sourceTree = "<group>"; };
-		DB9B942F265774A30010EAEE /* AndantePiano74.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = AndantePiano74.wav; sourceTree = "<group>"; };
-		DB9B9430265774A30010EAEE /* AndantePiano60.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = AndantePiano60.wav; sourceTree = "<group>"; };
-		DB9B9431265774A30010EAEE /* AndantePiano48.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = AndantePiano48.wav; sourceTree = "<group>"; };
-		DB9B9432265774A30010EAEE /* AndantePiano76.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = AndantePiano76.wav; sourceTree = "<group>"; };
-		DB9B9433265774A30010EAEE /* AndantePiano62.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = AndantePiano62.wav; sourceTree = "<group>"; };
-		DB9B9434265774A30010EAEE /* AndantePiano89.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = AndantePiano89.wav; sourceTree = "<group>"; };
-		DB9B9435265774A30010EAEE /* AndantePiano88.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = AndantePiano88.wav; sourceTree = "<group>"; };
-		DB9B9436265774A30010EAEE /* AndantePiano63.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = AndantePiano63.wav; sourceTree = "<group>"; };
-		DB9B9437265774A30010EAEE /* AndantePiano77.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = AndantePiano77.wav; sourceTree = "<group>"; };
-		DB9B9438265774A30010EAEE /* AndantePiano73.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = AndantePiano73.wav; sourceTree = "<group>"; };
-		DB9B9439265774A30010EAEE /* AndantePiano67.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = AndantePiano67.wav; sourceTree = "<group>"; };
-		DB9B943A265774A30010EAEE /* AndantePiano66.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = AndantePiano66.wav; sourceTree = "<group>"; };
-		DB9B943B265774A30010EAEE /* AndantePiano72.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = AndantePiano72.wav; sourceTree = "<group>"; };
-		DB9B943C265774A30010EAEE /* AndantePiano64.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = AndantePiano64.wav; sourceTree = "<group>"; };
-		DB9B943D265774A30010EAEE /* AndantePiano70.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = AndantePiano70.wav; sourceTree = "<group>"; };
-		DB9B943E265774A30010EAEE /* AndantePiano58.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = AndantePiano58.wav; sourceTree = "<group>"; };
-		DB9B943F265774A30010EAEE /* AndantePiano59.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = AndantePiano59.wav; sourceTree = "<group>"; };
-		DB9B9440265774A30010EAEE /* AndantePiano71.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = AndantePiano71.wav; sourceTree = "<group>"; };
-		DB9B9441265774A30010EAEE /* AndantePiano65.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = AndantePiano65.wav; sourceTree = "<group>"; };
-		DB9B9442265774A30010EAEE /* AndantePiano29.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = AndantePiano29.wav; sourceTree = "<group>"; };
-		DB9B9443265774A30010EAEE /* AndantePiano28.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = AndantePiano28.wav; sourceTree = "<group>"; };
-		DB9B9444265774A30010EAEE /* AndantePiano38.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = AndantePiano38.wav; sourceTree = "<group>"; };
-		DB9B9445265774A30010EAEE /* AndantePiano39.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = AndantePiano39.wav; sourceTree = "<group>"; };
 		DBA14CB32654B4C500D09251 /* AndanteDrumsAcousticSnare.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = AndanteDrumsAcousticSnare.wav; sourceTree = "<group>"; };
 		DBA14CB42654B4C500D09251 /* AndanteDrumsAcousticKick.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = AndanteDrumsAcousticKick.wav; sourceTree = "<group>"; };
 		DBA14CB52654B4C500D09251 /* AndanteDrumsAcousticHat.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = AndanteDrumsAcousticHat.wav; sourceTree = "<group>"; };
+		DBEB69D0265C89080088609B /* AndantePiano37.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = AndantePiano37.wav; sourceTree = "<group>"; };
+		DBEB69D1265C89080088609B /* AndantePiano36.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = AndantePiano36.wav; sourceTree = "<group>"; };
+		DBEB69D2265C89080088609B /* AndantePiano34.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = AndantePiano34.wav; sourceTree = "<group>"; };
+		DBEB69D3265C89080088609B /* AndantePiano35.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = AndantePiano35.wav; sourceTree = "<group>"; };
+		DBEB69D4265C89080088609B /* AndantePiano31.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = AndantePiano31.wav; sourceTree = "<group>"; };
+		DBEB69D5265C89080088609B /* AndantePiano25.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = AndantePiano25.wav; sourceTree = "<group>"; };
+		DBEB69D6265C89080088609B /* AndantePiano24.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = AndantePiano24.wav; sourceTree = "<group>"; };
+		DBEB69D7265C89080088609B /* AndantePiano30.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = AndantePiano30.wav; sourceTree = "<group>"; };
+		DBEB69D8265C89080088609B /* AndantePiano26.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = AndantePiano26.wav; sourceTree = "<group>"; };
+		DBEB69D9265C89080088609B /* AndantePiano32.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = AndantePiano32.wav; sourceTree = "<group>"; };
+		DBEB69DA265C89080088609B /* AndantePiano33.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = AndantePiano33.wav; sourceTree = "<group>"; };
+		DBEB69DB265C89080088609B /* AndantePiano27.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = AndantePiano27.wav; sourceTree = "<group>"; };
+		DBEB69DC265C89080088609B /* AndantePiano68.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = AndantePiano68.wav; sourceTree = "<group>"; };
+		DBEB69DD265C89080088609B /* AndantePiano40.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = AndantePiano40.wav; sourceTree = "<group>"; };
+		DBEB69DE265C89080088609B /* AndantePiano54.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = AndantePiano54.wav; sourceTree = "<group>"; };
+		DBEB69DF265C89080088609B /* AndantePiano83.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = AndantePiano83.wav; sourceTree = "<group>"; };
+		DBEB69E0265C89080088609B /* AndantePiano96.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = AndantePiano96.wav; sourceTree = "<group>"; };
+		DBEB69E1265C89080088609B /* AndantePiano82.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = AndantePiano82.wav; sourceTree = "<group>"; };
+		DBEB69E2265C89080088609B /* AndantePiano55.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = AndantePiano55.wav; sourceTree = "<group>"; };
+		DBEB69E3265C89080088609B /* AndantePiano41.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = AndantePiano41.wav; sourceTree = "<group>"; };
+		DBEB69E4265C89080088609B /* AndantePiano69.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = AndantePiano69.wav; sourceTree = "<group>"; };
+		DBEB69E5265C89080088609B /* AndantePiano57.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = AndantePiano57.wav; sourceTree = "<group>"; };
+		DBEB69E6265C89080088609B /* AndantePiano43.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = AndantePiano43.wav; sourceTree = "<group>"; };
+		DBEB69E7265C89080088609B /* AndantePiano94.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = AndantePiano94.wav; sourceTree = "<group>"; };
+		DBEB69E8265C89080088609B /* AndantePiano80.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = AndantePiano80.wav; sourceTree = "<group>"; };
+		DBEB69E9265C89080088609B /* AndantePiano81.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = AndantePiano81.wav; sourceTree = "<group>"; };
+		DBEB69EA265C89090088609B /* AndantePiano95.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = AndantePiano95.wav; sourceTree = "<group>"; };
+		DBEB69EB265C89090088609B /* AndantePiano42.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = AndantePiano42.wav; sourceTree = "<group>"; };
+		DBEB69EC265C89090088609B /* AndantePiano56.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = AndantePiano56.wav; sourceTree = "<group>"; };
+		DBEB69ED265C89090088609B /* AndantePiano52.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = AndantePiano52.wav; sourceTree = "<group>"; };
+		DBEB69EE265C89090088609B /* AndantePiano46.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = AndantePiano46.wav; sourceTree = "<group>"; };
+		DBEB69EF265C89090088609B /* AndantePiano91.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = AndantePiano91.wav; sourceTree = "<group>"; };
+		DBEB69F0265C89090088609B /* AndantePiano85.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = AndantePiano85.wav; sourceTree = "<group>"; };
+		DBEB69F1265C89090088609B /* AndantePiano84.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = AndantePiano84.wav; sourceTree = "<group>"; };
+		DBEB69F2265C89090088609B /* AndantePiano90.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = AndantePiano90.wav; sourceTree = "<group>"; };
+		DBEB69F3265C89090088609B /* AndantePiano47.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = AndantePiano47.wav; sourceTree = "<group>"; };
+		DBEB69F4265C89090088609B /* AndantePiano53.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = AndantePiano53.wav; sourceTree = "<group>"; };
+		DBEB69F5265C89090088609B /* AndantePiano45.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = AndantePiano45.wav; sourceTree = "<group>"; };
+		DBEB69F6265C89090088609B /* AndantePiano51.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = AndantePiano51.wav; sourceTree = "<group>"; };
+		DBEB69F7265C89090088609B /* AndantePiano79.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = AndantePiano79.wav; sourceTree = "<group>"; };
+		DBEB69F8265C89090088609B /* AndantePiano86.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = AndantePiano86.wav; sourceTree = "<group>"; };
+		DBEB69F9265C89090088609B /* AndantePiano92.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = AndantePiano92.wav; sourceTree = "<group>"; };
+		DBEB69FA265C89090088609B /* AndantePiano93.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = AndantePiano93.wav; sourceTree = "<group>"; };
+		DBEB69FB265C89090088609B /* AndantePiano87.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = AndantePiano87.wav; sourceTree = "<group>"; };
+		DBEB69FC265C89090088609B /* AndantePiano78.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = AndantePiano78.wav; sourceTree = "<group>"; };
+		DBEB69FD265C89090088609B /* AndantePiano50.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = AndantePiano50.wav; sourceTree = "<group>"; };
+		DBEB69FE265C89090088609B /* AndantePiano44.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = AndantePiano44.wav; sourceTree = "<group>"; };
+		DBEB69FF265C89090088609B /* AndantePiano49.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = AndantePiano49.wav; sourceTree = "<group>"; };
+		DBEB6A00265C89090088609B /* AndantePiano61.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = AndantePiano61.wav; sourceTree = "<group>"; };
+		DBEB6A01265C89090088609B /* AndantePiano75.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = AndantePiano75.wav; sourceTree = "<group>"; };
+		DBEB6A02265C89090088609B /* AndantePiano74.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = AndantePiano74.wav; sourceTree = "<group>"; };
+		DBEB6A03265C89090088609B /* AndantePiano60.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = AndantePiano60.wav; sourceTree = "<group>"; };
+		DBEB6A04265C89090088609B /* AndantePiano48.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = AndantePiano48.wav; sourceTree = "<group>"; };
+		DBEB6A05265C89090088609B /* AndantePiano76.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = AndantePiano76.wav; sourceTree = "<group>"; };
+		DBEB6A06265C89090088609B /* AndantePiano62.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = AndantePiano62.wav; sourceTree = "<group>"; };
+		DBEB6A07265C89090088609B /* AndantePiano89.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = AndantePiano89.wav; sourceTree = "<group>"; };
+		DBEB6A08265C89090088609B /* AndantePiano88.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = AndantePiano88.wav; sourceTree = "<group>"; };
+		DBEB6A09265C89090088609B /* AndantePiano63.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = AndantePiano63.wav; sourceTree = "<group>"; };
+		DBEB6A0A265C890A0088609B /* AndantePiano77.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = AndantePiano77.wav; sourceTree = "<group>"; };
+		DBEB6A0B265C890A0088609B /* AndantePiano73.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = AndantePiano73.wav; sourceTree = "<group>"; };
+		DBEB6A0C265C890A0088609B /* AndantePiano67.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = AndantePiano67.wav; sourceTree = "<group>"; };
+		DBEB6A0D265C890A0088609B /* AndantePiano66.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = AndantePiano66.wav; sourceTree = "<group>"; };
+		DBEB6A0E265C890A0088609B /* AndantePiano72.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = AndantePiano72.wav; sourceTree = "<group>"; };
+		DBEB6A0F265C890A0088609B /* AndantePiano64.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = AndantePiano64.wav; sourceTree = "<group>"; };
+		DBEB6A10265C890A0088609B /* AndantePiano70.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = AndantePiano70.wav; sourceTree = "<group>"; };
+		DBEB6A11265C890A0088609B /* AndantePiano58.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = AndantePiano58.wav; sourceTree = "<group>"; };
+		DBEB6A12265C890A0088609B /* AndantePiano59.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = AndantePiano59.wav; sourceTree = "<group>"; };
+		DBEB6A13265C890A0088609B /* AndantePiano71.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = AndantePiano71.wav; sourceTree = "<group>"; };
+		DBEB6A14265C890A0088609B /* AndantePiano65.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = AndantePiano65.wav; sourceTree = "<group>"; };
+		DBEB6A15265C890A0088609B /* AndantePiano29.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = AndantePiano29.wav; sourceTree = "<group>"; };
+		DBEB6A16265C890A0088609B /* AndantePiano28.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = AndantePiano28.wav; sourceTree = "<group>"; };
+		DBEB6A17265C890A0088609B /* AndantePiano38.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = AndantePiano38.wav; sourceTree = "<group>"; };
+		DBEB6A18265C890A0088609B /* AndantePiano39.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = AndantePiano39.wav; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -617,7 +617,6 @@
 			children = (
 				DB85ABFA2657B2B3002C5493 /* Ding.wav */,
 				DB85ABFC2657BBAA002C5493 /* trapKit */,
-				DB9B93FC265774A30010EAEE /* numberedPiano */,
 				DB9B92D6265774890010EAEE /* numberedBassAndEP */,
 				DB9B9369265774920010EAEE /* numberedEP */,
 				DBA14CB22654B4C500D09251 /* AndanteDrumsAcoustic */,
@@ -649,6 +648,7 @@
 		DB85ABFC2657BBAA002C5493 /* trapKit */ = {
 			isa = PBXGroup;
 			children = (
+				DBEB69CF265C89080088609B /* fake name haha */,
 				DB85ABFD2657BBAA002C5493 /* AndanteDrumsTrapSnare.wav */,
 				DB85ABFE2657BBAA002C5493 /* AndanteDrumsTrapHat.wav */,
 				DB85ABFF2657BBAA002C5493 /* AndanteDrumsTrapKick.wav */,
@@ -816,86 +816,6 @@
 			path = numberedEP;
 			sourceTree = "<group>";
 		};
-		DB9B93FC265774A30010EAEE /* numberedPiano */ = {
-			isa = PBXGroup;
-			children = (
-				DB9B93FD265774A30010EAEE /* AndantePiano37.wav */,
-				DB9B93FE265774A30010EAEE /* AndantePiano36.wav */,
-				DB9B93FF265774A30010EAEE /* AndantePiano34.wav */,
-				DB9B9400265774A30010EAEE /* AndantePiano35.wav */,
-				DB9B9401265774A30010EAEE /* AndantePiano31.wav */,
-				DB9B9402265774A30010EAEE /* AndantePiano25.wav */,
-				DB9B9403265774A30010EAEE /* AndantePiano24.wav */,
-				DB9B9404265774A30010EAEE /* AndantePiano30.wav */,
-				DB9B9405265774A30010EAEE /* AndantePiano26.wav */,
-				DB9B9406265774A30010EAEE /* AndantePiano32.wav */,
-				DB9B9407265774A30010EAEE /* AndantePiano33.wav */,
-				DB9B9408265774A30010EAEE /* AndantePiano27.wav */,
-				DB9B9409265774A30010EAEE /* AndantePiano68.wav */,
-				DB9B940A265774A30010EAEE /* AndantePiano40.wav */,
-				DB9B940B265774A30010EAEE /* AndantePiano54.wav */,
-				DB9B940C265774A30010EAEE /* AndantePiano83.wav */,
-				DB9B940D265774A30010EAEE /* AndantePiano96.wav */,
-				DB9B940E265774A30010EAEE /* AndantePiano82.wav */,
-				DB9B940F265774A30010EAEE /* AndantePiano55.wav */,
-				DB9B9410265774A30010EAEE /* AndantePiano41.wav */,
-				DB9B9411265774A30010EAEE /* AndantePiano69.wav */,
-				DB9B9412265774A30010EAEE /* AndantePiano57.wav */,
-				DB9B9413265774A30010EAEE /* AndantePiano43.wav */,
-				DB9B9414265774A30010EAEE /* AndantePiano94.wav */,
-				DB9B9415265774A30010EAEE /* AndantePiano80.wav */,
-				DB9B9416265774A30010EAEE /* AndantePiano81.wav */,
-				DB9B9417265774A30010EAEE /* AndantePiano95.wav */,
-				DB9B9418265774A30010EAEE /* AndantePiano42.wav */,
-				DB9B9419265774A30010EAEE /* AndantePiano56.wav */,
-				DB9B941A265774A30010EAEE /* AndantePiano52.wav */,
-				DB9B941B265774A30010EAEE /* AndantePiano46.wav */,
-				DB9B941C265774A30010EAEE /* AndantePiano91.wav */,
-				DB9B941D265774A30010EAEE /* AndantePiano85.wav */,
-				DB9B941E265774A30010EAEE /* AndantePiano84.wav */,
-				DB9B941F265774A30010EAEE /* AndantePiano90.wav */,
-				DB9B9420265774A30010EAEE /* AndantePiano47.wav */,
-				DB9B9421265774A30010EAEE /* AndantePiano53.wav */,
-				DB9B9422265774A30010EAEE /* AndantePiano45.wav */,
-				DB9B9423265774A30010EAEE /* AndantePiano51.wav */,
-				DB9B9424265774A30010EAEE /* AndantePiano79.wav */,
-				DB9B9425265774A30010EAEE /* AndantePiano86.wav */,
-				DB9B9426265774A30010EAEE /* AndantePiano92.wav */,
-				DB9B9427265774A30010EAEE /* AndantePiano93.wav */,
-				DB9B9428265774A30010EAEE /* AndantePiano87.wav */,
-				DB9B9429265774A30010EAEE /* AndantePiano78.wav */,
-				DB9B942A265774A30010EAEE /* AndantePiano50.wav */,
-				DB9B942B265774A30010EAEE /* AndantePiano44.wav */,
-				DB9B942C265774A30010EAEE /* AndantePiano49.wav */,
-				DB9B942D265774A30010EAEE /* AndantePiano61.wav */,
-				DB9B942E265774A30010EAEE /* AndantePiano75.wav */,
-				DB9B942F265774A30010EAEE /* AndantePiano74.wav */,
-				DB9B9430265774A30010EAEE /* AndantePiano60.wav */,
-				DB9B9431265774A30010EAEE /* AndantePiano48.wav */,
-				DB9B9432265774A30010EAEE /* AndantePiano76.wav */,
-				DB9B9433265774A30010EAEE /* AndantePiano62.wav */,
-				DB9B9434265774A30010EAEE /* AndantePiano89.wav */,
-				DB9B9435265774A30010EAEE /* AndantePiano88.wav */,
-				DB9B9436265774A30010EAEE /* AndantePiano63.wav */,
-				DB9B9437265774A30010EAEE /* AndantePiano77.wav */,
-				DB9B9438265774A30010EAEE /* AndantePiano73.wav */,
-				DB9B9439265774A30010EAEE /* AndantePiano67.wav */,
-				DB9B943A265774A30010EAEE /* AndantePiano66.wav */,
-				DB9B943B265774A30010EAEE /* AndantePiano72.wav */,
-				DB9B943C265774A30010EAEE /* AndantePiano64.wav */,
-				DB9B943D265774A30010EAEE /* AndantePiano70.wav */,
-				DB9B943E265774A30010EAEE /* AndantePiano58.wav */,
-				DB9B943F265774A30010EAEE /* AndantePiano59.wav */,
-				DB9B9440265774A30010EAEE /* AndantePiano71.wav */,
-				DB9B9441265774A30010EAEE /* AndantePiano65.wav */,
-				DB9B9442265774A30010EAEE /* AndantePiano29.wav */,
-				DB9B9443265774A30010EAEE /* AndantePiano28.wav */,
-				DB9B9444265774A30010EAEE /* AndantePiano38.wav */,
-				DB9B9445265774A30010EAEE /* AndantePiano39.wav */,
-			);
-			path = numberedPiano;
-			sourceTree = "<group>";
-		};
 		DBA14CB22654B4C500D09251 /* AndanteDrumsAcoustic */ = {
 			isa = PBXGroup;
 			children = (
@@ -905,6 +825,87 @@
 			);
 			name = AndanteDrumsAcoustic;
 			path = "faust_music/wav files/AndanteDrumsAcoustic";
+			sourceTree = SOURCE_ROOT;
+		};
+		DBEB69CF265C89080088609B /* fake name haha */ = {
+			isa = PBXGroup;
+			children = (
+				DBEB69D0265C89080088609B /* AndantePiano37.wav */,
+				DBEB69D1265C89080088609B /* AndantePiano36.wav */,
+				DBEB69D2265C89080088609B /* AndantePiano34.wav */,
+				DBEB69D3265C89080088609B /* AndantePiano35.wav */,
+				DBEB69D4265C89080088609B /* AndantePiano31.wav */,
+				DBEB69D5265C89080088609B /* AndantePiano25.wav */,
+				DBEB69D6265C89080088609B /* AndantePiano24.wav */,
+				DBEB69D7265C89080088609B /* AndantePiano30.wav */,
+				DBEB69D8265C89080088609B /* AndantePiano26.wav */,
+				DBEB69D9265C89080088609B /* AndantePiano32.wav */,
+				DBEB69DA265C89080088609B /* AndantePiano33.wav */,
+				DBEB69DB265C89080088609B /* AndantePiano27.wav */,
+				DBEB69DC265C89080088609B /* AndantePiano68.wav */,
+				DBEB69DD265C89080088609B /* AndantePiano40.wav */,
+				DBEB69DE265C89080088609B /* AndantePiano54.wav */,
+				DBEB69DF265C89080088609B /* AndantePiano83.wav */,
+				DBEB69E0265C89080088609B /* AndantePiano96.wav */,
+				DBEB69E1265C89080088609B /* AndantePiano82.wav */,
+				DBEB69E2265C89080088609B /* AndantePiano55.wav */,
+				DBEB69E3265C89080088609B /* AndantePiano41.wav */,
+				DBEB69E4265C89080088609B /* AndantePiano69.wav */,
+				DBEB69E5265C89080088609B /* AndantePiano57.wav */,
+				DBEB69E6265C89080088609B /* AndantePiano43.wav */,
+				DBEB69E7265C89080088609B /* AndantePiano94.wav */,
+				DBEB69E8265C89080088609B /* AndantePiano80.wav */,
+				DBEB69E9265C89080088609B /* AndantePiano81.wav */,
+				DBEB69EA265C89090088609B /* AndantePiano95.wav */,
+				DBEB69EB265C89090088609B /* AndantePiano42.wav */,
+				DBEB69EC265C89090088609B /* AndantePiano56.wav */,
+				DBEB69ED265C89090088609B /* AndantePiano52.wav */,
+				DBEB69EE265C89090088609B /* AndantePiano46.wav */,
+				DBEB69EF265C89090088609B /* AndantePiano91.wav */,
+				DBEB69F0265C89090088609B /* AndantePiano85.wav */,
+				DBEB69F1265C89090088609B /* AndantePiano84.wav */,
+				DBEB69F2265C89090088609B /* AndantePiano90.wav */,
+				DBEB69F3265C89090088609B /* AndantePiano47.wav */,
+				DBEB69F4265C89090088609B /* AndantePiano53.wav */,
+				DBEB69F5265C89090088609B /* AndantePiano45.wav */,
+				DBEB69F6265C89090088609B /* AndantePiano51.wav */,
+				DBEB69F7265C89090088609B /* AndantePiano79.wav */,
+				DBEB69F8265C89090088609B /* AndantePiano86.wav */,
+				DBEB69F9265C89090088609B /* AndantePiano92.wav */,
+				DBEB69FA265C89090088609B /* AndantePiano93.wav */,
+				DBEB69FB265C89090088609B /* AndantePiano87.wav */,
+				DBEB69FC265C89090088609B /* AndantePiano78.wav */,
+				DBEB69FD265C89090088609B /* AndantePiano50.wav */,
+				DBEB69FE265C89090088609B /* AndantePiano44.wav */,
+				DBEB69FF265C89090088609B /* AndantePiano49.wav */,
+				DBEB6A00265C89090088609B /* AndantePiano61.wav */,
+				DBEB6A01265C89090088609B /* AndantePiano75.wav */,
+				DBEB6A02265C89090088609B /* AndantePiano74.wav */,
+				DBEB6A03265C89090088609B /* AndantePiano60.wav */,
+				DBEB6A04265C89090088609B /* AndantePiano48.wav */,
+				DBEB6A05265C89090088609B /* AndantePiano76.wav */,
+				DBEB6A06265C89090088609B /* AndantePiano62.wav */,
+				DBEB6A07265C89090088609B /* AndantePiano89.wav */,
+				DBEB6A08265C89090088609B /* AndantePiano88.wav */,
+				DBEB6A09265C89090088609B /* AndantePiano63.wav */,
+				DBEB6A0A265C890A0088609B /* AndantePiano77.wav */,
+				DBEB6A0B265C890A0088609B /* AndantePiano73.wav */,
+				DBEB6A0C265C890A0088609B /* AndantePiano67.wav */,
+				DBEB6A0D265C890A0088609B /* AndantePiano66.wav */,
+				DBEB6A0E265C890A0088609B /* AndantePiano72.wav */,
+				DBEB6A0F265C890A0088609B /* AndantePiano64.wav */,
+				DBEB6A10265C890A0088609B /* AndantePiano70.wav */,
+				DBEB6A11265C890A0088609B /* AndantePiano58.wav */,
+				DBEB6A12265C890A0088609B /* AndantePiano59.wav */,
+				DBEB6A13265C890A0088609B /* AndantePiano71.wav */,
+				DBEB6A14265C890A0088609B /* AndantePiano65.wav */,
+				DBEB6A15265C890A0088609B /* AndantePiano29.wav */,
+				DBEB6A16265C890A0088609B /* AndantePiano28.wav */,
+				DBEB6A17265C890A0088609B /* AndantePiano38.wav */,
+				DBEB6A18265C890A0088609B /* AndantePiano39.wav */,
+			);
+			name = "fake name haha";
+			path = "faust_music/wav files/fake name haha";
 			sourceTree = SOURCE_ROOT;
 		};
 /* End PBXGroup section */
@@ -1010,232 +1011,232 @@
 			buildActionMask = 2147483647;
 			files = (
 				DB9B93DB265774920010EAEE /* AndanteEP90.wav in Resources */,
-				DB9B944D265774A30010EAEE /* AndantePiano30.wav in Resources */,
 				A2E7CC4B262188CA006CA38B /* LaunchScreen.storyboard in Resources */,
 				DB9B934E265774890010EAEE /* AndanteBassAndEP93.wav in Resources */,
 				DB9B93C2265774920010EAEE /* AndanteEP76.wav in Resources */,
 				DB9B9361265774890010EAEE /* AndanteBassAndEP33.wav in Resources */,
-				DB9B9460265774A30010EAEE /* AndantePiano95.wav in Resources */,
 				DB9B93C1265774920010EAEE /* AndanteEP62.wav in Resources */,
+				DBEB6A29265C890F0088609B /* AndantePiano96.wav in Resources */,
 				DB9B93E2265774920010EAEE /* AndanteEP94.wav in Resources */,
+				DBEB6A20265C890E0088609B /* AndantePiano30.wav in Resources */,
 				DB9B9339265774890010EAEE /* AndanteBassAndEP67.wav in Resources */,
 				DB9B93D6265774920010EAEE /* AndanteEP78.wav in Resources */,
-				DB9B948B265774A30010EAEE /* AndantePiano29.wav in Resources */,
 				DB9B9353265774890010EAEE /* AndanteBassAndEP45.wav in Resources */,
+				DBEB6A49265C890F0088609B /* AndantePiano61.wav in Resources */,
 				DB9B9359265774890010EAEE /* AndanteBassAndEP91.wav in Resources */,
+				DBEB6A5C265C890F0088609B /* AndantePiano71.wav in Resources */,
 				DB9B93F5265774920010EAEE /* AndanteEP31.wav in Resources */,
 				DB9B9320265774890010EAEE /* AndanteBassAndEP28.wav in Resources */,
-				DB9B948C265774A30010EAEE /* AndantePiano28.wav in Resources */,
-				DB9B944E265774A30010EAEE /* AndantePiano26.wav in Resources */,
 				DB9B9332265774890010EAEE /* AndanteBassAndEP59.wav in Resources */,
+				DBEB6A4D265C890F0088609B /* AndantePiano48.wav in Resources */,
 				DB9B9365265774890010EAEE /* AndanteBassAndEP24.wav in Resources */,
 				DB9B935F265774890010EAEE /* AndanteBassAndEP36.wav in Resources */,
-				DB9B948A265774A30010EAEE /* AndantePiano65.wav in Resources */,
 				DB9B93EE265774920010EAEE /* AndanteEP41.wav in Resources */,
+				DBEB6A4E265C890F0088609B /* AndantePiano76.wav in Resources */,
+				DBEB6A3F265C890F0088609B /* AndantePiano51.wav in Resources */,
 				DB9B93C0265774920010EAEE /* AndanteEP66.wav in Resources */,
 				DB9B93DD265774920010EAEE /* AndanteEP53.wav in Resources */,
-				DB9B945A265774A30010EAEE /* AndantePiano69.wav in Resources */,
-				DB9B9472265774A30010EAEE /* AndantePiano78.wav in Resources */,
-				DB9B9451265774A30010EAEE /* AndantePiano27.wav in Resources */,
-				DB9B9467265774A30010EAEE /* AndantePiano84.wav in Resources */,
-				DB9B948D265774A30010EAEE /* AndantePiano38.wav in Resources */,
 				DB9B934A265774890010EAEE /* AndanteBassAndEP68.wav in Resources */,
+				DBEB6A53265C890F0088609B /* AndantePiano77.wav in Resources */,
 				DB9B935D265774890010EAEE /* AndanteBassAndEP35.wav in Resources */,
-				DB9B9464265774A30010EAEE /* AndantePiano46.wav in Resources */,
 				DB9B93C7265774920010EAEE /* AndanteEP75.wav in Resources */,
+				DBEB6A4B265C890F0088609B /* AndantePiano74.wav in Resources */,
 				DB9B93C9265774920010EAEE /* AndanteEP49.wav in Resources */,
 				DB9B93C4265774920010EAEE /* AndanteEP88.wav in Resources */,
+				DBEB6A48265C890F0088609B /* AndantePiano49.wav in Resources */,
+				DBEB6A33265C890F0088609B /* AndantePiano95.wav in Resources */,
+				DBEB6A36265C890F0088609B /* AndantePiano52.wav in Resources */,
 				DB9B93FA265774920010EAEE /* AndanteEP37.wav in Resources */,
+				DBEB6A39265C890F0088609B /* AndantePiano85.wav in Resources */,
+				DBEB6A51265C890F0088609B /* AndantePiano88.wav in Resources */,
+				DBEB6A47265C890F0088609B /* AndantePiano44.wav in Resources */,
+				DBEB6A1B265C890E0088609B /* AndantePiano34.wav in Resources */,
 				DB9B93ED265774920010EAEE /* AndanteEP69.wav in Resources */,
 				DB9B93EC265774920010EAEE /* AndanteEP96.wav in Resources */,
 				DBA14CB72654B4C600D09251 /* AndanteDrumsAcousticKick.wav in Resources */,
-				DB9B9455265774A30010EAEE /* AndantePiano83.wav in Resources */,
 				DB9B9341265774890010EAEE /* AndanteBassAndEP43.wav in Resources */,
-				DB9B9450265774A30010EAEE /* AndantePiano33.wav in Resources */,
 				DB9B93DE265774920010EAEE /* AndanteEP47.wav in Resources */,
-				DB9B948E265774A30010EAEE /* AndantePiano39.wav in Resources */,
-				DB9B9481265774A30010EAEE /* AndantePiano73.wav in Resources */,
 				DB85ABFB2657B2B3002C5493 /* Ding.wav in Resources */,
-				DB9B946F265774A30010EAEE /* AndantePiano92.wav in Resources */,
+				DBEB6A1C265C890E0088609B /* AndantePiano35.wav in Resources */,
 				DB9B933B265774890010EAEE /* AndanteBassAndEP56.wav in Resources */,
+				DBEB6A21265C890E0088609B /* AndantePiano26.wav in Resources */,
 				DB9B93EA265774920010EAEE /* AndanteEP83.wav in Resources */,
 				DB9B932C265774890010EAEE /* AndanteBassAndEP60.wav in Resources */,
 				DB9B9355265774890010EAEE /* AndanteBassAndEP47.wav in Resources */,
 				DB9B93C3265774920010EAEE /* AndanteEP89.wav in Resources */,
+				DBEB6A3A265C890F0088609B /* AndantePiano84.wav in Resources */,
 				DB9B9352265774890010EAEE /* AndanteBassAndEP79.wav in Resources */,
 				DB9B9367265774890010EAEE /* AndanteBassAndEP31.wav in Resources */,
-				DB9B9477265774A30010EAEE /* AndantePiano75.wav in Resources */,
-				DB9B9447265774A30010EAEE /* AndantePiano36.wav in Resources */,
 				DB9B9348265774890010EAEE /* AndanteBassAndEP40.wav in Resources */,
 				DB9B93CA265774920010EAEE /* AndanteEP48.wav in Resources */,
-				DB9B9463265774A30010EAEE /* AndantePiano52.wav in Resources */,
-				DB9B947C265774A30010EAEE /* AndantePiano62.wav in Resources */,
 				DB9B9321265774890010EAEE /* AndanteBassAndEP29.wav in Resources */,
+				DBEB6A5F265C890F0088609B /* AndantePiano28.wav in Resources */,
+				DBEB6A42265C890F0088609B /* AndantePiano92.wav in Resources */,
+				DBEB6A1A265C890E0088609B /* AndantePiano36.wav in Resources */,
 				DB9B932D265774890010EAEE /* AndanteBassAndEP61.wav in Resources */,
-				DB9B9468265774A30010EAEE /* AndantePiano90.wav in Resources */,
 				DB9B9338265774890010EAEE /* AndanteBassAndEP73.wav in Resources */,
+				DBEB6A57265C890F0088609B /* AndantePiano72.wav in Resources */,
+				DBEB6A55265C890F0088609B /* AndantePiano67.wav in Resources */,
+				DBEB6A32265C890F0088609B /* AndantePiano81.wav in Resources */,
 				DB9B9337265774890010EAEE /* AndanteBassAndEP72.wav in Resources */,
 				DB9B9335265774890010EAEE /* AndanteBassAndEP70.wav in Resources */,
+				DBEB6A54265C890F0088609B /* AndantePiano73.wav in Resources */,
+				DBEB6A43265C890F0088609B /* AndantePiano93.wav in Resources */,
 				DB9B93F9265774920010EAEE /* AndanteEP35.wav in Resources */,
+				DBEB6A3C265C890F0088609B /* AndantePiano47.wav in Resources */,
+				DBEB6A50265C890F0088609B /* AndantePiano89.wav in Resources */,
+				DBEB6A5D265C890F0088609B /* AndantePiano65.wav in Resources */,
+				DBEB6A5E265C890F0088609B /* AndantePiano29.wav in Resources */,
 				DB9B93E6265774920010EAEE /* AndanteEP42.wav in Resources */,
 				DB9B9333265774890010EAEE /* AndanteBassAndEP58.wav in Resources */,
+				DBEB6A31265C890F0088609B /* AndantePiano80.wav in Resources */,
 				DB9B9366265774890010EAEE /* AndanteBassAndEP30.wav in Resources */,
 				DB9B93FB265774920010EAEE /* AndanteEP36.wav in Resources */,
-				DB9B9485265774A30010EAEE /* AndantePiano64.wav in Resources */,
-				DB9B9452265774A30010EAEE /* AndantePiano68.wav in Resources */,
-				DB9B946D265774A30010EAEE /* AndantePiano79.wav in Resources */,
+				DBEB6A2E265C890F0088609B /* AndantePiano57.wav in Resources */,
 				DB9B93F4265774920010EAEE /* AndanteEP25.wav in Resources */,
 				DB9B9328265774890010EAEE /* AndanteBassAndEP76.wav in Resources */,
-				DB9B947F265774A30010EAEE /* AndantePiano63.wav in Resources */,
+				DBEB6A5B265C890F0088609B /* AndantePiano59.wav in Resources */,
 				DB9B93BA265774920010EAEE /* AndanteEP65.wav in Resources */,
 				DB9B933A265774890010EAEE /* AndanteBassAndEP42.wav in Resources */,
 				DB9B93DF265774920010EAEE /* AndanteEP43.wav in Resources */,
+				DBEB6A4C265C890F0088609B /* AndantePiano60.wav in Resources */,
 				A2E7CC48262188CA006CA38B /* Assets.xcassets in Resources */,
+				DBEB6A4F265C890F0088609B /* AndantePiano62.wav in Resources */,
+				DBEB6A4A265C890F0088609B /* AndantePiano75.wav in Resources */,
 				DB9B93B7265774920010EAEE /* AndanteEP58.wav in Resources */,
-				DB9B9446265774A30010EAEE /* AndantePiano37.wav in Resources */,
 				DB9B93F1265774920010EAEE /* AndanteEP26.wav in Resources */,
 				DB9B9346265774890010EAEE /* AndanteBassAndEP82.wav in Resources */,
 				DB9B93BB265774920010EAEE /* AndanteEP71.wav in Resources */,
 				DB9B93D0265774920010EAEE /* AndanteEP92.wav in Resources */,
 				DB9B934F265774890010EAEE /* AndanteBassAndEP87.wav in Resources */,
-				DB9B9471265774A30010EAEE /* AndantePiano87.wav in Resources */,
 				DB9B9324265774890010EAEE /* AndanteBassAndEP63.wav in Resources */,
+				DBEB6A25265C890E0088609B /* AndantePiano68.wav in Resources */,
+				DBEB6A60265C890F0088609B /* AndantePiano38.wav in Resources */,
 				DB9B93D3265774920010EAEE /* AndanteEP93.wav in Resources */,
 				DB9B932A265774890010EAEE /* AndanteBassAndEP48.wav in Resources */,
 				DB9B93DA265774920010EAEE /* AndanteEP91.wav in Resources */,
+				DBEB6A24265C890E0088609B /* AndantePiano27.wav in Resources */,
 				DB9B9323265774890010EAEE /* AndanteBassAndEP38.wav in Resources */,
-				DB9B9465265774A30010EAEE /* AndantePiano91.wav in Resources */,
-				DB9B9474265774A30010EAEE /* AndantePiano44.wav in Resources */,
 				DB9B93E7265774920010EAEE /* AndanteEP54.wav in Resources */,
-				DB9B945B265774A30010EAEE /* AndantePiano57.wav in Resources */,
-				DB9B9470265774A30010EAEE /* AndantePiano93.wav in Resources */,
-				DB9B9458265774A30010EAEE /* AndantePiano55.wav in Resources */,
 				DB9B93B8265774920010EAEE /* AndanteEP70.wav in Resources */,
 				DB9B93B9265774920010EAEE /* AndanteEP64.wav in Resources */,
-				DB9B9482265774A30010EAEE /* AndantePiano67.wav in Resources */,
-				DB9B9454265774A30010EAEE /* AndantePiano54.wav in Resources */,
-				DB9B944B265774A30010EAEE /* AndantePiano25.wav in Resources */,
-				DB9B9489265774A30010EAEE /* AndantePiano71.wav in Resources */,
 				DB9B93D8265774920010EAEE /* AndanteEP52.wav in Resources */,
 				DB9B93E8265774920010EAEE /* AndanteEP40.wav in Resources */,
+				DBEB6A2D265C890F0088609B /* AndantePiano69.wav in Resources */,
 				DB9B9364265774890010EAEE /* AndanteBassAndEP32.wav in Resources */,
-				DB9B9479265774A30010EAEE /* AndantePiano60.wav in Resources */,
+				DBEB6A46265C890F0088609B /* AndantePiano50.wav in Resources */,
+				DBEB6A5A265C890F0088609B /* AndantePiano58.wav in Resources */,
 				DB9B932F265774890010EAEE /* AndanteBassAndEP49.wav in Resources */,
 				DB9B9322265774890010EAEE /* AndanteBassAndEP39.wav in Resources */,
 				DB9B93CE265774920010EAEE /* AndanteEP51.wav in Resources */,
 				DB9B935E265774890010EAEE /* AndanteBassAndEP34.wav in Resources */,
 				DB85AC012657BBAA002C5493 /* AndanteDrumsTrapHat.wav in Resources */,
 				DB9B933C265774890010EAEE /* AndanteBassAndEP81.wav in Resources */,
-				DB9B9473265774A30010EAEE /* AndantePiano50.wav in Resources */,
+				DBEB6A30265C890F0088609B /* AndantePiano94.wav in Resources */,
 				DB9B93CC265774920010EAEE /* AndanteEP74.wav in Resources */,
 				DB9B93F7265774920010EAEE /* AndanteEP24.wav in Resources */,
 				DB9B9340265774890010EAEE /* AndanteBassAndEP57.wav in Resources */,
 				DB9B93D1265774920010EAEE /* AndanteEP86.wav in Resources */,
+				DBEB6A35265C890F0088609B /* AndantePiano56.wav in Resources */,
 				DB9B933F265774890010EAEE /* AndanteBassAndEP80.wav in Resources */,
-				DB9B9469265774A30010EAEE /* AndantePiano47.wav in Resources */,
 				DB9B93E1265774920010EAEE /* AndanteEP80.wav in Resources */,
 				DB9B93C6265774920010EAEE /* AndanteEP63.wav in Resources */,
-				DB9B9475265774A30010EAEE /* AndantePiano49.wav in Resources */,
-				DB9B9484265774A30010EAEE /* AndantePiano72.wav in Resources */,
-				DB9B9453265774A30010EAEE /* AndantePiano40.wav in Resources */,
-				DB9B9487265774A30010EAEE /* AndantePiano58.wav in Resources */,
-				DB9B946B265774A30010EAEE /* AndantePiano45.wav in Resources */,
-				DB9B944F265774A30010EAEE /* AndantePiano32.wav in Resources */,
+				DBEB6A3E265C890F0088609B /* AndantePiano45.wav in Resources */,
 				DB9B93E9265774920010EAEE /* AndanteEP68.wav in Resources */,
 				DB9B932E265774890010EAEE /* AndanteBassAndEP75.wav in Resources */,
-				DB9B945F265774A30010EAEE /* AndantePiano81.wav in Resources */,
 				DB9B934D265774890010EAEE /* AndanteBassAndEP78.wav in Resources */,
+				DBEB6A2B265C890F0088609B /* AndantePiano55.wav in Resources */,
+				DBEB6A61265C890F0088609B /* AndantePiano39.wav in Resources */,
+				DBEB6A44265C890F0088609B /* AndantePiano87.wav in Resources */,
 				DB5A0400264B9FAC00EBC762 /* SleepWalkChords.wav in Resources */,
-				DB9B9456265774A30010EAEE /* AndantePiano96.wav in Resources */,
 				DB9B9329265774890010EAEE /* AndanteBassAndEP62.wav in Resources */,
+				DBEB6A41265C890F0088609B /* AndantePiano86.wav in Resources */,
 				DB5A0423264E6FEB00EBC762 /* WalkingOnSunshine.wav in Resources */,
 				DB9B93E4265774920010EAEE /* AndanteEP81.wav in Resources */,
 				DB9B93E3265774920010EAEE /* AndanteEP95.wav in Resources */,
 				DB9B93D7265774920010EAEE /* AndanteEP46.wav in Resources */,
-				DB9B945D265774A30010EAEE /* AndantePiano94.wav in Resources */,
-				DB9B9457265774A30010EAEE /* AndantePiano82.wav in Resources */,
 				DB9B9360265774890010EAEE /* AndanteBassAndEP37.wav in Resources */,
+				DBEB6A2C265C890F0088609B /* AndantePiano41.wav in Resources */,
+				DBEB6A22265C890E0088609B /* AndantePiano32.wav in Resources */,
 				DB9B9342265774890010EAEE /* AndanteBassAndEP69.wav in Resources */,
+				DBEB6A38265C890F0088609B /* AndantePiano91.wav in Resources */,
+				DBEB6A28265C890F0088609B /* AndantePiano83.wav in Resources */,
 				DB9B9368265774890010EAEE /* AndanteBassAndEP25.wav in Resources */,
 				DB9B93D9265774920010EAEE /* AndanteEP85.wav in Resources */,
 				DB9B93EB265774920010EAEE /* AndanteEP82.wav in Resources */,
 				A2E7CC46262188C6006CA38B /* Main.storyboard in Resources */,
 				DB9B93B6265774920010EAEE /* AndanteEP28.wav in Resources */,
-				DB9B9480265774A30010EAEE /* AndantePiano77.wav in Resources */,
-				DB9B9462265774A30010EAEE /* AndantePiano56.wav in Resources */,
 				DB9B9349265774890010EAEE /* AndanteBassAndEP54.wav in Resources */,
+				DBEB6A52265C890F0088609B /* AndantePiano63.wav in Resources */,
 				DB9B9336265774890010EAEE /* AndanteBassAndEP66.wav in Resources */,
 				DB85AC002657BBAA002C5493 /* AndanteDrumsTrapSnare.wav in Resources */,
+				DBEB6A2F265C890F0088609B /* AndantePiano43.wav in Resources */,
 				DB9B93CF265774920010EAEE /* AndanteEP45.wav in Resources */,
-				DB9B947B265774A30010EAEE /* AndantePiano76.wav in Resources */,
 				DB9B93F8265774920010EAEE /* AndanteEP34.wav in Resources */,
 				DB9B9357265774890010EAEE /* AndanteBassAndEP84.wav in Resources */,
 				DB9B93B5265774920010EAEE /* AndanteEP29.wav in Resources */,
+				DBEB6A56265C890F0088609B /* AndantePiano66.wav in Resources */,
 				DB9B93D5265774920010EAEE /* AndanteEP50.wav in Resources */,
-				DB9B944C265774A30010EAEE /* AndantePiano24.wav in Resources */,
-				DB9B9461265774A30010EAEE /* AndantePiano42.wav in Resources */,
 				DB9B935C265774890010EAEE /* AndanteBassAndEP46.wav in Resources */,
+				DBEB6A45265C890F0088609B /* AndantePiano78.wav in Resources */,
 				DB9B93CB265774920010EAEE /* AndanteEP60.wav in Resources */,
 				DB9B9356265774890010EAEE /* AndanteBassAndEP53.wav in Resources */,
-				DB9B946E265774A30010EAEE /* AndantePiano86.wav in Resources */,
+				DBEB6A59265C890F0088609B /* AndantePiano70.wav in Resources */,
+				DBEB6A1F265C890E0088609B /* AndantePiano24.wav in Resources */,
 				DB9B9351265774890010EAEE /* AndanteBassAndEP92.wav in Resources */,
-				DB9B947E265774A30010EAEE /* AndantePiano88.wav in Resources */,
 				DB9B93F0265774920010EAEE /* AndanteEP32.wav in Resources */,
+				DBEB6A3D265C890F0088609B /* AndantePiano53.wav in Resources */,
 				DB9B93F6265774920010EAEE /* AndanteEP30.wav in Resources */,
 				DB9B93EF265774920010EAEE /* AndanteEP55.wav in Resources */,
 				DB9B93BF265774920010EAEE /* AndanteEP72.wav in Resources */,
 				DB9B93C8265774920010EAEE /* AndanteEP61.wav in Resources */,
-				DB9B9488265774A30010EAEE /* AndantePiano59.wav in Resources */,
 				DB9B9343265774890010EAEE /* AndanteBassAndEP55.wav in Resources */,
-				DB9B9486265774A30010EAEE /* AndantePiano70.wav in Resources */,
 				DB9B93F3265774920010EAEE /* AndanteEP33.wav in Resources */,
+				DBEB6A23265C890E0088609B /* AndantePiano33.wav in Resources */,
+				DBEB6A58265C890F0088609B /* AndantePiano64.wav in Resources */,
 				DB9B93BC265774920010EAEE /* AndanteEP59.wav in Resources */,
+				DBEB6A40265C890F0088609B /* AndantePiano79.wav in Resources */,
 				DB9B9334265774890010EAEE /* AndanteBassAndEP64.wav in Resources */,
+				DBEB6A27265C890E0088609B /* AndantePiano54.wav in Resources */,
 				DBA14CB82654B4C600D09251 /* AndanteDrumsAcousticHat.wav in Resources */,
 				DB9B93D4265774920010EAEE /* AndanteEP44.wav in Resources */,
+				DBEB6A2A265C890F0088609B /* AndantePiano82.wav in Resources */,
+				DBEB6A3B265C890F0088609B /* AndantePiano90.wav in Resources */,
 				DB9B935B265774890010EAEE /* AndanteBassAndEP52.wav in Resources */,
 				DB9B9331265774890010EAEE /* AndanteBassAndEP65.wav in Resources */,
 				DB9B9354265774890010EAEE /* AndanteBassAndEP51.wav in Resources */,
-				DB9B945E265774A30010EAEE /* AndantePiano80.wav in Resources */,
+				DBEB6A1E265C890E0088609B /* AndantePiano25.wav in Resources */,
 				DB85AC022657BBAA002C5493 /* AndanteDrumsTrapKick.wav in Resources */,
+				DBEB6A26265C890E0088609B /* AndantePiano40.wav in Resources */,
 				DB9B9326265774890010EAEE /* AndanteBassAndEP88.wav in Resources */,
 				DB9B93BD265774920010EAEE /* AndanteEP67.wav in Resources */,
+				DBEB6A34265C890F0088609B /* AndantePiano42.wav in Resources */,
 				DB9B93DC265774920010EAEE /* AndanteEP84.wav in Resources */,
 				DB9B9345265774890010EAEE /* AndanteBassAndEP96.wav in Resources */,
 				DB9B93CD265774920010EAEE /* AndanteEP79.wav in Resources */,
 				DB9B9325265774890010EAEE /* AndanteBassAndEP77.wav in Resources */,
 				DB9B935A265774890010EAEE /* AndanteBassAndEP85.wav in Resources */,
-				DB9B9448265774A30010EAEE /* AndantePiano34.wav in Resources */,
-				DB9B946C265774A30010EAEE /* AndantePiano51.wav in Resources */,
 				DB9B9363265774890010EAEE /* AndanteBassAndEP26.wav in Resources */,
-				DB9B947A265774A30010EAEE /* AndantePiano48.wav in Resources */,
 				DB9B93B3265774920010EAEE /* AndanteEP38.wav in Resources */,
 				DB9B932B265774890010EAEE /* AndanteBassAndEP74.wav in Resources */,
-				DB9B9449265774A30010EAEE /* AndantePiano35.wav in Resources */,
-				DB9B9476265774A30010EAEE /* AndantePiano61.wav in Resources */,
-				DB9B945C265774A30010EAEE /* AndantePiano43.wav in Resources */,
 				DB9B93E5265774920010EAEE /* AndanteEP56.wav in Resources */,
 				DB9B9350265774890010EAEE /* AndanteBassAndEP86.wav in Resources */,
+				DBEB6A1D265C890E0088609B /* AndantePiano31.wav in Resources */,
 				DB9B9347265774890010EAEE /* AndanteBassAndEP83.wav in Resources */,
 				DB9B9330265774890010EAEE /* AndanteBassAndEP71.wav in Resources */,
 				DB9B93B4265774920010EAEE /* AndanteEP39.wav in Resources */,
 				DBA14CB62654B4C600D09251 /* AndanteDrumsAcousticSnare.wav in Resources */,
-				DB9B9483265774A30010EAEE /* AndantePiano66.wav in Resources */,
 				DB9B93BE265774920010EAEE /* AndanteEP73.wav in Resources */,
 				DB9B934B265774890010EAEE /* AndanteBassAndEP50.wav in Resources */,
-				DB9B946A265774A30010EAEE /* AndantePiano53.wav in Resources */,
+				DBEB6A19265C890E0088609B /* AndantePiano37.wav in Resources */,
 				DB9B9362265774890010EAEE /* AndanteBassAndEP27.wav in Resources */,
-				DB9B9466265774A30010EAEE /* AndantePiano85.wav in Resources */,
 				DB9B933D265774890010EAEE /* AndanteBassAndEP95.wav in Resources */,
+				DBEB6A37265C890F0088609B /* AndantePiano46.wav in Resources */,
 				DB9B93D2265774920010EAEE /* AndanteEP87.wav in Resources */,
 				DB9B934C265774890010EAEE /* AndanteBassAndEP44.wav in Resources */,
 				DB9B9358265774890010EAEE /* AndanteBassAndEP90.wav in Resources */,
-				DB9B9478265774A30010EAEE /* AndantePiano74.wav in Resources */,
-				DB9B947D265774A30010EAEE /* AndantePiano89.wav in Resources */,
 				DB9B933E265774890010EAEE /* AndanteBassAndEP94.wav in Resources */,
-				DB9B944A265774A30010EAEE /* AndantePiano31.wav in Resources */,
 				DB9B93C5265774920010EAEE /* AndanteEP77.wav in Resources */,
-				DB9B9459265774A30010EAEE /* AndantePiano41.wav in Resources */,
 				DB9B9344265774890010EAEE /* AndanteBassAndEP41.wav in Resources */,
 				DB9B93F2265774920010EAEE /* AndanteEP27.wav in Resources */,
 				DB9B93E0265774920010EAEE /* AndanteEP57.wav in Resources */,
