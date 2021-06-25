@@ -9,7 +9,7 @@ translates into an audio output that can be heard by the user through the speake
 
 
 
-Project Summary
+# Project Summary
 
 Project Goal: Create music from the movement of cerebral palsy patients to encourage gait
 improvement.
@@ -47,4 +47,7 @@ Ethical Considerations:
 Solution: We designed a flexible hardware and software system which can be adapted to replace
 or augment a therapist’s auditory cues as well as provide other feedback. The system includes a
 footswitch, a knee angle-detection sleeve, and an app that outputs music, which all communicate wirelessly via Bluetooth.
+
+<img width="861" alt="Screen Shot 2021-06-25 at 4 21 33 PM" src="https://user-images.githubusercontent.com/71303021/123486328-6ee03280-d5d1-11eb-97b1-396c7b43f2cb.png">
+<img width="862" alt="Screen Shot 2021-06-25 at 4 21 24 PM" src="https://user-images.githubusercontent.com/71303021/123486334-730c5000-d5d1-11eb-8424-940840459898.png">
 
