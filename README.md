@@ -38,6 +38,7 @@ High Priority Requirements:
   ● Device must output consistent sensor data over the duration of use
 
 Ethical Considerations:
+
   ● User safety - doesn’t negatively impact gait
 
   ● Device cost related to access
