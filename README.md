@@ -54,7 +54,7 @@ footswitch, a knee angle-detection sleeve, and an app that outputs music, which 
 
 # Final Report and Videos
 Final Report: https://purl.stanford.edu/th407jf9186
-Video Links
+
 Swing Phase Mode, chord progression: https://drive.google.com/file/d/1fCOoTB77cz6G07KYIyYV9UDKDWDse0Dy/view
 
 Swing Phase Mode, typical gait, scale: https://drive.google.com/file/d/1bKzNqQhiERMwu-iJoKDvP7Luyvp3nE4o/view
