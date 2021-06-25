@@ -52,3 +52,15 @@ footswitch, a knee angle-detection sleeve, and an app that outputs music, which 
 <img width="861" alt="Screen Shot 2021-06-25 at 4 21 33 PM" src="https://user-images.githubusercontent.com/71303021/123486328-6ee03280-d5d1-11eb-97b1-396c7b43f2cb.png">
 <img width="862" alt="Screen Shot 2021-06-25 at 4 21 24 PM" src="https://user-images.githubusercontent.com/71303021/123486334-730c5000-d5d1-11eb-8424-940840459898.png">
 
+# Final Report and Videos
+Final Report: https://purl.stanford.edu/th407jf9186
+Video Links
+Swing Phase Mode, chord progression: https://drive.google.com/file/d/1fCOoTB77cz6G07KYIyYV9UDKDWDse0Dy/view
+
+Swing Phase Mode, typical gait, scale: https://drive.google.com/file/d/1bKzNqQhiERMwu-iJoKDvP7Luyvp3nE4o/view
+
+Swing Phase Mode, stiff-knee gait, scale: https://drive.google.com/file/d/1WwfOaRtkUIUGHPYZSf4xi3W8hxpkrG6B/view
+
+Stance Phase Mode, Canon in D: https://drive.google.com/file/d/1UrPP133hJvc1nZga1eFKvlv2NmYvHeOB/view
+
+Stance Phase Mode, The Hammer: https://www.youtube.com/watch?v=5z_EEswRdqU
